@@ -39,7 +39,7 @@ var TimeKeeper = function(sel){
         menu.val(mode)
         that.updateSpeed()
         that.updateFrames()
-        setInterval(that.updateLabels, 100)
+        setInterval(that.updateLabels, 1000)
         ruler = setInterval(that.updateDims, 100)
       })
       return that
@@ -77,9 +77,10 @@ var TimeKeeper = function(sel){
       dom.attr('class', mode)
          .find('.cell').remove()
 
-      let {start=0, end=0, step, skip=1} = modes[mode]
-      for (var i=start; i<end; i+=skip){
-        that.addFrame({offset:i, step, speed})
+      let {start=0, end=0, step, skip=1} = modes[mode],
+          now = new Date();
+      for (var offset=start; offset<end; offset+=skip){
+        that.addFrame({offset, step, speed, now})
       }
     },
 
@@ -106,10 +107,10 @@ var TimeKeeper = function(sel){
       })
     },
 
-    addFrame:function({offset=0, step='hours', speed=1.0}){
-      let nocache = new Date().getTime(),
-          links = [...document.querySelectorAll('link')].map(elt => elt.href.indexOf('time-keeper')<0 ? elt.outerHTML : ''),
-          sketch = $(`<div class="cell"><div class="timestamp">&nbsp;</div></div>`).appendTo(dom)
+    addFrame:function({offset=0, step='hours', speed=1.0, now}){
+      let links = [...document.querySelectorAll('link')].map(elt => elt.href.indexOf('time-keeper')<0 ? elt.outerHTML : ''),
+          sketch = $(`<div class="cell"><div class="timestamp">&nbsp;</div></div>`).appendTo(dom),
+          nocache = +(now || new Date());
       $('<iframe>').addClass('sketch').attr('srcdoc',`
         <html>
           <head>
