@@ -4,16 +4,13 @@ function setup() {
   // set the width & height of the sketch
   createCanvas(600, 200)
 
-  // draw will be called this many times per second
-  // frameRate(60)
-
   // specify colors in hue/saturation/brightness mode & use 0–1 values rather than 0–255
   colorMode(HSB, 1.0)
   palette = [
-    color(81/360,   1, .6),  // Spring
-    color(47/360,   1, .85), // Summer
-    color(28/360,   1, .5),  // Autumn
-    color(217/360, .4, .95)  // Winter
+    color(.23, 1, .6),  // Spring
+    color(.13, 1, .85), // Summer
+    color(.1,  1, .5),  // Autumn
+    color(.6, .4, .95)  // Winter
   ]
 
   // configure line drawing
@@ -24,13 +21,12 @@ function setup() {
 function triplicate(ops){
   // will execute the drawing commands in `ops` three times at different horizontal offsets
   // (this allows for the wrap-around effect when the transparent bars are at the edges)
-  push()
-    ops() // draw in the middle of the canvas
-    translate(-width, 0)
-    ops() // draw to the left of the canvas
-    translate(2*width, 0)
-    ops() // draw to the right of the canvas
-  pop()
+  ops() // draw in the middle of the canvas
+  translate(-width, 0)
+  ops() // draw to the left of the canvas
+  translate(2*width, 0)
+  ops() // draw to the right of the canvas
+  translate(-width, 0)
 }
 
 function draw() {
