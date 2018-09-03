@@ -6,8 +6,8 @@ var TimeKeeper = function(sel){
       dimmer, ruler,
       slider = nav.find('input[name=speed]'),
       menu = nav.find('select'),
-      rates = [0, 1, 30, 60, 30*60, 60*60, 12*60*60, 24*60*60, 7*24*60*60, 28*24*60*60],
-      speeds = ['stopped', 'realtime', '½ minute', '1 minute', '½ hour', '1 hour', '½ day', '1 day', '1 week', '1 month'],
+      rates = [0, 1, 30, 60, 30*60, 60*60, 12*60*60, 24*60*60, 7*24*60*60, 14*24*60*60, 28*24*60*60, 91.25*24*60*60],
+      speeds = ['stopped', 'realtime', '½ minute', '1 minute', '½ hour', '1 hour', '½ day', '1 day', '1 week', '1 fortnight', '1 moon', '1 season'],
       modes = {
        single:{ label:'Right Now', start:  0, end: 1, step:'years'},
       minutes:{ label:'An hour',    start:-30, end:30, step:'minutes', skip:3},
@@ -64,7 +64,7 @@ var TimeKeeper = function(sel){
       let val = slider.val(),
           slot = Math.abs(val),
           sign = Math.sign(val),
-          label = (sign<0 ? '−' : '') + speeds[slot] + (slot>1 ? '/s' : '')
+          label = (sign<0 ? '−' : '') + speeds[slot] + (slot>1 ? '/sec' : '')
       speed = sign * rates[slot];
       nav.find('span').text(label)
       for (var i=0; i<window.frames.length; i++)
