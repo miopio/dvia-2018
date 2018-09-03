@@ -41,7 +41,7 @@ var TimeKeeper = function(sel){
         slider.val(rate)
         that.updateSpeed()
         that.updateFrames()
-        setInterval(that.updateLabels, 1000)
+        // setInterval(that.updateLabels, 1000)
         ruler = setInterval(that.updateDims, 100)
       })
       return that

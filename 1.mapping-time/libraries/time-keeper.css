@@ -55,6 +55,7 @@ nav.active{
 .cell .timestamp{
   font:14px monospace;
   text-align:center;
+  display:none;
 }
 
 .sketch{
