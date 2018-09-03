@@ -18,6 +18,7 @@ var TimeKeeper = function(sel){
        months:{ label:'A Year',  start: -6, end: 6, step:'months'}
       },
       mode = sessionStorage.getItem('mode') || 'single',
+      rate = sessionStorage.getItem('rate') || 1,
       speed = 1;
 
   var that = {
@@ -37,6 +38,7 @@ var TimeKeeper = function(sel){
 
       setTimeout(function(){
         menu.val(mode)
+        slider.val(rate)
         that.updateSpeed()
         that.updateFrames()
         setInterval(that.updateLabels, 1000)
@@ -69,6 +71,7 @@ var TimeKeeper = function(sel){
       nav.find('span').text(label)
       for (var i=0; i<window.frames.length; i++)
         window.frames[i].clockSpeed(speed)
+      sessionStorage.setItem('rate', slot)
     },
 
     updateFrames:function(){
