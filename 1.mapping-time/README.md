@@ -24,14 +24,15 @@ To get yourself situated, try looking over the sample code in the [examples](./e
 
 ### Dataset
 
-For this project the ‘data’ you'll be working with are the numerical aspects of time. You should familiarize yourself with the [`clock()`](libraries/clock.js) function I've provided to help access the current date & time. Every time you call it, the function returns an ‘[Object](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)’ with the current time broken down into individual components. You can get numerical values for `hour`, `min`, `sec`, and `ms` on the time side of things and `year`, `season`, `month`, `day`, and `weekday` if you’re interested in dates. 
+For this project the ‘data’ you'll be working with are the numerical aspects of time. You should familiarize yourself with the [`clock()`](libraries/clock.js) function I've provided to help access the current date & time. Every time you call it, the function returns a time [Object](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics) with the current instant broken down into individual components. You can get numerical values for `hour`, `min`, `sec`, and `ms` on the time side of things and `year`, `season`, `month`, `day`, and `weekday` if you’re interested in dates.
 
 For instance, you can use the current year to work backwards:
 
 ```js
-var now = clock(),   
-    age = 64;
-print(`A ${age}-year-old would have been born in ${now.year - age}`)
+var now = clock(),
+    age = 64,
+    born = now.year - age;
+print(`A ${age}-year-old would have been born in ${born}`)
 ```
 
 To determine what half of the day it currently is, access the `am` and `pm` attributes, each of which contains a Boolean. You could conceivably use this to set the background color depending on whether it’s before- or afternoon.
@@ -47,9 +48,9 @@ function draw(){
 }
 ```
 
-The object returned by *clock()* also provides a mechanism for measuring the current time in terms of the various cyclic features of the day/year. By accessing fields of its `progress` attribute, you can get the fraction of various periods that have elapsed before the current moment. The clock represents progress as a number between *0* and *1* for each of: `year`, `season`, `month`, `week`, `day`, `halfday`, `hour`, `min`, and `sec`.
+The object returned by *clock()* also provides a mechanism for measuring the current time in terms of the cyclic features of a day/year. By accessing fields of its `progress` attribute, you can get the fraction of various periods that have elapsed before the current moment. The clock represents progress as a number between *0* and *1* for each of: `year`, `season`, `month`, `week`, `day`, `halfday`, `hour`, `min`, and `sec`.
 
-For instance, if you wanted be fairly literal and draw a progress bar for the day, try drawing a black rectangle whose width is proportional to the ‘doneness’ of the current 24-hour cycle:
+For instance, if you wanted to be fairly literal and draw a progress bar for the day, try drawing a black rectangle whose width is proportional to the ‘doneness’ of the current 24-hour cycle:
 
 ```js
 function draw(){
@@ -64,9 +65,6 @@ function draw(){
 ```
 
 
-
-
-
 ### Goal
 
 - Create a visual representation of the current local time using only graphics primitives, symbols, and formal elements like color/texture/size — no text or alphanumeric characters!
@@ -79,11 +77,12 @@ function draw(){
   * Calendar time is **much** more [complicated](http://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time) than ‘wall clock’ time. But you can attempt to visualize days, weeks, months, seasons, years, etc. using the date-related fields in the `progress` attribute ... if you dare.
   * The *clock()* function uses the [Moment.js](https://momentjs.com) library behind the scenes for its calculations. You can access the `moment` attribute of the time object if you want to do anything more sophisticated than what *clock()* is already unpacking.
 
+
 ### Process
 
 - Make sure you only create or modify files within the `students/ampm/<your-name>` subdirectory.
 - Start off by making some hand-drawn (or mocked up in a drawing app) sketches of clock ideas and put these images into the `process` folder of your subdirectory.
-- Update the `Readme.md` file in your `process` folder describing what’s in your various sketch files, the logic of the representation, etc.
+- Update the `Readme.md` file in your `process` folder describing what’s in your various sketch files, the logic of the representation, etc. Be sure to explain, either in words or diagrammatically, your chosen mapping of time components to Bertin-ian Retinal Variables.
 - Commit your changes whenever you’ve made some modifications that feel like they’re in a stable state (or if you stumble onto a glitchy visual that points in a direction you’d like to explore). This will let you ‘rewind’ to that point in the future if you’ve hit a dead-end or need to remember how you did something.
 - When you make a commit, select just the files (or even just the lines within one) that are part of the ‘conceptual unit’ of change that you made and type a brief description of what changed into the Summary field.
 - Sync your local repository with the copy on GitHub before the start of class next week.
