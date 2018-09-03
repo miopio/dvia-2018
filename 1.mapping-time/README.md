@@ -24,7 +24,7 @@ To get yourself situated, try looking over the sample code in the [examples](./e
 
 ### Dataset
 
-For this project the ‘data’ you'll be working with are the numerical aspects of time. You should familiarize yourself with the [`clock()`](libraries/clock.js) function I've provided to help access the current date & time. Every time you call it, the function returns a time [Object](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics) with the current instant broken down into individual components. You can get numerical values for `hour`, `min`, `sec`, and `ms` on the time side of things and `year`, `season`, `month`, `day`, and `weekday` if you’re interested in dates.
+For this project the ‘data’ you'll be working with are the numerical aspects of time. You should familiarize yourself with the [`clock()`](libraries/clock.js) function I've provided to help access the current date & time. The function returns a time [Object](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics) with the current instant broken down into individual components. You can get numerical values for `hour`, `min`, `sec`, and `ms` on the time side of things and `year`, `season`, `month`, `moon`, `day`, and `weekday` if you’re interested in dates.
 
 For instance, you can use the current year to work backwards:
 
@@ -48,7 +48,7 @@ function draw(){
 }
 ```
 
-The object returned by *clock()* also provides a mechanism for measuring the current time in terms of the cyclic features of a day/year. By accessing fields of its `progress` attribute, you can get the fraction of various periods that have elapsed before the current moment. The clock represents progress as a number between *0* and *1* for each of: `year`, `season`, `month`, `week`, `day`, `halfday`, `hour`, `min`, and `sec`.
+The object returned by *clock()* also provides a mechanism for measuring the current time in terms of the cyclic features of the calendar. By accessing fields of its `progress` attribute, you can get the fraction of various periods that have elapsed before the current moment. The clock represents progress as a number between *0* and *1* for each of: `year`, `season`, `moon`, `month`, `week`, `day`, `halfday`, `hour`, `min`, and `sec`.
 
 For instance, if you wanted to be fairly literal and draw a progress bar for the day, try drawing a black rectangle whose width is proportional to the ‘doneness’ of the current 24-hour cycle:
 

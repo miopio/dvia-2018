@@ -45,7 +45,9 @@
 
   // ---- snapshot of current moment  -----------------------------------------
   function clock(){
-    let t = now()
+    let t = now(),
+        {phase, light} = moon(t),
+        {name, num, doneness} = season(t);
 
     return {
       // numerical values for elements of current time
@@ -58,11 +60,12 @@
       pm:!isAM(t),        // true for hours 12-23
 
       // numerical values for elements of current date
-      year:t.year(),       // the full 4-digit year
-      month:t.month()+1,   // month number 1–12
-      day:t.date(),        // the day 1–{28,29,30,31}
-      weekday:t.day()+1,   // the day of the week 1-7
-      season:season(t).id, // the current season 1-4 (starting with spring)
+      year:t.year(),     // the full 4-digit year
+      month:t.month()+1, // month number 1–12
+      moon:light,        // the fullness of the moon 0–1.0
+      day:t.date(),      // the day 1–{28,29,30,31}
+      weekday:t.day()+1, // the day of the week 1-7
+      season:num,        // the current season 1-4 (starting with spring)
 
       // a string-based representation that can be used as an argument to clockStart
       timestamp:t.format('Y/M/D H:mm:ss'),
@@ -70,9 +73,9 @@
       // values between 0.0 and 1.0 measuring the current time's %-completion of various cycles
       progress:{
         year:progress(t, 'year'),
-        season:season(t).progress,
+        season:doneness,
         month:progress(t, 'month'),
-        moon:moon(t),
+        moon:phase,
         week:progress(t, 'week'),
         day:progress(t, 'day'),
         halfday:progress(t, 'day') % .5 / .5,
@@ -92,7 +95,7 @@
 
         date:t.format('D MMM Y'),
         year:t.format('Y'),
-        season:season(t).name,
+        season:name,
         month:t.format('MMMM'),
         mon:t.format('MMM'),
         day:t.format('D'),
@@ -129,7 +132,7 @@
             let {months, name} = _seasons[i],
                 start = moment({month:months[0]-1, year:months[0]>mt ? yr-1 : yr}).startOf('month'),
                 end = moment({month:months[2]-1, year:months[2]<mt ? yr+1 : yr}).endOf('month');
-            return {name, id:i+1, progress:t.diff(start) / end.diff(start)}
+            return {name, num:i+1, doneness:t.diff(start) / end.diff(start)}
           }
         };
 

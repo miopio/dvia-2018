@@ -49,9 +49,9 @@ function draw() {
   stroke(palette[(now.season - 1 + 4) % 4])
   line(width, height/2, width-x, height/2)
 
-  // -- draw the moon phase/brightness as a pair of grey stripes --------------
+  // -- draw the moon phase/fullness as a pair of grey stripes --------------
 
-  x = now.progress.moon.phase * width
+  x = now.progress.moon * width
   triplicate(function(){
     // draw a dark bar moving left to right with phase of moon
     stroke(0, .4)
@@ -64,16 +64,16 @@ function draw() {
     line(x, 0, x, height)
   })
 
-  x = now.progress.moon.light * width
+  x = now.moon * width
   triplicate(function(){
-    // draw a bright bar which oscillates with the current brightness of the moon
+    // draw a bright bar which oscillates with the current fullness of the moon
     stroke(1, .2)
     strokeWeight(100)
     line(x, 0, x, height)
 
     // let the weight of the thin stroke in the middle vary too
     stroke(1, .8)
-    strokeWeight(50*now.progress.moon.light)
+    strokeWeight(50*now.moon)
     line(x, 0, x, height)
   })
 
