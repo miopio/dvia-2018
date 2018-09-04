@@ -37,10 +37,6 @@ nav input{
   width:100px;
 }
 
-nav span{
-  display:inline-block;
-  min-width:34px;
-}
 nav span:before{ content:"("; }
 nav span:after{ content:")"; }
 

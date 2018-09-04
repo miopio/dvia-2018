@@ -41,8 +41,8 @@ var TimeKeeper = function(sel){
         slider.val(rate)
         that.updateSpeed()
         that.updateFrames()
-        // setInterval(that.updateLabels, 1000)
         ruler = setInterval(that.updateDims, 100)
+        // setInterval(that.updateLabels, 1000)
       })
       return that
     },
@@ -106,13 +106,12 @@ var TimeKeeper = function(sel){
             fmt = ['hours','minutes'].indexOf(modes[mode].step)>=0 ? 'time' : 'date',
             timestamp = frameObj.clock().text[fmt];
         label.innerText = (mode == 'single') ? '' : timestamp
-
       })
     },
 
     addFrame:function({offset=0, step='hours', speed=1.0, now}){
       let links = [...document.querySelectorAll('link')].map(elt => elt.href.indexOf('time-keeper')<0 ? elt.outerHTML : ''),
-          sketch = $(`<div class="cell"><div class="timestamp">&nbsp;</div></div>`).appendTo(dom),
+          sketch = $(`<div class="cell"><div class="timestamp">&nbsp;</div></div>`),
           nocache = +(now || new Date());
       $('<iframe>').addClass('sketch').attr('srcdoc',`
         <html>
@@ -133,8 +132,8 @@ var TimeKeeper = function(sel){
           </body>
         </html>
       `).prependTo(sketch)
+      sketch.appendTo(dom)
     }
-
 
   }
 

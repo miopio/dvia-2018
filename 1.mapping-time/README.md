@@ -82,7 +82,7 @@ function draw(){
 
 - Make sure you only create or modify files within the `students/ampm/<your-name>` subdirectory.
 - Start off by making some hand-drawn (or mocked up in a drawing app) sketches of clock ideas and put these images into the `process` folder of your subdirectory.
-- Update the `Readme.md` file in your `process` folder describing what’s in your various sketch files, the logic of the representation, etc. Be sure to explain, either in words or diagrammatically, your chosen mapping of time components to Bertin-ian Retinal Variables.
+- Update the `README.md` file in your `process` folder describing what’s in your various sketch files, the logic of the representation, etc. Be sure to explain, either in words or diagrammatically, your chosen mapping of time components to Bertin-ian Retinal Variables.
 - Commit your changes whenever you’ve made some modifications that feel like they’re in a stable state (or if you stumble onto a glitchy visual that points in a direction you’d like to explore). This will let you ‘rewind’ to that point in the future if you’ve hit a dead-end or need to remember how you did something.
 - When you make a commit, select just the files (or even just the lines within one) that are part of the ‘conceptual unit’ of change that you made and type a brief description of what changed into the Summary field.
 - Sync your local repository with the copy on GitHub before the start of class next week.
