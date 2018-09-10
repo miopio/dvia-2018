@@ -8,4 +8,4 @@ Description of the contents of this folder and the logic of your data → retina
 
 
 
-# Download as a PDF here: [data viz assignment 1.pdf](https://github.com/samizdatco/dvia-2018/files/2364788/data.viz.assignment.1.pdf)
+#### Download as a PDF here: [data viz assignment 1.pdf](https://github.com/samizdatco/dvia-2018/files/2364788/data.viz.assignment.1.pdf)
