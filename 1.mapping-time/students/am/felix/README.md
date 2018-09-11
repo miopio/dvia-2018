@@ -28,3 +28,6 @@ This is an attempt to explain how to read it from outermost to innermost radius:
 <img src="assets/01-hand-draft.jpg" />
 <img src="assets/02-illustrator-draft.png" />
 <img src="assets/03-illustrator-draft.png" />
+<img src="assets/04-illustrator-draft.png" />
+<img src="assets/05-notes.jpg" />
+<img src="assets/06-notes.jpg" />
