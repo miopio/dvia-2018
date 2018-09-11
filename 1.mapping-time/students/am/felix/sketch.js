@@ -8,7 +8,7 @@
 
 // Sleeping times
   // Change the arcs according to pre and past midnight sleeping times
-var sleepStart = [23, 45];
+var sleepStart = [22, 45];
 var sleepEnd = [8, 0];
 
 // Productivity times
@@ -16,6 +16,8 @@ var productivityStart = [15, 30];
 var productivityEnd = [19, 30];
 
 // Variables for layout
+var wCanvas = 1920;
+var hCanvas = 1080;
 var w = 800;
 var h = 800;
 var outerIndicatorPercentage = 0.03;
@@ -31,10 +33,10 @@ var spaceForScoreOuter = (h/2-1)*(1-outerIndicatorPercentage)-yearRadius*2-yearM
 var spaceForScoreInner = 2*centerRadius+moonRadius+scoreMargin;
 var spaceForScore = spaceForScoreOuter - spaceForScoreInner;
 
-
 function setup() {
-  createCanvas(w, h)
+  createCanvas(wCanvas, hCanvas)
 
+  rectMode(CENTER);
   ellipseMode(RADIUS);
   angleMode(RADIANS);
 
@@ -44,9 +46,9 @@ function setup() {
 
 function draw() {
 
-  frameRate(1);
+  frameRate(25);
 
-  translate(w/2,h/2);
+  translate(wCanvas/2,hCanvas/2);
   var now = clock()
   var myDate = now.moment._d;
   // console.log(myDate);
@@ -58,8 +60,33 @@ function draw() {
   var sunSet = [times.sunset.getHours(), times.sunset.getMinutes()];
 
   // Color scheme, ToDo: add seasons here
+    // Background clock
+      var cBG = color(200, 195);
+    // Day/night modifier
+      if (now.progress.day > fdt(sunRise) && now.progress.day < fdt(sunSet)) {
+        // DAY
+        var cNightShift = color(0, 0);
+        var cContrast = color(245);
+
+      } else {
+        // NIGHT
+        var cNightShift = color(0, 100);
+        var cContrast = color(180);
+
+
+      }
+    // Canvas background
+      background(255);
+      fill(cNightShift);
+      rect(0,0,wCanvas,hCanvas);
+      fill(cNightShift);
+      rect(0,0,wCanvas,hCanvas);
 
     // Center colors
+      // Night Arc
+      var cNight = color(0, 100);
+
+
       // spring = 1
       if (now.season == 1) {254, 243, 131
         var cSleep = color(118, 214, 202);
@@ -78,61 +105,53 @@ function draw() {
       var cAwake = color(251, 245, 178);
       var cProductivity = color(159, 104, 129);
     }
-    // Todo: cNow = cSleep breaks!!
-    // console.log(cSleep.levels);
-    // cNow
-    if (now.progress.day > fdt(sleepStart) && now.progress.day < fdt(sleepEnd)) {
-      var cNow = cSleep;
+
+    // cNow fallback
+    var cNow = color(0);
+
+    if (now.progress.day < fdt(sleepStart)) {
+      cNow = cSleep;
+    };
+
+    if (now.progress.day > fdt(sleepStart)) {
+      cNow = cSleep;
     } else if (now.progress.day > fdt(sleepEnd) && now.progress.day < fdt(sleepStart)) {
-      var cNow = cAwake;
+      cNow = cAwake;
       if (now.progress.day > fdt(productivityStart) && now.progress.day < fdt(productivityEnd)) {
-        var cNow = cProductivity;
+        cNow = cProductivity;
       }
     }
-    // console.log(cNow.levels);
-
-      // Day/night modifier
-      var cNight = color(0, 140);
-
-    //Background and strokes?
-      var isDay = true;
-
-      if (isDay) {
-        var cStrokeShift;
-        var cFillShift;
-      } else {
-        var cStrokeShift;
-        var cFillShift;
-      }
-
-  background('white')
 
   //background of the clock for indicators
   noStroke();
 
-  fill(245);
+  fill(cNow);
+  ellipse(0,0,w/2-1,h/2-1);
+  fill(240, 230);
+  ellipse(0,0,w/2-1,h/2-1);
+  fill(cNightShift);
   ellipse(0,0,w/2-1,h/2-1);
   // fill(0, 40);
   // ellipse(0,0,w/2-1,h/2-1);
 
   // Clock indicators
   strokeWeight(4);
-  stroke(255);
+  stroke(cContrast);
   push();
     for (var i = 0; i < 12; i++) {
       rotate(2*PI/12);
-      line(0,(h/2-1)*(1-outerIndicatorPercentage),0,h);
+      line(0,(h/2-1)*(1-outerIndicatorPercentage),0,h/2-5);
   }
   pop();
 
-  // background, now.color
+  // background
   noStroke();
   fill(cNow);
   ellipse(0,0,(w/2-1)*(1-outerIndicatorPercentage),(h/2-1)*(1-outerIndicatorPercentage))
-  fill(225, 200);
+  fill(cBG);
   ellipse(0,0,(w/2-1)*(1-outerIndicatorPercentage),(h/2-1)*(1-outerIndicatorPercentage))
-  // fill(0, 50);
-  // ellipse(0,0,(w/2-1)*(1-outerIndicatorPercentage),(h/2-1)*(1-outerIndicatorPercentage))
+  fill(cNightShift);
+   ellipse(0,0,(w/2-1)*(1-outerIndicatorPercentage),(h/2-1)*(1-outerIndicatorPercentage))
 
   // Circle of 100 years, ToDo: +change to 120, calculate the leap years better
     //change next line to the gap?
@@ -145,7 +164,7 @@ function draw() {
         }
 
         if (i % 4 == 0) {
-          fill(255);
+          fill(cContrast);
           // "Schaltjahre"!
           if (i == 0) {
             fill(160);
@@ -158,7 +177,7 @@ function draw() {
           noFill();
         } else {
           noFill();
-          stroke(255);
+          stroke(cContrast);
           strokeWeight(1);
         }
 
@@ -172,7 +191,7 @@ function draw() {
   // score
   for (var i = 0; i < 5; i++) {
     noFill();
-    stroke(255);
+    stroke(cContrast);
     strokeWeight(1);
     ellipse(0, 0, spaceForScoreOuter-spaceForScore/5*i, spaceForScoreOuter-spaceForScore/5*i)
   }
@@ -181,10 +200,10 @@ function draw() {
   push();
     for (var i = 0; i <= now.min; i++) {
       noStroke();
-      fill(255);
+      fill(cContrast);
       translate(0, -(spaceForScoreInner+9));
       ellipse(0, 0, yearRadius, yearRadius);
-      stroke(255)
+      stroke(cContrast)
       line(2, 0, 0, -15);
       translate(0, spaceForScoreInner+9);
       rotate((2*PI/60))
@@ -212,7 +231,7 @@ function draw() {
 
     //Start days, ToDo: Highlight Sundays
     noFill()
-    stroke(255);
+    stroke(cContrast);
     strokeWeight(1);
 
 
@@ -276,27 +295,9 @@ function draw() {
 
     // Moon contour
     noFill();
-    stroke(255);
+    stroke(cContrast);
     strokeWeight(4);
     ellipse(0,0,moonRadius,moonRadius)
-
-    /*
-    // Grid
-    fill(0);
-    ellipse(-moonRadius, -moonRadius, 2, 2);
-    ellipse(-moonRadius, 0, 2, 2);
-    ellipse(-moonRadius, moonRadius, 3, 3);
-
-    fill(255,0,0);
-    ellipse(0, -moonRadius, 2, 2);
-    ellipse(0, 0, 2, 2);
-    ellipse(0, moonRadius, 3, 3);
-
-    fill(0,0,255)
-    ellipse(moonRadius, -moonRadius, 2, 2);
-    ellipse(moonRadius, 0, 2, 2);
-    ellipse(moonRadius, moonRadius, 3, 3);
-    */
 
   pop();
 
@@ -337,13 +338,17 @@ function draw() {
 
   // Donut center background, now.color
   noStroke();
-  fill(235);
+  fill(cNow);
+  ellipse(0,0,donutHoleRadius, donutHoleRadius);
+  fill(cBG);
+  ellipse(0,0,donutHoleRadius, donutHoleRadius);
+  fill(cNightShift)
   ellipse(0,0,donutHoleRadius, donutHoleRadius);
 
   // Metronome now.color
   push();
-  fill(235);
-  stroke(255)
+
+  stroke(cContrast)
   strokeWeight(2)
     translate(0, donutHoleRadius-1);
     //bpm??
@@ -355,6 +360,9 @@ function draw() {
     };
     // rotate(r);
     line(0, 0, 0, -donutHoleRadius*2*0.75);
+    fill(cNow);
+    ellipse(0, -donutHoleRadius*2*0.75+15, 5, 5);
+    fill(cNightShift)
     ellipse(0, -donutHoleRadius*2*0.75+15, 5, 5);
   pop();
 
@@ -402,7 +410,7 @@ endShape();
 /*
 for (var i = 0; i <= 14; i++) {
   // if (i > 7 && i <= 14) {
-  //   fill(255);
+  //   fill(cContrast);
   // } else {
   //   noFill();
   // }
@@ -426,3 +434,36 @@ arc(0, 0, centerRadius, centerRadius, cta(hdt(sunSet)), cta(hdt(productivityEnd)
 fill(109, 82, 23);
 arc(0, 0, centerRadius, centerRadius, cta(hdt(productivityEnd)), 2*PI, PIE);
 */
+
+
+
+  /*
+//Background and strokes?
+  var isDay = true;
+
+  if (isDay) {
+    var cStrokeShift;
+    var cFillShift;
+  } else {
+    var cStrokeShift;
+    var cFillShift;
+  }
+  */
+
+  /*
+  // Grid
+  fill(0);
+  ellipse(-moonRadius, -moonRadius, 2, 2);
+  ellipse(-moonRadius, 0, 2, 2);
+  ellipse(-moonRadius, moonRadius, 3, 3);
+
+  fill(255,0,0);
+  ellipse(0, -moonRadius, 2, 2);
+  ellipse(0, 0, 2, 2);
+  ellipse(0, moonRadius, 3, 3);
+
+  fill(0,0,255)
+  ellipse(moonRadius, -moonRadius, 2, 2);
+  ellipse(moonRadius, 0, 2, 2);
+  ellipse(moonRadius, moonRadius, 3, 3);
+  */
