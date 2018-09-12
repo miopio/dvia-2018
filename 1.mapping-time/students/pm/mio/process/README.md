@@ -25,6 +25,6 @@ These are the rhythms that I have selected, from shortest cycle length to longes
  
 Initially the idea was to visualize the traces of these various rhythms in 2D linear form. However, I thought it could be more "organic" if these linear traces could be manifested in abstract shapes that would change size in proportion to the amplitude of their original trace. The rates in which the shapes cycle through size will change depending on whether it is day or night, if these physiological functions do change in reality.
 
-![Prototype A](dvia-2018/1.mapping-time/students/pm/mio/process/DVIA2018_project1_protytpe.png)
+![Prototype A](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/DVIA2018_project1_protytpe.png)
 
 The final product would/should look like a living organism with all of the different components moving at their respective rates.
