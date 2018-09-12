@@ -35,16 +35,16 @@ function draw() {
   //rect(x, y +    barHeight+spacing,  maxWidth,  barHeight)
   //rect(x, y + 2*(barHeight+spacing), maxWidth,  barHeight)
 
-  // draw the hours bar at the top...
-  fill(0, 85, 128)
+  // draw the hours arc at the top...
+  fill(92, 59, 97)
   arc(x, y, maxWidth, maxWidth, startArc, hourWidth*2*PI)
 
   // ...the minutes bar in the middle...
-  fill(255, 128, 0)
+  fill(141, 138, 88)
   arc(x, y, maxWidth*2/3, maxWidth*2/3, startArc, minsWidth*2*PI)
 
   // ...and the seconds bar at the bottom
-  fill(255, 128, 255)
+  fill(9, 106, 125)
   arc(x, y, maxWidth*1/3, maxWidth*1/3, startArc, secsWidth*2*PI)
 
 }
