@@ -1,28 +1,31 @@
+var x = 300
+var y = 300
+var maxR = 375;
+var spacing = 30;
+var r = 45;
+var discrete = false;
+
+
 function setup() {
-  // set the width & height of the sketch
-  createCanvas(400, 130)
-
-  // print the time to the console once at the beginning of the run. try opening up the
-  // web inspector and poking around to see the various values the clock function gives you
-  print('starting time:', clock())
-
+  createCanvas(600, 600)
+  background (35);
 }
 
 function draw() {
-  // check the clock for the current time and unpack some of its fields to generate a time-string
-  var now = clock()
+  ellipseMode(CENTER);
+  var now = clock();
 
-  // set the background to 'white' – you can also specify colors use integers, hex-color strings and more.
-  // note that setting the background also clears the canvas from our previous round of drawing
-  background('white')
+  noFill();
+  strokeWeight(0.185);
+  stroke(220);
 
-  // set up typography & drawing-color
-  textFont("Anonymous Pro") // ← check index.html to see how it was loaded from google-fonts
-  textSize(42) // make it big
-  fill(100, 50, 50)
+  while( r <= maxR){
+    ellipse(x,y,r,r);
+    r = r + spacing;
 
-  // draw the time string to the canvas
-  text(now.text.date, 30, 50)
-  text(now.text.time, 30, 100)
+  }
+// fill (235, 110, 32);
+// noStroke();
+// ellipse (x,y,maxR,maxR);
 
 }
