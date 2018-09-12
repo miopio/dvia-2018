@@ -8,6 +8,7 @@ It's also evident that there is a more intelligent way of doing the if statement
 I couldn't work it out
 */
 
+
 function setup() {
 //Sets up the canvas
   createCanvas(14*50, 14*50);
