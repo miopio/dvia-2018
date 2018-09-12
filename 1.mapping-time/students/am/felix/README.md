@@ -2,6 +2,11 @@
 
 For the “Right twice a day” assignment I wanted to create a clock that relates to my personal perception of time. In the last years I realized that my emotional state is stronger affected by outside factors like the season, the sunlight hours per day and the weather. Hence I decided to create a clock that puts a strong visual emphasis on factors I attribute the strongest effects to my emotional state to. Collateral damage to this emphasis is the easiness to read some of the encoded time measures and it collides with the magnitude of the time measures. A rule of thumb was: The more central a time measure is visualized the more important it is.
 
+## Screenshot
+
+<img src="assets/2018-09-11_20_03_10.jpg" />
+
+_2018-09-11 at 20.03.10_
 
 ## Reading the clock
 
@@ -22,12 +27,3 @@ This is an attempt to explain how to read it from outermost to innermost radius:
     1. The clock is affected by the current sleep / awake / productive state and the night shift. The background of the whole canvas is only affected by the night shift
     2. The color encoding of these three states varies over the year. Currently there is one theme for each **season**, maybe the colors could change gradually too.
 6.  Inside the donut hole there is a metronome oscillating as a reminder that every single **second** or moment counts and not to be to affected by all the circumstances too much.
-
-## My process
-
-<img src="assets/01-hand-draft.jpg" />
-<img src="assets/02-illustrator-draft.png" />
-<img src="assets/03-illustrator-draft.png" />
-<img src="assets/04-illustrator-draft.png" />
-<img src="assets/05-notes.jpg" />
-<img src="assets/06-notes.jpg" />
