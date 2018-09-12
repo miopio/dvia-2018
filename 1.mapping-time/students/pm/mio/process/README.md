@@ -20,8 +20,8 @@ These are the rhythms that I have selected, from shortest cycle length to longes
 * Menstrual Cycle - monthly
   * estrogen level flow
   
- ![Initial sketch of physiological traces, 1](dvia-2018/1.mapping-time/students/pm/mio/process/DVIA2018_project1_sketch1.jpg)
- ![Initial sketch, 2](dvia-2018/1.mapping-time/students/pm/mio/process/DVIA2018_project1_sketch2.jpg)
+ ![Initial sketch of physiological traces, 1](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/DVIA2018_project1_sketch1.jpg)
+ ![Initial sketch, 2](dhttps://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/DVIA2018_project1_sketch2.jpg)
  
 Initially the idea was to visualize the traces of these various rhythms in 2D linear form. However, I thought it could be more "organic" if these linear traces could be manifested in abstract shapes that would change size in proportion to the amplitude of their original trace. The rates in which the shapes cycle through size will change depending on whether it is day or night, if these physiological functions do change in reality.
 
