@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(720, 400);
+  createCanvas(1020, 400);
 }
 
 function draw() {
@@ -16,41 +16,21 @@ function draw() {
   push();
   translate(width*0.2, height*0.5);
   rotate(frameCount / h);
-  fill('purple');
-  polygon(0, 0, 82, 3);
-  pop();
-
-  /*time colons*/
-  push();
-  fill('black');
-  ellipse( 250, 180, 15, 15);
-  ellipse( 250, 210, 15, 15);
+  line(0, 10, 30, 45);
   pop();
 
   /*minute*/
   push();
   translate(width*0.5, height*0.5);
   rotate(frameCount / m);
-  fill('purple');
-  polygon(0, 0, 70, 4);
+  line(70, 10, 100, 45);
   pop();
 
   /*second*/
   push();
   translate(width*0.8, height*0.5);
   rotate(frameCount / s);
-  fill('purple');
-  polygon(0, 0, 60, 7);
+  line(120, 10, 150, 45);
   pop();
 }
 
-function polygon(x, y, radius, npoints) {
-  var angle = TWO_PI / npoints;
-  beginShape();
-  for (var a = 0; a < TWO_PI; a += angle) {
-    var sx = x + cos(a) * radius;
-    var sy = y + sin(a) * radius;
-    vertex(sx, sy);
-  }
-  endShape(CLOSE);
-}
