@@ -23,12 +23,12 @@ function draw() {
   //hours
   fill(131, 157, 154);
   noStroke();
-  rect(600, 0, 4.2 * now.hours, 600);
+  rect(600, 0, 4 * now.hours, 600);
 
   //days
   fill(123, 178, 217);
   noStroke();
-  rect(700, 0, 3.3 * now.day, 600);
+  rect(700, 0, 4 * now.day, 600);
   
 
 
@@ -77,16 +77,16 @@ function draw() {
 
   for(var i=0; i<24; i++) {
     rect(y, 0, 0, 28);
-    y += 4; // shorthand for: "y = y + 20" 
+    y += 4.15; // shorthand for: "y = y + 20" 
   }
 
   // Draw days bars
   fill('red');
   y = 700;
 
-  for(var i=0; i<7; i++) {
-    rect(y, 0, 0, 34);
-    y += 14; // shorthand for: "y = y + 20" 
+  for(var i=0; i<30; i++) {
+    rect(y, 0, 0, 36);
+    y += 3.5; // shorthand for: "y = y + 20" 
   }
 
 }
