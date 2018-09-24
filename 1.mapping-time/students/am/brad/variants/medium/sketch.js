@@ -53,6 +53,7 @@ function draw() {
   strokeWeight(2);
   arc(400, 300, 550, 550, 0, 2*PI*now.progress.season);
 
+/*
 // Draw seconds bars
   fill('red');
   y = 0;
@@ -88,5 +89,5 @@ function draw() {
     rect(y, 0, 0, 36);
     y += 3.5; // shorthand for: "y = y + 20" 
   }
-
+*/
 }
