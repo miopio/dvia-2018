@@ -1,28 +1,29 @@
 function setup() {
   // set the width & height of the sketch
-  createCanvas(400, 130)
+  createCanvas(400, 200)
 
-  // print the time to the console once at the beginning of the run. try opening up the
-  // web inspector and poking around to see the various values the clock function gives you
-  print('starting time:', clock())
+  // draw will be called this many times per second
+  frameRate(60)
 
+  // specify colors in hue/saturation/brightness mode & use 0–1 values rather than 0–255
+  colorMode(HSB, 1.0)
 }
 
 function draw() {
   // check the clock for the current time and unpack some of its fields to generate a time-string
   var now = clock()
 
-  // set the background to 'white' – you can also specify colors use integers, hex-color strings and more.
-  // note that setting the background also clears the canvas from our previous round of drawing
-  background('white')
+  // use the current 'doneness' of the current hour to choose the hue for the background color
+  // (note that setting the background also clears the canvas from our previous round of drawing)
+  background(now.progress.hour, 1, .3)
 
   // set up typography & drawing-color
-  textFont("Anonymous Pro") // ← check index.html to see how it was loaded from google-fonts
-  textSize(42) // make it big
-  fill(100, 50, 50)
+  let pointSize = 42
+  textFont("Nixie One")
+  textSize(pointSize)
+  textAlign(CENTER)
+  fill('white')
 
-  // draw the time string to the canvas
-  text(now.text.date, 30, 50)
-  text(now.text.time, 30, 100)
-
+  // print the time string to the canvas
+  text(now.text.time, width/2, height/2 + pointSize/3)
 }
