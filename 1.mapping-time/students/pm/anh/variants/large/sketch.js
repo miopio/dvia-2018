@@ -1,7 +1,6 @@
 function setup() {
   createCanvas(1400, 700);
   
-  
 }
   
 function draw() {
@@ -18,16 +17,20 @@ function draw() {
   var x = 700;
       y = 350;
       
-  var monthColorR = map(second(), 1, 60, 0, random(255));
-  var monthColorG = map(second(), 1, 60, 0, random(255));
-  var monthColorB = map(second(), 1, 60, 0, random(255));
+
+      var s = second();
+        console.log(s);
+
+  var monthColorR = map(month(), 0, 12, 0, 166);
+ // var monthColorG = map(second(), 1, 60, 0, random(255));
+ // var monthColorB = map(second(), 1, 60, 0, random(255));
 
   console.log(monthColorR);
-  console.log(monthColorG);
-  console.log(monthColorB);
+  //console.log(monthColorG);
+  //console.log(monthColorB);
 
       
-      stroke(monthColorR, monthColorG, monthColorB);
+      stroke(monthColorR,250,30);
       strokeWeight(90);
       point(x,y);
 
