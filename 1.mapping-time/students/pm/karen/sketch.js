@@ -135,7 +135,6 @@ function draw() {
   // }
 // }
 
-//********************
 
 
 
@@ -182,10 +181,4 @@ function draw() {
   //   y += 20;
   // }
 
-  // // Thin lines
-  // fill('black');
-  // y = 45;
-  // for(var i=0; i<num-1; i++) {
-  //   rect(120, y, 280, 1);
-  //   y += 20;
-  // }
+
