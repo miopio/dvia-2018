@@ -7,12 +7,12 @@ let yearBalls = []; // array to hold days ball objects
 let totalHours;
 let totalDays;
 
-let canvasX = innerWidth * 0.8;
-let canvasY = innerHeight * 0.8;
+let canvasX = outerWidth * 0.8;
+let canvasY = outerHeight * 0.8;
 
 function setup() {
-  canvas = createCanvas(canvasX, canvasY);
-  canvas.parent("sketch-holder");
+  createCanvas(canvasX, canvasY);
+
   noStroke();
   console.log("canvas x: ", canvasX);
   console.log("canvas y: ", canvasY);

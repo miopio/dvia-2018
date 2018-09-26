@@ -4,12 +4,11 @@ let hourBalls = []; // array to hold hours ball objects
 
 let totalHours;
 
-let canvasX = innerWidth * 0.2;
-let canvasY = innerHeight * 0.8;
+let canvasX = outerWidth * 0.2;
+let canvasY = outerHeight * 0.8;
 
 function setup() {
-  canvas = createCanvas(canvasX, canvasY);
-  canvas.parent("sketch-holder");
+  createCanvas(canvasX, canvasY);
   noStroke();
   console.log("canvas x: ", canvasX);
   console.log("canvas y: ", canvasY);
