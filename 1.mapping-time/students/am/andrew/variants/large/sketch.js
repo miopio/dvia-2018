@@ -35,7 +35,7 @@ function draw() {
   // create balls to match seconds count
   if (secondBalls.length < now.sec) {
     secondBalls.push(
-      new ball(0, 0, 5, canvasY * 0.2, canvasX * 0.05, "#F77C7C")
+      new ball(0, 0, 5, canvasY * 0.2, canvasX * 0.05, "#F77C7C", false)
     ); // append ball object
   }
   // delete balls once container is full
@@ -51,7 +51,9 @@ function draw() {
   // minutes balls
   // create balls to match minutes count
   if (minBalls.length < now.min) {
-    minBalls.push(new ball(0, 0, 5, canvasY * 0.4, canvasX * 0.1, "#7C92F7")); // append ball object
+    minBalls.push(
+      new ball(0, 0, 5, canvasY * 0.4, canvasX * 0.1, "#7C92F7", false)
+    ); // append ball object
   }
   // delete balls once container is full
   if (now.min >= 59) {
@@ -66,7 +68,9 @@ function draw() {
   // hours balls
   // create balls to match hours count
   if (hourBalls.length < totalHours) {
-    hourBalls.push(new ball(0, 0, 5, canvasY * 0.6, canvasX * 0.2, "#F7CC7C")); // append ball object
+    hourBalls.push(
+      new ball(0, 0, 5, canvasY * 0.6, canvasX * 0.2, "#F7CC7C", false)
+    ); // append ball object
   }
   // delete balls once container is full
   if (totalHours >= 24) {
@@ -82,7 +86,9 @@ function draw() {
   // create balls to match days count
   let totalDays = Math.floor(((now.month - 1 + now.day / 30) / 12) * 365);
   if (dayBalls.length < totalDays) {
-    dayBalls.push(new ball(0, 0, 5, canvasY * 0.8, canvasX * 0.4, "#7CF7E0")); // append ball object
+    dayBalls.push(
+      new ball(0, 0, 5, canvasY * 0.8, canvasX * 0.4, "#7CF7E0", false)
+    ); // append ball object
   }
   // delete balls once container is full
   if (totalDays >= 365) {
@@ -96,8 +102,10 @@ function draw() {
 
   // years balls
   // create balls to match years count
-  if (yearBalls.length < now.year) {
-    yearBalls.push(new ball(0, 0, 5, canvasY - 1, canvasX, "#fff", true)); // append ball object
+  if (yearBalls.length < now.year - 2000) {
+    yearBalls.push(
+      new ball(0, 0, 20, canvasY * 0.9, canvasX / 2, "#fff", true)
+    ); // append ball object
   }
   // loop through secondBalls with a for..of loop
   for (let flake of yearBalls) {
@@ -123,15 +131,15 @@ function ball(posX, posY, size, shelfY, shelfWidth, color, isYear) {
   this.radius = sqrt(random(pow(10, 2)));
 
   this.update = function(time) {
-    // x position follows a circle
-    let w = 0.8; // angular speed
-    let angle = w * time + this.initialangle;
-    this.posX = canvasX / 2 + (this.shelfWidth + this.radius) * sin(angle);
-
-    // different size balls fall at slightly different y speeds
     if (this.isYear) {
-      this.posY = canvasY;
+      this.posX = this.shelfWidth;
+    } else {
+      // x position follows a circle
+      let w = 0.8; // angular speed
+      let angle = w * time + this.initialangle;
+      this.posX = canvasX / 2 + (this.shelfWidth + this.radius) * sin(angle);
     }
+    // different size balls fall at slightly different y speeds
 
     if (this.posY >= this.shelfY) {
       this.posY == this.shelfY;

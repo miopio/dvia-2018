@@ -93,14 +93,11 @@ function ball(posX, posY, size, shelfY, shelfWidth, color) {
   // chosen so the secondBalls are uniformly spread out in area
   this.radius = sqrt(random(pow(0, 2)));
 
-  this.update = function(time) {
-    // x position follows a circle
-    let w = 0.8; // angular speed
-    let angle = w * time + this.initialangle;
+  this.update = function() {
+    // x position centered
     this.posX = canvasX / 2;
 
     // different size secondBalls fall at slightly different y speeds
-
     if (this.posY >= this.shelfY) {
       this.posY == this.shelfY;
     } else {
