@@ -1,7 +1,7 @@
-//SMALL variant hinged hand clock with colors
-//inner thin stroke denotes seconds 
+//LARGE REVERSE variant hinged hand clock with colors
+//inner thin stroke denotes hours
 //middle stroke denotes minutes 
-//outer thick stroke denotes hours 
+//outer thick stroke denotes seconds
 
 
 var cx, cy; // center position of canvas
@@ -42,46 +42,47 @@ function draw() {
   var h = (now.progress.halfday * TWO_PI) - HALF_PI
 
   
-  var sx = cx + cos(s)*secondsRadius
-  var sy = cy + sin(s)*secondsRadius
+  var hx = cx + cos(h)*hoursRadius
+  var hy = cy + sin(h)*hoursRadius
 
-  var mx = sx + cos(m)*minutesRadius
-  var my = sy + sin(m)*minutesRadius
+  var mx = hx + cos(m)*minutesRadius
+  var my = hy + sin(m)*minutesRadius
 
-  // //CIRCLES********
-  // //draw circle seconds 
-  // fill(bg, 0)
-  // stroke('red')
-  // strokeWeight(1)
-  // ellipse(cx, cy, secondsRadius*2, secondsRadius*2)
+  //CIRCLES********
 
-  // //draw circle minutes
-  // fill(bg, 0)
-  // stroke('black')
-  // strokeWeight(5)
-  // ellipse(sx, sy, minutesRadius*2, minutesRadius*2)
-
-  // //draw circle hour
-  // fill(bg, 0)
-  // stroke('white')
-  // strokeWeight(10)
-  // ellipse(mx, my, hoursRadius*2, hoursRadius*2)
-
-  //HANDS*******
-  // Draw the second hand 
+  //draw circle seconds
+  fill(bg, 0)
   stroke('red')
   strokeWeight(2)
-  line(cx, cy, sx, sy)
+  ellipse(mx, my, secondsRadius*2, secondsRadius*2)
+
+  //draw circle minutes
+  fill(bg, 0)
+  stroke('black')
+  strokeWeight(2)
+  ellipse(hx, hy, minutesRadius*2, minutesRadius*2)
+
+  //draw circle hours
+  fill(bg, 0)
+  stroke('white')
+  strokeWeight(2)
+  ellipse(cx, cy, hoursRadius*2, hoursRadius*2)
+
+  //HANDS*******
+  // draw the second hand 
+  stroke('red')
+  strokeWeight(2)
+  line(mx, my, mx + cos(s)*secondsRadius, my + sin(s)*secondsRadius)
 
   // draw the minute hand 
   stroke('black')
   strokeWeight(2)
-  line(sx, sy, mx, my)
+  line(hx, hy, mx, my)
 
   // draw the hour hand 
   stroke('white')
   strokeWeight(2)
-  line(mx, my, mx + cos(h)*hoursRadius, my + sin(h)*hoursRadius)
+  line(cx, cy, hx, hy)
 }
 
 
