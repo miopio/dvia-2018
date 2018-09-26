@@ -13,4 +13,5 @@ Starting off with 3 components: second, minute and hour. The position (angle) of
 1. Medium version
 I added one more plannet on the outside to represent day. Therefore we now have secon, minute, hour and day components. I also adjusted everything to be smaller size to fit better in the screen.
 1. Large version
-I added one more time component to the project which is year. I set the color of the sun as a variable, mapping it to each month. Each month, the sun will change color, from a green to a yellow. Even the change is subtle, it's still visible. Ideally, I would want the color to change to a random color everymonth, not just from a color range but I haven't figured out the codes yet so maybe that's a challenge for my next round of iteration.
+I added one more time component to the project which is year. I set the size of the sun as a variable, mapping it to each month. Each month, the sun will get bigger and return to the original size in January. Even the change is subtle, it's still visible. 
+Note: Ideally, I wanted some more visible change such as the color of the sun to change to a random color everymonth but I haven't figured out the codes yet so maybe that's a challenge for my next round of iteration.
