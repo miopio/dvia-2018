@@ -48,9 +48,7 @@ function draw() {
   // minutes balls
   // create balls to match minutes count
   if (minBalls.length < now.min) {
-    minBalls.push(
-      new ball(0, canvasY * 0.25, 10, canvasY * 0.5, canvasX * 0.1, "#7C92F7")
-    ); // append ball object
+    minBalls.push(new ball(0, 0, 10, canvasY * 0.5, canvasX * 0.1, "#7C92F7")); // append ball object
   }
   // delete balls once container is full
   if (now.min >= 59) {
@@ -66,7 +64,7 @@ function draw() {
   // create balls to match hours count
   if (hourBalls.length < totalHours) {
     hourBalls.push(
-      new ball(0, canvasY * 0.5, 20, canvasY * 0.75, canvasX * 0.2, "#F7CC7C")
+      new ball(0, 0, 20, canvasY * 0.75, canvasX * 0.2, "#F7CC7C")
     ); // append ball object
   }
   // delete balls once container is full
@@ -93,7 +91,7 @@ function ball(posX, posY, size, shelfY, shelfWidth, color) {
 
   // radius of ball spiral
   // chosen so the secondBalls are uniformly spread out in area
-  this.radius = sqrt(random(pow(10, 2)));
+  this.radius = sqrt(random(pow(0, 2)));
 
   this.update = function(time) {
     // x position follows a circle

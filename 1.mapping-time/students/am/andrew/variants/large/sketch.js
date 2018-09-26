@@ -2,6 +2,7 @@ let secondBalls = []; // array to hold seconds ball objects
 let minBalls = []; // array to hold minutes ball objects
 let hourBalls = []; // array to hold hours ball objects
 let dayBalls = []; // array to hold days ball objects
+let yearBalls = []; // array to hold days ball objects
 
 let totalHours;
 let totalDays;
@@ -92,10 +93,21 @@ function draw() {
     flake.update(t); // update ball position
     flake.display(); // draw ball
   }
+
+  // years balls
+  // create balls to match years count
+  if (yearBalls.length < now.year) {
+    yearBalls.push(new ball(0, 0, 5, canvasY - 1, canvasX, "#fff", true)); // append ball object
+  }
+  // loop through secondBalls with a for..of loop
+  for (let flake of yearBalls) {
+    flake.update(t); // update ball position
+    flake.display(); // draw ball
+  }
 }
 
 // ball class
-function ball(posX, posY, size, shelfY, shelfWidth, color) {
+function ball(posX, posY, size, shelfY, shelfWidth, color, isYear) {
   // initialize coordinates
   this.posX = posX;
   this.posY = posY;
@@ -104,6 +116,7 @@ function ball(posX, posY, size, shelfY, shelfWidth, color) {
   this.shelfY = shelfY;
   this.shelfWidth = shelfWidth;
   this.color = color;
+  this.isYear = isYear;
 
   // radius of ball spiral
   // chosen so the secondBalls are uniformly spread out in area
@@ -115,7 +128,10 @@ function ball(posX, posY, size, shelfY, shelfWidth, color) {
     let angle = w * time + this.initialangle;
     this.posX = canvasX / 2 + (this.shelfWidth + this.radius) * sin(angle);
 
-    // different size secondBalls fall at slightly different y speeds
+    // different size balls fall at slightly different y speeds
+    if (this.isYear) {
+      this.posY = canvasY;
+    }
 
     if (this.posY >= this.shelfY) {
       this.posY == this.shelfY;
