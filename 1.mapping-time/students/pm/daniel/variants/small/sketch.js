@@ -12,6 +12,7 @@ function draw() {
 
   var now = clock() // store the current moment in a local variable
 
+
   // Draw black bar hours
   fill(75);
   x = 30;
