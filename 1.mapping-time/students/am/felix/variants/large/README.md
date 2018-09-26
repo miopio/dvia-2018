@@ -4,7 +4,7 @@ For the “Right twice a day” assignment I wanted to create a clock that relat
 
 ## Screenshot
 
-<img src="assets/2018-09-11_20_03_10.jpg" />
+<img src="../../assets/2018-09-11_20_03_10.jpg" />
 
 _2018-09-11 at 20.03.10_
 
