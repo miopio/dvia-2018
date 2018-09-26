@@ -1,5 +1,4 @@
 //arc(479, 300, 280, 280, PI, TWO_PI);
-//aaditi_DVIA_mappingTime_small
 
 function setup() {
   createCanvas(1000,1000);
