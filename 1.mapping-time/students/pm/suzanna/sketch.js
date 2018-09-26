@@ -16,8 +16,7 @@ function draw() {
   push();
   translate(width*0.2, height*0.5);
   rotate(frameCount / h);
-  colorMode(HSB);
-  fill(255, 204, 100);
+  fill('purple');
   polygon(0, 0, 82, 3);
   pop();
 
@@ -32,7 +31,7 @@ function draw() {
   push();
   translate(width*0.5, height*0.5);
   rotate(frameCount / m);
-  fill('red');
+  fill('purple');
   polygon(0, 0, 70, 4);
   pop();
 
@@ -40,7 +39,7 @@ function draw() {
   push();
   translate(width*0.8, height*0.5);
   rotate(frameCount / s);
-  fill('rgb(0,255,0)');
+  fill('purple');
   polygon(0, 0, 60, 7);
   pop();
 }

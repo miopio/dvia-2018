@@ -28,3 +28,7 @@ Initially the idea was to visualize the traces of these various rhythms in 2D li
 ![Prototype A](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/DVIA2018_project1_protytpe.png)
 
 The final product would/should look like a living organism with all of the different components moving at their respective rates.
+
+## Update
+Instead of just objects changing shapes in a particular rate, I needed to create something that would spatially and visually communicate the passing of time in some way.
+

@@ -1,0 +1,147 @@
+<html>
+	<head>
+		<style>
+			div{
+				display:inline-block;
+				text-align: left;
+				width:25px;
+				height:25px;
+			}
+			body{
+				background-color: black;
+				text-align: center;
+                padding: 5px 15px;
+                margin-bottom: 10px;
+            }
+			canvas {
+				display: block;
+				position: absolute;
+				top: 10%;
+				left: 40%;
+			}
+		</style>		
+	</head>
+	<body>
+		
+		<!--<div id="moon0"></div>-->
+		<!--<div id="moon1"></div>-->
+		<!--<div id="moon2"></div>-->
+		<!--<div id="moon3"></div>-->
+		<!--<div id="moon4"></div>-->
+		<!--<div id="moon5"></div>-->
+		<!--<div id="moon6"></div>-->
+		<!--<div id="moon7"></div>-->
+		<!--<div id="moon8"></div>-->
+		<!--<div id="moon9"></div>-->
+		<!--<div id="moon10"></div>-->
+		<!--<div id="moon11"></div>-->
+		<!--<div id="moon12"></div>-->
+		<!--<div id="moon13"></div>-->
+		<!--<div id="moon14"></div>-->
+		<!--<div id="moon15"></div>-->
+		<!--<div id="moon16"></div>-->
+		<!--<div id="moon17"></div>-->
+		<!--<div id="moon18"></div>-->
+		<!--<div id="moon19"></div>-->
+		<!--<div id="moon20"></div> -->
+		<!--<div id="moon21"></div> -->
+		<!--<div id="moon22"></div> -->
+		<!--<div id="moon23"></div> -->
+		<!--<div id="moon24"></div> -->
+		<!--<div id="moon25"></div> -->
+		<!--<div id="moon26"></div> -->
+		<!--<div id="moon27"></div>-->
+		<!--<div id="moon28"></div> -->
+		<!--<div id="moon29"></div> -->
+		<!--<div id="moon29"></div>-->
+		<script src ="moment.min.js"></script>
+		<script src ="clock.js"></script>
+		<script src="planet_phase.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+		<script>
+		
+		var now = clock();
+		console.log(now.moon);
+		
+		var currentMoonPhaseMin = now.moon - .04;
+		
+		var currentMoonPhaseMax = now.moon + .04;
+		
+		//waxing phase
+		
+	var moonPhaseAlreadySelected = false
+		
+		for (var i = 0; i <= 14; i++) {
+			var moonDiv = document.createElement("div");
+			document.body.appendChild(moonDiv); 	
+			var phaseAmount = i/14; 
+			if (phaseAmount < currentMoonPhaseMax && phaseAmount > currentMoonPhaseMin && !moonPhaseAlreadySelected) 
+			{moonPhaseAlreadySelected = true;
+			moonDiv.style.border = "dashed 2px red";
+			}
+			drawPlanetPhase(moonDiv, phaseAmount, true, {diameter:25, earthshine:0.1, blur:10, lightColour: '#F5F5F5'});
+		}
+
+		//waning phase 
+		
+		for (var i = 14; i >= 0; i--) {
+			var moonDiv = document.createElement("div");
+			document.body.appendChild(moonDiv); 
+			var phaseAmount = i/14;
+			if (phaseAmount < currentMoonPhaseMax && phaseAmount > currentMoonPhaseMin && !moonPhaseAlreadySelected) {
+				moonPhaseAlreadySelected = true;
+				moonDiv.style.border = "dashed 2px red";}
+			drawPlanetPhase(moonDiv, phaseAmount, false, {diameter:25, earthshine:0.1, blur:10, lightColour: '#F5F5F5'});
+		}
+		
+		/*	drawPlanetPhase(document.getElementById("moon1"), 0.1, true, {diameter:25, earthshine:0.1, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon2"), 0.1, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon3"), 0.75, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon4"), 0.50, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon5"), 0.45, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon6"), 0.30, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon7"), 0.25, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon8"), 0.20, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon9"), 0.15, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon10"), 0.05, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon11"), 0, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon12"), 0.05, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon13"), 0.10, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon14"), 0.15, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon15"), 0.20, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon16"), 0.25, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon17"), 0.35, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon18"), 0.40, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon19"), 0.45, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon20"), 0.50, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon21"), 0.55, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon22"), 0.60, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon23"), 0.65, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon24"), 0.70, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon25"), 0.75, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon26"), 0.85, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon27"), 0.95, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon28"), 1, true, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon29"), 0.80, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			drawPlanetPhase(document.getElementById("moon30"), 0.75, false, {diameter:25, earthshine:0.5, blur:10, lightColour: '#F5F5F5'});
+			*/
+		
+		function setup () {
+			createCanvas(200, 200);
+			shadowPos = 300;
+			setInterval(function() {
+				fill(255)
+				ellipse(100, 100, 200, 200);
+				fill(0);
+				ellipse(shadowPos, 100, 200, 200);
+				shadowPos--;
+				if (shadowPos < -100) {shadowPos = 300};
+			}, 25);
+		}
+		
+		function draw () {}
+		
+		
+		</script>
+	</body>
+</html>
