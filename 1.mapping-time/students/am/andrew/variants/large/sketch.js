@@ -154,7 +154,11 @@ function ball(posX, posY, size, shelfY, shelfWidth, color, isYear) {
 
   this.display = function() {
     fill(this.color);
-    ellipse(this.posX, this.posY, this.size);
+    if (this.isYear) {
+      rect(this.posX, this.posY, this.size, this.size);
+    } else {
+      ellipse(this.posX, this.posY, this.size);
+    }
   };
 }
 
