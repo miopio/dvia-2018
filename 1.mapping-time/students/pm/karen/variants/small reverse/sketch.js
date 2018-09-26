@@ -1,7 +1,7 @@
-//SMALL variant hinged hand clock with colors
-//inner thin stroke denotes seconds 
+//SMALL REVERSE variant hinged hand clock with colors
+//inner thin stroke denotes hours
 //middle stroke denotes minutes 
-//outer thick stroke denotes hours 
+//outer thick stroke denotes seconds
 
 
 var cx, cy; // center position of canvas
@@ -42,11 +42,11 @@ function draw() {
   var h = (now.progress.halfday * TWO_PI) - HALF_PI
 
   
-  var sx = cx + cos(s)*secondsRadius
-  var sy = cy + sin(s)*secondsRadius
+  var hx = cx + cos(h)*hoursRadius
+  var hy = cy + sin(h)*hoursRadius
 
-  var mx = sx + cos(m)*minutesRadius
-  var my = sy + sin(m)*minutesRadius
+  var mx = hx + cos(m)*minutesRadius
+  var my = hy + sin(m)*minutesRadius
 
   // //CIRCLES********
   // //draw circle seconds 
@@ -71,17 +71,17 @@ function draw() {
   // Draw the second hand 
   stroke('red')
   strokeWeight(2)
-  line(cx, cy, sx, sy)
+  line(mx, my, mx + cos(s)*secondsRadius, my + sin(s)*secondsRadius)
 
   // draw the minute hand 
   stroke('black')
   strokeWeight(2)
-  line(sx, sy, mx, my)
+  line(hx, hy, mx, my)
 
   // draw the hour hand 
   stroke('white')
   strokeWeight(2)
-  line(mx, my, mx + cos(h)*hoursRadius, my + sin(h)*hoursRadius)
+  line(cx, cy, hx, hy)
 }
 
 
