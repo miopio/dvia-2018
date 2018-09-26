@@ -60,13 +60,14 @@ function draw() {
   }
 
 var i=1;
-for (i=1; i<=hourWidth*12-1; i++)//for every pie slice, that slice is the hourWidth 12 times
+for (i=1; i<=hourWidth*12; i++)
+//for every pie slice, that slice is the hourWidth 12 times
   // draw the hours arc at the top...
 {
     if ((i%2) == 1)
     {
-      fill(92, 59, 97)
-      arc(x, y, maxWidth, maxWidth, i*PI/6-PI/6, i*PI/6) //if i= 1 you end at PI/6, i*PI/6 is changing the start and the end of the arc
+      fill(92, 59, 97);
+      arc(x, y, maxWidth, maxWidth, i*PI/6-PI/6, i*PI/6);
     }
 
    else
@@ -80,7 +81,7 @@ for (i=1; i<=hourWidth*12-1; i++)//for every pie slice, that slice is the hourWi
    // ...the minutes bar in the middle...
 
 
-for (i=1; i<minsWidth*60-1; i++)//for every pie slice, that slice is the hourWidth 12 times
+for (i=1; i<minsWidth*60; i++)//for every pie slice, that slice is the hourWidth 12 times
   // draw the hours arc at the top...
 {
     if ((i%2) == 1)
@@ -97,7 +98,7 @@ for (i=1; i<minsWidth*60-1; i++)//for every pie slice, that slice is the hourWid
  }
 
   // ...and the seconds bar at the bottom
-for (i=1; i<secsWidth*60-1; i++)//for every pie slice, that slice is the hourWidth 12 times
+for (i=1; i<secsWidth*60; i++)//for every pie slice, that slice is the hourWidth 12 times
   // draw the hours arc at the top...
 
 {
@@ -113,5 +114,6 @@ for (i=1; i<secsWidth*60-1; i++)//for every pie slice, that slice is the hourWid
       arc(x, y, maxWidth*1/3, maxWidth*1/3, i*PI/30-PI/30, i*PI/30)
    }
  }
+}
 
 
