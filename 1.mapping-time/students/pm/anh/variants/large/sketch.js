@@ -21,17 +21,18 @@ function draw() {
       var s = second();
         console.log(s);
 
-  var monthColorR = map(month(), 0, 12, 0, 166);
+  var sunSize = map(month(), 0, 12, 5, 90)
+  //var monthColorR = map(second(), 0, 60, 0, 166);
  // var monthColorG = map(second(), 1, 60, 0, random(255));
  // var monthColorB = map(second(), 1, 60, 0, random(255));
 
-  console.log(monthColorR);
+  //console.log(monthColorR);
   //console.log(monthColorG);
   //console.log(monthColorB);
 
       
-      stroke(monthColorR,250,30);
-      strokeWeight(90);
+      stroke(255,250,0);
+      strokeWeight(sunSize);
       point(x,y);
 
       var angleSecond = map(second(), 0, 60, 0, TWO_PI) -  HALF_PI;
