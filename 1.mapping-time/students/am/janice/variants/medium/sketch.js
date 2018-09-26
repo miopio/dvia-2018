@@ -72,7 +72,7 @@ for (i=1; i<=hourWidth*12; i++)
 
    else
    {
-     fill(92, 59, 50);
+     fill(92, 49, 97);
      arc(x, y, maxWidth, maxWidth, i*PI/6-PI/6, i*PI/6);
     }
 
@@ -92,7 +92,7 @@ for (i=1; i<minsWidth*60; i++)//for every pie slice, that slice is the hourWidth
     }
     else
     {
-      fill(92, 5, 50);
+      fill(141, 128, 74);
       arc(x, y, maxWidth*2/3, maxWidth*2/3, i*PI/30-PI/30, i*PI/30)
    }
  }
@@ -104,13 +104,13 @@ for (i=1; i<secsWidth*60; i++)//for every pie slice, that slice is the hourWidth
 {
     if ((i%2) == 1)
     {
-      fill(9, 106, 12)
+      fill(9, 106, 125)
       arc(x, y, maxWidth*1/3, maxWidth*1/3, i*PI/30-PI/30, i*PI/30)
 
     }
     else
     {
-      fill(9, 106, 125)
+      fill(9, 116, 125)
       arc(x, y, maxWidth*1/3, maxWidth*1/3, i*PI/30-PI/30, i*PI/30)
    }
  }
