@@ -1,6 +1,6 @@
 var x;
 var num;
-
+// did some change
 // Sets the screen to be 2080 pixels wide and 720 pixels high
 function setup() {
   createCanvas(2080, 720);
@@ -8,10 +8,10 @@ function setup() {
 }
 
 function draw() {
-  var now = clock() // store the current moment in a local variable 
-  //change background RGB color values according to progress construct 
+  var now = clock() // store the current moment in a local variable
+  //change background RGB color values according to progress construct
     background(100 * now.progress.hour, 0, 255 * now.progress.day);
- 
+
 
   // Draw black bar hours
   fill(50);
@@ -22,7 +22,7 @@ function draw() {
     // the 'current' rectangle is before or after the clock value for the 24-hour time
     if (i > now.hours){
       rect(x, 40, 31, 150);
-    }else{  
+    }else{
       rect(x, 70, 31, 150);
     }
     x += 84;
@@ -61,10 +61,10 @@ function draw() {
   }
 
 
-  // Draw white moon bar. 
+  // Draw white moon bar.
     x = 30;
   num = 1000;
-  //Fill value changes according to whether moon is less or more than half full. Width of rectangle changes by progress of moon cycle. 
+  //Fill value changes according to whether moon is less or more than half full. Width of rectangle changes by progress of moon cycle.
  if (now.moon < .5){
     fill(150)
   }else{
