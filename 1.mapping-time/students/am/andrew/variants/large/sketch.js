@@ -23,13 +23,17 @@ function draw() {
   let now = clock();
   let t = frameCount / 60; // update time
 
-  if (now.pm) {
+  // hours of day
+  if (now.pm && now.hour == 12) {
+    totalHours = now.hour;
+  } else if (now.pm) {
     totalHours = now.hour + 12;
   } else if (now.am && now.hour == 12) {
     totalHours = 0;
   } else {
     totalHours = now.hour;
   }
+  console.log(totalHours);
 
   // seconds balls
   // create balls to match seconds count
