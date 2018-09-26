@@ -1,28 +1,31 @@
+//arc(479, 300, 280, 280, PI, TWO_PI);
+//aaditi_DVIA_mappingTime_medium
+
 function setup() {
-  // set the width & height of the sketch
-  createCanvas(400, 130)
-
-  // print the time to the console once at the beginning of the run. try opening up the
-  // web inspector and poking around to see the various values the clock function gives you
-  print('starting time:', clock())
-
+  createCanvas(1000,1000);
+  print('starting time:', clock());
+  
 }
 
 function draw() {
-  // check the clock for the current time and unpack some of its fields to generate a time-string
-  var now = clock()
-
-  // set the background to 'white' – you can also specify colors use integers, hex-color strings and more.
-  // note that setting the background also clears the canvas from our previous round of drawing
-  background('white')
-
-  // set up typography & drawing-color
-  textFont("Anonymous Pro") // ← check index.html to see how it was loaded from google-fonts
-  textSize(42) // make it big
-  fill(100, 50, 50)
-
-  // draw the time string to the canvas
-  text(now.text.date, 30, 50)
-  text(now.text.time, 30, 100)
-
+    
+  var now = clock();
+  background('white');
+    
+  noFill();
+  noStroke();
+  var opacityMs= 1000*now.ms/100;
+  var opacitySec= 1000*now.progress.sec;
+  var opacityMin= 1000*now.progress.min;
+  var opacityHour= 1000*now.progress.hour;
+  
+  fill(239,83,80,opacityHour);
+  arc(width/2, height/2, 750, 750, PI, -(2*PI*now.progress.hour));
+  fill(77,208,225,opacityMin);
+  arc(width/2, height/2, 500, 500, PI, -(2*PI*now.progress.min));
+  fill(174,213,129,opacitySec);
+  arc(width/2, height/2, 300, 300, PI, -(2*PI*now.progress.sec));
+  fill(255,241,118,opacityMs);
+  arc(width/2, height/2, 100, 100, PI, -(2*PI*now.ms/100));
+  
 }
