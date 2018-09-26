@@ -1,19 +1,27 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
-  <link href="lib/time-keeper.css" rel="stylesheet">
+  <title>Small</title>
 
-  <!-- if your sketch uses a webfont, be sure to include it here -->
-  <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="../../favicon.png" />
+  <link href="../style.css" rel="stylesheet">
+
+  <script src="lib/p5.min.js"></script>
+  <script src="lib/p5.dom.min.js"></script>
+  <script src="lib/moment.min.js"></script>
+  <script src="lib/clock.js"></script>
+  <script src="sketch.js"></script>
+
 
 </head>
+
 <body>
-  <nav>
-    <label for="multiples">Mode:</label> <select name="multiples"></select>
-    <label for="speed">Speed:</label> <input type="range" name="speed" value="1"> <span></span>
-  </nav>
-  <main id="time-keeper"></main>
-  <script language="javascript" type="text/javascript" src="lib/cash.min.js"></script>
-  <script language="javascript" type="text/javascript" src="lib/time-keeper.js"></script>
+  <div class="container">
+    <div id="sketch-holder">
+      <!-- canvas goes here -->
+    </div>
+  </div>
 </body>
+
 </html>
