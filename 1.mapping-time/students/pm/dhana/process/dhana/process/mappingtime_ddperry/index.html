@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="lib/time-keeper.css" rel="stylesheet">
+
+  <!-- if your sketch uses a webfont, be sure to include it here -->
+  <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
+
+<!-- analog clock below -->
+<title>Clock</title>
+<meta name="viewport" content="width=device-width, initial-scale-1">
+<link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+  <nav>
+    <label for="multiples">Mode:</label> <select name="multiples"></select>
+    <label for="speed">Speed:</label> <input type="range" name="speed" value="1"> <span></span>
+  </nav>
+  <main id="time-keeper"></main>
+  <script language="javascript" type="text/javascript" src="lib/cash.min.js"></script>
+  <script language="javascript" type="text/javascript" src="lib/time-keeper.js"></script>
+
+<div class="clock">
+  <div id="hours"></div>
+  <div id="minutes"></div>
+  <div id="seconds"></div>
+  <div class="three"></div>
+  <div class="six"></div>
+  <div class="nine"></div>
+  <div class="twelve"></div>
+  <div class="center"></div>
+</div>
+
+  <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
