@@ -38,10 +38,13 @@ Instead of just objects changing shapes in a particular rate, I needed to create
  
  If we put all of these together into a single visualization, we get a clock based on physiological rhythms that can communicate time from minutes to months (or at least that is the hope).
  
+ Sketch of revised idea:
  ![Sketch of revised idea](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/IMG_4464.jpg)
  
  ![Explanation of Small variant](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/dvia_protype2_small.png)
  
-![Explanation of Medium variant](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/dvia_protype2_medium.png)
+ ![Explanation of Medium variant](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/dvia_protype2_medium.png)
  ![Explanation of Large variant](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/dvia_protype2_large.png)
+
+ What it looks like all together:
  ![What it looks like all together](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/Screen%20Shot%202018-09-26%20at%208.50.10%20PM.png)
