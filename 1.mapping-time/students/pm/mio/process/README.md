@@ -44,4 +44,4 @@ Instead of just objects changing shapes in a particular rate, I needed to create
  
 ![Explanation of Medium variant](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/dvia_protype2_medium.png)
  ![Explanation of Large variant](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/dvia_protype2_large.png)
- ![What it looks like all together](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/Screen%20Shot%202018-09-26%20at%202.50.26%20AM.png)
+ ![What it looks like all together](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/Screen%20Shot%202018-09-26%20at%208.50.10%20PM.png)
