@@ -33,7 +33,7 @@ function draw() {
 
 
 
-  var sunSize = map(now.month, 1, 12, 5, 90)
+  var sunSize = map(now.month, 0, 12, 5, 90)
       stroke(255,250,0);
       strokeWeight(sunSize);
       point(x,y);
