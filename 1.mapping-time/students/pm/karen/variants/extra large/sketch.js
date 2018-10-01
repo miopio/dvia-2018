@@ -32,7 +32,7 @@ function setup() {
 }
 
 function draw() {
-  background(bg, 5)
+  background(bg, 10)
 
 
   // Angles for sin() and cos() start at 3 o'clock
@@ -63,22 +63,22 @@ function draw() {
 
   //CIRCLES********
   //draw circle seconds 
-  fill(bg, 0)
-  stroke('black')
-  strokeWeight(2)
-  ellipse(cx, cy, secondsRadius*2, secondsRadius*2)
+  // fill(bg, 0)
+  // stroke('red')
+  // strokeWeight(2)
+  // ellipse(cx, cy, secondsRadius*2, secondsRadius*2)
 
-  //draw circle minutes
-  fill(bg, 0)
-  stroke('black')
-  strokeWeight(2)
-  ellipse(sx, sy, minutesRadius*2, minutesRadius*2)
+  // //draw circle minutes
+  // fill(bg, 0)
+  // stroke('black')
+  // strokeWeight(2)
+  // ellipse(sx, sy, minutesRadius*2, minutesRadius*2)
 
-  //draw circle hour
-  fill(bg, 0)
-  stroke('black')
-  strokeWeight(2)
-  ellipse(mx, my, hoursRadius*2, hoursRadius*2)
+  // //draw circle hour
+  // fill(bg, 0)
+  // stroke('white')
+  // strokeWeight(2)
+  // ellipse(mx, my, hoursRadius*2, hoursRadius*2)
 
   //HANDS*******
   // Draw the second hand 
