@@ -21,20 +21,24 @@ function draw() {
       var s = second();
         console.log(s);
 
-  var monthColorR = map(month(), 0, 12, 0, 166);
+  //var monthColorR = map(second(), 0, 60, 0, 166);
  // var monthColorG = map(second(), 1, 60, 0, random(255));
  // var monthColorB = map(second(), 1, 60, 0, random(255));
 
-  console.log(monthColorR);
+  //console.log(monthColorR);
   //console.log(monthColorG);
   //console.log(monthColorB);
 
-      
-      stroke(monthColorR,250,30);
-      strokeWeight(90);
+      var now = clock()
+
+
+
+  var sunSize = map(now.month, 0, 12, 5, 90)
+      stroke(255,250,0);
+      strokeWeight(sunSize);
       point(x,y);
 
-      var angleSecond = map(second(), 0, 60, 0, TWO_PI) -  HALF_PI;
+      var angleSecond = map(now.sec, 0, 60, 0, TWO_PI) -  HALF_PI;
       var rs = 100;
 
 
@@ -45,7 +49,7 @@ function draw() {
       strokeWeight(30);
       point(x+dx, y+dy);
 
-      var angleMinute = map(minute(), 0, 60, 0, TWO_PI) - HALF_PI;
+      var angleMinute = map(now.min, 0, 60, 0, TWO_PI) - HALF_PI;
       var rm = 150;
 
       var d2x = rm * cos(angleMinute);
@@ -56,7 +60,7 @@ function draw() {
       point(x+d2x, y+d2y);
 
 
-      var angleHour = map(hour(), 0, 24, 0, TWO_PI) - HALF_PI;
+      var angleHour = map(now.hour, 0, 24, 0, TWO_PI) - HALF_PI;
       var rh = 200;
 
       var d3x = rh * cos(angleHour);
@@ -66,7 +70,7 @@ function draw() {
       strokeWeight(40);
       point(x+d3x, y+d3y);
 
-      var angleDay = map(day(), 0, 31, 0, TWO_PI) - HALF_PI;
+      var angleDay = map(now.day, 0, 31, 0, TWO_PI) - HALF_PI;
       var rd = 280;
 
       var d4x = rd * cos(angleDay);

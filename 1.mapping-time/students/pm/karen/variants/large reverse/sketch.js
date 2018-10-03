@@ -41,7 +41,12 @@ function draw() {
   var m = (now.progress.hour * TWO_PI) - HALF_PI
   var h = (now.progress.halfday * TWO_PI) - HALF_PI
 
-  
+  //change background color based on day of week 
+  var backgroundDay = now.progress.week * 255 
+  print(backgroundDay)
+  bg = backgroundDay; 
+
+
   var hx = cx + cos(h)*hoursRadius
   var hy = cy + sin(h)*hoursRadius
 
