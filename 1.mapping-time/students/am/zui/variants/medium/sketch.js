@@ -1,6 +1,6 @@
 
 
-var NUMSINES = 5; // how many of these things can we do at once?
+var NUMSINES = 6; // how many of these things can we do at once?
 var sines = new Array(NUMSINES); // an array to hold all the current angles
 var rad; // an initial radius value for the central sine
 var i; // a counter variable
@@ -26,13 +26,13 @@ function setup() {
 function draw() {
 
   var now = clock();
-  var sec
 
-   if (!trace) {
-     background(204); // clear screen if showing geometry
-     stroke(0, 255); // black pen
-     noFill(); // don't fill
-   };
+  background(204); // clear screen if showing geometry
+  if (now.am) stroke(232, 48,21); // red if am
+  if (now.pm) stroke(17,50,133); // blue if pm
+
+  noFill(); // don't fill
+
 
   // MAIN ACTION
   push(); // start a transformation matrix
@@ -53,8 +53,9 @@ function draw() {
     translate(0, radius); // move into position for next sine
 
  // update angle based on
+    if (i==4) sines[i] = (TWO_PI * now.progress.sec)-HALF_PI;
     if (i==4) sines[i] = (TWO_PI * now.progress.min)-HALF_PI;
-    if (i==3) sines[i] = (TWO_PI * now.progress.min)-HALF_PI;
+    if (i==3) sines[i] = (TWO_PI * now.progress.hour )-HALF_PI;
     if (i==2) sines[i] = (TWO_PI * now.progress.day)-HALF_PI;
     if (i==1) sines[i] = (TWO_PI * now.progress.month)-HALF_PI;
     if (i==0) sines[i] = (TWO_PI * now.progress.year)-HALF_PI;
