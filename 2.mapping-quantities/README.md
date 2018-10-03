@@ -64,7 +64,7 @@ Now try pasting that `http://localhost:8080` url into your browser, and then sta
 
 Begin your investigation with this simplified dataset collected from the Natural Resources Defense Council's pages on the [original](https://web.archive.org/web/20160326002858/http://www.nrdc.org/nuclear/nudb/datab15.asp) and [subcontinental](https://web.archive.org/web/20160326003901/http://www.nrdc.org/nuclear/nudb/datab22.asp) nuclear powers.
 
-Examine the [`data`](https://github.com/samizdatco/dvia-2018/2.mapping-quantities/data) subdirectory of the project folder which contains JSON & CSV versions of the table below. Then look at the scripts in the [`examples`](https://github.com/samizdatco/dvia-2018/2.mapping-quantities/examples) folder. These scripts build on our work learning the p5 drawing primitives in three major ways:
+Examine the [`data`](https://github.com/samizdatco/dvia-2018/tree/master/2.mapping-quantities/data) subdirectory of the project folder which contains JSON & CSV versions of the table below. Then look at the scripts in the [`examples`](https://github.com/samizdatco/dvia-2018/tree/master/2.mapping-quantities/examples) folder. These scripts build on our work learning the p5 drawing primitives in three major ways:
 
 1. setting drawing parameters with structured, [tabular data](https://p5js.org/reference/#/p5.Table) rather than hard-coded values
 2. working with serialized [JSON](https://p5js.org/reference/#/p5/loadJSON) and [CSV](https://p5js.org/reference/#/p5/loadTable) data
@@ -92,7 +92,7 @@ For geographical data, take a look at the materials collected at [“Johnston's 
 
 #### Supplemental materials
 
-I've assembled a cleaned-up [csv file](https://github.com/samizdatco/dvia-2018/2.mapping-quantities/data/johnstons-archive.csv) with most of the Johnston's Archive data. If you're looking for information about the naming schemes of the individual tests, yield estimates, locations, dates, etc. it may be helpful...
+I've assembled a cleaned-up [csv file](https://github.com/samizdatco/dvia-2018/tree/master/2.mapping-quantities/data/johnstons-archive.csv) with most of the Johnston's Archive data. If you're looking for information about the naming schemes of the individual tests, yield estimates, locations, dates, etc. it may be helpful...
 
 Lawrence Livermore National Laboratory recently released the declassified 2400 FPS films of many of their atmospheric nuclear tests. Those of you whose projects are dealing with specific tests rather than the summary statistics may find stills from the videos useful in your work. Take a look at their [playlist](https://www.youtube.com/playlist?list=PLvGO_dWo8VfcmG166wKRy5z-GlJ_OQND5) on YouTube.
 
