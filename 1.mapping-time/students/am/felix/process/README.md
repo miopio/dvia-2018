@@ -31,3 +31,8 @@ This is an attempt to explain how to read it from outermost to innermost radius:
 <img src="assets/04-illustrator-draft.png" />
 <img src="assets/05-notes.jpg" />
 <img src="assets/06-notes.jpg" />
+
+
+## The variants
+
+Instead of using the concept of this large draft, I wanted to work with two new concepts in the other variants. The medium one uses the spirographs to represent hours, minutes and seconds. The small one is a visualization of Mel Robbins’ five second rule. You can find a detailed documentation in the subfolders for the variants.

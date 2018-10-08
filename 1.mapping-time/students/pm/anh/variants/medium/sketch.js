@@ -20,8 +20,9 @@ function draw() {
       stroke(255, 178, 56);
       strokeWeight(90);
       point(x,y);
-
-      var angleSecond = map(second(), 0, 60, 0, TWO_PI) -  HALF_PI;
+      
+      var now = clock;
+      var angleSecond = map(now.second, 0, 60, 0, TWO_PI) -  HALF_PI;
       var rs = 100;
 
 
@@ -32,7 +33,7 @@ function draw() {
       strokeWeight(30);
       point(x+dx, y+dy);
 
-      var angleMinute = map(minute(), 0, 60, 0, TWO_PI) - HALF_PI;
+      var angleMinute = map(now.minute, 0, 60, 0, TWO_PI) - HALF_PI;
       var rm = 150;
 
       var d2x = rm * cos(angleMinute);
@@ -53,7 +54,7 @@ function draw() {
       strokeWeight(40);
       point(x+d3x, y+d3y);
 
-      var angleDay = map(day(), 0, 31, 0, TWO_PI) - HALF_PI;
+      var angleDay = map(now.hour, 0, 31, 0, TWO_PI) - HALF_PI;
       var rd = 280;
 
       var d4x = rd * cos(angleDay);

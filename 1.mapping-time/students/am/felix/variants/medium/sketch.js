@@ -8,7 +8,7 @@ var now = clock();
 class Spirograph {
 	constructor (scale, R, r, p, revolutions) {
 		this.n = 0;
-		this.myStep = 0.6312;
+		this.myStep = 0.06312;
 		this.x = 0;
 		this.y = 0;
 		this.orig_x = this.x;
@@ -31,7 +31,7 @@ class Spirograph {
 		this.clock = (revolutions) => {
 			this.n = 0;
 			for (var i = 0; i < revolutions; i++) {
-				for (var j = 0; j < 10; j++) {
+				for (var j = 0; j < 100; j++) {
 					this.x = w/2;
 					this.y = h/2;
 
