@@ -14,12 +14,15 @@ http://data.un.org/Data.aspx?d=IFS&f=SeriesCode%3a61
 "Bond Yields" from 1948 to 2009.
 
 (1) A peace of the pie
+
 This work examines the total number of bomb detonations recorded to date with respect to country on a pie chart.
 
 (2) Crossing the line
+
 This work examines the total number of bomb detonations per year per country with respect to a line chart.
 
 (3) Money and Bombs
+
 This work examines the total number of bomb detonations per year per country with juxtaposed with the UN Bond Yeild data.
 
 
