@@ -1,5 +1,9 @@
 ## Process
 
-Description of the contents of this folder, a prose description of your ideas for how to represent
-the nuclear testing time series, and links to external data sources you'll be incorporating into
-the project.
+* Changed port in package.json from 8080 to 8000  
+
+1. Concept 1: inverse bar chart with divergent palette
+  * Blue: atmospheric
+  * Red: underground
+  * Green overlay rectangle: 96' treaty
+2. Concept 2:
