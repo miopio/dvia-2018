@@ -25,7 +25,7 @@ function setup(){
 
 
   var x = 200;
-  var y = 100;
+  var y = 140;
   var rowHeight = 60;
   var colWidth = 40;
 
@@ -55,7 +55,7 @@ function setup(){
   textStyle(NORMAL);
   textAlign(CENTER);
   for (var i=0; i<data.years.length; i++){
-    y = 100;
+    y = 140;
 
     // draw the year label in the header row
     var year = data.years[i];
@@ -88,7 +88,7 @@ function setup(){
       y += rowHeight;
     }
 
-    // at the bottom, draw a full circle with the total number of tests that year
+    // at the bottom, draw a square with the total number of tests that year
     var totalTests = 0;
     for (var country in data.tests){
       totalTests += atmospheric.tests[country][i] + underground.tests[country][i];
