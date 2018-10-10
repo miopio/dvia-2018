@@ -1,6 +1,6 @@
 var x = 20 // starting x position to draw
 var y = 20  // starting y position to draw
-var barHeight = 180 // height of each bar
+var barHeight = 72 // height of each bar
 var maxWidth = 760 // maximum width of each bar (the actual width will always be ≤ this)
 var spacing = 10 // the vertical space to skip between bars
 
@@ -21,6 +21,7 @@ function draw() {
   var now = clock()
   if (discrete){
     // the map() function lets us *normalize* a value from a starting range then *project* it into another range
+    var dayWidth = map(now.hour, 1,12, 0,maxWidth) // from hours (1-12) to pixels (0–maxWidth)
     var hourWidth = map(now.hour, 1,12, 0,maxWidth) // from hours (1-12) to pixels (0–maxWidth)
     var minsWidth = map(now.min,  0,60, 0,maxWidth)  // from mins (0–60) to pixels (0–maxWidth)
     var secsWidth = map(now.sec,  0,60, 0,maxWidth)  // from secs (0–60) to pixels (0–maxWidth)
@@ -36,6 +37,10 @@ function draw() {
   rect(x, y,                         maxWidth,  barHeight)
   rect(x, y +    barHeight+spacing,  maxWidth,  barHeight)
   rect(x, y + 2*(barHeight+spacing), maxWidth,  barHeight)
+  rect(x, y + 3*(barHeight+spacing), maxWidth,  barHeight)
+  rect(x, y + 4*(barHeight+spacing), maxWidth,  barHeight)
+  rect(x, y + 5*(barHeight+spacing), maxWidth,  barHeight)
+  rect(x, y + 6*(barHeight+spacing), maxWidth,  barHeight)
 
   // draw the hours bar at the top...
   fill(80, 0, 0)
@@ -48,4 +53,20 @@ function draw() {
   // ...and the seconds bar at the bottom
   fill(255, 0, 0)
   rect(x, y + 2*(barHeight+spacing), secsWidth, barHeight)
+
+  // ...and the seconds bar at the bottom
+  fill(255, 0, 0)
+  rect(x, y + 3*(barHeight+spacing), secsWidth, barHeight)
+
+  // ...and the seconds bar at the bottom
+  fill(255, 0, 0)
+  rect(x, y + 4*(barHeight+spacing), secsWidth, barHeight)
+
+  // ...and the seconds bar at the bottom
+  fill(255, 0, 0)
+  rect(x, y + 5*(barHeight+spacing), minsWidth, barHeight)
+
+  // ...and the seconds bar at the bottom
+  fill(255, 0, 0)
+  rect(x, y + 6*(barHeight+spacing), secsWidth, barHeight)
 }
