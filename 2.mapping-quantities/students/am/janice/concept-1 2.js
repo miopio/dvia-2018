@@ -40,7 +40,7 @@ function setup(){
   var x = 100
   var y = 350
   var rowHeight = 30
-  var colWidth = 51
+  var colWidth = 31
 
    // draw year labels in the header row
   textStyle(NORMAL)
@@ -52,8 +52,8 @@ function setup(){
     console.log(year);
     x += colWidth;
   }
-x=125
-y=300
+x=100
+y=200
 
     for (let r = 1; r<atmoTable.getRowCount();r++){
     	let countries = []
@@ -65,10 +65,8 @@ y=300
 		let country = atmoTable.getString(0, c);    	
     	console.log(explosions);
     	let colorBar = color(countryColors[c]);
-    	noStroke();
-      fill(colorBar);
-      h = x+(c-1)*10;
-    	rect(h,y,10,-explosions*3);
+    	fill(colorBar);
+    	rect(x,200,31,explosions*3);
     }
     //drawRects(x,y-rowHeight,colWidth,rowHeight);
     // text(country, x, y-rowHeight);
