@@ -4,6 +4,9 @@ TODO:
 2. Scale
 3. Only every two years
 */
+d3.csv('data/usa-mil-exp-fconv.csv')
+.then((mData) => {
+
 d3.json('data/all.json')
 
 .then((data) => {
@@ -18,7 +21,7 @@ d3.json('data/all.json')
 
   // MARGIN
   // const margin = {top: 20, right: 20, bottom: 20, left: 20},
-      width = startX+columnWidth*data.countries.length;
+      width = startX+columnWidth*data.countries.length+300;
       height = startY+rowHeight*data.years.length;
 
   let svg = d3.select('#content').append('svg')
@@ -32,7 +35,7 @@ d3.json('data/all.json')
       .enter()
       .append('line')
       .attr('x1', hLineStart)
-      .attr('x2', hLineStart+columnWidth*8.5)
+      .attr('x2', hLineStart+columnWidth*12.5)
       .attr('y1', (d, i) => {
         return i*rowHeight+startY;
       })
@@ -53,6 +56,20 @@ d3.json('data/all.json')
       })
       .attr('x2', (d, i) => {
         return startX+i*columnWidth;
+      })
+      .attr('y1', startY-20)
+      .attr('y2', height)
+      .attr('stroke', 'white')
+      .attr('stroke-dasharray', dash)
+
+  // Vertical lines
+  vLines
+      .append('line')
+      .attr('x1', (d, i) => {
+        return startX+9.5*columnWidth;
+      })
+      .attr('x2', (d, i) => {
+        return startX+9.5*columnWidth;
       })
       .attr('y1', startY-20)
       .attr('y2', height)
@@ -95,6 +112,32 @@ d3.json('data/all.json')
           return `rotate(${a}, ${x}, ${y})`;
         })
 
+  legendCountries.append('text')
+    .text('US military')
+    .attr('y', startY-30)
+    .attr('x', (d,i) => {
+      return 9.5*columnWidth+startX-14;
+    })
+    .attr('transform', (d,i) => {
+      let a = -30;
+      let x = 9.5*columnWidth+startX-14;
+      let y = startY-30
+      return `rotate(${a}, ${x}, ${y})`;
+    })
+
+  legendCountries.append('text')
+    .text('expenditure')
+    .attr('y', startY-30)
+    .attr('x', (d,i) => {
+      return 9.5*columnWidth+startX+14;
+    })
+    .attr('transform', (d,i) => {
+      let a = -30;
+      let x = 9.5*columnWidth+startX+14;
+      let y = startY-30
+      return `rotate(${a}, ${x}, ${y})`;
+    })
+
   // Circles
   let createCountryCircles = (myClassName, string, position) => {
     myClassNameSelector = svg.append('g').classed(myClassName, true);
@@ -126,11 +169,37 @@ d3.json('data/all.json')
   data.countries.forEach((element, i) => {
     createCountryCircles(camelize(element), element, startX+ i*columnWidth);
   })
+  console.log(mData);
 
+  // US military expenditure
+  let usExp = svg.append('g').classed('usExp', true);
+  usExp.selectAll('g')
+      .data(mData)
+      .enter()
+      .append('g')
+      // .attr('width', (d) => {
+      //   return Math.sqrt(d.details[string]['tests']*radiusScale);
+      // })
+      // .attr('height', (d) => {
+      //   return Math.sqrt(d.details[string]['tests']*radiusScale);
+      // })
+      .attr('x', 11.165*columnWidth)
+      .attr('y', (d,i) => {
+        return i*rowHeight+startY + 13*rowHeight+startY;
+      })
+        .append('circle')
+        .classed('usExp', true)
+        .attr('cx', 11.165*columnWidth)
+        .attr('cy', (d,i) => {
+          return i*rowHeight+startY + 13*rowHeight+startY;
+        })
+        .attr('r', (d) => {
+          return Math.sqrt(parseFloat(d.exp)*0.00000000087);
+        })
 
 
 });
-
+});
 //Camelize: https://stackoverflow.com/questions/2970525/converting-any-string-into-camel-case
 function camelize(str) {
   return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {

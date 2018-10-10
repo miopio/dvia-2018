@@ -10,3 +10,16 @@
 6. Number of nuclear weapons / Nuclear arsenal U.S. - https://hsus-cambridge-org.libproxy.newschool.edu/HSUSWeb/toc/tableToc.do?id=Ed223-227 (strategic nuclear weapons: 1945–1996), Budget for nuclear weapons
 7. Technology advance – https://hsus-cambridge-org.libproxy.newschool.edu/HSUSWeb/table/downloadtable.do?id=Cg258-264 (Performance indicators of computers and transistors: 1946–2000)
 8. Historical Facts – https://hsus-cambridge-org.libproxy.newschool.edu/HSUSWeb/toc/tableToc.do?id=Ed228 (U.S. arms control and weapons treaties and agreements: 1922–1996)
+
+## Idea
+
+Atomic bomb in reverse:
+https://www.youtube.com/watch?v=VfmUwEarzkA
+
+
+## Class ideas /
+
+- Brad: Lat/long, yield
+- Zui: International conflicts (Source: US Davis). Number of conflicts, casualties
+- Andrew: Most popular song
+- 
