@@ -1,6 +1,8 @@
 var data;
 var stateBattle;
 var StateBased;
+ 
+
 function preload(){
   data = loadJSON('data/totals.json')
   stateBattle= loadTable('data/state-based-battle-related-deaths-per-100000-since-1946.csv', 'csv', 'header');
