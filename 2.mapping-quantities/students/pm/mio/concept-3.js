@@ -17,7 +17,7 @@ function setup(){
 
   // create a divergent palette where we'll use negative values for underground tests
   // and positive values for atmospheric (the -60 .. 80 range came from eyeballing the data)
-  var palette = Brewer.divergent('RdBu', Infinity, -60, 0, 80)
+  var palette = Brewer.divergent('PiYG', Infinity, -60, 0, 80)
 
   // set up typography
   textFont("Rokkitt")
@@ -31,12 +31,12 @@ function setup(){
   var colWidth = 40
 
   // draw country name labels on the left edge of the table
-  textStyle(BOLD)
+  /*textStyle(BOLD)
   textAlign(RIGHT)
   for (var country in data.tests){
     text(country, x-colWidth, y)
     y += rowHeight
-  }
+  }*/
 
   // draw each year's totals, one column at a time
   textStyle(NORMAL)
@@ -50,7 +50,7 @@ function setup(){
     text(year, x, y-rowHeight)
 
     // step through all the countries' totals for the year, row by row
-    for (var country in data.tests){
+    /*for (var country in data.tests){
       // draw the atmospheric tests as an upper semicircle using the palette to set the color by value
       var value = atmospheric.tests[country][i]
       var radius = Math.sqrt(60 * value)
@@ -67,6 +67,29 @@ function setup(){
 
       // shift downward before drawing the next country
       y += rowHeight
+    } */
+
+    var totalAtmosphericTests = 0
+    var totalUndergroundTests = 0
+    for (var country in data.tests){
+      totalAtmosphericTests += atmospheric.tests[country][i]
+      var radius = Math.sqrt(60 * totalAtmosphericTests)
+      var color = palette.colorForValue(totalAtmosphericTests)
+      fill(color, 0.5)
+      arc(x, y, radius, radius, -PI, 0)
+
+      totalUndergroundTests += underground.tests[country][i]
+      radius = Math.sqrt(60 * totalUndergroundTests)
+      color = palette.colorForValue(-totalUndergroundTests)
+      fill(color)
+      arc(x, y, radius, radius, 0, PI)
+
+      //y += rowHeight
+
+     
+
+
+
     }
 
     // at the bottom, draw a full circle with the total number of tests that year
@@ -75,11 +98,11 @@ function setup(){
       totalTests += atmospheric.tests[country][i] + underground.tests[country][i]
     }
     var radius = Math.sqrt(60 * totalTests)
-    fill(255, 80)
+    fill(255, 0)
     ellipse(x, y, radius)
 
     // shift leftward before drawing the next year
-    x += colWidth
+    x += colWidth 
   }
 
 }
