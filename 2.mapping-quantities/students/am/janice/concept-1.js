@@ -65,7 +65,8 @@ y=300
 		let country = atmoTable.getString(0, c);    	
     	console.log(explosions);
     	let colorBar = color(countryColors[c]);
-    	fill(colorBar);
+    	noStroke();
+      fill(colorBar);
       h = x+(c-1)*10;
     	rect(h,y,10,-explosions*3);
     }
