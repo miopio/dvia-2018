@@ -1,5 +1,11 @@
 ## Process
 
-Description of the contents of this folder, a prose description of your ideas for how to represent
-the nuclear testing time series, and links to external data sources you'll be incorporating into
-the project.
+Concept 1:
+
+Concept 2:
+
+https://public.tableau.com/profile/simone.betito#!/vizhome/NuclearTestsThroughouttheYears/Sheet1
+
+
+
+Concept 3:
