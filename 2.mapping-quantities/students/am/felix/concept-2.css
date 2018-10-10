@@ -1,0 +1,58 @@
+html, body {
+  height:100%;
+  padding:0;
+  margin:0;
+  background-color: #fff;
+  font: 12px 'Helvetica';
+}
+
+body {
+  display:flex; justify-content:center;
+}
+
+.svg-bg {
+  stroke: #eee;
+  stroke-width: 2px;
+  fill: white;
+}
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: darkblue;
+  opacity: 0.8;
+}
+
+text {
+  fill: grey;
+}
+
+line {
+  stroke: #ccc;
+  stroke-width: 1;
+}
+
+.unitedStates {
+  fill: #1f78b4;
+}
+.russia {
+  fill: #ff7f00;
+}
+.unitedKingdom {
+  fill: #33a02c;
+}
+.france {
+  fill: #a6cee3;
+}
+.china {
+  fill: #e31a1c;
+}
+.india {
+  fill: #fdbf6f;
+}
+.pakistan {
+  fill: #b2df8a;
+}
+.northKorea {
+  fill: #fb9a99;
+}
