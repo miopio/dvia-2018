@@ -6,4 +6,9 @@
   * Blue: atmospheric
   * Red: underground
   * Green overlay rectangle: 96' treaty
-2. Concept 2:
+  * Grey squares at bottom show the totals
+2. Concept 2: side-to-side bar chart on a timeline
+  * Positive vertical direction: atmospheric
+  * Negative vertical direction: underground
+  * Marked the treaty on the timeline
+  * Dark circles on the years show the totals
