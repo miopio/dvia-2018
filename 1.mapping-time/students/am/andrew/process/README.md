@@ -21,3 +21,15 @@ All of the balls that fall out the trap door of each container will land on a tr
 - How to best convey the weight of all the balls is what "breaks" the floor of each container and what's special about the ball that suvives? Different color? Size?
 
 I clearly have some things to still work about about this example but I think I'm on the right track.
+<<<<<<< HEAD
+=======
+
+---
+
+### Final Result
+
+- After exploring p5.js limitations in the canvas and discovering how hard it is to make instances of objects aware of each others' areas (i.e., not overlap), I decided to take the project in a different direction but still use the concept of volume/displacement.
+- There are "rings" of balls falling from the sky cirlcing around for every time unit measurements (sec, min, hour, days of year) and once the rings are filled, they reset.
+- In the small variation, there is no x movement so it's much more abstract. It also only tracks seconds, minutes, and hours.
+- In the large variation, it's identical to the medium version except that there is an additional single ball representing years that never resets. This is our only measurement of time that approaches infinity while the rest of the units always reset.
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
