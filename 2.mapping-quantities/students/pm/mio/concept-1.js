@@ -59,7 +59,7 @@ var nuclearTestCountYield = function(p) {
 				//usayield = pi * 
 				scaleFactor = p.width / 750;
 				//pointSizes[row] = 2 * (usayield / (200000 * Math.PI)) * scaleFactor;
-				pointSizes[row] = (usayield / 2000 * Math.PI) * scaleFactor;
+				pointSizes[row] = (usayield / 1000 * Math.PI) * scaleFactor;
 
 			}
 		}
@@ -81,7 +81,7 @@ var nuclearTestCountYield = function(p) {
 				//usayield = pi * 
 				scaleFactor = p.width / 750;
 				//pointSizes[row] = 2 * (usayield / (200000 * Math.PI)) * scaleFactor;
-				pointSizes[row] = (russiayield / 2000 * Math.PI) * scaleFactor;
+				pointSizes[row] = (russiayield / 1000 * Math.PI) * scaleFactor;
 			}
 		}
 
