@@ -5,9 +5,11 @@ In this project I am attempting to visualize the data in reference to an intervi
 SUB VARIABLE
 I would love to be able embed the additional variables as links within the timeline. I'm considering these options:
 - geopolitical factors
-- American economic power
-- scientific & technological innovation
+- American economic power **
+  https://ourworldindata.org/military-spending
+- scientific & technological innovation **
 - environmental impact
+  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4165831/ (this would require focusing on atmospheric data)
 * I'm also really interested in the corresponding shifts in cultural attitudes and changes in pop culture, but I'm
 choosing to represent that in the color choices in the test data instead.
 
@@ -16,6 +18,8 @@ I'm interested in visualizing divergent data with this set, because I would like
 
 HOW TO DISPLAY DATA
 I'd like the background/canvas to gradually change color to display "hot" and "cool" affect, according to growth and lull periods of global nuclear arms testing. It might be more interesting to also show it as the actual totals of the data in addition to the hot and cool color scheme to express time spatially.
+
+The mushroom clouds would be different sizes to represent the number of tests, and colors to represent the years.
 
 DESIGN IDEAS
 Color considerations:
