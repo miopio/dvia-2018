@@ -5,11 +5,15 @@ In this project I am attempting to visualize the data in reference to an intervi
 SUB VARIABLE
 I would love to be able embed the additional variables as links within the timeline. I'm considering these options:
 - geopolitical factors
+  https://www.mauldineconomics.com/this-week-in-geopolitics/the-geopolitics-of-nuclear-weapons
+  https://energypolicy.columbia.edu/sites/default/files/The%20Geopolitics%20of%20Nuclear%20Power%20and%20Technology%20033017.pdf
+  https://www.armscontrol.org/factsheets/Nuclear-Testing-and-Comprehensive-Test-Ban-Treaty-CTBT-Timeline
 - American economic power **
   https://ourworldindata.org/military-spending
 - scientific & technological innovation **
 - environmental impact
   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4165831/ (this would require focusing on atmospheric data)
+
 * I'm also really interested in the corresponding shifts in cultural attitudes and changes in pop culture, but I'm
 choosing to represent that in the color choices in the test data instead.
 
