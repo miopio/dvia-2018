@@ -46,9 +46,9 @@ var totalNuclearTest = function(p) {
 
 		// Set the plot title and the axis labels
 		plot.setPoints(points);
-		plot.getXAxis().setAxisLabelText("x axis");
-		plot.getYAxis().setAxisLabelText("y axis");
-		plot.setTitleText("A very simple example");
+		plot.getXAxis().setAxisLabelText("Year");
+		plot.getYAxis().setAxisLabelText("Nuclear Test Count");
+		plot.setTitleText("Number of Nuclear Tests by Each Country ");
 
 		// Draw it!
 		plot.defaultDraw();
