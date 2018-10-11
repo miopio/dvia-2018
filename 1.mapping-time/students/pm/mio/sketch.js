@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+function setup() {
+  // set the width & height of the sketch
+  createCanvas(1280, 800)
+
+  // draw will be called this many times per second
+  frameRate(60)
+
+  // specify colors in hue/saturation/brightness mode & use 0–1 values rather than 0–255
+=======
 var x = 0 // starting x position to draw
 var y = 0  // starting y position to draw
 var barWidth = 5 // width of each bar
@@ -5,6 +15,7 @@ var maxHeight = 597 // max height of columns
 
 function setup() {
   createCanvas(645, 600)
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
   colorMode(HSB, 1.0)
 }
 
@@ -15,6 +26,22 @@ function draw() {
   // create a clock object for current time
   var now = clock()
 
+<<<<<<< HEAD
+  // use the current 'doneness' of the current hour to choose the hue for the background color
+  // (note that setting the background also clears the canvas from our previous round of drawing)
+  background(now.progress.day, 1, .3)
+
+  // set up typography & drawing-color
+  let pointSize = 42
+  textFont("Nixie One")
+  textSize(pointSize)
+  textAlign(CENTER)
+  fill('white')
+
+  // print the time string to the canvas
+  //text(now.text.time, width/2, height/2 + pointSize/3)
+}
+=======
 //SMALL VARIANT STARTS
 
   //create heart beat count: 0.8 seconds in 1 heartbeat = 75 in min
@@ -275,3 +302,4 @@ var nightHeight = 0
 }
 
 
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
