@@ -114,12 +114,13 @@ function setup(){
   //key
   textSize(15);
   text(" Key ", 60, 500);// 155);
+  var s = (highest - lowest)/9
   for (var k = 0; k < 9; k++) {
-      var s = (highest - lowest)/9
       var p = palette.colorForValue(lowest + s * k)
       fill(p)
       rect(90 + (30 * k) , 525, 30, 40);
   }
+  fill(palette.colorForValue(lowest + s ))
   text(" 50 ", 70, 545)
   text(" 25540 ", 120 + (30 * 9), 545)
 
