@@ -98,13 +98,30 @@ function setup(){
 
   textSize(15);
   fill('white');
-  text(" US ", 60, 300);// 155);
+  text(" US ", 50, 300);// 155);
 
   //axis
   stroke('white')
   
-  for (var i=10; i<dim; i+=10){
+  for (var i=10; i<dim + 10; i+=10){
      line(90, axis - i, 100, axis - i);
+     if( i % 20 == 0){
+        textSize(9);
+        text(i, 80, axis - i + 4)
+     }
   }
+
+  //key
+  textSize(15);
+  text(" Key ", 60, 500);// 155);
+  for (var k = 0; k < 9; k++) {
+      var s = (highest - lowest)/9
+      var p = palette.colorForValue(lowest + s * k)
+      fill(p)
+      rect(90 + (30 * k) , 525, 30, 40);
+  }
+  text(" 50 ", 70, 545)
+  text(" 25540 ", 120 + (30 * 9), 545)
+
 }
 
