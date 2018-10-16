@@ -126,7 +126,7 @@ function setup(){
   }
   stroke(palette.colorForValue(lowest + s ))
   fill(palette.colorForValue(lowest + s ))
-  text(" 50 ", 70, 555)
+  text(" 0 ", 70, 555)
   text(" 178 ", 120 + (30 * 9), 555)
   fill('red')
   stroke('red')
