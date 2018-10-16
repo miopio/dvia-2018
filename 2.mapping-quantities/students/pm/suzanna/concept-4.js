@@ -3,7 +3,7 @@ var undata
 var warheads 
 
 function preload(){
-  table = loadTable('data/totals.csv', 'csv', 'header')
+ table = loadTable('data/totals.csv', 'csv', 'header')
   undata = loadTable('data/undata.csv', 'csv', 'header')
   warheads = loadTable('data/warheads.csv', 'csv', 'header')
 }
@@ -69,6 +69,7 @@ function setup(){
   for (var i=0; i<years.length; i++){
     // draw the box
     var color = palette.colorForValue(totals[i])
+    console.log("totals " + i + " is " + totals[i]);
     fill(color)
     rect(x, y, dim, dim)
    
@@ -83,7 +84,7 @@ function setup(){
     fill('white')
     textSize(10)
     //text(years[i], x-dim*.5, y+dim*.6)
-    text(years[i], x+dim*.5, y+dim*1.3)
+    text(years[i], x+dim*.5, y+dim*1.1)
     var testx = x+dim*.5
     var testy = y+dim*1.3
     console.log("x+dim*.5["+testx+"] y+dim*1.3["+testy+"]")
@@ -113,16 +114,23 @@ function setup(){
 
   //key
   textSize(15);
-  text(" Key ", 60, 500);// 155);
+  text(" Key ", 55, 510);// 155);
+  text(" Detonations ", 200, 510);// 155);
+  text(" Warheads ", 560, 510);// 155);
+  text(" Money ", 760, 510);// 155);
   var s = (highest - lowest)/9
   for (var k = 0; k < 9; k++) {
       var p = palette.colorForValue(lowest + s * k)
       fill(p)
-      rect(90 + (30 * k) , 525, 30, 40);
+      rect(90 + (30 * k) , 535, 30, 40);
   }
   fill(palette.colorForValue(lowest + s ))
-  text(" 50 ", 70, 545)
-  text(" 25540 ", 120 + (30 * 9), 545)
-
+  text(" 50 ", 70, 555)
+  text(" 178 ", 120 + (30 * 9), 555)
+  fill('red')
+  text("0 to 25540 ", 563, 555);// 155);
+  fill('green')
+  text("0 to 144.392 ", 770, 555);// 155);
+  console.log(s)
 }
 
