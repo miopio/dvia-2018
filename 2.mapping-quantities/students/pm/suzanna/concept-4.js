@@ -16,7 +16,7 @@ function setup(){
   fill('white');
   text("Money and Bombs", 60, 55);// 155);
   textSize(25);
-  text("1948 - 2009: Atomic Bomb Detonations (background), UN Bond Data (green), and Warhead count (red text) ", 60, 100);// 155);
+  text("1948 - 2009: Total Atomic Bomb Detonations (background), UN Bond Data (green), and Warhead count (red text) ", 60, 100);// 155);
   noFill()
   
   noStroke()
