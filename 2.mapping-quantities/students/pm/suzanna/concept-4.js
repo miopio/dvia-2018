@@ -124,12 +124,15 @@ function setup(){
       fill(p)
       rect(90 + (30 * k) , 535, 30, 40);
   }
+  stroke(palette.colorForValue(lowest + s ))
   fill(palette.colorForValue(lowest + s ))
   text(" 50 ", 70, 555)
   text(" 178 ", 120 + (30 * 9), 555)
   fill('red')
+  stroke('red')
   text("0 to 25540 ", 563, 555);// 155);
   fill('green')
+  stroke('green')
   text("0 to 144.392 ", 770, 555);// 155);
   console.log(s)
 }
