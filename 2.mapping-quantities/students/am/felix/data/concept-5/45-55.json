@@ -1,0 +1,92 @@
+[
+  {
+    "name": "45-54",
+    "children": [
+      {
+        "name": "Russia",
+        "children": [
+          {"name": "1 Pervaya Molniya (Joe 1)", "min": 400, "size": 22},
+          {"name": "X", "size": 1},
+          {"name": "2 Vtoraya Molniya (Joe 2)", "size": 38.3}
+        ]
+      },
+      {
+        "name": "France",
+        "children": [
+          {"name": "Gerboise Bleue", "size": 65},
+          {"name": "Gerboise Blanche", "size": 10},
+          {"name": "Gerboise Rouge", "size": 3}
+        ]
+      },
+      {
+        "name": "USA",
+        "children": [
+          {"name": "Trinity", "size": 21},
+          {"name": "Little Boy", "size": 15},
+          {"name": "Fat Man", "size": 21}
+        ]
+      },
+      {
+        "name": "UK",
+        "children": [
+          {"name": "Hurricane", "size": 25},
+          {"name": "Totem T1", "size": 10},
+          {"name": "Totem T2", "size": 8}
+        ]
+      },
+      {
+        "name": "China",
+        "children": [
+          {"name": "596", "size": 22},
+          {"name": "Totem T1", "size": 35},
+          {"name": "Totem T2", "size": 250}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "45-55",
+    "children": [
+      {
+        "name": "Russia",
+        "children": [
+          {"name": "1 Pervaya Molniya (Joe 1)", "min": 400, "size": 22},
+          {"name": "X", "size": 1},
+          {"name": "2 Vtoraya Molniya (Joe 2)", "size": 38.3}
+        ]
+      },
+      {
+        "name": "France",
+        "children": [
+          {"name": "Gerboise Bleue", "size": 65},
+          {"name": "Gerboise Blanche", "size": 10},
+          {"name": "Gerboise Rouge", "size": 3}
+        ]
+      },
+      {
+        "name": "USA",
+        "children": [
+          {"name": "Trinity", "size": 21},
+          {"name": "Little Boy", "size": 15},
+          {"name": "Fat Man", "size": 21}
+        ]
+      },
+      {
+        "name": "UK",
+        "children": [
+          {"name": "Hurricane", "size": 25},
+          {"name": "Totem T1", "size": 10},
+          {"name": "Totem T2", "size": 8}
+        ]
+      },
+      {
+        "name": "China",
+        "children": [
+          {"name": "596", "size": 22},
+          {"name": "Totem T1", "size": 35},
+          {"name": "Totem T2", "size": 250}
+        ]
+      }
+    ]
+  }
+]
