@@ -35,3 +35,7 @@ the project.
 Billboard top songs of each decade
 
 [Billboard wiki](https://en.wikipedia.org/wiki/List_of_Billboard_Hot_100_chart_achievements_by_decade)
+
+[Nuclear movies](http://www.radiationcinema.com/2017/08/nuclear-war-movies-a-timeline-1900s-to-2017/)
+
+[Nuclear movies blog](https://www.nytimes.com/watching/lists/best-nuclear-war-movies-streaming)
