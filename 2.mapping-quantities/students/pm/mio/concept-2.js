@@ -1,58 +1,64 @@
-var totalNuclearTest = function(p) {
+var table
 
-	var table;
+function preload(){
+  table = loadTable('data/nuclearTreatyTypes.csv', 'csv', 'header')
+}
 
-		// Load the table before the sketch is run
-	p.preload = function() {
-		// Load the cvs dataset.
-		// The file has the following format:
-		// country,income,health,population
-		// Central African Republic,599,53.8,4900274
-		// ...
-		table = p.loadTable("data/totals.csv", "header");
-	};
+function setup(){
+  createCanvas(3900, 250)
+  background(127)
+  noStroke()
+  textAlign(CENTER)
+  textSize(16)
 
-	// Initial setup
-	p.setup = function() {
+  // calculate the total number of tests per year (and also the max in any given year)
+  /*var years = []
+  var totals = []
+  var lowest = 0
+  var highest = 0
+  for (var r=0; r<table.getRowCount(); r++){
+    var sum = 0
+    var year = table.getString(r, 0)
+    for (var c=1; c<table.getColumnCount(); c++){
+      sum += table.getNum(r, c)
+    }
 
-		var points, row, data, year, usa, russia, uk, france, china, india, pakistan, nk;
-		// Create the canvas
-		var canvas = p.createCanvas(750, 450);
-		p.background(150);
+    years.push(year)
+    totals.push(sum)
+    highest = Math.max(sum, highest)
+  } */
 
-		// Prepare the points for the plot
-		var points = [];
-		//var seed = 100 * p.random();
+  var years = []
+  var treatyType = []
+  for (var r=0; r<table.getRowCount(); r++){
+  	var year = table.getString(r,0)
+  	var tType = table.getString(r,1)
+  
 
-		for (row = 0; row < table.getRowCount(); row++) {
-			data = table.getRow(row);
+  years.push(year)
+  treatyType.push(tType)
+}
 
-			// Check that the row contains valid data
-			if (data.get("Year") !== "undefined") {
-				usa = data.getString("United States");
-				//usayield = data.getNum("usayield");
-				year = data.getNum("Year");
-				//health = data.getNum("health");
-				//population = data.getNum("population");
-				points[row] = new GPoint(year, usa, year);
+console.log(years)
+console.log(treatyType)
 
-			}
-		}
+  // draw a box for each year and set its color based on the total number of tests
+  var x = 50
+  var y = 50
+  var dim = 15
+  var numberOfShades = 4
+  var palette = Brewer.sequential('PuRd', numberOfShades, 0, 3)
 
+  for (var i=0; i<years.length; i++){
+    // draw the box
+    var color = palette.colorForValue(treatyType[i])
+    fill(color)
+    rect(x, y, dim, dim)
 
-		// Create a new plot and set its position on the screen
-		var plot = new GPlot(p);
-		plot.setPos(25, 25);
+    // draw the year number on top
+    /*fill('white')
+    text(years[i], x+dim*.5, y+dim*.6) */
+    x+=dim 
+  }
 
-		// Set the plot title and the axis labels
-		plot.setPoints(points);
-		plot.getXAxis().setAxisLabelText("Year");
-		plot.getYAxis().setAxisLabelText("Nuclear Test Count");
-		plot.setTitleText("Number of Nuclear Tests by Each Country ");
-
-		// Draw it!
-		plot.defaultDraw();
-
-		p.noLoop();
-	};
-};
+}
