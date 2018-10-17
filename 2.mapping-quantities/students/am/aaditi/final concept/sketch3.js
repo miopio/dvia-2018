@@ -9,7 +9,7 @@ var tests = [];
 var yeartext = '';
 var uraniumData;
 
-// //uranium data
+//uranium data
 var uryr = ["1981","1982", "1983", "1984","1985","1986","1987","1988","1989","1990","1991","1992"];
 var urimp = [6.6, 17.1, 8.2, 12.5, 11.7, 13.5, 15.1, 15.8, 13.1,  23.7, 16.3, 23.3];
 
@@ -103,30 +103,7 @@ console.log(all);
              xa=xe;
              xe+=100;}
              
-    var xxx=300;
-    
-    // stroke(120);
-    // strokeWeight(0.5);
-    // line(x+350,yyy-150,x+730,yyy-150);
-    
-    for(i=0;i<12;i++){
-    fill('cornflowerblue');
-    noStroke();
-    rect(xxx+448+i*10, (windowHeight/2-8-urimp[i]*10) ,4,urimp[i]*10);
-    textSize(9);
-    fill('black');
-    text(urimp[i],xxx+448+i*10, (windowHeight/2-8-urimp[i]*10)-10);
-    }
-    
-    textSize(12);
-    fill('black');
-    textStyle(BOLD);
-    text('Uranium imports: US',xxx+450, (windowHeight/2-8-urimp[10]*10)-120);
-    textSize(9);
-    fill('black');
-    textStyle(NORMAL);
-    textAlign(LEFT);
-    text('(million pounds U3O8)',xxx+450, (windowHeight/2-8-urimp[10]*10)-105);
+  
     
     
     
@@ -410,33 +387,58 @@ console.log(all);
     textSize(12);
     fill('black');
     textStyle(BOLD);
-    text('United Kingdom',xxx,(windowHeight-120));
-    text('United States',xxx+150,(windowHeight-120));
-    text('Russia',xxx+300,(windowHeight-120));
-    text('Pakistan',xxx+400,(windowHeight-120));
-    text('India',xxx+500,(windowHeight-120)); 
-    text('France',xxx+600,(windowHeight-120));
-    text('China',xxx+700,(windowHeight-120));
-    text('North Korea',xxx+800,(windowHeight-120));
+    text('United Kingdom',xxx,(windowHeight-80));
+    text('United States',xxx+150,(windowHeight-80));
+    text('Russia',xxx+300,(windowHeight-80));
+    text('Pakistan',xxx+400,(windowHeight-80));
+    text('India',xxx+500,(windowHeight-80)); 
+    text('France',xxx+600,(windowHeight-80));
+    text('China',xxx+700,(windowHeight-80));
+    text('North Korea',xxx+800,(windowHeight-80));
     
     strokeWeight(2);
     stroke('hotpink');
-    line(xxx+100,(windowHeight-125),xxx+120,(windowHeight-125));
+    line(xxx+100,(windowHeight-85),xxx+120,(windowHeight-85));
     stroke('cornflowerblue');
-    line(xxx+235,(windowHeight-125),xxx+255,(windowHeight-125));
+    line(xxx+235,(windowHeight-85),xxx+255,(windowHeight-85));
     stroke('lightseagreen');
-    line(xxx+345,(windowHeight-125),xxx+365,(windowHeight-125));
+    line(xxx+345,(windowHeight-85),xxx+365,(windowHeight-85));
     stroke('mediumslateblue');
-    line(xxx+455,(windowHeight-125),xxx+475,(windowHeight-125));
+    line(xxx+455,(windowHeight-85),xxx+475,(windowHeight-85));
     stroke('dimgray');
-    line(xxx+540,(windowHeight-125),xxx+560,(windowHeight-125));
+    line(xxx+540,(windowHeight-85),xxx+560,(windowHeight-85));
     stroke('goldenrod');
-    line(xxx+650,(windowHeight-125),xxx+670,(windowHeight-125));
+    line(xxx+650,(windowHeight-85),xxx+670,(windowHeight-85));
     stroke('olivedrab');
-    line(xxx+740,(windowHeight-125),xxx+760,(windowHeight-125));
+    line(xxx+740,(windowHeight-85),xxx+760,(windowHeight-85));
     stroke('salmon');
-    line(xxx+880,(windowHeight-125),xxx+900,(windowHeight-125));
+    line(xxx+880,(windowHeight-85),xxx+900,(windowHeight-85));
     
+    
+      var xxx=300;
+    
+    // stroke(120);
+    // strokeWeight(0.5);
+    // line(x+350,yyy-150,x+730,yyy-150);
+    
+    for(i=0;i<12;i++){
+    fill('cornflowerblue');
+    noStroke();
+    rect(xxx+448+i*10, (windowHeight/2-8-urimp[i]*10) ,4,urimp[i]*10);
+    textSize(9);
+    fill('black');
+    text(urimp[i],xxx+448+i*10, (windowHeight/2-8-urimp[i]*10)-10);
+    }
+    
+    textSize(12);
+    fill('black');
+    textStyle(BOLD);
+    text('Uranium imports: US',xxx+450, (windowHeight/2-8-urimp[10]*10)-120);
+    textSize(9);
+    fill('black');
+    textStyle(NORMAL);
+    textAlign(LEFT);
+    text('(million pounds U3O8)',xxx+450, (windowHeight/2-8-urimp[10]*10)-105);
 }
 
 
@@ -444,6 +446,3 @@ function draw(){
        
 };
   
-
-
- 
