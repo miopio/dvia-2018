@@ -55,12 +55,12 @@ function setup(){
     //ussr
     if (i <= 982){
       fill (0,255,170,50);
-      ellipse(x, y, 20,20);
+      ellipse(x, y, 15,15);
     }
     //USA
     if (i >= 983 && i <= 1971){
       fill(255,0,75,70);
-      ellipse(x, y, 20,20);
+      ellipse(x, y, 15,15);
     }
 
   }
@@ -72,7 +72,7 @@ function setup(){
 
   //legend
   fill(45,45,45,170);
-  rect(-windowWidth/3-20,80, 450, 300);
+  rect(-windowWidth/3-20,70, 900, 250);
 
 
   textFont(Ubuntu_Bold);
@@ -83,11 +83,19 @@ function setup(){
   textFont(Ubuntu_Regular);
   text('Soviet Union', -windowWidth/3+30, 160);
   text('United States', -windowWidth/3+138, 160);
+  textFont(Ubuntu_Bold);
+  text('Total Tests', -windowWidth/3+12, 220);
+
+  textSize(8);
+
+  text('1945', -windowWidth/3+12, 260);
+  text('2017', -windowWidth/3+383, 260);
 
   fill(255);
   textFont(Ubuntu_Bold);
   textSize(30);
-  text('Nuclear Tests Sites', -windowWidth/3+10, 130);
+  text('Nuclear Tests', -windowWidth/3+10, 130);
+
 
 
   noStroke();
@@ -102,6 +110,7 @@ function setup(){
   stroke(255);
   strokeWeight(0.3);
   line(-windowWidth/3+12,270,-160,270);
+  line(-windowWidth/3+440,100,-windowWidth/3+440,290);
 
   noStroke();
   fill(255,0,75,100);
