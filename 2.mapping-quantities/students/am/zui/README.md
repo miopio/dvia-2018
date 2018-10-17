@@ -4,17 +4,17 @@
   * Each circle represents a year
   * Above time axis:
     * Upper semicircle: atmospheric
-    * Lower semicircle: underground
+    * Lower semicircle: underground  
     **v3**  
     * Black dot: involvement in a interstate war
-    * Line connecting dots: length/period of the war
+    * Line connecting dots: length/period of the war  
     **v2**  
     * small circles: involvement in a interstate war
     * Line connecting dots: length/period of the war
-    * Line weight: number of stated involved in the war
+    * Line weight: number of stated involved in the war  
     **v3**  
     * Width of arcs: length/period of the war
-    * Arc line weight: number of stated involved in the war
+    * Arc line weight: number of stated involved in the war  
     **v4**  
     * Width of arcs: length/period of the war
     * Arc line weight: number of stated involved in the war
