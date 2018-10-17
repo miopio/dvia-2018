@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+### What’s In My Sketch Files
+
+=======
 ## Second presentation:
 
 ### How I incorporated class feedback
@@ -32,6 +36,7 @@ There are three features I would add later if I had more time: 1) The background
 
 ### What’s In My Sketch Files
 
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
 There are two types of sketch files presented. There is a handwritten prototype, in which I simply sketched my general idea with pen and paper. In the other file, there is a prototype made in Keynote, in which I was able to get more specific about how I wanted the output to appear. There are a couple changes between the handwritten and Keynote sketches because I started to refine the visualization in the latter.
 
 ### Logic of the Representation

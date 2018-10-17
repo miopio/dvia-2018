@@ -1,11 +1,6 @@
-var data
+d3.json('data/all.json')
 
-function preload(){
-  data = loadJSON('data/totals.json')
-}
+.then((data) => {
+  console.log(data);
 
-function setup(){
-  createCanvas(800, 600)
-
-  print(data)
-}
+})
