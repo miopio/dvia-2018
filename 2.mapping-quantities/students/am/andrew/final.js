@@ -67,45 +67,10 @@ let usaChart = data => {
 
   let bars = usa
     .selectAll("div")
-    .data(fourties)
+    .data(twentyTen)
     .enter()
     .append("div")
-    .attr("class", "four");
-
-  bars = usa
-    .selectAll("div")
-    .data(fifties)
-    .enter()
-    .append("div")
-    .attr("class", "five");
-
-  bars = usa
-    .selectAll("div")
-    .data(sixties)
-    .enter()
-    .append("div")
-    .attr("class", "six");
-
-  bars = usa
-    .selectAll("div")
-    .data(seventies)
-    .enter()
-    .append("div")
-    .attr("class", "seven");
-
-  bars = usa
-    .selectAll("div")
-    .data(eighties)
-    .enter()
-    .append("div")
-    .attr("class", "eight");
-
-  bars = usa
-    .selectAll("div")
-    .data(nineties)
-    .enter()
-    .append("div")
-    .attr("class", "nine");
+    .attr("class", "twentyTen");
 
   bars = usa
     .selectAll("div")
@@ -116,10 +81,45 @@ let usaChart = data => {
 
   bars = usa
     .selectAll("div")
-    .data(twentyTen)
+    .data(nineties)
     .enter()
     .append("div")
-    .attr("class", "twentyTen");
+    .attr("class", "nine");
+
+  bars = usa
+    .selectAll("div")
+    .data(eighties)
+    .enter()
+    .append("div")
+    .attr("class", "eight");
+
+  bars = usa
+    .selectAll("div")
+    .data(seventies)
+    .enter()
+    .append("div")
+    .attr("class", "seven");
+
+  bars = usa
+    .selectAll("div")
+    .data(sixties)
+    .enter()
+    .append("div")
+    .attr("class", "six");
+
+  bars = usa
+    .selectAll("div")
+    .data(fifties)
+    .enter()
+    .append("div")
+    .attr("class", "five");
+
+  bars = usa
+    .selectAll("div")
+    .data(fourties)
+    .enter()
+    .append("div")
+    .attr("class", "four");
 
   // .style(
   //   "background-color",
@@ -161,45 +161,10 @@ let russiaChart = data => {
 
   let bars = usa
     .selectAll("div")
-    .data(fourties)
+    .data(twentyTen)
     .enter()
     .append("div")
-    .attr("class", "four");
-
-  bars = usa
-    .selectAll("div")
-    .data(fifties)
-    .enter()
-    .append("div")
-    .attr("class", "five");
-
-  bars = usa
-    .selectAll("div")
-    .data(sixties)
-    .enter()
-    .append("div")
-    .attr("class", "six");
-
-  bars = usa
-    .selectAll("div")
-    .data(seventies)
-    .enter()
-    .append("div")
-    .attr("class", "seven");
-
-  bars = usa
-    .selectAll("div")
-    .data(eighties)
-    .enter()
-    .append("div")
-    .attr("class", "eight");
-
-  bars = usa
-    .selectAll("div")
-    .data(nineties)
-    .enter()
-    .append("div")
-    .attr("class", "nine");
+    .attr("class", "twentyTen");
 
   bars = usa
     .selectAll("div")
@@ -210,10 +175,45 @@ let russiaChart = data => {
 
   bars = usa
     .selectAll("div")
-    .data(twentyTen)
+    .data(nineties)
     .enter()
     .append("div")
-    .attr("class", "twentyTen");
+    .attr("class", "nine");
+
+  bars = usa
+    .selectAll("div")
+    .data(eighties)
+    .enter()
+    .append("div")
+    .attr("class", "eight");
+
+  bars = usa
+    .selectAll("div")
+    .data(seventies)
+    .enter()
+    .append("div")
+    .attr("class", "seven");
+
+  bars = usa
+    .selectAll("div")
+    .data(sixties)
+    .enter()
+    .append("div")
+    .attr("class", "six");
+
+  bars = usa
+    .selectAll("div")
+    .data(fifties)
+    .enter()
+    .append("div")
+    .attr("class", "five");
+
+  bars = usa
+    .selectAll("div")
+    .data(fourties)
+    .enter()
+    .append("div")
+    .attr("class", "four");
 
   // .style(
   //   "background-color",
@@ -255,45 +255,10 @@ let othersChart = data => {
 
   let bars = usa
     .selectAll("div")
-    .data(fourties)
+    .data(twentyTen)
     .enter()
     .append("div")
-    .attr("class", "four");
-
-  bars = usa
-    .selectAll("div")
-    .data(fifties)
-    .enter()
-    .append("div")
-    .attr("class", "five");
-
-  bars = usa
-    .selectAll("div")
-    .data(sixties)
-    .enter()
-    .append("div")
-    .attr("class", "six");
-
-  bars = usa
-    .selectAll("div")
-    .data(seventies)
-    .enter()
-    .append("div")
-    .attr("class", "seven");
-
-  bars = usa
-    .selectAll("div")
-    .data(eighties)
-    .enter()
-    .append("div")
-    .attr("class", "eight");
-
-  bars = usa
-    .selectAll("div")
-    .data(nineties)
-    .enter()
-    .append("div")
-    .attr("class", "nine");
+    .attr("class", "twentyTen");
 
   bars = usa
     .selectAll("div")
@@ -304,10 +269,45 @@ let othersChart = data => {
 
   bars = usa
     .selectAll("div")
-    .data(twentyTen)
+    .data(nineties)
     .enter()
     .append("div")
-    .attr("class", "twentyTen");
+    .attr("class", "nine");
+
+  bars = usa
+    .selectAll("div")
+    .data(eighties)
+    .enter()
+    .append("div")
+    .attr("class", "eight");
+
+  bars = usa
+    .selectAll("div")
+    .data(seventies)
+    .enter()
+    .append("div")
+    .attr("class", "seven");
+
+  bars = usa
+    .selectAll("div")
+    .data(sixties)
+    .enter()
+    .append("div")
+    .attr("class", "six");
+
+  bars = usa
+    .selectAll("div")
+    .data(fifties)
+    .enter()
+    .append("div")
+    .attr("class", "five");
+
+  bars = usa
+    .selectAll("div")
+    .data(fourties)
+    .enter()
+    .append("div")
+    .attr("class", "four");
 
   // .style(
   //   "background-color",

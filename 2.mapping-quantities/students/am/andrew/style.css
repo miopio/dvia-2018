@@ -60,33 +60,13 @@ body {
 .container {
   width: 70%;
   margin: auto;
+  margin-top: 2%;
 }
 
 @media only screen and (max-width: 401px) {
   .container {
     width: 97.5%;
   }
-}
-
-.item h2 {
-  text-align: center;
-  color: #708090;
-}
-
-pre {
-  border-radius: 6px;
-}
-
-.item {
-  /* background: #272822; */
-  border-radius: 4px;
-  margin-bottom: 10%;
-}
-
-figure {
-  width: 50%;
-  margin: auto;
-  margin-bottom: 2.5%;
 }
 
 /* waffle style */
@@ -129,7 +109,9 @@ figure {
   width: 20px;
   height: 20px;
   margin: 4px;
-  background-color: green;
+  background-image: url(https://i.imgur.com/bWBcxbH.jpg);
+  background-position: left top;
+  background-attachment: fixed;
 }
 
 /* .usa:hover {
@@ -154,47 +136,80 @@ figure {
   width: 20px;
   height: 20px;
   margin: 4px;
-  background-color: blue;
+  /* background-color: blue; */
+  background-image: url(https://i.imgur.com/9vEgDQV.jpg);
+  background-position: left top;
+  background-attachment: fixed;
 }
 
 .six {
   width: 20px;
   height: 20px;
   margin: 4px;
-  background-color: black;
+
+  background-image: url(https://i.imgur.com/VjxuJUN.jpg);
+  background-position: left top;
+  background-attachment: fixed;
 }
 
 .seven {
   width: 20px;
   height: 20px;
   margin: 4px;
-  background-color: orange;
+  background-image: url(https://i.imgur.com/FMyLxdu.jpg);
+  background-position: left top;
+  background-attachment: fixed;
 }
 
 .eight {
   width: 20px;
   height: 20px;
   margin: 4px;
-  background-color: yellow;
+  background-image: url(https://i.imgur.com/F8j6Y9k.png);
+  background-position: left top;
+  background-attachment: fixed;
 }
 
 .nine {
   width: 20px;
   height: 20px;
   margin: 4px;
-  background-color: turquoise;
+  background-image: url(https://i.imgur.com/V611i2A.jpg);
+  background-position: left top;
+  background-attachment: fixed;
 }
 
 .twenty {
   width: 20px;
   height: 20px;
   margin: 4px;
-  background-color: red;
+  background-image: url(https://i.imgur.com/nCsT4HT.png);
+  background-position: left top;
+  background-attachment: fixed;
 }
 
 .twentyTen {
   width: 20px;
   height: 20px;
   margin: 4px;
-  background-color: purple;
+  background-color: steelblue;
+}
+
+.legend-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.decade {
+  text-align: center;
+}
+
+.legend {
+  margin-top: 10px;
+  margin-bottom: 2%;
+  line-height: 1;
+}
+
+h1 {
+  margin-bottom: 40px;
 }
