@@ -15,6 +15,7 @@ function preload() {
 
 function setup() {
   createCanvas(3300, 800);
+  frameRate(25);
   //background(60,60,50);
   background(40,40,70);
   palette = Brewer.divergent('RdYlGn', Infinity, 0, 50, 100);
