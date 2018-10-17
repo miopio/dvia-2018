@@ -7,9 +7,11 @@ function preload() {
   totals = loadJSON("data/totals.json");
   atmospheric = loadJSON("data/atmospheric.json");
   underground = loadJSON("data/underground.json");
+  music = loadTable("data/music.csv");
 }
 
 function setup() {
+  frameRate(1);
   createCanvas(window.innerWidth, window.innerHeight);
   background(230);
   textSize(50);
@@ -28,21 +30,37 @@ function setup() {
   noStroke();
 
   //usa
+  textSize(16);
+  textAlign(RIGHT);
+  text(data.tests["United States"][yearNum], 50, 400);
+  textAlign(LEFT);
   textSize(data.tests["United States"][yearNum] * 5);
   text("USA", 50, 400);
   console.log(data.tests["United States"][yearNum]);
 
   //Russia
+  textSize(16);
+  textAlign(RIGHT);
+  text(data.tests["Russia"][yearNum], 800, 100);
+  textAlign(LEFT);
   textSize(data.tests["Russia"][yearNum] * 5);
   text("Russia", 800, 100);
   console.log(data.tests["Russia"][yearNum]);
 
   //China
+  textSize(16);
+  textAlign(RIGHT);
+  text(data.tests["China"][yearNum], 900, 300);
+  textAlign(LEFT);
   textSize(data.tests["China"][yearNum] * 5);
   text("China", 900, 300);
   console.log(data.tests["China"][yearNum]);
 
   //France
+  textSize(16);
+  textAlign(RIGHT);
+  text(data.tests["France"][yearNum], 500, 200);
+  textAlign(LEFT);
   textSize(data.tests["France"][yearNum] * 5);
   text("France", 500, 200);
   console.log(data.tests["France"][yearNum]);
@@ -83,7 +101,6 @@ function setup() {
 }
 
 function draw() {
-  frameRate(1);
   console.log(yearNum);
   if (yearNum < 2017 - 1940) {
     yearNum++;
