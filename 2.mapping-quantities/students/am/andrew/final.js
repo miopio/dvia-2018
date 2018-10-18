@@ -1,5 +1,41 @@
 // data sets
 
+// music data
+
+const audio = document.querySelectorAll(".audio");
+let songs = [];
+
+const music = d3.csv("data/music.csv", d => {
+  songs.push({
+    decade: d["decade"],
+    artist: d["artist"],
+    song: d["song"],
+    path: d["path"]
+  });
+});
+
+function playSong(e) {
+  const audio = document.querySelector(`audio[data-key="${e}"]`);
+
+  audio.classList.toggle("playing");
+  audio.currentTime = 0;
+  audio.play();
+}
+
+document.addEventListener(
+  "play",
+  function(e) {
+    var audios = document.getElementsByTagName("audio");
+    for (var i = 0, len = audios.length; i < len; i++) {
+      if (audios[i] != e.target) {
+        audios[i].currentTime = 0;
+        audios[i].pause();
+      }
+    }
+  },
+  true
+);
+
 // us data
 const usaData = d3
   .csv("data/decades/usa_decade.csv", d => {
@@ -39,22 +75,15 @@ const othersData = d3
     othersChart(data);
   });
 
+// define globals
+const usa = document.querySelector(".usa");
+const russia = document.querySelector(".russia");
+const others = document.querySelector(".others");
+
 // usa blocks
 let usaChart = data => {
   // waffle chart code
-  // Select your div
-  const usa = d3.select(".usa");
-
-  // // Create an array with numbers 0 - 99
-  // const numbers = d3.range(20);
-  // For each item in the array, add a div element
-  // if the number is < 5, color it red, otherwise gray
-
-  // const nest = d3
-  //   .nest()
-  //   .key(d => d.decade)
-  //   .entries(tests);
-
+  const normalize = d3.range(100);
   const numbers = d3.range(data[8]["tests"]);
   const fourties = d3.range(data[0]["tests"]);
   const fifties = d3.range(data[1]["tests"]);
@@ -65,90 +94,79 @@ let usaChart = data => {
   const twenty = d3.range(data[6]["tests"]);
   const twentyTen = d3.range(data[7]["tests"]);
 
-  let bars = usa
-    .selectAll("div")
-    .data(twentyTen)
-    .enter()
-    .append("div")
-    .attr("class", "twentyTen");
+  // console.log(twentyTen);
+  // console.log(twenty);
+  // console.log(nineties);
+  // console.log(eighties);
+  // console.log(seventies);
+  // console.log(sixties);
+  // console.log(fifties);
+  // console.log(fourties);
 
-  bars = usa
-    .selectAll("div")
-    .data(twenty)
-    .enter()
-    .append("div")
-    .attr("class", "twenty");
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("twentyTen");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(nineties)
-    .enter()
-    .append("div")
-    .attr("class", "nine");
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("twenty");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(eighties)
-    .enter()
-    .append("div")
-    .attr("class", "eight");
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("nine");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(seventies)
-    .enter()
-    .append("div")
-    .attr("class", "seven");
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("eight");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(sixties)
-    .enter()
-    .append("div")
-    .attr("class", "six");
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("seven");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(fifties)
-    .enter()
-    .append("div")
-    .attr("class", "five");
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("six");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(fourties)
-    .enter()
-    .append("div")
-    .attr("class", "four");
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("five");
+  });
 
-  // .style(
-  //   "background-color",
-  //   d => (d < fourties.length ? "#FE4A49" : "#CCCCCC")
-  // );
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("four");
+  });
 
-  // bars.attr("class", d => (d < fourties.length ? "four" : "nope"));
-  // bars.attr(
-  //   "class",
-  //   d => (fourties.length < d < fifties.length ? "five" : "nope")
-  // );
+  // let div = document.createElement("div");
+  // content.appendChild(div);
+  // div.classList.add("item");
+
+  // usa
+  //   .selectAll("div")
+  //   .data(twentyTen)
+  //   .enter()
+  //   .append("div")
+  //   .attr("class", "twentyTen");
 };
 
 // ruussia blocks
 let russiaChart = data => {
   // waffle chart code
-  // Select your div
-  const usa = d3.select(".russia");
-
-  // // Create an array with numbers 0 - 99
-  // const numbers = d3.range(20);
-  // For each item in the array, add a div element
-  // if the number is < 5, color it red, otherwise gray
-
-  // const nest = d3
-  //   .nest()
-  //   .key(d => d.decade)
-  //   .entries(tests);
-
+  const normalize = d3.range(100);
   const numbers = d3.range(data[8]["tests"]);
   const fourties = d3.range(data[0]["tests"]);
   const fifties = d3.range(data[1]["tests"]);
@@ -159,90 +177,68 @@ let russiaChart = data => {
   const twenty = d3.range(data[6]["tests"]);
   const twentyTen = d3.range(data[7]["tests"]);
 
-  let bars = usa
-    .selectAll("div")
-    .data(twentyTen)
-    .enter()
-    .append("div")
-    .attr("class", "twentyTen");
+  // console.log(twentyTen);
+  // console.log(twenty);
+  // console.log(nineties);
+  // console.log(eighties);
+  // console.log(seventies);
+  // console.log(sixties);
+  // console.log(fifties);
+  // console.log(fourties);
 
-  bars = usa
-    .selectAll("div")
-    .data(twenty)
-    .enter()
-    .append("div")
-    .attr("class", "twenty");
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("twentyTen");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(nineties)
-    .enter()
-    .append("div")
-    .attr("class", "nine");
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("twenty");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(eighties)
-    .enter()
-    .append("div")
-    .attr("class", "eight");
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("nine");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(seventies)
-    .enter()
-    .append("div")
-    .attr("class", "seven");
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("eight");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(sixties)
-    .enter()
-    .append("div")
-    .attr("class", "six");
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("seven");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(fifties)
-    .enter()
-    .append("div")
-    .attr("class", "five");
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("six");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(fourties)
-    .enter()
-    .append("div")
-    .attr("class", "four");
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("five");
+  });
 
-  // .style(
-  //   "background-color",
-  //   d => (d < fourties.length ? "#FE4A49" : "#CCCCCC")
-  // );
-
-  // bars.attr("class", d => (d < fourties.length ? "four" : "nope"));
-  // bars.attr(
-  //   "class",
-  //   d => (fourties.length < d < fifties.length ? "five" : "nope")
-  // );
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("four");
+  });
 };
 
 // others blocks
 let othersChart = data => {
   // waffle chart code
-  // Select your div
-  const usa = d3.select(".others");
-
-  // // Create an array with numbers 0 - 99
-  // const numbers = d3.range(20);
-  // For each item in the array, add a div element
-  // if the number is < 5, color it red, otherwise gray
-
-  // const nest = d3
-  //   .nest()
-  //   .key(d => d.decade)
-  //   .entries(tests);
-
+  const normalize = d3.range(100);
   const numbers = d3.range(data[8]["tests"]);
   const fourties = d3.range(data[0]["tests"]);
   const fifties = d3.range(data[1]["tests"]);
@@ -253,70 +249,51 @@ let othersChart = data => {
   const twenty = d3.range(data[6]["tests"]);
   const twentyTen = d3.range(data[7]["tests"]);
 
-  let bars = usa
-    .selectAll("div")
-    .data(twentyTen)
-    .enter()
-    .append("div")
-    .attr("class", "twentyTen");
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("twentyTen");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(twenty)
-    .enter()
-    .append("div")
-    .attr("class", "twenty");
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("twenty");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(nineties)
-    .enter()
-    .append("div")
-    .attr("class", "nine");
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("nine");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(eighties)
-    .enter()
-    .append("div")
-    .attr("class", "eight");
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("eight");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(seventies)
-    .enter()
-    .append("div")
-    .attr("class", "seven");
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("seven");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(sixties)
-    .enter()
-    .append("div")
-    .attr("class", "six");
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("six");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(fifties)
-    .enter()
-    .append("div")
-    .attr("class", "five");
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("five");
+  });
 
-  bars = usa
-    .selectAll("div")
-    .data(fourties)
-    .enter()
-    .append("div")
-    .attr("class", "four");
-
-  // .style(
-  //   "background-color",
-  //   d => (d < fourties.length ? "#FE4A49" : "#CCCCCC")
-  // );
-
-  // bars.attr("class", d => (d < fourties.length ? "four" : "nope"));
-  // bars.attr(
-  //   "class",
-  //   d => (fourties.length < d < fifties.length ? "five" : "nope")
-  // );
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("four");
+  });
 };

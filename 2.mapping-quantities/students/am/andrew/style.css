@@ -13,20 +13,42 @@ body {
     width: 97.5%;
   }
 }
-
-.legend-items {
-  display: flex;
-  justify-content: space-between;
+.fixed {
+  position: sticky;
+  top: -1;
+  background-color: #f8efe7;
 }
 
 .decade {
   text-align: center;
+  cursor: pointer;
+}
+
+.decade:hover {
+  font-weight: 700;
 }
 
 .legend {
   margin-top: 10px;
   margin-bottom: 2%;
   line-height: 1;
+}
+
+.legend .four,
+.legend .five,
+.legend .six,
+.legend .seven,
+.legend .eight,
+.legend .nine,
+.legend .twenty,
+.legend .twentyTen {
+  width: 80px;
+  height: 40px;
+}
+
+.legend-items {
+  display: flex;
+  justify-content: space-between;
 }
 
 h1 {
@@ -45,7 +67,7 @@ h1 {
 .others {
   display: flex;
   flex-wrap: wrap;
-  width: 280px;
+  width: 240px;
 }
 
 .four,
@@ -59,6 +81,8 @@ h1 {
   width: 20px;
   height: 20px;
   margin: 1px;
+  background-position: left top;
+  background-attachment: fixed;
 }
 
 .four:hover,
@@ -85,46 +109,32 @@ h1 {
 
 .four {
   background-image: url(https://i.imgur.com/bWBcxbH.jpg);
-  background-position: left top;
-  background-attachment: fixed;
 }
 
 .five {
   background-image: url(https://i.imgur.com/9vEgDQV.jpg);
-  background-position: left top;
-  background-attachment: fixed;
 }
 
 .six {
   background-image: url(https://i.imgur.com/VjxuJUN.jpg);
-  background-position: left top;
-  background-attachment: fixed;
 }
 
 .seven {
   background-image: url(https://i.imgur.com/FMyLxdu.jpg);
-  background-position: left top;
-  background-attachment: fixed;
 }
 
 .eight {
   background-image: url(https://i.imgur.com/F8j6Y9k.png);
-  background-position: left top;
-  background-attachment: fixed;
 }
 
 .nine {
   background-image: url(https://i.imgur.com/V611i2A.jpg);
-  background-position: left top;
-  background-attachment: fixed;
 }
 
 .twenty {
   background-image: url(https://i.imgur.com/nCsT4HT.png);
-  background-position: left top;
-  background-attachment: fixed;
 }
 
 .twentyTen {
-  background-color: steelblue;
+  background-image: url(https://i.imgur.com/H7JEWbj.jpg);
 }
