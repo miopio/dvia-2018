@@ -18,3 +18,5 @@ D3 Sequences Sunburst
 Analyzing the most common star sign of leaders who launched nuclear tests
 
 <img width="815" alt="screen shot 2018-10-10 at 10 11 27 am" src="https://user-images.githubusercontent.com/42682406/46746229-9a355e80-cc7c-11e8-824d-1bd1c06afaca.png">
+
+Finished viz on Tableau Public: https://public.tableau.com/profile/simone.betito#!/vizhome/AThousandSunsStarSigns/NuclearDashboard
