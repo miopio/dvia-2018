@@ -55,7 +55,7 @@ function draw(){
 
 
   strokeWeight(0.7);
-  line(40, 732, 247, 732);
+  line(40, 730, 247, 730);
 
   strokeWeight(0.2);
   line(600, 80, 600, 102+spacing*41);
@@ -72,8 +72,8 @@ function draw(){
 
   fill('#6AD8DB');
   textSize(14);
-  text('The United States Nuclear', 40, 655);
-  text('Tests & Spending during the', 40, 670);
+  text('The United States Nuclear', 40, 640);
+  text('Tests & Spending during the', 40, 655);
 
   fill('#B6D6D6');
   textSize(14);
@@ -97,9 +97,9 @@ function draw(){
   text('1987', 20, 103+spacing*39);
 
   text('0', 40, 70);
-  text('260', 355, 70);
+  text('260', 363, 70);
 
-  text('100', 430, 70);
+  text('100', 436, 70);
   textAlign(RIGHT);
   text('0', 760, 70);
 
@@ -109,7 +109,7 @@ function setGradient(x, y, w, h, c1, c2, axis) {
   noFill();
   if (axis == Y_AXIS) {
     for (var i = y; i <= y+h; i++) {
-      var inter = map(i, y, y+h, 1, 0.83);
+      var inter = map(i, y, y+h, 1, 0.8);
       var c = lerpColor(c1, c2, inter);
       stroke(c);
       line(x, i, x+w, i);

@@ -15,7 +15,10 @@ function setup() {
 function draw() {
 
 //Inserts a heading at the top of the clocks
+<<<<<<< HEAD
+=======
     translate (0,0);
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
     fill(255, 255, 255);
     textSize (20);
     text("Exercise #1: Adrian Crockett", 10, 30);
@@ -217,6 +220,7 @@ function draw() {
     var x1Translate = 800;
     var y1Translate = 25;
     translate (x1Translate,y1Translate);
+<<<<<<< HEAD
 
 //Creates var to the middle of the 2nd exhibit this is used for the central point of the lines
     var xMiddle = 300;
@@ -250,6 +254,41 @@ function draw() {
     if (hh==1+22) {stroke (hhColor); line (x*11,y*2,xMiddle,yMiddle);}
     if (hh==1+23) {stroke (hhColor); line (x*12,y*2,xMiddle,yMiddle);}
 
+=======
+
+//Creates var to the middle of the 2nd exhibit this is used for the central point of the lines
+    var xMiddle = 300;
+    var yMiddle = 300;
+
+//Note that the seguence of the next code is unusual and is based on layering of the elements
+
+//HH Lines: Provides the lines for the top 2 rows for the hours, where lines are colored based on the hour
+    if (hh==1+0) {stroke (hhColor); line (x,y,xMiddle,yMiddle);}
+    if (hh==1+1) {stroke (hhColor); line (x*2,y,xMiddle,yMiddle);}
+    if (hh==1+2) {stroke (hhColor); line (x*3,y,xMiddle,yMiddle);}
+    if (hh==1+3) {stroke (hhColor); line (x*4,y,xMiddle,yMiddle);}
+    if (hh==1+4) {stroke (hhColor); line (x*5,y,xMiddle,yMiddle);}
+    if (hh==1+5) {stroke (hhColor); line (x*6,y,xMiddle,yMiddle);}
+    if (hh==1+6) {stroke (hhColor); line (x*7,y,xMiddle,yMiddle);}
+    if (hh==1+7) {stroke (hhColor); line (x*8,y,xMiddle,yMiddle);}
+    if (hh==1+8) {stroke (hhColor); line (x*9,y,xMiddle,yMiddle);}
+    if (hh==1+9) {stroke (hhColor); line (x*10,y,xMiddle,yMiddle);}
+    if (hh==1+10) {stroke (hhColor); line (x*11,y,xMiddle,yMiddle);}
+    if (hh==1+11) {stroke (hhColor); line (x*12,y,xMiddle,yMiddle);}
+    if (hh==1+12) {stroke (hhColor); line (x,y*2,xMiddle,yMiddle);}
+    if (hh==1+13) {stroke (hhColor); line (x*2,y*2,xMiddle,yMiddle);}
+    if (hh==1+14) {stroke (hhColor); line (x*3,y*2,xMiddle,yMiddle);}
+    if (hh==1+15) {stroke (hhColor); line (x*4,y*2,xMiddle,yMiddle);}
+    if (hh==1+16) {stroke (hhColor); line (x*5,y*2,xMiddle,yMiddle);}
+    if (hh==1+17) {stroke (hhColor); line (x*6,y*2,xMiddle,yMiddle);}
+    if (hh==1+18) {stroke (hhColor); line (x*7,y*2,xMiddle,yMiddle);}
+    if (hh==1+19) {stroke (hhColor); line (x*8,y*2,xMiddle,yMiddle);}
+    if (hh==1+20) {stroke (hhColor); line (x*9,y*2,xMiddle,yMiddle);}
+    if (hh==1+21) {stroke (hhColor); line (x*10,y*2,xMiddle,yMiddle);}
+    if (hh==1+22) {stroke (hhColor); line (x*11,y*2,xMiddle,yMiddle);}
+    if (hh==1+23) {stroke (hhColor); line (x*12,y*2,xMiddle,yMiddle);}
+
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
 //MM Lines: Provides the next 5 rows for the minutes, where lines are colored based on the minute
     if (mm==1+0) {stroke (mmColor); line (x,y*3,xMiddle,yMiddle);}
     if (mm==1+1) {stroke (mmColor); line (x*2,y*3,xMiddle,yMiddle);}
@@ -377,8 +416,11 @@ function draw() {
 //Resets stroke to black for the rest of the analysis
     stroke (0,0,0);
 
+<<<<<<< HEAD
+=======
 //For the ellipse can just use radius instead of w and h
 
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
 //HH Ellipse: Provides the top 2 rows for the hours, where ellipses are colored based on the hour
     if (hh==1+0) {fill (hhColor); ellipse (x,y,w,h);}
     if (hh==1+1) {fill (hhColor); ellipse (x*2,y,w,h);}

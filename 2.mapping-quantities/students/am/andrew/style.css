@@ -1,0 +1,130 @@
+body {
+  background: #f8efe7;
+  font-family: monospace;
+}
+.container {
+  width: 70%;
+  margin: auto;
+  margin-top: 2%;
+}
+
+@media only screen and (max-width: 401px) {
+  .container {
+    width: 97.5%;
+  }
+}
+
+.legend-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.decade {
+  text-align: center;
+}
+
+.legend {
+  margin-top: 10px;
+  margin-bottom: 2%;
+  line-height: 1;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+/* waffle style */
+.countries {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.usa,
+.russia,
+.others {
+  display: flex;
+  flex-wrap: wrap;
+  width: 280px;
+}
+
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine,
+.twenty,
+.twentyTen {
+  width: 20px;
+  height: 20px;
+  margin: 1px;
+}
+
+.four:hover,
+.five:hover,
+.six:hover,
+.seven:hover,
+.eight:hover,
+.nine:hover,
+.twenty:hover,
+.twentyTen:hover {
+  filter: drop-shadow(0px 0px 3px #000);
+  opacity: 0.9;
+}
+
+/* .usa:hover {
+  opacity: 0.2;
+} */
+/* .usa:hover div:hover a {
+  opacity: 0.5;
+} */
+/* .usa:hover div:hover a:hover {
+  opacity: 1;
+} */
+
+.four {
+  background-image: url(https://i.imgur.com/bWBcxbH.jpg);
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+.five {
+  background-image: url(https://i.imgur.com/9vEgDQV.jpg);
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+.six {
+  background-image: url(https://i.imgur.com/VjxuJUN.jpg);
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+.seven {
+  background-image: url(https://i.imgur.com/FMyLxdu.jpg);
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+.eight {
+  background-image: url(https://i.imgur.com/F8j6Y9k.png);
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+.nine {
+  background-image: url(https://i.imgur.com/V611i2A.jpg);
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+.twenty {
+  background-image: url(https://i.imgur.com/nCsT4HT.png);
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+.twentyTen {
+  background-color: steelblue;
+}

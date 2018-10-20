@@ -14,16 +14,16 @@ function preload(){
 function setup(){
   createCanvas(4200, 700);
   background('#808F7C');
-  // var us = '#113285';
-  // var ru = '#734338';
-  // var uk = '#897D55';
-  // var fr = '#70649A';
-  // var cn = '#B54434';
-  // var id = '#563F2E';
-  // var pk = '#E9CD4C';
-  // var nk = '#516E41';
-  // var colors = [us,ru,uk,fr,cn,id,pk,nk];
-  var colors = ["#7fc97f", "#beaed4", "#fdc086", "#ffff99", "#386cb0", "#f0027f", "#bf5b17", "#666666"];
+  var us = '#113285';
+  var ru = '#734338';
+  var uk = '#897D55';
+  var fr = '#70649A';
+  var cn = '#B54434';
+  var id = '#563F2E';
+  var pk = '#E9CD4C';
+  var nk = '#516E41';
+  var colors = [us,ru,uk,fr,cn,id,pk,nk];
+  // var colors = ["#7fc97f", "#beaed4", "#fdc086", "#ffff99", "#386cb0", "#f0027f", "#bf5b17", "#666666"];
   var x0 = 100;
   var y0 = 65;
   for (var i=0; i<colors.length; i++) {

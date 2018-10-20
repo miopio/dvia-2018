@@ -12,11 +12,23 @@
   <script src="lib/lodash.min.js"></script>
   <script src="lib/brewer.js"></script>
   <script src="lib/p5.min.js"></script>
+  <script src="lib/grafica.min.js"></script>
   <!-- your code -->
   <script language="javascript" type="text/javascript" src="concept-1.js"></script>
 </head>
 
 <body>
   <!-- p5.js will automatically create a canvas element here when the page loads -->
+    <section class="sketch" id="widthRef">
+        <div class="sketch-wrapper">
+          <div class="sketch-canvas" id="sketch-canvas"></div>
+        </div>
+
+        <!-- Run the sketch -->
+        <script>
+          window.onload = function() {
+            var sketch = new p5(nuclearTestCountYield, "sketch-canvas");
+          };
+        </script>
 </body>
 </html>
