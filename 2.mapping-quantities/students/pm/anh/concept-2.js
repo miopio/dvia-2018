@@ -56,7 +56,7 @@ function setup(){
 
   ///////////////
   var years = []
-  var totals = []
+  var atm = []
   var lowest = 0
   var highest = 0
   for (var r=0; r<table.getRowCount(); r++){
@@ -67,7 +67,7 @@ function setup(){
     }
 
     years.push(year)
-    totals.push(sum)
+    atm.push(sum)
     highest = Math.max(sum, highest)
   }
 
@@ -80,7 +80,7 @@ function setup(){
 
   for (var i=0; i<years.length; i++){
     // draw the box
-    var color = palette.colorForValue(totals[i])
+    var color = palette.colorForValue(atm[i])
     fill(color)
     ellipse(x, y+100, dim+3)
 
