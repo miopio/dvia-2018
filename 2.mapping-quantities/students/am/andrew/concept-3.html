@@ -1,52 +1,103 @@
 <html>
 
 <head>
+  <title>Normalized Nuclear Tests by Decade</title>
   <meta charset="UTF-8">
-  <style>
-    /* html, body { height:100%; padding:0; margin:0; background:#e0e0d9; } */
-    /* uncomment next line to center the sketch in the window: */
-    /*body { display:flex; justify-content:center; align-items:center; }*/
-  </style>
-  <!-- <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet"> -->
   <link href="style.css" rel=" stylesheet">
 
   <!-- dependencies -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
-  <!-- <script src="lib/lodash.min.js"></script>
-  <script src="lib/brewer.js"></script>
-  <script src="lib/p5.min.js"></script> -->
+  <style>
+    .usa,
+.russia,
+.others {
 
-  <!-- your code -->
-
-
+  width: 240px;
+}
+  </style>
 </head>
 
 <body>
+  <div class="container">
+    <div class="fixed">
+      <h1>Decades of Nuclear Testing</h1>
+      <div class="legend">
+        <div class="legend-items">
+          <div data-key="0" class="decade">
+            <div class="four">
+            </div>
+            <p>1940's</p>
+          </div>
+          <div data-key="1" class="decade">
+            <div class="five">
+            </div>
+            <p>1950's</p>
+          </div>
+          <div data-key="2" class="decade">
+            <div class="six">
+            </div>
+            <p>1960's</p>
+          </div>
+          <div data-key="3" class="decade">
+            <div class="seven">
+            </div>
+            <p>1970's</p>
+          </div>
+          <div data-key="4" class="decade">
+            <div class="eight">
+            </div>
+            <p>1980's</p>
+          </div>
+          <div data-key="5" class="decade">
+            <div class="nine">
+            </div>
+            <p>1990's</p>
+          </div>
+          <div data-key="6" class="decade">
+            <div class="twenty">
+            </div>
+            <p>2000's</p>
+          </div>
+          <div data-key="7" class="decade">
+            <div class="twentyTen">
+            </div>
+            <p>2010's</p>
+          </div>
+        </div>
+      </div>
 
-  <!-- <script language="javascript" type="text/javascript" src="concept-3.js"></script> -->
-  <script language="javascript" type="text/javascript" src="final.js"></script>
 
-  <svg class="invisible">
-    <defs>
-      <pattern id="pattern-40" patternUnits="userSpaceOnUse" width="10" height="10">
-        <image href="https://i.imgur.com/m4Zq2kh.png" x="0" y="0" width="10" height="10" preserveAspectRatio="xMidYMid meet" />
-      </pattern>
-    </defs>
+      <p>🔊 Now playing the song of the <span id="now-playing"></span> 🔊</p>
+      <!-- <audio data-key="0" src="data/audio/frenesi.mp3"></audio>
+      <audio data-key="1" src="data/audio/thetwist.mp3"></audio>
+      <audio data-key="2" src="data/audio/heyjude.mp3"></audio>
+      <audio data-key="3" src="data/audio/mylife.mp3"></audio>
+      <audio data-key="4" src="data/audio/physical.mp3"></audio>
+      <audio data-key="5" src="data/audio/live.mp3"></audio>
+      <audio data-key="6" src="data/audio/yeah.mp3"></audio>
+      <audio data-key="7" src="data/audio/despacito.mp3"></audio> -->
 
-    <defs>
-      <pattern id="pattern-50" patternUnits="userSpaceOnUse" width="10" height="10">
-        <image href="http://gastv.mx/wp-content/uploads/2014/05/jumex.jpg" x="0" y="0" width="10" height="10"
-          preserveAspectRatio="xMidYMid meet" />
-      </pattern>
-    </defs>
-    <defs>
-      <pattern id="pattern-60" patternUnits="objectBoundingBox" width="1" height="1" x="0" y="0">
-        <image id="pattern-60" href=" https://i.imgur.com/F8j6Y9k.png" />
-      </pattern>
-    </defs>
-
-  </svg>
+      <audio id="player"></audio>
+      <p>---</p>
+    </div>
+    <div class="countries">
+      <div class="usa-head">
+        <h2>USA</h2>
+        <div class="usa">
+        </div>
+      </div>
+      <div class="russia-head">
+        <h2>Russia</h2>
+        <div class="russia"></div>
+      </div>
+      <div class="others-head">
+        <h2>Everyone Else</h2>
+        <div class="others"></div>
+      </div>
+    </div>
+  </div>
+  <script language="javascript" type="text/javascript" src="concept-3.js"></script>
 </body>
 
 </html>

@@ -39,3 +39,28 @@ Billboard top songs of each decade
 [Nuclear movies](http://www.radiationcinema.com/2017/08/nuclear-war-movies-a-timeline-1900s-to-2017/)
 
 [Nuclear movies blog](https://www.nytimes.com/watching/lists/best-nuclear-war-movies-streaming)
+
+---
+
+### Final Concept
+
+- There are three categories of data separated by sections:
+
+  1. USA
+  2. Russia
+  3. Sum of all other countries combined
+
+- Within each country, every nuclear test is represented by a 20px x 20px block (so each test has the same visual weight) stacked in a grid.
+- Color represents the decade these tests were conducted.
+
+#### Cultural component
+
+- There are 2 elements of culture used to integate into the nuclear testing data:
+  1. The color of the blocks use patterns of the "vibe" of that decade.
+  2. Songs of the decade cycle through automatically, or to add slight interactivity (although not necessary), when hovering over the decade block in the legend, that song is selected.
+
+#### Presentation Medium
+
+- The thought here, is that this would be displayed either as long, static or digital poster. As a digital display, the decades would 'activate' every 10 seconds and cylce through the songs and news of the corresponding time period.
+  - An'activated' decade would highlight the corresponding tiles, sounds, and patterns
+  - Additionally, an interactive installed piece, one could also press the decade tiles in the legend to activate decades manually.
