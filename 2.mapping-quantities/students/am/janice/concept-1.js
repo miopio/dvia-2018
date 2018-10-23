@@ -52,6 +52,7 @@ function setup(){
     console.log(year);
     x += colWidth;
   }
+  
 x=125
 y=300
 

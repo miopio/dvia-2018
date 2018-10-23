@@ -1,9 +1,17 @@
-## Process
+Write up for Final Aesthetics Nuclear Testing Visual:
 
-Concept 1 -- I first tried to sketch out a hierarchy of the information, and how the x and y axis then needed a z axis.  I incorporated a year gradated bar to show how we lightened up into the year 1996, when the nuclear ban on testing occured.  I used a 'grid' to show the amount of tests, which was pulled directly from the csv files.
-
-Concept 2 -- My attempt to do a vertical visualization of the years failed.  I also was so tired of the 'grid' idea that I wanted to try something more fun and organic, but soon realized that it was too funky.  It turned out that the blobs were not too clear, and the colors weren't enough to distinguish the testing countries, nor did the shapes mean anything other than a randomized shape, which I thought the code could create.  However, the information/data was too disturbing for this design to be of any value.
-
-Concept 3 -- I went back to the clarity of the first concept and added the element of the map that would light up the "LOCATION" of the test.  I think with the brevity of this information and our known facts of the dangers of nuclear waste, that its important to know where the testing has occurred.  The location in the URL (simply Wikepedia) also had the latitude and longitude of the locations.  As you pan over the 'grid'  == the location would visualize, along with the information of the testing site.
-
-https://en.wikipedia.org/wiki/List_of_nuclear_test_sites
+It became clear to me that there was a bigger story that needed to be told about the testing,
+and that as I worked and worked to get the data into the visual – that there is the human
+toll that this testing takes (besides the obvious data). And there was no ‘pretty’ way to
+show this – or to make the data cool looking or minimalist.
+The human toll is that lives are affected by the radioactive fallout from the amazing
+amounts of testing that all countries, but especially the U.S. and Russia had done, all in the
+names of an arms race to show simply that we have the most firepower that could blow the
+world up. In terms of real lives, all 8 countries tested in lower populated areas that they
+have jurisdiction over, mostly in areas where indigenous people of their own countries, or
+that they have relegated to isolated, desolate areas.
+In 2018 we have a higher expectancy rate than we ever have, however, the expectancy rate
+in these areas fall on the low end. There is also an economic disadvantage that these
+indigenous populated areas have compared to the rest of the world, but this is another data
+point. The simple fact that a lower life expectancy rate, also brings up the access to good
+healthcare, again, another data point that could be included on this visual.
