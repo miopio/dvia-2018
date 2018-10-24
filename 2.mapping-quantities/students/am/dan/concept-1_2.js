@@ -1,44 +1,59 @@
 var usaNdata;
 var usaTrustTable;
 var trustRate;
+var presidents
 var nuclearImage = [];
 var faceImages = [];
 var img, faceImg, path;
 var palette;
 var a=0.0;
 var b= false;
+var presidentInYear,presidentOutYear;
+var presidentInYears=0;
+var presidentOutYears=0;
+var democratic, republican;
 function preload() {
   usaNdata = loadJSON('data/totals.json');
   usaTrustTable = loadTable('data/public-trust-in-government.csv', 'csv', 'header');
+  presidents = loadTable('data/presidents.csv', 'csv', 'header');
   img = loadImage('assets/Nuclearbomb.svg');
+  democratic = loadImage('assets/DemocraticLogo.svg');
+  republican = loadImage('assets/Republicanlogo.svg');
+
 }
 
 function setup() {
   createCanvas(3300, 800);
   frameRate(25);
   //background(60,60,50);
-  background(10,10,10);
+  background(10,10,20);
   palette = Brewer.divergent('RdYlGn', Infinity, 0, 50, 100);
 
-  print(usaNdata.tests["United States"]);
-  print(usaTrustTable.getRowCount() + ' total rows in table');
-  print(usaTrustTable.getColumnCount() + ' total columns in table');
+  // print(usaNdata.tests["United States"]);
+  // print(usaTrustTable.getRowCount() + ' total rows in table');
+  // print(usaTrustTable.getColumnCount() + ' total columns in table');
+  // print(usaTrustTable.getColumn('Trust in Government (%)'));
   print(usaTrustTable.getColumn('Trust in Government (%)'));
 
-  trustRate = usaTrustTable.getColumn('Trust in Government (%)');
-  print(trustRate[1]);
+  //print(presidents.getColumn('Took office '));
+  //print(presidents.getColumn('Left office '));
 
+ presidentInYear  = presidents.getColumn('Took_office');
+ presidentOutYear = presidents.getColumn('Left_office');
+
+
+  trustRate = usaTrustTable.getColumn('Trust in Government (%)');
+
+ TestPres= new Date(presidents.getColumn('Left_office')[5]).getFullYear();
+
+  print(typeof(usaNdata.years[2]));
+
+  print(presidentInYear);
+  print(usaNdata.years[2]);
   //path = querySVG('path');
   //console.log(querySVG('path'));
   //faceImg.strokeWeight(10);
-  push();
-  fill(30,20,50)
-  noStroke();
-  rect(0, height-170, width, 170);
-  rect(0, height-268, width, 10);
-  fill(30,10,20)
-  rect(0, height-295, width, 10);
-  pop();
+
 
 
   //translate(0,100)
@@ -51,24 +66,40 @@ function setup() {
 
 
   //drawFace(130,130,7);
-  fill(255);
-  image(img,33,height-70,35,40);
-  textSize(12);
-  text('Public Trust Rate in US Government (0-100%)', 70, height-90);
-  text('Nuclear Weapen Test', 70, height-35);
-  textSize(15);
-  fill(220)
-  text('USA Nuclear Weapen Test Data & Pubilic Trust Rate ', 10, height-175);
 
+//restoreDate();
 }
 
 function draw(){
 
+background(10,10,20);
+//basic info
 
+push();
+fill(30,20,50)
+noStroke();
+rect(0, height-170, width, 170);
+rect(0, height-268, width, 10);
+fill(30,10,20)
+rect(0, height-295, width, 10);
+pop();
+
+fill(80,80,50);
+rect(0, height-185, width, 45);
+fill(255);
+image(img,33,height-70,35,40);
+textSize(12);
+text('Public Trust Rate in US Government (0-100%)', 70, height-90);
+text('Nuclear Weapen Test', 70, height-35);
+textSize(15);
+fill(220)
+text('USA Nuclear Weapen Test Data & Pubilic Trust Rate ', 10, 25);
+
+//data
 drawNuclear();
+showPresident();
 drawTrustInRightPos();
-
- faceSample();
+faceSample();
 
 }
 
@@ -142,6 +173,7 @@ function drawTrustInRightPos(){
         //fill(255);
 
 
+
         if (mouseX<=x+20 && mouseX>=x-20){
           fill(255);
         text(nfc(trustRate[trustYear],1)+'/%', x +3, height-200);
@@ -179,6 +211,46 @@ function drawTrustInRightPos(){
 }
 
 
+function showPresident(){
+  var xWidth = 43;
+  var x = 25;
+
+  for (var i = 0; i < usaNdata.years.length; i++) {
+
+
+
+      for (var j = 0 ; j < presidentInYear.length; j++){
+
+       presidentInYears= (new Date(presidentInYear[j]).getFullYear());
+       presidentOutYears= (new Date(presidentOutYear[j]).getFullYear());
+         //print(presidentInYear[j]);
+         //text(usaNdata.years[i], x, 110)
+
+        if ( usaNdata.years[i]>=presidentInYears && usaNdata.years[i]<presidentOutYears){
+          //print()
+          if (mouseX<=x+20 && mouseX>=x-20){
+            fill(255);
+              if(presidents.getColumn('Party')[j]=='Republican '){
+                image(republican, x + 5, height-162, 15, 15)
+              }else{
+                image(democratic, x + 5, height-162, 15, 15)
+              }
+
+          text(presidents.getColumn('President')[j], x, height-171);
+        }
+        //  text(presidents.getColumn('President')[33], x, 290);
+
+
+        }
+      }
+  x += xWidth;
+  }
+
+
+
+}
+
+
 
 
 
@@ -186,19 +258,25 @@ function drawTrustInRightPos(){
 
 
 function drawNuclear() {
+
   var xWidth = 43;
   var x = 25;
+
+
+  //print(presidentInYear.length);
   for (var i = 0; i < usaNdata.years.length; i++) {
     textSize(8);
     fill(255);
 
+    // print(presidentInYears);
 
     //text(x, x, 740)
 
     if (mouseX<=x+20 && mouseX>=x-20){
+
       fill(250);
       text(usaNdata.years[i], x, 540)
-    text(usaNdata.tests["United States"][i], x, 500+usaNdata.tests["United States"][i]*(-5))
+      text(usaNdata.tests["United States"][i], x, 500+usaNdata.tests["United States"][i]*(-5))
   } else{
       fill(100);
       text(usaNdata.years[i], x, 540)
