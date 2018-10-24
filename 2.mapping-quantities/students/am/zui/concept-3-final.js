@@ -9,7 +9,7 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(4750, 1550);
+  createCanvas(4750, 2250);
   background('#e0e0d9');
 
   // pick one of the three data files to work with and call it 'data'
