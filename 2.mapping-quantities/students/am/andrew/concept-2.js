@@ -1,13 +1,3 @@
-// to dos
-
-// light up blocks for current song playing
-// update active state style
-// experiment with background changing color. Sequential red scale for # of nuclear tests?
-// length of song should be percentage of that decade's total tests. i.e, 1 minue presentation means that in year[i] there were  #tests / total #tests x 60 seconds
-// typography
-// experiment with layout for static vs. interactive mediums
-// should it be sticky header?
-
 // data sets
 
 let songs = [];
@@ -101,6 +91,7 @@ music.then(() => {
 
   function play(index) {
     player.src = songs[index].path;
+    player.currentTime = 15;
     player.play();
   }
 
@@ -147,8 +138,8 @@ music.then(() => {
   // update text for song now playing
   function displaySong() {
     let content = `${songs[currentSong].decade}'s: ${
-      songs[currentSong].artist
-    }'s ${songs[currentSong].song}`;
+      songs[currentSong].song
+    } // ${songs[currentSong].artist}`;
     nowPlayingText.innerHTML = content;
   }
   displaySong();
@@ -170,14 +161,14 @@ let usaChart = data => {
   // waffle chart code
   const normalize = d3.range(100);
   const numbers = d3.range(data[8]["tests"]);
-  const fourties = d3.range(data[0]["tests"]);
-  const fifties = d3.range(data[1]["tests"]);
-  const sixties = d3.range(data[2]["tests"]);
-  const seventies = d3.range(data[3]["tests"]);
-  const eighties = d3.range(data[4]["tests"]);
-  const nineties = d3.range(data[5]["tests"]);
-  const twenty = d3.range(data[6]["tests"]);
-  const twentyTen = d3.range(data[7]["tests"]);
+  const fourties = d3.range(Math.round((data[0]["tests"] / 1030) * 100));
+  const fifties = d3.range(Math.round((data[1]["tests"] / 1030) * 100));
+  const sixties = d3.range(Math.round((data[2]["tests"] / 1030) * 100));
+  const seventies = d3.range(Math.floor((data[3]["tests"] / 1030) * 100));
+  const eighties = d3.range(Math.round((data[4]["tests"] / 1030) * 100));
+  const nineties = d3.range(Math.round((data[5]["tests"] / 1030) * 100));
+  const twenty = d3.range(Math.round((data[6]["tests"] / 1030) * 100));
+  const twentyTen = d3.range(Math.round((data[7]["tests"] / 1030) * 100));
   // console.log(eighties);
   // console.log(numbers.length);
   // console.log(twentyTen);
@@ -260,15 +251,15 @@ let usaChart = data => {
 let russiaChart = data => {
   // waffle chart code
   const normalize = d3.range(100);
-  const numbers = d3.range(data[8]["tests"]);
-  const fourties = d3.range(data[0]["tests"]);
-  const fifties = d3.range(data[1]["tests"]);
-  const sixties = d3.range(data[2]["tests"]);
-  const seventies = d3.range(data[3]["tests"]);
-  const eighties = d3.range(data[4]["tests"]);
-  const nineties = d3.range(data[5]["tests"]);
-  const twenty = d3.range(data[6]["tests"]);
-  const twentyTen = d3.range(data[7]["tests"]);
+  const numbers = d3.range(Math.round((data[8]["tests"] / 715) * 100));
+  const fourties = d3.range(Math.round((data[0]["tests"] / 715) * 100));
+  const fifties = d3.range(Math.round((data[1]["tests"] / 715) * 100));
+  const sixties = d3.range(Math.round((data[2]["tests"] / 715) * 100));
+  const seventies = d3.range(Math.round((data[3]["tests"] / 715) * 100));
+  const eighties = d3.range(Math.ceil((data[4]["tests"] / 715) * 100));
+  const nineties = d3.range(Math.round((data[5]["tests"] / 715) * 100));
+  const twenty = d3.range(Math.round((data[6]["tests"] / 715) * 100));
+  const twentyTen = d3.range(Math.round((data[7]["tests"] / 715) * 100));
   // console.log(twentyTen);
   // console.log(twenty);
   // console.log(nineties);
@@ -324,15 +315,15 @@ let russiaChart = data => {
 let othersChart = data => {
   // waffle chart code
   const normalize = d3.range(100);
-  const numbers = d3.range(data[8]["tests"]);
-  const fourties = d3.range(data[0]["tests"]);
-  const fifties = d3.range(data[1]["tests"]);
-  const sixties = d3.range(data[2]["tests"]);
-  const seventies = d3.range(data[3]["tests"]);
-  const eighties = d3.range(data[4]["tests"]);
-  const nineties = d3.range(data[5]["tests"]);
-  const twenty = d3.range(data[6]["tests"]);
-  const twentyTen = d3.range(data[7]["tests"]);
+  const numbers = d3.range(Math.round((data[8]["tests"] / 331) * 100));
+  const fourties = d3.range(Math.ceil((data[0]["tests"] / 331) * 100));
+  const fifties = d3.range(Math.ceil((data[1]["tests"] / 331) * 100));
+  const sixties = d3.range(Math.ceil((data[2]["tests"] / 331) * 100) + 1);
+  const seventies = d3.range(Math.ceil((data[3]["tests"] / 331) * 100) + 1);
+  const eighties = d3.range(Math.ceil((data[4]["tests"] / 331) * 100) + 1);
+  const nineties = d3.range(Math.ceil((data[5]["tests"] / 331) * 100));
+  const twenty = d3.range(Math.ceil((data[6]["tests"] / 331) * 100));
+  const twentyTen = d3.range(Math.ceil((data[7]["tests"] / 331) * 100));
 
   fourties.forEach(d => {
     let div = document.createElement("div");

@@ -1,6 +1,4 @@
 // to dos
-
-// update active state style
 // experiment with background changing color. Sequential red scale for # of nuclear tests?
 // update music player style
 // length of song should be percentage of that decade's total tests. i.e, 1 minue presentation means that in year[i] there were  #tests / total #tests x 60 seconds
@@ -20,6 +18,17 @@ const display = {
   5: "nine",
   6: "twenty",
   7: "twentyTen"
+};
+
+const volumeLevel = {
+  0: 0.2,
+  1: 0.4,
+  2: 0.6,
+  3: 0.8,
+  4: 1,
+  5: 0.5,
+  6: 0.2,
+  7: 0.1
 };
 
 // music data
@@ -99,6 +108,9 @@ music.then(() => {
 
   function play(index) {
     player.src = songs[index].path;
+    player.volume = volumeLevel[index];
+    console.log(player.volume);
+    player.currentTime = 15;
     player.play();
   }
 
@@ -145,8 +157,8 @@ music.then(() => {
   // update text for song now playing
   function displaySong() {
     let content = `${songs[currentSong].decade}'s: ${
-      songs[currentSong].artist
-    }'s ${songs[currentSong].song}`;
+      songs[currentSong].song
+    } // ${songs[currentSong].artist}`;
     nowPlayingText.innerHTML = content;
   }
   displaySong();

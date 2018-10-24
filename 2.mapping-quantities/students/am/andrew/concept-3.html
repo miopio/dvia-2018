@@ -3,17 +3,48 @@
 <head>
   <title>Normalized Nuclear Tests by Decade</title>
   <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
   <link href="style.css" rel=" stylesheet">
 
   <!-- dependencies -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
   <style>
+    /* style override */
     .usa,
 .russia,
 .others {
 
   width: 240px;
+}
+
+
+/* Keyframes */
+@keyframes change-background {
+  12.5% {
+    background-color: #f8efe7;
+  }
+  25% {
+    background-color: #fc9272;
+  }
+  37.5% {
+    background-color: #fcbba1;
+  }
+  50% {
+    background-color: #ef3b2c;
+  }
+  62.5% {
+    background-color: #99000d;
+  }
+  75% {
+    background-color: #fc9272;
+  }
+  87.5% {
+    background-color: #fff5f0;
+  }
+  100% {
+    background-color: #fee0d2;
+  }
 }
   </style>
 </head>
@@ -68,15 +99,7 @@
       </div>
 
 
-      <p>🔊 Now playing the song of the <span id="now-playing"></span> 🔊</p>
-      <!-- <audio data-key="0" src="data/audio/frenesi.mp3"></audio>
-      <audio data-key="1" src="data/audio/thetwist.mp3"></audio>
-      <audio data-key="2" src="data/audio/heyjude.mp3"></audio>
-      <audio data-key="3" src="data/audio/mylife.mp3"></audio>
-      <audio data-key="4" src="data/audio/physical.mp3"></audio>
-      <audio data-key="5" src="data/audio/live.mp3"></audio>
-      <audio data-key="6" src="data/audio/yeah.mp3"></audio>
-      <audio data-key="7" src="data/audio/despacito.mp3"></audio> -->
+      <p>🔊 NOW PLAYING 🔊<br><br>The song of the <span id="now-playing"></span> </p>
 
       <audio id="player"></audio>
       <p>---</p>
