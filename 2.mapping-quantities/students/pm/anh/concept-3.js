@@ -141,7 +141,7 @@ function setup() {
      //Set saturation according to value 
       if (value > 0) {
         colorMode(HSB);
-        fill(0, value, 100);
+        fill(0, value, 50);
 
         ellipse(xAxisPosition, yAxisPosition, 20);
       }
