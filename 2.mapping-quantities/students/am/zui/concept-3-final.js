@@ -9,7 +9,7 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(4650, 1550);
+  createCanvas(4750, 2250);
   background('#e0e0d9');
 
   // pick one of the three data files to work with and call it 'data'
@@ -163,33 +163,33 @@ function setup(){
         N=10;
         nuclear=false;
     }
-    // for the 8 nuclear power states
-    if (nuclear){
-      // y-coord for the center
-      var coordY = 500-rowHeight*N;
-    } else {
-      var startX2 = 250+(start-1945)*colWidth;
-      var endX2 = 250+(end-1945)*colWidth;
-      var coordY2 = 620+k*20;
-      fill('#62592C');
-      // start of the war
-      noStroke();
-      ellipse(startX2, coordY2, 3, 3);
-      textStyle(NORMAL);
-      textSize(8);
-      textAlign(RIGHT);
-      text(state, startX2,coordY2-8);
-      // end of the war
-      noStroke();
-      ellipse(endX2, coordY2, 3, 3);
-      // textAlign(LEFT);
-      // text(state+' Out', endX2,coordY2-8);
-      // length of the war
-      strokeWeight(1.5);
-      stroke('#62592C');
-      line(250+(start-1945)*colWidth, coordY2, 250+(end-1945)*colWidth, coordY2);
-      k++;
-    }
+    // // for the 8 nuclear power states
+    // if (nuclear){
+    //   // y-coord for the center
+    //   var coordY = 500-rowHeight*N;
+    // } else {
+    //   var startX2 = 250+(start-1945)*colWidth;
+    //   var endX2 = 250+(end-1945)*colWidth;
+    //   var coordY2 = 620+k*20;
+    //   fill('#62592C');
+    //   // start of the war
+    //   noStroke();
+    //   ellipse(startX2, coordY2, 3, 3);
+    //   textStyle(NORMAL);
+    //   textSize(8);
+    //   textAlign(RIGHT);
+    //   text(state, startX2,coordY2-8);
+    //   // end of the war
+    //   noStroke();
+    //   ellipse(endX2, coordY2, 3, 3);
+    //   textAlign(LEFT);
+    //   text(statedata[state].WarName, endX2,coordY2-8);
+    //   // length of the war
+    //   strokeWeight(1.5);
+    //   stroke('#62592C');
+    //   line(250+(start-1945)*colWidth, coordY2, 250+(end-1945)*colWidth, coordY2);
+    //   k++;
+    // }
 
     var nWars = statedata[state].length;
     var gap = 50/(nWars+1);
@@ -202,7 +202,9 @@ function setup(){
       var startX = 250+(start-1945)*colWidth;
       var endX = 250+(end-1945)*colWidth;
       // for the 8 nuclear power states
-      if (N<8){
+      if (nuclear){
+        // y-coord for the center
+        var coordY = 500-rowHeight*N;
         var yPos = coordY-radius/2+(i+1)*gap;
         fill('#62592C');
         noStroke();
@@ -210,77 +212,40 @@ function setup(){
         ellipse(startX, yPos, 2.5, 2.5);
         // end of the war
         ellipse(endX, yPos, 2.5, 2.5);
+        textSize(8);
+        textAlign(LEFT);
+        textStyle(BOLD);
+        text(statedata[state][i].WarName, endX+5,yPos+3);
         // length of the war
         strokeWeight(1.5);
         stroke('#62592C');
         line(250+(start-1945)*colWidth, yPos, 250+(end-1945)*colWidth, yPos);
+      } else {
+        var startX2 = 250+(start-1945)*colWidth;
+        var endX2 = 250+(end-1945)*colWidth;
+        var coordY2 = 620+k*20;
+        fill('#62592C');
+        // start of the war
+        noStroke();
+        ellipse(startX2, coordY2, 3, 3);
+        textStyle(NORMAL);
+        textSize(8);
+        textAlign(RIGHT);
+        text(state, startX2-5,coordY2+2);
+        // end of the war
+        noStroke();
+        ellipse(endX2, coordY2, 3, 3);
+        textAlign(LEFT);
+        textStyle(BOLD);
+        text(statedata[state][i].WarName, endX2+5,coordY2+2);
+        // length of the war
+        strokeWeight(1.5);
+        stroke('#62592C');
+        line(250+(start-1945)*colWidth, coordY2, 250+(end-1945)*colWidth, coordY2);
+        k++;
       }
     }
   }
-  //
-  // for (var war in wardata){
-  //   // for each war
-  //   var j=0;
-  //   for (var i=0; i<wardata[war].length; i++){
-  //     var nuclear = false;
-  //     var state = wardata[war][i].StateName;
-  //     var start = wardata[war][i].StartYear;
-  //     var end = wardata[war][i].EndYear;
-  //     // row position for each state
-  //     switch (state) {
-  //       case "United States":
-  //         nuclear = true;
-  //         break;
-  //       case "Russia":
-  //         nuclear = true;
-  //         break;
-  //       case "United Kingdom":
-  //         nuclear = true;
-  //         break;
-  //       case "France":
-  //         nuclear = true;
-  //         break;
-  //       case "China":
-  //         nuclear = true;
-  //         break;
-  //       case "India":
-  //         nuclear = true;
-  //         break;
-  //       case "Pakistan":
-  //         nuclear = true;
-  //         break;
-  //       case "North Korea":
-  //         nuclear = true;
-  //         break;
-  //       default: nuclear = false;
-  //     }
-  //     // for the non nuclear power states
-  //     if (!nuclear){
-  //       var startX2 = 250+(start-1945)*colWidth;
-  //       var endX2 = 250+(end-1945)*colWidth;
-  //       var coordY2 = 620+j*20;
-  //       fill('#62592C');
-  //       // start of the war
-  //       noStroke();
-  //       ellipse(startX2, coordY2, 3, 3);
-  //       textStyle(NORMAL);
-  //       textSize(8);
-  //       textAlign(RIGHT);
-  //       text(state, startX2,coordY2-8);
-  //       // end of the war
-  //       noStroke();
-  //       ellipse(endX2, coordY2, 3, 3);
-  //       // textAlign(LEFT);
-  //       // text(state+' Out', endX2,coordY2-8);
-  //       // length of the war
-  //       strokeWeight(1.5);
-  //       stroke('#62592C');
-  //       line(250+(start-1945)*colWidth, coordY2, 250+(end-1945)*colWidth, coordY2);
-  //       j++;
-  //     }
-  //   }
-  // }
-
 
 // end
 }
