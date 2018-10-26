@@ -45,14 +45,17 @@ function setup(){
   console.log('maxWarheads', maxWarheads)
 
 
+  // set the size of each individual square/the spacing of sqaures within each grid
+  var dim = 50
+
+
   // draw the number of bombs in the arsenal for each country & year vs the all-time max for just that country
   var y = 100
   for (var c=1; c<arsenal.getColumnCount(); c++){
     var country = cols[c]
     var x = 50
-    var dim = 100
     fill(255)
-    text(cols[c], x, y + 20)
+    text(cols[c], x, y + 25)
     x += 100
 
     for (var r=0; r<arsenal.getRowCount(); r++){
@@ -61,20 +64,20 @@ function setup(){
 
       var maxPerCountry = maxWarheads[country]
 
-      if (maxPerCountry > 0){       
+      if (maxPerCountry > 0){
         var palette = Brewer.sequential('Reds', 9, 0, maxPerCountry)
         var color = palette.colorForValue(numBombs)
         fill(color)
       }else{
         fill(255)
-  
+
       }
       rect(x, y, dim, dim)
 
-      x += 50
+      x += dim
     }
 
-    y+=40
+    y += dim
   }
 
 
@@ -83,9 +86,8 @@ function setup(){
   for (var c=1; c<arsenal.getColumnCount(); c++){
     var country = cols[c]
     var x = 50
-    var dim = 100
     fill(255)
-    text(cols[c], x, y + 20)
+    text(cols[c], x, y + 25)
     x += 100
 
 
@@ -98,10 +100,10 @@ function setup(){
       var color = palette.colorForValue(numBombs)
       fill(color)
       rect(x, y, dim, dim)
-      x += 50
+      x += dim
     }
 
-    y+= 40
+    y += dim
   }
 
   // draw the number of tests for each country & year vs the all-time max for just that country
@@ -110,7 +112,7 @@ function setup(){
     var country = cols[c]
     var x = 50
     fill(255)
-    text(cols[c], x, y + 20)
+    text(cols[c], x, y + 25)
     x += 100
 
     for (var r=0; r<tests.getRowCount(); r++){
@@ -126,10 +128,10 @@ function setup(){
       fill(255) // when maxPerCountry==0
       }
       rect(x, y, dim, dim)
-      x += 50
+      x += dim
     }
 
-    y+=40
+    y += dim
   }
 
 
@@ -139,7 +141,7 @@ function setup(){
     var country = cols[c]
     var x = 50
     fill(255)
-    text(cols[c], x, y + 20)
+    text(cols[c], x, y + 25)
     x += 100
 
     for (var r=0; r<tests.getRowCount(); r++){
@@ -151,39 +153,36 @@ function setup(){
       var color = palette.colorForValue(numTests)
       fill(color)
       rect(x, y, dim, dim)
-      x += 50
+      x += dim
     }
 
-    y+=40
+    y += dim
    }
-  }
 
-function draw(){
-strokeWeight(5)
- line(400, 100, 400, 2100)
- line(900, 100, 900, 2100)
- line(1400, 100, 1400, 2100)
- line(1900, 100, 1900, 2100)
- line(2400, 100, 2400, 2100)
- line(2900, 100, 2900, 2100)
- line(3400, 100, 3400, 2100)
+   strokeWeight(5)
+   line(400, 100, 400, 2100)
+   line(900, 100, 900, 2100)
+   line(1400, 100, 1400, 2100)
+   line(1900, 100, 1900, 2100)
+   line(2400, 100, 2400, 2100)
+   line(2900, 100, 2900, 2100)
+   line(3400, 100, 3400, 2100)
 
-  textSize(28)
-  fill(255)
-  text("1950", 380, 50)
-  text("1960", 880, 50)
-  text("1970", 1380, 50)
-  text("1980", 1880, 50)
-  text("1990", 2380, 50)
-  text("2000", 2880, 50)
-  text("2010", 3380, 50)
-  text("Each country's yearly arsenal vs its all-time max", 150, 90)
-  text("Each country's yearly arsenal vs any country's all-time max", 150, 590)
-  text("Each country's yearly tests vs its all-time max", 150, 1090)
-  text("Each country's yearly tests vs any country's all-time max", 150, 1590)
-  textSize(54)
-  fill(255, 0, 0)
-  text("NUCLEAR WEAPONS ARSENALS AND TESTS SINCE THE DAWN OF THE ATOMIC AGE", 150, 2090)
+   textSize(28)
+   fill(255)
+   text("1950", 380, 50)
+   text("1960", 880, 50)
+   text("1970", 1380, 50)
+   text("1980", 1880, 50)
+   text("1990", 2380, 50)
+   text("2000", 2880, 50)
+   text("2010", 3380, 50)
+   text("Each country's yearly arsenal vs its all-time max", 150, 90)
+   text("Each country's yearly arsenal vs any country's all-time max", 150, 590)
+   text("Each country's yearly tests vs its all-time max", 150, 1090)
+   text("Each country's yearly tests vs any country's all-time max", 150, 1590)
+   textSize(54)
+   fill(255, 0, 0)
+   text("NUCLEAR WEAPONS ARSENALS AND TESTS SINCE THE DAWN OF THE ATOMIC AGE", 150, 2125)
 }
-
 
