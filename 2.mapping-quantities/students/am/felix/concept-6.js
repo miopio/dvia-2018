@@ -83,18 +83,19 @@ d3.csv(`data/johnstons-archive.csv`)
     if (myMaxSum < decade.meanSum) {
       myMaxSum = decade.meanSum
     }
-
+    // console.log(dataFilteredByDecade);
     // Node depth: 1, countries
     // uniqueCountries = arrayOfUniqueValues(data, 'country');
     arrayOfUniqueValues(data, 'country').forEach((e, i) => {
-      decade.children.push({name: e, children: []});
+      // decade.children.push({name: e, children: []});
+      decade.children = dataFilteredByDecade;
     })
 
     // Node depth: 2, tests
-    decade.children.forEach((e, i) => {
-      let dataFilteredByDecadeAndCountry = aIncludesValueBAtKeyC(dataFilteredByDecade, [e.name], 'country');
-      e.children = dataFilteredByDecadeAndCountry;
-    })
+    // decade.children.forEach((e, i) => {
+    //   let dataFilteredByDecadeAndCountry = aIncludesValueBAtKeyC(dataFilteredByDecade, [e.name], 'country');
+    //   e.children = dataFilteredByDecadeAndCountry;
+    // })
 
     // Finally push the temporary decade object to the cleanerData array
     cleanerData.push(decade);
@@ -102,13 +103,58 @@ d3.csv(`data/johnstons-archive.csv`)
   // console.log(cleanerData);
 
   cleanerData.forEach((e, i) => {
-    console.log(e);
-    let scaleFactor = e.meanSum / myMaxSum;
-    createCirclePack(e, i, window.innerHeight*0.85*(scaleFactor));
+    // console.log(e);
+    let scaleFactor = Math.sqrt(e.meanSum / myMaxSum);
+    createCirclePack(e, i, window.innerHeight*0.75*(scaleFactor));
     // createCirclePack(e, i, 315);
   })
   d3.select('#tests')
   .attr('height', window.innerHeight)
+
+  console.log(cleanerData);
+
+  d3.selectAll('.label')
+    .transition()
+    .delay(1000)
+    .duration(1000)
+    .style('color', 'rgba(0,0,0,1)')
+
+    // if (d.data.country == 'usa') {
+    //   // console.log('yes');
+    //   return 'rgba(55,126,184,0.9)'
+    // } else if (d.data.country == 'ussr') {
+    //   return 'rgba(228,26,28,0.9)'
+    // } else if (d.data.country == 'fr') {
+    //   return 'rgba(77,175,74,0.9)'
+    // } else if (d.data.country == 'uk') {
+    //   return 'rgba(152,78,163,0.9)'
+    // } else if (d.data.country == 'prc') {
+    //   return 'rgba(255,127,0,0.9)'
+    // }
+
+    const countriesAndColors = [
+      ['USA', 'rgba(55,126,184,1)', 'usa', false],
+      ['USSR', 'rgba(228,26,28,1)', 'ussr', false],
+      ['France', 'rgba(77,175,74,1)', 'fr', false],
+      ['UK', 'rgba(152,78,163,1)', 'uk', false],
+      ['China', 'rgba(255,127,0,1)', 'prc', false],
+    ]
+
+countriesAndColors.forEach((e, i) => {
+  d3.select('#legend')
+    .append('span').text(`${e[0]}`).attr('country', `${e[2]}`).on('click', () => {
+      colorCircles(e)
+    })
+    .transition()
+    .delay(2000)
+    .duration(1000)
+    .style('background-color', 'rgba(200, 200, 200, 1)')
+    .style('color', 'rgba(255, 255, 255, 1)')
+})
+//`${e[1]}`
+//rgba(200, 200, 200, 1)
+
+
 
   // console.log(aIncludesValueBAtKeyC(data, ['ussr'], 'country'));
 
@@ -123,7 +169,7 @@ let createCirclePack = (e, i, relativeDiameter) => {
     .insert('svg', '.label')
       .attr('width', relativeDiameter)
       .attr('height', relativeDiameter),
-    margin = 20,
+    margin = 0,
     diameter = relativeDiameter,
     g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
   // This is where the color scheme is defined
@@ -149,88 +195,22 @@ let createCirclePack = (e, i, relativeDiameter) => {
 
   let circle = g.selectAll("circle")
     .data(nodes)
-    .enter().append("circle")
+    .enter()
+    .append("circle")
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
+      .attr('country', function(d) {
+        // console.log(d.data.country);
+        return d.data.country;
+      })
+      .transition()
+      .duration(2000)
+      .ease(d3.easeExpInOut)
       .style("fill", function(d) {
-        // console.log(d.depth, d.data.name);
-        // console.log(d.data.height);
-        if (d.depth == 2) {
-          if (d.data.size == 1) {
-            console.log('yes');
-            if (d.data.height < 0) {
-              return d3.rgb(171,217,233).darker(2)
-            }
-            else {
-              return d3.rgb(253,204,138).darker(2)
-            }
-           }
-           else {
-             if (d.data.height < 0) {
-               return d3.rgb(171,217,233);
-             }
-             else {
-              return d3.rgb(253,204,138);
-            }
-          }
-        }
-        else {
-          return 'rgba(0,0,0,0)';
-        }
-      })
-      .style('stroke', function(d) {
-        if (d.depth == 1) {
-          if (d.data.name == 'usa') {
-            // console.log('yes');
-            return 'rgba(55,126,184,0.9)'
-          } else if (d.data.name == 'ussr') {
-            return 'rgba(228,26,28,0.9)'
-          } else if (d.data.name == 'fr') {
-            return 'rgba(77,175,74,0.9)'
-          } else if (d.data.name == 'uk') {
-            return 'rgba(152,78,163,0.9)'
-          } else if (d.data.name == 'prc') {
-            return 'rgba(255,127,0,0.9)'
-          }
-        } else if (d.depth == 0) {
-          return '#eee';
-        }
-      })
-      .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
-
-  // TEXT
-  let text = g.selectAll("text")
-    .data(nodes)
-    .enter().append("text")
-      .attr("class", "label")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-      .text(function(d) { return d.data.name; });
+        if (d.depth == 1) {return 'rgba(200, 200, 200, 1)'}});
 
   let node = g.selectAll("circle,text");
 
-  svg
-      // .style("background", color(-1))
-      .on("click", function() { zoom(root); });
-
   zoomTo([root.x, root.y, root.r * 2 + margin]);
-
-  function zoom(d) {
-    let focus0 = focus; focus = d;
-
-    let transition = d3.transition()
-        .duration(d3.event.altKey ? 7500 : 750)
-        .tween("zoom", function(d) {
-          let i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
-          return function(t) { zoomTo(i(t)); };
-        });
-
-    // TEXT
-    transition.selectAll("text")
-      .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
-        .style("fill-opacity", function(d) { return d.parent === focus ? 1 : 0; })
-        .on("start", function(d) { if (d.parent === focus) this.style.display = "inline"; })
-        .on("end", function(d) { if (d.parent !== focus) this.style.display = "none"; });
-  }
 
   function zoomTo(v) {
     let k = diameter / v[2]; view = v;
@@ -238,9 +218,48 @@ let createCirclePack = (e, i, relativeDiameter) => {
       return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")";
     });
     circle.attr("r", function(d) {
-      // console.log(d);
       return d.r * k;
     });
   }
 
+}
+
+function colorCircles(e) {
+  if (!e[3]) {
+    d3.selectAll('circle').each(function(d,i) {
+      if (d3.select(this).attr('country') == e[2]) {
+        d3.select(this)
+          .transition()
+          .duration(1500)
+          .style('fill', `${e[1]}`)
+      }
+    })
+    d3.selectAll('span').each(function(d,i) {
+      if (d3.select(this).attr('country') == e[2]) {
+        d3.select(this)
+          .transition()
+          .duration(250)
+          .style('background-color', `${e[1]}`)
+      }
+    })
+    e[3] = true;
+  } else {
+    d3.selectAll('circle').each(function(d,i) {
+      if (d3.select(this).attr('country') == e[2]) {
+        d3.select(this)
+          .transition()
+          .duration(500)
+          .style('fill', 'rgba(200, 200, 200, 1)')
+      }
+    })
+    d3.selectAll('span').each(function(d,i) {
+      if (d3.select(this).attr('country') == e[2]) {
+        d3.select(this)
+          .transition()
+          .duration(250)
+          .style('background-color', 'rgba(200, 200, 200, 1)')
+      }
+    })
+    e[3] = false;
+  }
 }
