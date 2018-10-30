@@ -20,7 +20,7 @@ var mymap;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
-    table = loadTable("data/all_month.csv", "csv", "header");
+    table = loadTable("./data/4.5_month.csv", "csv", "header");
 }
 
 function setup() {
@@ -48,6 +48,8 @@ function setupMap(){
     so for example L.map('mapid') or L.circle([lat, long])
     */
 
+    console.log(table.getColumnCount());
+    console.log(table.getRowCount());
     // create your own map
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
 
@@ -82,14 +84,17 @@ function drawDataPoints(){
     depthMin = 0.0;
     depthMax = getColumnMax("depth");
     console.log('depth range:', [depthMin, depthMax])
+    var numberOfShades = 9;
+    var mpalette = Brewer.sequential('Blues', numberOfShades, 0, magnitudeMax)
+    var dpalette = Brewer.sequential('Oranges', numberOfShades, 0, depthMax)
 
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
-            fillOpacity: 0.25,  // use some transparency so we can see overlaps
+            color: mpalette.colorForValue(magnitudes[i]), //'green',      // the dot stroke color
+            fillColor: dpalette.colorForValue(depths[i]), //'#f03', // the dot fill color
+            fillOpacity: 0.5,  // use some transparency so we can see overlaps
             radius: magnitudes[i] * 40000
         });
 
