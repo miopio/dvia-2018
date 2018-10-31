@@ -15,7 +15,8 @@
     **v3**  
     * Width of arcs: length/period of the war
     * Arc line weight: number of stated involved in the war  
-    **v4**  
-    * Width of arcs: length/period of the war
-    * Arc line weight: number of stated involved in the war
-    * Mouse over to show text (**NOT WORKING?!!! WHY???**)
+    **final**  
+    * Empty circle (uncolored) to represent 0 test
+    * Only count total tests (no division of above/underground)
+    * Variance in y-coords (lines at different vertical levels) inside a circle to represent different wars involving the same state
+    * Added non nuclear power states' war involvement at the bottom

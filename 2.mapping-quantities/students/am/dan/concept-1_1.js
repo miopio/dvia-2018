@@ -17,7 +17,7 @@ function setup() {
   createCanvas(3300, 800);
   frameRate(25);
   //background(60,60,50);
-  background(40,40,70);
+  background(10,10,10);
   palette = Brewer.divergent('RdYlGn', Infinity, 0, 50, 100);
 
   print(usaNdata.tests["United States"]);
