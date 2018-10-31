@@ -28,6 +28,9 @@ function setup(){
     highest = Math.max(sum, highest)
   }
 
+  console.log(years)
+  console.log(sum)
+
   // draw a box for each year and set its color based on the total number of tests
   var x = 100
   var y = 100

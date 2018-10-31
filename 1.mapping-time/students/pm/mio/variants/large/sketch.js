@@ -30,7 +30,7 @@ function draw() {
 var x = 0 // starting x position to draw
 var y = 0  // starting y position to draw
 var barWidth = 5 // width of each bar
-var maxHeight = 597 // maximum height of each bar (the actual height will always be ≤ this)
+var maxHeight = 597 // maximum height of columns
 
 function setup() {
   createCanvas(251, 600)

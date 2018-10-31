@@ -1,95 +1,375 @@
-var totals;
-var atmospheric;
-var underground;
-var yearNum = 0;
+// data sets
 
-function preload() {
-  totals = loadJSON("data/totals.json");
-  atmospheric = loadJSON("data/atmospheric.json");
-  underground = loadJSON("data/underground.json");
-}
+let songs = [];
+let currentSong = 0;
 
-function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
-  background(230);
-  textSize(50);
-  text(yearNum + 1940, 50, 100);
-  // pick one of the three data files to work with and call it 'data'
-  var data = totals;
+const display = {
+  0: "four",
+  1: "five",
+  2: "six",
+  3: "seven",
+  4: "eight",
+  5: "nine",
+  6: "twenty",
+  7: "twentyTen"
+};
 
-  // log the whole dataset to the console so we can poke around in it
-  print(data);
-  // usa = new Country(USA, 30, 500);
+// music data
+const music = d3.csv("data/music.csv", d => {
+  songs.push({
+    decade: d["decade"],
+    artist: d["artist"],
+    song: d["song"],
+    path: d["path"]
+  });
+});
 
-  // set up typography
-  textFont("Rokkitt");
-  textSize(16);
-  fill(30);
-  noStroke();
+// load nuclear data
+// us data
+const usaData = d3
+  .csv("data/decades/usa_decade.csv", d => {
+    return {
+      tests: +d["tests"],
+      decade: d["decade"]
+    };
+  })
+  .then(data => {
+    // console.log(data);
+    usaChart(data);
+  });
 
-  //usa
-  textSize(data.tests["United States"][yearNum] * 5);
-  text("USA", 50, 400);
-  console.log(data.tests["United States"][yearNum]);
+// russia data
+const russiaData = d3
+  .csv("data/decades/russia_decade.csv", d => {
+    return {
+      tests: +d["tests"],
+      decade: d["decade"]
+    };
+  })
+  .then(data => {
+    // console.log(data);
+    russiaChart(data);
+  });
 
-  //Russia
-  textSize(data.tests["Russia"][yearNum] * 5);
-  text("Russia", 800, 100);
-  console.log(data.tests["Russia"][yearNum]);
+// all other country data
+const othersData = d3
+  .csv("data/decades/others_decade.csv", d => {
+    return {
+      tests: +d["tests"],
+      decade: d["decade"]
+    };
+  })
+  .then(data => {
+    // console.log(data);
+    othersChart(data);
+  });
 
-  //China
-  textSize(data.tests["China"][yearNum] * 5);
-  text("China", 900, 300);
-  console.log(data.tests["China"][yearNum]);
-
-  //France
-  textSize(data.tests["France"][yearNum] * 5);
-  text("France", 500, 200);
-  console.log(data.tests["France"][yearNum]);
-
-  // var x = 200;
-  // var y = 100;
-  // var rowHeight = 60;
-  // var colWidth = 40;
-
-  // draw country name labels on the left edge of the table
-  // textStyle(BOLD);
-  // textAlign(RIGHT);
-  // for (var country in data.tests) {
-  //   text(country, x - colWidth, y);
-  //   textSize(data.tests[country][2]);
-  //   y += rowHeight;
-  // }
-
-  // textStyle(NORMAL);
-  // textAlign(CENTER);
-  // for (var i = 0; i < data.years.length; i++) {
-  //   y = 100;
-
-  //   // draw the year labels in the header row
-  //   var year = data.years[i];
-  //   fill(30);
-  //   text(year, x, y - rowHeight);
-
-  //   // print out the total for each country, one row at a time
-  //   for (var country in data.tests) {
-  //     var value = data.tests[country][i];
-  //     text(value, x, y);
-  //     y += rowHeight;
-  //   }
-
-  //   x += colWidth;
-  // }
-}
-
-function draw() {
-  frameRate(1);
-  console.log(yearNum);
-  if (yearNum < 2017 - 1940) {
-    yearNum++;
-  } else {
-    yearNum = 0;
+music.then(() => {
+  // console.log(songs[currentSong].path);
+  // variables for current decade focus
+  // const thumbnails = document.querySelectorAll(".decade");
+  const player = document.getElementById("player");
+  const nowPlayingText = document.getElementById("now-playing");
+  function preloadAudio(path) {
+    var audio = new Audio();
+    // once this file loads, it will call loadedAudio()
+    // the file will be kept by the browser as cache
+    audio.addEventListener("canplaythrough", loadedAudio, false);
+    audio.src = path;
   }
 
-  setup();
-}
+  let loaded = 0;
+  function loadedAudio() {
+    // this will be called every time an audio file is loaded
+    // we keep track of the loaded files vs the requested files
+    loaded++;
+    if (loaded == songs.length) {
+      // all have loaded
+      init();
+    }
+  }
+
+  function play(index) {
+    player.src = songs[index].path;
+    player.currentTime = 15;
+    player.play();
+  }
+
+  function init() {
+    // once the player ends, play the next one
+    player.onended = function() {
+      // thumbnails[currentSong].classList.remove("playing");
+      currentSong++;
+      displaySong();
+      setDisplay();
+      // thumbnails[currentSong].classList.add("playing");
+      if (currentSong >= songs.length) {
+        // end
+        return;
+      }
+      play(currentSong);
+    };
+    // play the first file
+    play(currentSong);
+    // set the first thumbnail playing class
+    // thumbnails[currentSong].classList.add("playing");
+    // set the first set of active blocks
+    var items = document.querySelectorAll(`.${display[currentSong]}`);
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.add("playing");
+    }
+  }
+
+  // set playing class for all active test blocks
+  function setDisplay() {
+    var oldItems = document.querySelectorAll(`.${display[currentSong - 1]}`);
+    console.log(oldItems);
+
+    for (var i = 0; i < oldItems.length; i++) {
+      oldItems[i].classList.remove("playing");
+    }
+    var items = document.querySelectorAll(`.${display[currentSong]}`);
+    console.log(items);
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.add("playing");
+    }
+  }
+
+  // update text for song now playing
+  function displaySong() {
+    let content = `${songs[currentSong].decade}'s: ${
+      songs[currentSong].song
+    } // ${songs[currentSong].artist}`;
+    nowPlayingText.innerHTML = content;
+  }
+  displaySong();
+
+  // we start preloading all the audio files
+  for (let currentSong in songs) {
+    preloadAudio(songs[currentSong].path);
+  }
+});
+
+// use data to display
+// define globals
+const usa = document.querySelector(".usa");
+const russia = document.querySelector(".russia");
+const others = document.querySelector(".others");
+
+// usa blocks
+let usaChart = data => {
+  // waffle chart code
+  const normalize = d3.range(100);
+  const numbers = d3.range(data[8]["tests"]);
+  const fourties = d3.range(data[0]["tests"]);
+  const fifties = d3.range(data[1]["tests"]);
+  const sixties = d3.range(data[2]["tests"]);
+  const seventies = d3.range(data[3]["tests"]);
+  const eighties = d3.range(data[4]["tests"]);
+  const nineties = d3.range(data[5]["tests"]);
+  const twenty = d3.range(data[6]["tests"]);
+  const twentyTen = d3.range(data[7]["tests"]);
+  // console.log(eighties);
+  // console.log(numbers.length);
+  // console.log(twentyTen);
+  // console.log(twenty);
+  // console.log(nineties);
+  // console.log(eighties);
+  // console.log(seventies);
+  // console.log(sixties);
+  // console.log(fifties);
+  // console.log(fourties);
+
+  // try to get playing class to toggle on
+  // const niners = document.querySelectorAll(".nine")[0];
+  // console.log(niners);
+  // d3.select(niners).on("click", function() {
+  //   console.log(this);
+  //   d3.selectAll(niners)
+  //     .selectAll("div")
+  //     .classed("inactive", true);
+  //   d3.select(this).classed("playing", true);
+  // });
+
+  //
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("four");
+  });
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("five");
+  });
+
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("six");
+  });
+
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("seven");
+  });
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("eight");
+  });
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("nine");
+  });
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("twenty");
+  });
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("twentyTen");
+  });
+
+  // let div = document.createElement("div");
+  // content.appendChild(div);
+  // div.classList.add("item");
+
+  // usa
+  //   .selectAll("div")
+  //   .data(twentyTen)
+  //   .enter()
+  //   .append("div")
+  //   .attr("class", "twentyTen");
+};
+
+// russia blocks
+let russiaChart = data => {
+  // waffle chart code
+  const normalize = d3.range(100);
+  const numbers = d3.range(data[8]["tests"]);
+  const fourties = d3.range(data[0]["tests"]);
+  const fifties = d3.range(data[1]["tests"]);
+  const sixties = d3.range(data[2]["tests"]);
+  const seventies = d3.range(data[3]["tests"]);
+  const eighties = d3.range(data[4]["tests"]);
+  const nineties = d3.range(data[5]["tests"]);
+  const twenty = d3.range(data[6]["tests"]);
+  const twentyTen = d3.range(data[7]["tests"]);
+  // console.log(twentyTen);
+  // console.log(twenty);
+  // console.log(nineties);
+  // console.log(eighties);
+  // console.log(seventies);
+  // console.log(sixties);
+  // console.log(fifties);
+  // console.log(fourties);
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("four");
+  });
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("five");
+  });
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("six");
+  });
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("seven");
+  });
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("eight");
+  });
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("nine");
+  });
+
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("twenty");
+  });
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("twentyTen");
+  });
+};
+
+// others blocks
+let othersChart = data => {
+  // waffle chart code
+  const normalize = d3.range(100);
+  const numbers = d3.range(data[8]["tests"]);
+  const fourties = d3.range(data[0]["tests"]);
+  const fifties = d3.range(data[1]["tests"]);
+  const sixties = d3.range(data[2]["tests"]);
+  const seventies = d3.range(data[3]["tests"]);
+  const eighties = d3.range(data[4]["tests"]);
+  const nineties = d3.range(data[5]["tests"]);
+  const twenty = d3.range(data[6]["tests"]);
+  const twentyTen = d3.range(data[7]["tests"]);
+
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("four");
+  });
+
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("five");
+  });
+
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("six");
+  });
+
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("seven");
+  });
+
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("eight");
+  });
+
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("nine");
+  });
+
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("twenty");
+  });
+
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("twentyTen");
+  });
+};

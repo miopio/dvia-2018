@@ -6,7 +6,7 @@ var nuclearImage= [];
 function preload(){
   usaNdata = loadJSON('data/totals.json');
   usaTrustTable= loadTable('data/public-trust-in-government.csv', 'csv', 'header');
-   img = loadImage('data/nuclear.svg');
+   img = loadImage('assets/nuclear.svg');
 }
 
 function setup(){

@@ -6,15 +6,14 @@
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
 <style>
-body { height:70%; margin:0; padding:0; background:#262626;}
+body { height:100%; margin:0; padding:0; background:#212121;}
 body { display:flex; justify-content:center; align-items:center; }
-#map { position:absolute; top:0; bottom:0; width:76%; }
+#map { position:absolute; top:0; bottom:0; width:80%; }
 </style>
 <script src="lib/lodash.min.js"></script>
 <script src="lib/brewer.js"></script>
 <script src="lib/p5.min.js"></script>
 <script src="lib/p5.dom.min.js"></script>
-
 
 <script language="javascript" type="text/javascript" src="concept-3.js"></script>
 </head>
@@ -27,7 +26,7 @@ const map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/bsakbar/cjmy8euiq1w7h2spktfugcpqu',
 center: [20.201302, 8.841081],
-zoom: 1.2,
+zoom: 1.3,
 noWrap: true,
 interactive: false
 });
