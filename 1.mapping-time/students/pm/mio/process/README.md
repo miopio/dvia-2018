@@ -28,6 +28,8 @@ Initially the idea was to visualize the traces of these various rhythms in 2D li
 ![Prototype A](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/DVIA2018_project1_protytpe.png)
 
 The final product would/should look like a living organism with all of the different components moving at their respective rates.
+<<<<<<< HEAD
+=======
 
 ## Update
 Instead of just objects changing shapes in a particular rate, I needed to create something that would spatially and visually communicate the passing of time in some way.After multiple iterations of visualizations that were too complicated (at least for a beginner coder like me), I decided to stick with the idea of filling in squares/shapes at the various rates of physiological rhythms I wanted to visualize:
@@ -48,3 +50,4 @@ Instead of just objects changing shapes in a particular rate, I needed to create
 
  What it looks like all together:
  ![What it looks like all together](https://github.com/samizdatco/dvia-2018/blob/master/1.mapping-time/students/pm/mio/process/Screen%20Shot%202018-09-26%20at%208.50.10%20PM.png)
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022

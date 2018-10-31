@@ -23,9 +23,9 @@ function setup() {
 
   var radius = min(width, height) / 2.1; // this is the maximum possible radius
   secondsRadius = radius * 0.4
-  minutesRadius = radius * 0.35
-  hoursRadius = radius * 0.3
-  daysRadius = radius * 0.25
+  minutesRadius = radius * 0.2
+  hoursRadius = radius * 0.12
+  daysRadius = radius * 0.08
 
   cx = width / 2
   cy = height / 2

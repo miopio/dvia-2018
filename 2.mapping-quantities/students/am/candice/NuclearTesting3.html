@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+		<script src="all_data.js"></script>
+        <script src="accidents1.js"></script>
+		<script>
+/********************************************/
+const backgroundColor = "black",
+	  fontColor = "white",
+	  lineColor = "#333",
+	  atmosphericColor = "#FAC203",
+	  undergroundColor = "#FA7038",
+	  totalsColor = "#FA7038",
+      accidentColor = "#F50C0C",
+	  vertSpaceForDates = 30,
+      vertSpaceForRows = 50,
+      horzSpaceForCountryNames = 100,
+      horzSpaceForEachDataPoint = 25,
+	  stickLength = vertSpaceForRows/4,
+	  maxOpacity = 255, //
+	  minOpacity = 65,// change opacity here
+      maxTotalHeight = 300,
+      minTotalHeight = 1,
+      accidentHeight = 20,
+      yearFont = "Arial",
+      yearFontSize = 11,
+	  countryFont = "Arial",
+	  countryFontSize = 11,
+	  paddingBetweenCountryNamesAndFirstDate = 10,
+	  paddingBetweenDatesAndFirstRow = 10,
+	  paddingTop = 70,
+	  paddingRight = 25,
+	  paddingBottom = 10,
+	  paddingLeft = 20;
+
+var aColor, uColor, tColor, nColor, largestDataValue, smallestDataValue;
+//var data;
+
+function preload(){
+	//data = loadJSON("./all.json");
+}
+
+function setup(){
+	//get data range
+	data.years.forEach(year => {
+		data.countries.forEach(country => {
+			let atmospheric = year.details[country].atmospheric,
+				underground = year.details[country].underground,
+				larger = Math.max(atmospheric, underground),
+				smaller = Math.min(atmospheric, underground);
+			if (!largestDataValue ||  larger > largestDataValue){
+				largestDataValue = larger;
+			}
+			if (!smallestDataValue || (smaller > 0 && smaller < smallestDataValue)){
+				smallestDataValue = smaller;
+			}
+		});
+	});
+  	//figure out rows and columns
+  	var countries = data.countries.length, // allows for scrolling for the browser
+        rows = countries + 1, //include row for accidents at the end of totals
+        // canvasHeight = windowHeight
+				// canvasWidth = windowWidth
+				canvasHeight = paddingTop + vertSpaceForDates + paddingBetweenDatesAndFirstRow + (rows * vertSpaceForRows) + maxTotalHeight + paddingBottom,
+        dateRange = data.last - data.first + 1,
+        canvasWidth = paddingLeft + horzSpaceForCountryNames + paddingBetweenCountryNamesAndFirstDate + (dateRange * horzSpaceForEachDataPoint) + paddingRight;
+	createCanvas(canvasWidth, canvasHeight);
+	//color and opacity
+	aColor = color(atmosphericColor);
+	uColor = color(undergroundColor);
+	tColor = color(totalsColor);
+  	nColor = color(accidentColor);
+  	/*
+	aColor._array[3] = opacity/255;
+	uColor._array[3] = opacity/255;
+	tColor._array[3] = opacity/255;
+    */
+}
+
+function draw(){
+	background(backgroundColor);
+  	//draw dates
+  	drawDates();
+  	//draw rows
+  	data.countries.forEach(drawRow);
+	drawTotals();
+	//
+  	noLoop();
+}
+
+function drawDates(){
+	fill(fontColor);
+  	textAlign(CENTER, CENTER);
+  	textFont(yearFont);
+  	textSize(yearFontSize);
+  	let yearY = paddingTop + vertSpaceForDates/2,
+        yearX = paddingLeft + horzSpaceForCountryNames + paddingBetweenCountryNamesAndFirstDate + horzSpaceForEachDataPoint/2;
+  	for (let year=data.first; year<=data.last; year++){
+    	push(); // saves the context. The grid used as the foundation of the canvas- saves the location and positon
+      	translate(yearX, yearY); // //move the 0,0 point from upper-left corner to new coordinates
+      	rotate(-Math.PI/2); //rotate grid around that point
+      	text(year, 0, 0);
+      	pop(); // Brings it back
+      	yearX += horzSpaceForEachDataPoint;
+    }
+}
+
+function drawRow(country, index){
+	//country name
+	fill(fontColor);
+	textAlign(RIGHT, CENTER);
+	textFont(countryFont);
+	textSize(countryFontSize);
+	let countryX = paddingLeft + horzSpaceForCountryNames,
+		countryY = paddingTop + vertSpaceForDates + paddingBetweenDatesAndFirstRow + vertSpaceForRows/2 + vertSpaceForRows * index;
+	text(country, countryX, countryY);
+	//horizontal line
+
+	let lineX = paddingLeft + horzSpaceForCountryNames + paddingBetweenCountryNamesAndFirstDate,
+		lineY = countryY;
+	stroke(lineColor);
+	line(lineX, lineY, width - paddingRight, lineY);
+
+	//data points
+	drawData(country, countryY);
+}
+
+function drawData(country, countryY){
+	let countryX = paddingLeft + horzSpaceForCountryNames + paddingBetweenCountryNamesAndFirstDate;
+	data.years.forEach(year => {
+		//atmospheric
+		if (year.details[country].atmospheric){
+			let opacity = map(year.details[country].atmospheric, smallestDataValue, largestDataValue, minOpacity, maxOpacity);
+			//stroke(lineColor);
+			//line(countryX, countryY, countryX, countryY-stickLength);
+			noStroke();
+          	aColor._array[3] = opacity/255;
+			fill(aColor);
+			rect(countryX, countryY-stickLength*2, horzSpaceForEachDataPoint, stickLength*2);
+		}
+		//underground
+		if (year.details[country].underground){
+			let opacity = map(year.details[country].underground, smallestDataValue, largestDataValue, minOpacity, maxOpacity);
+			//stroke(lineColor);
+			//line(countryX, countryY, countryX, countryY+stickLength);
+			noStroke();
+          	uColor._array[3] = opacity/255;
+			fill(uColor);
+			rect(countryX, countryY, horzSpaceForEachDataPoint, stickLength*2);
+		}
+		countryX += horzSpaceForEachDataPoint;
+	});
+}
+
+function drawTotals(){
+	//label
+	fill(fontColor);
+	textAlign(RIGHT, CENTER);
+	textFont(countryFont);
+	textSize(countryFontSize);
+	let totalX = paddingLeft + horzSpaceForCountryNames,
+		totalY = paddingTop + vertSpaceForDates + paddingBetweenDatesAndFirstRow + vertSpaceForRows/2 + vertSpaceForRows * data.countries.length;
+	text("TOTALS", totalX, totalY);
+	//horizontal line
+	let lineX = paddingLeft + horzSpaceForCountryNames + paddingBetweenCountryNamesAndFirstDate,
+		lineY = totalY;
+	stroke(lineColor);
+	line(lineX, lineY, width - paddingRight, lineY);
+	//data points
+	let dataX = lineX,
+		dataY = lineY;
+	noStroke();
+	data.years.forEach(year => {
+		let totalHeight = minTotalHeight;
+		if (year.total.tests){
+			totalHeight = map(year.total.tests, smallestDataValue, largestDataValue, minTotalHeight, maxTotalHeight);
+			let opacity = map(year.total.tests, 1, 4, minOpacity, maxOpacity); //mapping the number of accidents to the min and max opacity
+			tColor._array[3] = opacity/255;
+						fill(tColor);
+			rect(dataX, dataY, horzSpaceForEachDataPoint, totalHeight/2.5);
+		}
+      	//accidents
+      	let acc = accidents.filter(a => a.Year === year.year);
+      	if (acc.length){
+        	let opacity = map(acc.length, 1, 4, minOpacity, maxOpacity); //mapping the number of accidents to the min and max opacity
+        	nColor._array[3] = opacity/255;
+          	fill(nColor);
+          	rect(dataX, dataY + totalHeight/2.5, horzSpaceForEachDataPoint, stickLength*2);
+        }
+      	//next year
+		dataX += horzSpaceForEachDataPoint;
+	});
+}
+/********************************************/
+		</script>
+	</head>
+	<body>
+        <h1></h1>
+        <h2></h2>
+  	</body>
+</html>

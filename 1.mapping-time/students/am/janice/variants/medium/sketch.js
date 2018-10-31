@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+function setup() {
+=======
 /*function setup() {
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
   // set the width & height of the sketch
   createCanvas(400, 130)
 
@@ -25,6 +29,9 @@ function draw() {
   text(now.text.date, 30, 50)
   text(now.text.time, 30, 100)
 
+<<<<<<< HEAD
+}
+=======
 }
 */
 
@@ -117,3 +124,4 @@ for (i=1; i<secsWidth*60; i++)//for every pie slice, that slice is the hourWidth
 }
 
 
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022

@@ -1,0 +1,87 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+circle {
+  /* fill: none; */
+}
+circle .scatterplot{
+  fill: black;
+}
+
+h1 {
+  margin-left: 15px;
+}
+
+#container {
+  width: 95%;
+  display: block;
+  margin: auto;
+}
+
+#tests {
+  /* height: 900px; */
+  margin-top: 20px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#military-exp {
+  /* border-top: 1px solid #eee; */
+  width: 1575px;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.pack {
+  display: inline;
+  /* width: 360px; */
+  align-items: flex-end;
+
+}
+
+svg {
+  display: block;
+  margin: auto;
+}
+
+div {
+  /* border: 1px solid black; */
+}
+
+label {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.node {
+  cursor: pointer;
+  stroke-width: 1px;
+}
+
+.node:hover {
+  stroke-width: 4px;
+}
+
+.node--leaf {
+  fill: white;
+}
+
+.label {
+  font: 12px;
+  text-anchor: middle;
+  fill: grey;
+  /* text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff; */
+}
+
+.label,
+.node--root,
+.node--leaf {
+  pointer-events: none;
+}

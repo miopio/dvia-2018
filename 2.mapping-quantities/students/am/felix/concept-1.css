@@ -1,0 +1,37 @@
+html, body {
+  height:100%;
+  padding:0;
+  margin:0;
+  background-color: #888;
+  font: 14px 'Helvetica';
+}
+
+body {
+  display:flex; justify-content:center;
+}
+
+h1 {
+  margin-top: 80px;
+  margin-bottom: 30px;
+  text-transform: capitalize;
+  color: white;
+  opacity: 1.0;
+}
+
+/* SVG */
+text {
+  fill: white;
+}
+
+circle {
+  fill: red;
+  opacity: 0.5;
+}
+
+line {
+  opacity: 0.4;
+}
+/* .unitedStates {
+  fill: green;
+  opacity: 0.5;
+} */

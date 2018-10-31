@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 var x = 400 // starting x position to draw
 var y = 300  // starting y position to draw
 var maxWidth = 500 // maximum width of each bar (the actual width will always be ≤ this)
@@ -52,6 +54,7 @@ function draw() {
 
 
 /* 
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
 function setup() {
   // set the width & height of the sketch
   createCanvas(400, 130)
@@ -79,4 +82,8 @@ function draw() {
   text(now.text.date, 30, 50)
   text(now.text.time, 30, 100)
 
+<<<<<<< HEAD
+}
+=======
 */
+>>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
