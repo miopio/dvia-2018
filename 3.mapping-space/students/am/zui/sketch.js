@@ -4,6 +4,8 @@ var magnitudes;
 var depths;
 // an array for lat & long
 var latitudes, longitudes;
+// an array for time and days
+var times, days;
 
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
@@ -14,13 +16,18 @@ var circles = [];
 
 // table as the data set
 var table;
+var sig;
 
 // my leaflet.js map
 var mymap;
 
+// time slide control
+var sliderControl;
+
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("data/all_month.csv", "csv", "header");
+    sig = loadTable("data/significant_month.csv", "csv", "header");
 }
 
 function setup() {
@@ -28,15 +35,15 @@ function setup() {
     setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(800, 600);
-    background(222);
-
-    fill(0)
-    noStroke()
-    textSize(16)
-    text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
-    text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
-    text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+    createCanvas(windowWidth, windowHeight);
+    // background(222);
+    //
+    // fill(0)
+    // noStroke()
+    // textSize(16)
+    // text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
+    // text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
+    // text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
 }
 
 function setupMap(){
@@ -56,41 +63,49 @@ function setupMap(){
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
-        id: 'mapbox.streets',
+        id: 'mapbox.dark',
         accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
     }).addTo(mymap);
+
+
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
 }
 
 function drawDataPoints(){
-    strokeWeight(5);
-    stroke(255,0,0);
+    strokeWeight(0.1);
+    // stroke(255,0,0);
+
 
     // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
     magnitudes = table.getColumn("mag");
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
+    times = table.getColumn("time");
+
+    days = times.map(i => i.substr(0,9));
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
     magnitudeMax = getColumnMax("mag");
-    console.log('magnitude range:', [magnitudeMin, magnitudeMax])
+    // console.log('magnitude range:', [magnitudeMin, magnitudeMax])
 
     depthMin = 0.0;
     depthMax = getColumnMax("depth");
-    console.log('depth range:', [depthMin, depthMax])
+    // console.log('depth range:', [depthMin, depthMax])
+
+
 
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
-            fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
+            color: '#3388ff',      // the dot stroke color
+            opacity: depths[i]/100,  // use some transparency so we can see overlaps
+            radius: magnitudes[i]*4000,
+            day: days[i]
         });
 
         // place it on the map
@@ -99,6 +114,10 @@ function drawDataPoints(){
         // save a reference to the circle for later
         circles.push(circle)
     }
+
+    sliderControl = L.control.sliderControl({position: "topright", layer: mymap, follow: 3});
+    mymap.addControl(sliderControl);
+    sliderControl.startSlider();
 }
 
 function removeAllCircles(){
