@@ -20,7 +20,7 @@ var mymap;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
-    table = loadTable("assets/all_month.csv", "csv", "header");
+    table = loadTable("data/all_month.csv", "csv", "header");
 }
 
 function setup() {
@@ -48,10 +48,10 @@ function setupMap(){
     so for example L.map('mapid') or L.circle([lat, long])
     */
 
-    // create your own map
+    // create your own map. SetView 2 argument: Latitude, longtitude. 3 - zoom level. Look at the API reference.
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
 
-    // load a set of map tiles – choose from the different providers demoed here:
+    // load a set of map tiles – choose from the different providers demoed here. There are many kind of maps to choose.
     // https://leaflet-extras.github.io/leaflet-providers/preview/
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -64,11 +64,12 @@ function setupMap(){
     drawDataPoints();
 }
 
+//Step through data and draw things on the map
 function drawDataPoints(){
     strokeWeight(5);
     stroke(255,0,0);
 
-    // get the two arrays of interest: depth and magnitude
+    // Choose 4 columns to use. get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
     magnitudes = table.getColumn("mag");
     latitudes = table.getColumn("latitude");
@@ -83,9 +84,9 @@ function drawDataPoints(){
     depthMax = getColumnMax("depth");
     console.log('depth range:', [depthMin, depthMax])
 
-    // cycle through the parallel arrays and add a dot for each event
+    // cycle through the parallel depth arrays (can use row insted cause they the same length) and add a dot for each event
     for(var i=0; i<depths.length; i++){
-        // create a new dot
+        // create a new dot. See reference for more properties
         var circle = L.circle([latitudes[i], longitudes[i]], {
             color: 'red',      // the dot stroke color
             fillColor: '#f03', // the dot fill color
@@ -93,10 +94,10 @@ function drawDataPoints(){
             radius: magnitudes[i] * 40000
         });
 
-        // place it on the map
+        // place it on the map. Tell the circle to add itself to the map.
         circle.addTo(mymap);
 
-        // save a reference to the circle for later
+        // save a reference to the circle for later. Creative a global variable circles
         circles.push(circle)
     }
 }
@@ -109,7 +110,8 @@ function removeAllCircles(){
     circles = [];
 }
 
-// get the maximum value within a column
+// get the maximum value within a column. It goes through columns and pick biggest one. Can used to maximum of longtitude, magnitude. 
+//Because we don't know what the max is
 function getColumnMax(columnName){
     // get the array of strings in the specified column
     var colStrings = table.getColumn(columnName);

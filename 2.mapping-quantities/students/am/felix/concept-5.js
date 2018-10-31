@@ -104,7 +104,7 @@ d3.csv(`data/johnstons-archive.csv`)
   cleanerData.forEach((e, i) => {
     console.log(e);
     let scaleFactor = e.meanSum / myMaxSum;
-    createCirclePack(e, i, window.innerHeight*0.85*scaleFactor);
+    createCirclePack(e, i, window.innerHeight*0.85*(scaleFactor));
     // createCirclePack(e, i, 315);
   })
   d3.select('#tests')
@@ -135,7 +135,7 @@ let createCirclePack = (e, i, relativeDiameter) => {
   // This is where the size of the pack is defined (program this later)
   let pack = d3.pack()
         .size([diameter - margin, diameter - margin])
-        .padding(2);
+        .padding(1);
 
 
   // create a hierarchy of your input
@@ -197,13 +197,14 @@ let createCirclePack = (e, i, relativeDiameter) => {
       })
       .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
 
-  // let text = g.selectAll("text")
-  //   .data(nodes)
-  //   .enter().append("text")
-  //     .attr("class", "label")
-  //     .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-  //     .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-  //     .text(function(d) { return d.data.name; });
+  // TEXT
+  let text = g.selectAll("text")
+    .data(nodes)
+    .enter().append("text")
+      .attr("class", "label")
+      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
+      .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
+      .text(function(d) { return d.data.name; });
 
   let node = g.selectAll("circle,text");
 
@@ -223,11 +224,12 @@ let createCirclePack = (e, i, relativeDiameter) => {
           return function(t) { zoomTo(i(t)); };
         });
 
-    // transition.selectAll("text")
-    //   .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
-    //     .style("fill-opacity", function(d) { return d.parent === focus ? 1 : 0; })
-    //     .on("start", function(d) { if (d.parent === focus) this.style.display = "inline"; })
-    //     .on("end", function(d) { if (d.parent !== focus) this.style.display = "none"; });
+    // TEXT
+    transition.selectAll("text")
+      .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
+        .style("fill-opacity", function(d) { return d.parent === focus ? 1 : 0; })
+        .on("start", function(d) { if (d.parent === focus) this.style.display = "inline"; })
+        .on("end", function(d) { if (d.parent !== focus) this.style.display = "none"; });
   }
 
   function zoomTo(v) {
