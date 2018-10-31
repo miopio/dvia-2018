@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 3e5d9b25ed5d4e59fe7c8444c67bfdabba99ec89
->>>>>>> 27a3a1f2d59702940ca22bec0238f230d7a116b1
   "name": "dvia-2018",
   "version": "1.0.0",
   "description": "Data Visualization & Information Aesthetics",
@@ -13,55 +6,13 @@
   "author": "Christian Swinehart",
   "license": "MIT",
   "scripts": {
-<<<<<<< HEAD
     "start": "http-server . -a localhost -p 8000 -c-1"
-=======
-<<<<<<< HEAD
-    "start": "http-server . -a localhost -p 8080 -c-1"
-=======
-    "start": "http-server . -a localhost -p 8000 -c-1"
->>>>>>> 3e5d9b25ed5d4e59fe7c8444c67bfdabba99ec89
->>>>>>> 27a3a1f2d59702940ca22bec0238f230d7a116b1
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/samizdatco/dvia-2018.git"
   },
   "dependencies": {
-<<<<<<< HEAD
     "http-server": "^0.11.1"
   }
 }
-=======
-<<<<<<< HEAD
-    "karma": "^3.0.0"
-  },
-  "devDependencies": {
-    "http-server": "^0.11.1"
-  }
-}
-=======
-   "name": "dvia-2018",
-   "version": "1.0.0",
-   "description": "Data Visualization & Information Aesthetics",
-   "homepage": "https://dvia.samizdat.co/2018",
-   "author": "Christian Swinehart",
-   "license": "MIT",
-   "scripts": {
-     "start": "http-server . -a localhost -p 8080 -c-1"
-   },
-   "repository": {
-     "type": "git",
-     "url": "git+https://github.com/samizdatco/dvia-2018.git"
-   },
-   "dependencies": {
-     "http-server": "^0.11.1"
-   }
- }
->>>>>>> 5d0c8203ed47369797e2873e2a764e80c64070d4
-=======
-    "http-server": "^0.11.1"
-  }
-}
->>>>>>> 3e5d9b25ed5d4e59fe7c8444c67bfdabba99ec89
->>>>>>> 27a3a1f2d59702940ca22bec0238f230d7a116b1
