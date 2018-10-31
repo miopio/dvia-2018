@@ -3,12 +3,12 @@
 <head>
 <meta charset='utf-8' />
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
 <style>
 body { height:100%; margin:0; padding:0; background:#212121;}
 body { display:flex; justify-content:center; align-items:center; }
-#map { position:absolute; top:0; bottom:0; width:80%; }
+#map { position:absolute; top:0; bottom:0; width:90%; }
 </style>
 <script src="lib/lodash.min.js"></script>
 <script src="lib/brewer.js"></script>
@@ -24,9 +24,9 @@ body { display:flex; justify-content:center; align-items:center; }
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnNha2JhciIsImEiOiJjam14em1hNmQweHZlM3FwbHVtbmQ5eXdoIn0.XgXo8yf68EhBjNTZ6nXhpg';
 const map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/bsakbar/cjmy8euiq1w7h2spktfugcpqu',
-center: [20.201302, 8.841081],
-zoom: 1.3,
+style: 'mapbox://styles/bsakbar/cjmy9jmcch4pv2rrzwfdfqq4z',
+center: [37.753,28.766],
+zoom: 1.6,
 noWrap: true,
 interactive: false
 });

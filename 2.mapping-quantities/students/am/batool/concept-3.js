@@ -1,14 +1,13 @@
 // var map;
-var cLon = 20.201302;
-var cLat = 8.841081;
-var zoom = 1.3;
+var cLon = 37.753;
+var cLat = 28.766;
+var zoom = 1.6;
 var canvas;
 var lonlat_data;
 
 
 var lat = 24.7136;
 var lon = 46.6753;
-
 function preload(){
   all_data = loadJSON('data/all.json');
   total_data = loadStrings('data/totals.csv');
@@ -54,13 +53,13 @@ function setup(){
     noStroke();
     //ussr
     if (i <= 982){
-      fill (0,255,170,50);
-      ellipse(x, y, 15,15);
+      fill (0,255,170,180);
+      ellipse(x, y, 8,8);
     }
     //USA
     if (i >= 983 && i <= 1971){
-      fill(255,0,75,70);
-      ellipse(x, y, 15,15);
+      fill(255,0,75,180);
+      ellipse(x, y, 8,8);
     }
 
   }
@@ -71,63 +70,50 @@ function setup(){
 
 
   //legend
-  fill(45,45,45,170);
-  rect(-windowWidth/3-20,70, 900, 250);
-
-
-  textFont(Ubuntu_Bold);
-  noStroke();
-  textAlign(LEFT);
-  fill(255);
-  textSize(10);
-  textFont(Ubuntu_Regular);
-  text('Soviet Union', -windowWidth/3+30, 160);
-  text('United States', -windowWidth/3+138, 160);
-  textFont(Ubuntu_Bold);
-  text('Total Tests', -windowWidth/3+12, 220);
-
-  textSize(8);
-
-  text('1945', -windowWidth/3+12, 260);
-  text('2017', -windowWidth/3+383, 260);
-
-  fill(255);
-  textFont(Ubuntu_Bold);
-  textSize(30);
-  text('Nuclear Tests', -windowWidth/3+10, 130);
-
-
-
-  noStroke();
-  fill (0,255,170);
-  ellipse(-windowWidth/3+15, 157,10,10);
-
-  noStroke();
-  fill(255,0,75);
-  ellipse(-windowWidth/3+123, 157,10,10);
-
-
-  stroke(255);
-  strokeWeight(0.3);
-  line(-windowWidth/3+12,270,-160,270);
-  line(-windowWidth/3+440,100,-windowWidth/3+440,290);
-
-  noStroke();
-  fill(255,0,75,100);
-  ellipse(-windowWidth/3+80, 270,20,20);
-  ellipse(-windowWidth/3+90, 270,30,30);
-  ellipse(-windowWidth/3+100, 270,20,20);
-  ellipse(-windowWidth/3+110, 270,35,35);
-  ellipse(-windowWidth/3+120, 270,70,70);
-  ellipse(-windowWidth/3+130, 270,30,30);
-  ellipse(-windowWidth/3+140, 270,50,50);
-  ellipse(-windowWidth/3+150, 270,30,30);
-  ellipse(-windowWidth/3+160, 270,5,5);
-  ellipse(-windowWidth/3+170, 270,20,20);
-  ellipse(-windowWidth/3+180, 270,10,10);
-
-
-
+  // fill(45,45,45,170);
+  // rect(-windowWidth/3-20,70, 900, 250);
+  //
+  //
+  // textFont(Ubuntu_Bold);
+  // noStroke();
+  // textAlign(LEFT);
+  // fill(255);
+  // textSize(10);
+  // textFont(Ubuntu_Regular);
+  // text('Soviet Union', -windowWidth/3+30, 160);
+  // text('United States', -windowWidth/3+138, 160);
+  // textFont(Ubuntu_Bold);
+  // text('Total Tests', -windowWidth/3+12, 220);
+  //
+  // textSize(8);
+  //
+  // text('1945', -windowWidth/3+12, 260);
+  // text('2017', -windowWidth/3+383, 260);
+  //
+  // fill(255);
+  // textFont(Ubuntu_Bold);
+  // textSize(30);
+  // text('Nuclear Tests', -windowWidth/3+10, 130);
+  //
+  //
+  //
+  // noStroke();
+  // fill (0,255,170);
+  // ellipse(-windowWidth/3+15, 157,10,10);
+  //
+  // noStroke();
+  // fill(255,0,75);
+  // ellipse(-windowWidth/3+123, 157,10,10);
+  //
+  //
+  // stroke(255);
+  // strokeWeight(0.3);
+  // line(-windowWidth/3+12,270,-160,270);
+  // line(-windowWidth/3+440,100,-windowWidth/3+440,290);
+  //
+  // noStroke();
+  // fill(255,0,75,100);
+  //
 
 
 }
