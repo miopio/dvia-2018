@@ -1,295 +1,394 @@
-d3.csv("data/decade_basic.csv", d => {
-  return {
-    country: d["Country"],
-    year: {
-      1940: +d[1940],
-      1950: +d[1950],
-      1960: +d[1960],
-      1970: +d[1970],
-      1980: +d[1980],
-      1990: +d[1990],
-      2000: +d[2000],
-      2010: +d[2010]
-    },
-    total: +d["Total"]
-  };
-}).then(data => {
-  console.log(data);
-  svg(data);
-});
+// to dos
+// experiment with background changing color. Sequential red scale for # of nuclear tests?
+// update music player style
+// length of song should be percentage of that decade's total tests. i.e, 1 minue presentation means that in year[i] there were  #tests / total #tests x 60 seconds
+// typography
 
-// global variables
-let margin = 100;
-let marginBottom = 150;
-let height = window.innerHeight - marginBottom;
-let width = window.innerWidth - margin;
+// data sets
 
-let svg = data => {
-  // linear scale x
-  // let x = d3
-  //   .scaleLinear()
-  //   .domain([0, 1100])
-  //   .range([margin, width]);
+let songs = [];
+let currentSong = 0;
 
-  // // linear scale y
-  // // map positions vertically
-  // let y = d3
-  //   .scaleLinear()
-  //   .domain([0, data.length])
-  //   .range([height, margin]);
-
-  let graph = d3
-    .select("body")
-    .append("svg")
-    .attr("width", 4000)
-    .attr("height", window.innerHeight);
-
-  // // x axis title
-  // let xAxisTitle = graph
-  //   .append("g")
-  //   .attr("id", "xAxisTitle")
-  //   .append("text")
-  //   .text("Total electricity output (GWh)")
-  //   .attr("x", width - 230)
-  //   .attr("y", height - 10);
-
-  // // y axis title
-  // let yAxisTitle = graph
-  //   .append("g")
-  //   .attr("id", "yAxisTitle")
-  //   .append("text")
-  //   .text("Renewable Energy share (%)")
-  //   .attr("x", margin + 10)
-  //   .attr("y", margin + 5);
-
-  // add scatter points and mouseover
-  let group = graph.append("g").attr("id", "group");
-
-  let point = group
-    .selectAll("g")
-    .data(data)
-    .enter()
-    .append("g")
-    .attr("class", "up")
-
-    .attr("y", (d, i) => {
-      return y(i);
-    })
-    .attr("transform", (d, i) => {
-      return `translate(0, ${y(i)})`;
-    })
-
-    .on("mouseover", function() {
-      d3.select("#group")
-        .selectAll("g")
-        .attr("class", "inactive");
-      d3.select(this).attr("class", "active");
-      d3.select(this)
-        .select("text")
-        .text(d => {
-          return `${d.country}: ${d.year[1940]}`;
-        });
-    })
-
-    .on("mouseout", function() {
-      d3.select("#group")
-        .selectAll("g")
-        .attr("class", "up");
-      d3.select(this)
-        .select("text")
-        .text(d => {
-          return d.country;
-        });
-    });
-
-  // visual bars where width is test number for decade
-
-  // 1940s
-  point
-    .append("rect")
-    .attr("x", margin)
-    .attr("width", d => {
-      return d["year"][1940];
-    })
-    .attr("height", 50)
-    .attr("id", "output")
-    .attr("class", "pattern-40");
-
-  // 1950s
-  point
-    .append("rect")
-    .attr("x", (d, i) => {
-      return x(d["year"][1940] + margin);
-    })
-    .attr("width", (d, i) => {
-      return x(d["year"][1950]);
-    })
-    .attr("height", 50)
-    .attr("id", "output")
-    .attr("class", "pattern-50");
-
-  // 1960s
-  point
-    .append("rect")
-    .attr("x", (d, i) => {
-      return x(d["year"][1940] + d["year"][1950] + margin);
-    })
-    .attr("width", (d, i) => {
-      return x(d["year"][1960]);
-    })
-    .attr("height", 50)
-    .attr("id", "output")
-    .attr("class", "pattern-60");
-
-  // 1970s
-  point
-    .append("rect")
-    .attr("x", (d, i) => {
-      return x(d["year"][1940] + d["year"][1950] + d["year"][1960] + margin);
-    })
-    .attr("width", (d, i) => {
-      return x(d["year"][1970]);
-    })
-    .attr("height", 50)
-    .attr("id", "output")
-    .attr("class", "pattern-70");
-
-  // 1980s
-  point
-    .append("rect")
-    .attr("x", (d, i) => {
-      return x(
-        d["year"][1940] +
-          d["year"][1950] +
-          d["year"][1960] +
-          d["year"][1970] +
-          margin
-      );
-    })
-    .attr("width", (d, i) => {
-      return x(d["year"][1980]);
-    })
-    .attr("height", 50)
-    .attr("id", "output")
-    .attr("class", "pattern-80");
-
-  // 1990s
-  point
-    .append("rect")
-    .attr("x", (d, i) => {
-      return x(
-        d["year"][1940] +
-          d["year"][1950] +
-          d["year"][1960] +
-          d["year"][1970] +
-          d["year"][1980] +
-          margin
-      );
-    })
-    .attr("width", (d, i) => {
-      return x(d["year"][1990]);
-    })
-    .attr("height", 50)
-    .attr("id", "output")
-    .attr("class", "pattern-90");
-
-  // 2000s
-  point
-    .append("rect")
-    .attr("x", (d, i) => {
-      return x(
-        d["year"][1940] +
-          d["year"][1950] +
-          d["year"][1960] +
-          d["year"][1970] +
-          d["year"][1980] +
-          d["year"][1990] +
-          margin
-      );
-    })
-    .attr("width", d => {
-      return x(d["year"][2000]);
-    })
-    .attr("height", 50)
-    .attr("id", "output")
-    .attr("class", "pattern-00");
-
-  // 2010s
-  point
-    .append("rect")
-    .attr("x", (d, i) => {
-      return x(
-        d["year"][1940] +
-          d["year"][1950] +
-          d["year"][1960] +
-          d["year"][1970] +
-          d["year"][1980] +
-          d["year"][1990] +
-          d["year"][2000] +
-          margin
-      );
-    })
-    .attr("width", (d, i) => {
-      return x(d["year"][2010]);
-    })
-    .attr("height", 50)
-    .attr("id", "output")
-    .attr("class", "pattern-10");
-
-  // text labels on points
-  point
-    .append("text")
-    .text(d => {
-      return d.country;
-    })
-    .attr("x", d => {
-      return x(d.totalOutput) + 8;
-    })
-    .attr("y", d => {
-      return y(d.renewablePercent) + 4;
-    });
-
-  // Axis ticks
-  let xAxis = g =>
-    g.attr("transform", `translate(0,${height})`).call(d3.axisBottom(x));
-
-  // let yAxis = g =>
-  //   g
-  //     .attr("transform", `translate(${margin},0)`)
-  //     .call(d3.axisLeft(y))
-  //     .attr("id", "xAxis");
-
-  graph.append("g").call(xAxis);
-  // graph.append("g").call(yAxis);
+const display = {
+  0: "four",
+  1: "five",
+  2: "six",
+  3: "seven",
+  4: "eight",
+  5: "nine",
+  6: "twenty",
+  7: "twentyTen"
 };
 
-// //Pattern injection
-// var defs = svg.append("defs");
-// var pattern = defs
-//   .append("pattern")
-//   .attr({
-//     id: "hash4_4",
-//     width: "8",
-//     height: "8",
-//     patternUnits: "userSpaceOnUse",
-//     patternTransform: "rotate(-45)"
-//   })
-//   .append("rect")
-//   .attr({
-//     width: "4",
-//     height: "8",
-//     transform: "translate(0,0)",
-//     fill: "#88AAEE"
-//   });
+const volumeLevel = {
+  0: 0.2,
+  1: 0.4,
+  2: 0.6,
+  3: 0.8,
+  4: 1,
+  5: 0.5,
+  6: 0.2,
+  7: 0.1
+};
 
-// //Shape design
-// svg
-//   .append("g")
-//   .attr("id", "shape")
-//   .append("circle")
-//   .attr({ cx: "60", cy: "60", r: "50", fill: "url(#hash4_4)" });
+// music data
+const music = d3.csv("data/music.csv", d => {
+  songs.push({
+    decade: d["decade"],
+    artist: d["artist"],
+    song: d["song"],
+    path: d["path"]
+  });
+});
 
-// d3.select("body")
-//   .append("div")
-//   .attr("class", "block");
-// .style("background-color", d => (d < 5 ? "#FE4A49" : "#CCCCCC"));
+// load nuclear data
+// us data
+const usaData = d3
+  .csv("data/decades/usa_decade.csv", d => {
+    return {
+      tests: +d["tests"],
+      decade: d["decade"]
+    };
+  })
+  .then(data => {
+    // console.log(data);
+    usaChart(data);
+  });
+
+// russia data
+const russiaData = d3
+  .csv("data/decades/russia_decade.csv", d => {
+    return {
+      tests: +d["tests"],
+      decade: d["decade"]
+    };
+  })
+  .then(data => {
+    // console.log(data);
+    russiaChart(data);
+  });
+
+// all other country data
+const othersData = d3
+  .csv("data/decades/others_decade.csv", d => {
+    return {
+      tests: +d["tests"],
+      decade: d["decade"]
+    };
+  })
+  .then(data => {
+    // console.log(data);
+    othersChart(data);
+  });
+
+music.then(() => {
+  // console.log(songs[currentSong].path);
+  // variables for current decade focus
+  // const thumbnails = document.querySelectorAll(".decade");
+  const player = document.getElementById("player");
+  const nowPlayingText = document.getElementById("now-playing");
+  function preloadAudio(path) {
+    var audio = new Audio();
+    // once this file loads, it will call loadedAudio()
+    // the file will be kept by the browser as cache
+    audio.addEventListener("canplaythrough", loadedAudio, false);
+    audio.src = path;
+  }
+
+  let loaded = 0;
+  function loadedAudio() {
+    // this will be called every time an audio file is loaded
+    // we keep track of the loaded files vs the requested files
+    loaded++;
+    if (loaded == songs.length) {
+      // all have loaded
+      init();
+    }
+  }
+
+  function play(index) {
+    player.src = songs[index].path;
+    player.volume = volumeLevel[index];
+    console.log(player.volume);
+    player.currentTime = 15;
+    player.play();
+  }
+
+  function init() {
+    // once the player ends, play the next one
+    player.onended = function() {
+      // thumbnails[currentSong].classList.remove("playing");
+      currentSong++;
+      displaySong();
+      setDisplay();
+      // thumbnails[currentSong].classList.add("playing");
+      if (currentSong >= songs.length) {
+        // end
+        return;
+      }
+      play(currentSong);
+    };
+    // play the first file
+    play(currentSong);
+    // set the first thumbnail playing class
+    // thumbnails[currentSong].classList.add("playing");
+    // set the first set of active blocks
+    var items = document.querySelectorAll(`.${display[currentSong]}`);
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.add("playing");
+    }
+  }
+
+  // set playing class for all active test blocks
+  function setDisplay() {
+    var oldItems = document.querySelectorAll(`.${display[currentSong - 1]}`);
+    console.log(oldItems);
+
+    for (var i = 0; i < oldItems.length; i++) {
+      oldItems[i].classList.remove("playing");
+    }
+    var items = document.querySelectorAll(`.${display[currentSong]}`);
+    console.log(items);
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.add("playing");
+    }
+  }
+
+  // update text for song now playing
+  function displaySong() {
+    let content = `${songs[currentSong].decade}'s: ${
+      songs[currentSong].song
+    } // ${songs[currentSong].artist}`;
+    nowPlayingText.innerHTML = content;
+  }
+  displaySong();
+
+  // we start preloading all the audio files
+  for (let currentSong in songs) {
+    preloadAudio(songs[currentSong].path);
+  }
+});
+
+// use data to display
+// define globals
+const usa = document.querySelector(".usa");
+const russia = document.querySelector(".russia");
+const others = document.querySelector(".others");
+
+// usa blocks
+let usaChart = data => {
+  // waffle chart code
+  const normalize = d3.range(100);
+  const numbers = d3.range(data[8]["tests"]);
+  const fourties = d3.range(Math.round((data[0]["tests"] / 1030) * 100));
+  const fifties = d3.range(Math.round((data[1]["tests"] / 1030) * 100));
+  const sixties = d3.range(Math.round((data[2]["tests"] / 1030) * 100));
+  const seventies = d3.range(Math.floor((data[3]["tests"] / 1030) * 100));
+  const eighties = d3.range(Math.round((data[4]["tests"] / 1030) * 100));
+  const nineties = d3.range(Math.round((data[5]["tests"] / 1030) * 100));
+  const twenty = d3.range(Math.round((data[6]["tests"] / 1030) * 100));
+  const twentyTen = d3.range(Math.round((data[7]["tests"] / 1030) * 100));
+  // console.log(eighties);
+  // console.log(numbers.length);
+  // console.log(twentyTen);
+  // console.log(twenty);
+  // console.log(nineties);
+  // console.log(eighties);
+  // console.log(seventies);
+  // console.log(sixties);
+  // console.log(fifties);
+  // console.log(fourties);
+
+  // try to get playing class to toggle on
+  // const niners = document.querySelectorAll(".nine")[0];
+  // console.log(niners);
+  // d3.select(niners).on("click", function() {
+  //   console.log(this);
+  //   d3.selectAll(niners)
+  //     .selectAll("div")
+  //     .classed("inactive", true);
+  //   d3.select(this).classed("playing", true);
+  // });
+
+  //
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("four");
+  });
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("five");
+  });
+
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("six");
+  });
+
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("seven");
+  });
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("eight");
+  });
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("nine");
+  });
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("twenty");
+  });
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    usa.appendChild(div);
+    div.classList.add("twentyTen");
+  });
+
+  // let div = document.createElement("div");
+  // content.appendChild(div);
+  // div.classList.add("item");
+
+  // usa
+  //   .selectAll("div")
+  //   .data(twentyTen)
+  //   .enter()
+  //   .append("div")
+  //   .attr("class", "twentyTen");
+};
+
+// russia blocks
+let russiaChart = data => {
+  // waffle chart code
+  const normalize = d3.range(100);
+  const numbers = d3.range(Math.round((data[8]["tests"] / 715) * 100));
+  const fourties = d3.range(Math.round((data[0]["tests"] / 715) * 100));
+  const fifties = d3.range(Math.round((data[1]["tests"] / 715) * 100));
+  const sixties = d3.range(Math.round((data[2]["tests"] / 715) * 100));
+  const seventies = d3.range(Math.round((data[3]["tests"] / 715) * 100));
+  const eighties = d3.range(Math.ceil((data[4]["tests"] / 715) * 100));
+  const nineties = d3.range(Math.round((data[5]["tests"] / 715) * 100));
+  const twenty = d3.range(Math.round((data[6]["tests"] / 715) * 100));
+  const twentyTen = d3.range(Math.round((data[7]["tests"] / 715) * 100));
+  // console.log(twentyTen);
+  // console.log(twenty);
+  // console.log(nineties);
+  // console.log(eighties);
+  // console.log(seventies);
+  // console.log(sixties);
+  // console.log(fifties);
+  // console.log(fourties);
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("four");
+  });
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("five");
+  });
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("six");
+  });
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("seven");
+  });
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("eight");
+  });
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("nine");
+  });
+
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("twenty");
+  });
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    russia.appendChild(div);
+    div.classList.add("twentyTen");
+  });
+};
+
+// others blocks
+let othersChart = data => {
+  // waffle chart code
+  const normalize = d3.range(100);
+  const numbers = d3.range(Math.round((data[8]["tests"] / 331) * 100));
+  const fourties = d3.range(Math.ceil((data[0]["tests"] / 331) * 100));
+  const fifties = d3.range(Math.ceil((data[1]["tests"] / 331) * 100));
+  const sixties = d3.range(Math.ceil((data[2]["tests"] / 331) * 100) + 1);
+  const seventies = d3.range(Math.ceil((data[3]["tests"] / 331) * 100) + 1);
+  const eighties = d3.range(Math.ceil((data[4]["tests"] / 331) * 100) + 1);
+  const nineties = d3.range(Math.ceil((data[5]["tests"] / 331) * 100));
+  const twenty = d3.range(Math.ceil((data[6]["tests"] / 331) * 100));
+  const twentyTen = d3.range(Math.ceil((data[7]["tests"] / 331) * 100));
+
+  fourties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("four");
+  });
+
+  fifties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("five");
+  });
+
+  sixties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("six");
+  });
+
+  seventies.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("seven");
+  });
+
+  eighties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("eight");
+  });
+
+  nineties.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("nine");
+  });
+
+  twenty.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("twenty");
+  });
+
+  twentyTen.forEach(d => {
+    let div = document.createElement("div");
+    others.appendChild(div);
+    div.classList.add("twentyTen");
+  });
+};
