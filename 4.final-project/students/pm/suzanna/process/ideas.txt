@@ -1,19 +1,21 @@
-1.
+A Study of Databreach Laws
 
-2.
+1.  Word count (e.g. term frequency)
 
-3.
+2.  Word clusters - Machine Learning
 
-4.
+3.  Date created
 
-5.
+4.  Number of words
 
-6.
+5.  Number of sections
 
-7.
+6.  Section titles - Machine Learning
 
-8.
+7.  Date created political party in power
 
-9.
+8.  Length of time to ratify law
 
-10.
+9.  Health and Human Services (HHS) Wall of Shame dates to law creation/revisions
+
+10. Number of law revisions/changes, etc.
