@@ -6,15 +6,7 @@
   "author": "Christian Swinehart",
   "license": "MIT",
   "scripts": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "start": "http-server . -a localhost -p 8080 -c-1"
-=======
-    "start": "http-server . -a localhost -p 8080 -c-1"
->>>>>>> 3e5d9b25ed5d4e59fe7c8444c67bfdabba99ec89
-=======
-    "start": "http-server . -a localhost -p 8000 -c-1"
->>>>>>> 777193dabb60fdaf7c0454ae7abd58b7cdd8e8cb
   },
   "repository": {
     "type": "git",
