@@ -20,8 +20,7 @@ var mymap;
 
 function preload() {
   // load the CSV data into our `table` variable and clip out the header row
-  // table = loadTable("data/all_month.csv", "csv", "header");
-  table = loadTable("data/significant_month.csv", "csv", "header");
+  table = loadTable("data/all_month.csv", "csv", "header");
 }
 
 function setup() {
@@ -29,15 +28,12 @@ function setup() {
   setupMap();
 
   // next, draw our p5 diagram that complements it
+  createCanvas(800, 600);
+  background(222);
 
-  canvas = createCanvas(320, 115);
-  canvas.parent("canvas-holder");
-  background("#3d3d3d");
-
-  fill("#fff");
+  fill(0);
   noStroke();
   textSize(16);
-  textFont("monospace");
   text(`Plotting ${table.getRowCount()} seismic events`, 20, 40);
   text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60);
   text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80);
@@ -58,14 +54,12 @@ function setupMap() {
   // load a set of map tiles – choose from the different providers demoed here:
   // https://leaflet-extras.github.io/leaflet-providers/preview/
   L.tileLayer(
-    "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}?access_token={accessToken}",
+    "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
     {
-      // attribution:
-      //   'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      minZoom: 2,
-      maxZoom: 10,
+      attribution:
+        'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
       id: "mapbox.streets",
-      ext: "png",
       accessToken:
         "pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA"
     }
@@ -94,64 +88,22 @@ function drawDataPoints() {
   depthMax = getColumnMax("depth");
   console.log("depth range:", [depthMin, depthMax]);
 
-  var numberOfShades = 4;
-  var palette = Brewer.sequential(
-    "OrRd",
-    numberOfShades,
-    magnitudeMin,
-    magnitudeMax
-  );
-
   // cycle through the parallel arrays and add a dot for each event
   for (var i = 0; i < depths.length; i++) {
-    // set color
-    var color = palette.colorForValue(magnitudes[i]);
-
     // create a new dot
     var circle = L.circle([latitudes[i], longitudes[i]], {
-      color: color, // the dot stroke color
-      // fillColor: "#f03", // the dot fill color
-      fillColor: color,
-      fillOpacity: 0.8, // use some transparency so we can see overlaps
-      // radius: magnitudes[i] * 40000
-      radius: depths[i] * 2000
+      color: "red", // the dot stroke color
+      fillColor: "#f03", // the dot fill color
+      fillOpacity: 0.25, // use some transparency so we can see overlaps
+      radius: magnitudes[i] * 40000
     });
+
     // place it on the map
     circle.addTo(mymap);
+
     // save a reference to the circle for later
     circles.push(circle);
   }
-
-  // // play around with poly shape
-  // var latlngs = [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]];
-  // var polygon = L.polygon(latlngs, { color: "red" }).addTo(mymap);
-  // // zoom the map to the polygon
-  // // mymap.fitBounds(polygon.getBounds());
-
-  // create a light blue polyline from an array of LatLng points
-  var latlngs = [
-    [latitudes[0], longitudes[0]],
-    [latitudes[1], longitudes[1]],
-    [latitudes[2], longitudes[2]],
-    [latitudes[3], longitudes[3]],
-    [latitudes[4], longitudes[4]],
-    [latitudes[5], longitudes[5]],
-    [latitudes[6], longitudes[6]],
-    [latitudes[7], longitudes[7]],
-    [latitudes[8], longitudes[8]],
-    [latitudes[9], longitudes[9]],
-    [latitudes[10], longitudes[10]],
-    [latitudes[11], longitudes[11]],
-    [latitudes[12], longitudes[12]]
-  ];
-  var polyline = L.polyline(latlngs, {
-    color: "lightblue",
-    opacity: 0.7,
-    dashArray: "6",
-    weight: 2
-  }).addTo(mymap);
-  // zoom the map to the polyline
-  mymap.fitBounds(polyline.getBounds());
 }
 
 function removeAllCircles() {
