@@ -1,33 +1,36 @@
 #
-# List of URLs pointing to publicly accessible data (including a brief description of the subject matter & data format)
-#
-# For example, the earthquake feeds we've been using could be summarized as:
-#   Description: Realtime feeds of recent earthquake times, locations, and magnitudes
-#   Provider: the US Geological Survey
-#   Format: multiple CSV files with different time/magnitude windows
-#   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
 
-Description:
-Provider:
-Format:
-URL:
 
-Description:
-Provider:
-Format:
-URL:
+Description: "What America Thinks Today"
+Provider:today.yougov.com
+Format: PDF with data
+URL: today.yougov.com
 
-Description:
-Provider:
-Format:
-URL:
 
-Description:
-Provider:
-Format:
-URL:
+Description:https://www.greateratlantic.fisheries.noaa.gov/protected/stranding/index.html
+Provider: National Oceanic and Atmospheric Administration
+Format: !!  Can't tell yet -- 
+URL: https://www.greateratlantic.fisheries.noaa.gov/protected/stranding/index.html
 
-Description:
-Provider:
-Format:
-URL:
+
+Description: Banned Words list (profanity)
+Provider:data.world
+Format: csv
+URL: https://data.world/natereed/banned-words-list
+
+
+Description: loads of datasets (if you join free for 30 days)
+Provider: data.world
+Format: csv files
+URL: https://data.world/alim1/data-on-dogs
+
+
+Description: Color in 9 languages
+Provider:data.world
+Format: csv
+URL: https://data.world/crowdflower/colors-in-9-languages
+
+Description: Survey of Honey Bee Colony Losses in the US from 2007-2008
+Provider:US National Library of Medicine National Institutes of Health
+Format: ??  need to find
+URL: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2606032/

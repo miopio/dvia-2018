@@ -13,7 +13,7 @@
 <<<<<<< HEAD
     "start": "http-server . -a localhost -p 8080 -c-1"
 =======
-    "start": "http-server . -a localhost -p 8000 -c-1"
+    "start": "http-server . -a localhost -p 8080 -c-1"
 >>>>>>> 3e5d9b25ed5d4e59fe7c8444c67bfdabba99ec89
   },
   "repository": {
