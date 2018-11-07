@@ -52,3 +52,23 @@ Just for reference:
 
 **not included: DYFI infomation =**
 [Reference for est fatalities and economic losses](https://earthquake.usgs.gov/earthquakes/eventpage/ak20292186/pager)
+
+
+# 20181031
+
+## Feedback in class:
+
+- External data, allowed but not required
+- Think about categories: What does a average day look like?
+- Tectonic plates movement, find the closest fault line and measure the distance to it
+- Ways to think about the map differently:
+  - Subway maps – rational paradigm over geographical paradigm
+  - Ocean – Earth
+
+- AM and PM juxtaposition
+- Depth of earthquakes below
+- Relation between depth and magnitude
+- Magnitude in qualitative color scheme
+- Animation: shaking
+- Elevation of the map (like a heatmap) is the mapped data
+-

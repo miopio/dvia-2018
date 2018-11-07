@@ -7,27 +7,34 @@
 #   Format: multiple CSV files with different time/magnitude windows
 #   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
 
-Description:
-Provider:
-Format:
-URL:
+Description: Trends in employment and earnings of women in the US compared to men
+Provider: Status of Women in the States
+Format: CSV files
+URL: https://statusofwomendata.org/explore-the-data/employment-and-earnings/#section-1
 
-Description:
-Provider:
-Format:
-URL:
+Description: Sexual harassment charges in the workplace from 1995 to 2016 (also includes employment, salary rate comparison between men and women, etc)
+Provider: US Equal Employment Opportunity Commission
+Format: CSV files
+URL: https://github.com/BuzzFeedNews/2017-12-eeoc-harassment-charges/
 
-Description:
-Provider:
-Format:
-URL:
+Description: comprehensive dataset on gun violence in the US from 2013-2018
+Provider: Gun Violence Archive
+Format: CSV file
+URL: https://www.kaggle.com/jameslko/gun-violence-data/home
 
-Description:
-Provider:
-Format:
-URL:
+Description: health, nutrition, and population statistics of countries around the globe, 1960-2017
+Provider: World Bank
+Format: CSV file
+URL: https://www.kaggle.com/theworldbank/health-nutrition-and-population-statistics/home
 
-Description:
-Provider:
-Format:
-URL:
+Description: Social mobility in relation to incarceration, parental income level, race, etc.
+Provider: Opportunity Insights
+Format: Stata, CSV
+URL: https://opportunityinsights.org/data/
+
+Description: NYC hospital inpatient costs, charges on common procedures, discharge rates, across counties
+Provider: NYC open data
+Format: CSV
+URL: https://healthdata.ny.gov/browse?sortBy=alpha&tags=quality-safety-costs&page=1
+
+

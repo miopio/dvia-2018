@@ -5,6 +5,19 @@ the earthquake data geospatially and diagrammatically.
 
 ## Handwritten Sketches
 
+### Concept 4: Magnitude and Population
+
+![concept 4](design_4.jpg)
+
+#### Diagram
+The diagram portion of this concept will introduce the map with a series of important numbers of the amount of people affected by seismic events that month. There will be a bar to show what percentage of the New York City population was affected by seismic activity this month. This bar section will interact with the map portion. When a user scrolls over a point on the map below, the bar will highlight which percentage is attributed to that selected event.
+
+#### Map
+The map portion of this concept will utilize dot markers to represent locations where earthquakes have been recorded. The color of the bubble encodes *magnitude*. I'll use a color brewer scale for color. A tooltip will indicate the closest population center.
+The granularity will be at a monthly level, and the map style I'm planning to use is grayscale since color will be an integral part of the design, which I don't want to distract from at all.
+
+![concept 4 map](design_1_map.jpg)
+
 ### Concept 1: Magnitude and Depth
 
 ![concept 1](design_1.jpg)

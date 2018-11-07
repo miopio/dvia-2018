@@ -8,6 +8,7 @@ var latitudes, longitudes;
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
+var places;
 
 // the dots we'll be adding to the map
 var circles = [];
@@ -75,6 +76,7 @@ function drawDataPoints(){
     magnitudes = table.getColumn("mag");
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
+    places = table.getColumn("place");
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -85,18 +87,20 @@ function drawDataPoints(){
     depthMax = getColumnMax("depth");
     console.log('depth range:', [depthMin, depthMax])
     var numberOfShades = 9;
-    var mpalette = Brewer.sequential('Blues', numberOfShades, 0, magnitudeMax)
-    var dpalette = Brewer.sequential('Oranges', numberOfShades, 0, depthMax)
+    var mpalette = Brewer.divergent('PiYG', numberOfShades, 0, magnitudeMax/2,  magnitudeMax)
+    var dpalette = Brewer.divergent('RdYlBu', numberOfShades, 0, depthMax/2, depthMax)
 
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: mpalette.colorForValue(magnitudes[i]), //'green',      // the dot stroke color
+            //color: mpalette.colorForValue(magnitudes[i]), //'green',      // the dot stroke color
+            color: dpalette.colorForValue(depths[i]), //'green',      // the dot stroke color
             fillColor: dpalette.colorForValue(depths[i]), //'#f03', // the dot fill color
             fillOpacity: 0.5,  // use some transparency so we can see overlaps
             radius: magnitudes[i] * 40000
         });
+        circle.bindPopup("<b>"+places[i]+"</b><br> latitude: "+latitudes[i] + " longitude: " +longitudes[i]+" ");
 
         // place it on the map
         circle.addTo(mymap);
