@@ -1,21 +1,19 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="lib/leaflet/leaflet.css" /> <!-- default styles -->
-  <style>
-    html, body {
-      padding: 0;
-      margin: 0;
-    }
+  <link rel="stylesheet" href="style.css" /> <!-- custom styles -->
 
-    /* default dimensions for the leaflet map */
-    #quake-map{
-      width: 800px;
-      height: 600px;
-    }
+  <style>
+
   </style>
 </head>
+
 <body>
+  <div id="canvas-holder">
+
+  </div>
   <!-- The container div for our leaflet map -->
   <div id="quake-map"></div>
 
@@ -25,7 +23,10 @@
   <script src="lib/lodash.min.js"></script>
   <script src="lib/brewer.js"></script>
   <script src="sketch.js"></script>
+  <!-- <script src="sketch-original.js"></script> -->
 
   <!-- p5.js will create a canvas element here at runtime -->
+
 </body>
+
 </html>

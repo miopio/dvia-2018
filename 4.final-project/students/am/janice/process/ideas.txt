@@ -1,19 +1,36 @@
-1.
 
-2.
 
-3.
+1. Skills used by different professions (clda.usgs.gov) - are there particular skills that determine your profession and can you change? Can be use of words/type -- static or interactive.
 
-4.
 
-5.
 
-6.
+2. Popular Ice Cream flavors (today.yougov.com) -- what data influences what kind of ice cream you like - could be static or interactive.
 
-7.
 
-8.
 
-9.
+3. Tracking Migration patterns of Whales (swfsc.noga.gov/mmtd)  National Oceanic and Atmospheric Administration - Dept. of Commerce
+Does their migration have something to do with them dying?
 
-10.
+
+4. Which Threatening Words have... (meaning, consequence?) - what words affect/scare/frighten people?
+
+
+
+5. Color and Suprematism/Constructivism vs The Impressionists-- how color was used and chosen in relationship to different art movements
+
+
+
+6. 100 years of Pumpkin Pie (carto.com) - static.
+
+
+
+7. Dogs vs Cats (www.kaggle.com/biaiscience/dogs-vs-cats) - what type of people like dogs vs. cats
+
+
+8. Outliers and Inventions (sociological data -- read Outliers book - Malcolm Gladwell) - Which similarities of outliers produced innovation?  various outliers and their similarities -- interactive.
+
+
+9. Drought in the West/Wildfires - could be static or interactive - and what it could mean in population?
+
+
+10. Bee Migration - and how it impacts our food consumption
