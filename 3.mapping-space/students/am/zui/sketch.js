@@ -27,7 +27,10 @@ var slider;
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("data/all_month.csv", "csv", "header");
+<<<<<<< HEAD
+=======
     sig = loadTable("data/significant_month.csv", "csv", "header");
+>>>>>>> 27a3a1f2d59702940ca22bec0238f230d7a116b1
 }
 
 function setup() {

@@ -50,6 +50,7 @@ function setupMap(){
 
     // create your own map
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    //setView(long,lat),zoom
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
