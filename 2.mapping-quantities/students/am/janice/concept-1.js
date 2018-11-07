@@ -5,7 +5,7 @@ var atmostphericData; // declare a global variable to store the data
 var undergroundData;
 var totalsData;
 var table;
-var c = color('#00ff00');
+var countryColors = ['red','blue','magenta','yellow','green','purple','turquoise','orange','white'];
 
 function preload() {
   // start fetching the data and assign it to your global
@@ -17,42 +17,69 @@ function preload() {
 
 function setup(){
   createCanvas(2440, 1080);
+  var c = color('#00ff00');
+  var d = color(0,0,0,);
   font = loadFont('font.otf');
   textFont(font);
   textSize(fontsize);
   textAlign(RIGHT, CENTER);
   table = totalsData;
+  atmoTable = atmostphericData;
 
   print(atmostphericData);
   print(undergroundData);
   print(totalsData);
-}
+
   // Align the text to the right
   // and run drawWords() in the left third of the canvas
   textAlign(RIGHT);
-  drawWords( width * .25 );
 
-function drawWords(x) {
   // The text() function needs three parameters:
   // the text to draw, the horizontal position,
   // and the vertical position
   var x = 100
   var y = 350
   var rowHeight = 30
-  var colWidth = 31
+  var colWidth = 51
 
    // draw year labels in the header row
   textStyle(NORMAL)
   textAlign(BOLD)
-  for (var r=0; r<table.getRowCount(); r++){
-    var year = table.getString(r, 0);
+  for (let r=0; r<table.getRowCount(); r++){
+    let year = table.getString(r, 0);
     //drawRects(x,y-rowHeight,colWidth,rowHeight);
     text(year, x, y-rowHeight);
-    
+    console.log(year);
     x += colWidth;
   }
-  //function drawRects(x,y,width,height) {
-  	  // fill(c);
-    //noStroke();
-    //rect(x,y,width,height);
+x=125
+y=300
+
+    for (let r = 1; r<atmoTable.getRowCount();r++){
+    	let countries = []
+    for (let c=1; c<atmoTable.getColumnCount(); c++){
+    
+    	let explosions = atmoTable.getString(r ,c);
+    	if (explosions.toString()>0){
+    		countries.push(1)}
+		let country = atmoTable.getString(0, c);    	
+    	console.log(explosions);
+    	let colorBar = color(countryColors[c]);
+    	noStroke();
+      fill(colorBar);
+      h = x+(c-1)*10;
+    	rect(h,y,10,-explosions*3);
+    }
+    //drawRects(x,y-rowHeight,colWidth,rowHeight);
+    // text(country, x, y-rowHeight);
+    // console.log(country);
+    x += colWidth;
+    console.log(countries);
   }
+
+  function drawRects(x,y,width,height) {
+  	  fill(d);
+    noStroke();
+    rect(x,y,width,height);
+  }
+}

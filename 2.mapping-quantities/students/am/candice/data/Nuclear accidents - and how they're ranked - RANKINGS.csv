@@ -1,0 +1,45 @@
+Level,Definition,People and environment,Radiological barriers & control,Defence in depth,Example
+7,Major accident,Major release of radio active material with widespread health and environmental effects requiring implementation of planned and extended countermeasures,,,"Chernobyl, Ukraine, 1986"
+6,Serious accident,Significant release of radioactive material likely to require implementation of planned countermeasures.,,,"Kyshtym, Russia, 1957"
+5,Accident with wider consequences,"Limited release of radioactive material likely to require  implementation of
+some planned countermeasures • Several deaths from radiation","• Severe damage to reactor core.
+• Release of large quantities of radioactive material within an installation
+with a high  probability of
+significant public  exposure. This
+could arise from a major criticality accident or fire",,"Windscale, UK, 1957; Three Mile Island, 1979"
+4,Accident with local consequences,"• Minor release of radioactive material unlikely to result in implementation of planned countermeasures other than
+local food controls.
+• At least one death from  radiation.","• Fuel melt or damage to fuel resulting in more than 0.1%  release of core inventory.
+• Release of significant quantities of radioactive
+material within an  installation with a high probability of significant
+public exposure.",,"FUKUSHIMA 1, 2011"
+3,Serious incident,"• Exposure in excess of ten times the statutory annual limit for workers.
+• Non-lethal deterministic health effect (e.g., burns) from radiation.","• Exposure rates of more than 1 Sv/h in an  operating area.
+• Severe contamination in an area not expected by design, with a
+low probability
+of significant public exposure.","• Near accident at a nuclear power plant
+with no safety provisions remaining.
+• Lost or stolen highly radioactive sealed source.
+• Misdelivered highly radioactive sealed source without adequate procedures in place to handle it.","Sellafield, UK, 2005"
+2,Incident,"• Exposure of a member of the public
+in excess of 10 mSv.
+• Exposure of a worker in excess of the
+statutory annual limits","• Radiation levels in an operating area
+of more than 50 mSv/h.
+• Significant contamination within the
+facility into an area not expected by
+design","• Significant failures in safety provisions
+but with no actual consequences.
+• Found highly  radioactive sealed
+orphan source, device or transport
+package with safety provisions intact.
+• Inadequate packaging of a highly
+radioactive sealed  source.","Atucha, Argentina, 2005"
+1,Anomaly,,,"• Overexposure of a member of the
+public in excess of statutory annual
+limits.
+• Minor problems with safety
+components with significant
+defence-in-depth remaining.
+• Low activity lost or stolen radioactive
+source, device or transport package",

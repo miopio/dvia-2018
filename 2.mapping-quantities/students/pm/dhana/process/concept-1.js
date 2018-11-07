@@ -121,20 +121,21 @@ for (var i = 0; i < backgroundBaseColor.length; i++){ //go through each color st
         stroke(255);
         //stroke(91+20, 91+20, 115+20, 255);
         strokeWeight(1);
-      //rect(x-colWidth/2+7.5, y, 20, value);
-      arc(x, y, radius, radius, -PI, 0);
+      rect(x-colWidth/2+7.5, y, 20, value);
+      //arc(x, y, radius, radius, -PI, 0);
 
       // UNDERGROUND TESTS: draw the underground tests as a lower semicircle using its *negative* value to pick the color
       value = underground.tests[Countries[j]][i];
       radius = Math.sqrt(60 * value);
       color = palette.colorForValue(-value);
-        fill(79, 96, 97, 200);
+        fill(79, 96, 97, 200); //CHARCOAL GRAY ARCS
         //fill(254, 131, 43, 200); //NEON ORANGE ARCS
         stroke(255);
         //stroke(103+20, 222+20, 49+20, 255);
         strokeWeight(1);
-      //rect(x-colWidth/2+7.5, y, 20, value);
-      arc(x, y, radius, radius, 0, PI);
+      //line(x-colWidth/2+7.5, y, 20, value);
+      rect(x-colWidth/2+7.5, y, 20, value);
+      //arc(x, y, radius, radius, 0, PI);
 
       // shift downward before drawing the next country
       y = y + rowHeight;
@@ -177,5 +178,5 @@ var Countries =[
 //     }
 //     x += colWidth
 //   }
-//
+//  rect(30, 20, 55, 55);
 // }
