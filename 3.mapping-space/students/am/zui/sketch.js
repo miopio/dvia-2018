@@ -21,8 +21,8 @@ var sig;
 // my leaflet.js map
 var mymap;
 
-// time slide control
-var sliderControl;
+// magnitude slide control
+var slider;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
@@ -71,6 +71,17 @@ function setupMap(){
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
+
+    // slider = L.control.slider(function(value) {
+    // 			console.log(value);
+		// 	}, {
+    // 		max: 6,
+    // 		value: 5,
+    // 		step:0.1,
+    // 		size: '250px',
+    // 		orientation:'vertical',
+    // 		id: 'slider'
+		// }).addTo(map);
 }
 
 function drawDataPoints(){
@@ -96,16 +107,14 @@ function drawDataPoints(){
     depthMax = getColumnMax("depth");
     // console.log('depth range:', [depthMin, depthMax])
 
-
-
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
             color: '#3388ff',      // the dot stroke color
             opacity: depths[i]/100,  // use some transparency so we can see overlaps
-            radius: magnitudes[i]*4000,
-            day: days[i]
+            radius: 5
+            // day: days[i]
         });
 
         // place it on the map
@@ -114,11 +123,8 @@ function drawDataPoints(){
         // save a reference to the circle for later
         circles.push(circle)
     }
-
-    sliderControl = L.control.sliderControl({position: "topright", layer: mymap, follow: 3});
-    mymap.addControl(sliderControl);
-    sliderControl.startSlider();
 }
+
 
 function removeAllCircles(){
     // remove each circle from the map and empty our array of references
