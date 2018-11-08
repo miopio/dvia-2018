@@ -12,9 +12,9 @@ A synesthetic translation of musical score to color. Print.
 
 5. Average color of paintings, across time, by genre, subject, artist. 
 
-6.
+6. The quick brown fox jumps over the lazy dog. 
 
-7.
+7. 1000 happy faces. 
 
 8.
 

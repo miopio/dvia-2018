@@ -4,4 +4,8 @@
 *.tar.gz
 node_modules
 npm-debug.log
+<<<<<<< HEAD
 package-lock.json
+=======
+package-lock.json
+>>>>>>> 118b0355023492cd14faae78c5572bf94a50f2fd

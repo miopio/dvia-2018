@@ -19,21 +19,26 @@ var table;
 var mymap;
 
 function preload() {
+<<<<<<< HEAD
+    // load the CSV data into our `table` variable and clip out the header row - ADD LIVE INFORMATION HERE VIA URL
+    table = loadTable("assets/all_month.csv", "csv", "header");
+=======
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("data/all_month.csv", "csv", "header");
+>>>>>>> c046b65a8025904e04067897dec8e462db8543d8
 }
 
 function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
-    setupMap()
+    setupMap();
 
     // next, draw our p5 diagram that complements it
-    createCanvas(800, 600);
+    createCanvas(1450, 720);
     background(222);
 
-    fill(0)
-    noStroke()
-    textSize(16)
+    fill(0);
+    noStroke();
+    textSize(16);
     text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
     text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
     text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
@@ -52,7 +57,7 @@ function setupMap(){
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
 
     // load a set of map tiles – choose from the different providers demoed here:
-    // https://leaflet-extras.github.io/leaflet-providers/preview/
+    // https://leaflet-extras.github.io/leaflet-providers/preview/ - watch out of access tokens. can change items here at site provided
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
@@ -60,10 +65,10 @@ function setupMap(){
         accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
     }).addTo(mymap);
 
-    // call our function (defined below) that populates the maps with markers based on the table contents
+    // call our function (defined below) that populates the maps with markers based on the table contents - ADD VALUES HERE
     drawDataPoints();
 }
-
+   //SIMILAR TO SETUP() IN THAT IT DOES THE ACTION ONCE "SET UP DATA POINTS"
 function drawDataPoints(){
     strokeWeight(5);
     stroke(255,0,0);
@@ -77,11 +82,11 @@ function drawDataPoints(){
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
     magnitudeMax = getColumnMax("mag");
-    console.log('magnitude range:', [magnitudeMin, magnitudeMax])
+    console.log('magnitude range:', [magnitudeMin, magnitudeMax]);
 
     depthMin = 0.0;
     depthMax = getColumnMax("depth");
-    console.log('depth range:', [depthMin, depthMax])
+    console.log('depth range:', [depthMin, depthMax]);
 
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
@@ -97,7 +102,7 @@ function drawDataPoints(){
         circle.addTo(mymap);
 
         // save a reference to the circle for later
-        circles.push(circle)
+        circles.push(circle);
     }
 }
 
@@ -105,11 +110,11 @@ function removeAllCircles(){
     // remove each circle from the map and empty our array of references
     circles.forEach(function(circle, i){
         mymap.removeLayer(circle);
-    })
+    });
     circles = [];
 }
 
-// get the maximum value within a column
+// get the maximum value within a column - GOOD FOR DEPTH AND MAGNITUDE
 function getColumnMax(columnName){
     // get the array of strings in the specified column
     var colStrings = table.getColumn(columnName);
