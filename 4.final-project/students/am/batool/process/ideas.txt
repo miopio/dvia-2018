@@ -1,0 +1,18 @@
+
+1- Blood test results: I've always wanted to visualize the medical test results, I always find it hard to understand what is normal and what's not. Turning the heavy texted document into visualization will help everyone understand their health level. (diagram)
+
+2- Visualize the current temperature around the world. (map)
+
+3-  extend the earthquake project: add more data and filtering options, show relationship between S and P waves and O zone layer
+
+4- Airplanes routes between the biggest airports around the world (map) 
+
+5- Bike assembly infographic poster (diagram)
+
+SA:
+
+1- Hajj pilgrimage in Saudi Arabia: Every year millions of people from all over the world gather in one place for Hajj for few days. (diagram or map)
+
+2- Number of car accidents every day in Riyadh, Saudi Arabia. (diagram)
+
+3-The new metro system in Riyadh (map)

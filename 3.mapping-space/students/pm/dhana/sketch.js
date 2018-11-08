@@ -19,8 +19,13 @@ var table;
 var mymap;
 
 function preload() {
+<<<<<<< HEAD
     // load the CSV data into our `table` variable and clip out the header row - ADD LIVE INFORMATION HERE VIA URL
     table = loadTable("assets/all_month.csv", "csv", "header");
+=======
+    // load the CSV data into our `table` variable and clip out the header row
+    table = loadTable("data/all_month.csv", "csv", "header");
+>>>>>>> c046b65a8025904e04067897dec8e462db8543d8
 }
 
 function setup() {

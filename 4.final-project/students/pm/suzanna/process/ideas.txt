@@ -1,0 +1,21 @@
+A Study of Databreach Laws which analyzes the "Words that Protect Us."  Data breaches are happing around the globe.  It is essential to understand differences in laws to understand how we are protected in the various states.  This study examines state data breach laws across the United States of America as 2018 saw the adoption of data breach laws across all 50 states.  The following are ten ideas related to the study of these laws:
+
+1.  Word count (e.g. term frequency) - which words are used in the law
+
+2.  Word clusters - Machine Learning - can we characterize the topics in the laws?
+
+3.  Date created - When were the laws created?
+
+4.  Number of words - How many words is each law?
+
+5.  Number of sections - How are the sections different across states?
+
+6.  Section titles - Machine Learning - How are the section titles different across states?
+
+7.  Date created political party in power - Is there any connection between created laws and the political parties involved?
+
+8.  Length of time to ratify law - How long did it take to ratify the laws across the USA?
+
+9.  Health and Human Services (HHS) Wall of Shame dates to law creation/revisions - Are there any data breach statistics which relate to the laws?
+
+10. Number of law revisions/changes, etc. - Has there been any revisions to the state laws over time?  If so, how and why?

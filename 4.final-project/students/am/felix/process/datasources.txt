@@ -1,0 +1,33 @@
+#
+# List of URLs pointing to publicly accessible data (including a brief description of the subject matter & data format)
+#
+# For example, the earthquake feeds we've been using could be summarized as:
+#   Description: Realtime feeds of recent earthquake times, locations, and magnitudes
+#   Provider: the US Geological Survey
+#   Format: multiple CSV files with different time/magnitude windows
+#   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
+
+Description: Global Burden of Disease Study 2016, “Collected and analyzed by a consortium of more than 3,000 researchers in more than 130 countries, the data capture premature death and disability from more than 300 diseases and injuries in 195 countries, by age and sex, from 1990 to the present, allowing comparisons over time, across age groups, and among populations.”
+Provider: IHME, Institute for Health Metrics and Evaluation
+Format: CSV, 1990-2016
+URL: http://ghdx.healthdata.org/gbd-2016
+
+Description: Google Books Ngrams, “A data set containing Google Books n-gram corpora.”
+Provider: Google
+Format: Looks like a tsv format
+URL: http://storage.googleapis.com/books/ngrams/books/datasetsv2.html
+
+Description: Linguistic data of 32k film subtitles with IMDb meta-data, “Meta-data for more than 32 thousand films. These meta-data are matched to word-count categories from subtitle files.”
+Provider: Robert Joel Lewis
+Format: Download needs registration, haven’t checked yet
+URL: https://data.world/robertjoellewis/film-subtitles/contributors
+
+Description: Average utilization of personal time in minutes per day (all persons, persons who pursue the activity, participation level). Classification: years, Germany, age, sex, activity
+Provider: Federal Statistical Office, Branch Bonn
+Format: Website with table, should be possible to request the data
+URL: http://www.gbe-bund.de/oowa921-install/servlet/oowa/aw92/dboowasys921.xwdevkit/xwd_init?gbe.isgbetol/xs_start_neu/&p_aid=3&p_aid=8343384&nummer=880&p_sprache=E&p_indsp=-&p_aid=13774220
+
+Description: Enron Email Dataset
+Provider: “This dataset was collected and prepared by the CALO Project (A Cognitive Assistant that Learns and Organizes). It contains data from about 150 users, mostly senior management of Enron, organized into folders. The corpus contains a total of about 0.5M messages. This data was originally made public, and posted to the web, by the Federal Energy Regulatory Commission during its investigation. The email dataset was later purchased by Leslie Kaelbling at MIT, and turned out to have a number of integrity problems. A number of folks at SRI, notably Melinda Gervasio, worked hard to correct these problems, and it is thanks to them (not me) that the dataset is available.”
+Format: Torrent, not yet downloaded, I guess txt files in folders
+URL: http://academictorrents.com/details/4697a6e1e7841602651b087d84f904d43590d4ff

@@ -20,7 +20,7 @@ var mymap;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
-    table = loadTable("assets/all_month.csv", "csv", "header");
+    table = loadTable("data/all_month.csv", "csv", "header");
 }
 
 function setup() {
@@ -50,6 +50,7 @@ function setupMap(){
 
     // create your own map
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    //setView(long,lat),zoom
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/

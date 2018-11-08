@@ -1,0 +1,54 @@
+1. Mapping the gut brain axis
+Visualize the pathways between enteroendocrine cells (EECs), enteric nervous system (ENS) in the gut, the vagus, and brainstem regions. This should be a comprehensive map that shows receptors on specific cell types, hormones and neurotransmitters released, and what cells upstream they signal to. Both known and proposed pathways should be considered. 
+
+Data source: in house (Kallyope)
+
+
+2. Cell museum for EECs and vagal cell types
+Compile a "gallery" of sorts for various EEC, vagal, and nucleus of the solitary tract (NST) cell types. Reference Cell Museum by the Seung Lab. This should be an interactive database where info that we have obtained both from journals and in house are used to paint a complete picture of what we know about these various cell types.
+
+Data source: in house, IMDB for papers
+
+3. Calcium imaging in the vagus
+A source of trouble that I have been having personally at work is how to visualize the calcium imaging data that I have been amassing for two years. I have been imaging the nodose ganglion in in vivo mice while stimulating the intestine with nutrients, mechanical stimulation, etc. We can produce heatmaps and fluorescence signaling traces, but have not been keeping a good database of them. Additionally, others in the company unfamiliar with calcium imaging have a difficult time understanding the data. I want to create a comprehensive database where I visualize this data in a more understandable way for those who are not specialized in neuroscience.
+
+Data source: in house (own data, Kallyope)
+
+4. Women's career trajectory before and after pregnancy around the world
+Though workplaces are increasingly accepting of maternal leave/pregnant women in the workplace, women still suffer from lower pay, prejudice, and constraints from childbirth. I would like to look at the career trajectory of women before and after pregnancy in countries around the world (i.e. compare the US with more socialist countries like Denmark, and conservative countries like Egypt). This can be looked at from multiple standpoints: salary, paid maternal leave, whether women had to quit their job to support their children full time.
+
+Data source: https://www.bls.gov/osmr/pdf/nl920010.pdf (need something more up to date though)
+https://statusofwomendata.org/explore-the-data/employment-and-earnings/#section-1
+
+
+5. Sexual harassment charges in the workplace
+Where are sexual harassment cases most prevalent in the workplace and has this changed over time. Has treatment of sexual harassment/assault/rape cases in court changed at all over time? Longitudinal study.
+
+
+Data source: https://github.com/BuzzFeedNews/2017-12-eeoc-harassment-charges
+
+6. Healthcare costs in the US and beyond
+How do hospital costs for common surgeries vary across the city/US/world? We don’t have much of an idea why we are paying the amount we pay vs socialist countries which pay more than two times less than the US. Aim to make that digestible. Need to look at avg procedure costs for hospitals around country.
+
+Data source: https://healthdata.ny.gov/browse?sortBy=alpha&tags=quality-safety-costs&page=1
+
+7. Gun violence and mental health
+How much of a correlation is there between gun violence, mental health, and demographic? Can we prevent gun violence by increasing government funding on mental health? Look at the statistics on gun violence in each state, and background on prepetrators. Correlate that with governmental funding on mental health, prevalence of extreme social views, etc.
+
+Data source: https://www.kaggle.com/jameslko/gun-violence-data/home
+
+8. Obesity and Food 
+How does obesity relate to popular items in grocery stores? Look at obesity demographic across the country first to select cities of interest. Then look at grocery store annual sales in the various cities. Also would be interesting to look at budget stores vs Whole Foods or Trader Joe’s.
+
+Data source: tbd
+
+9. Social Mobility 
+Does having a college degree or grad school degree still increase social mobility? Analyze social mobility within different socioeconomic demographics.
+
+Data source: https://opportunityinsights.org/data/
+
+10. The effect of tech: a comprehensive study
+How much good vs bad is tech doing to the world? Look at tech from various standpoints: tech's effect on economy, tech's effect on mental health of users, tech's effect on gentrification.
+
+Data source: tbd
+

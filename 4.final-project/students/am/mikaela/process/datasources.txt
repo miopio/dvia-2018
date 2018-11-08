@@ -1,0 +1,9 @@
+Description: Maternal mortality ratio (modeled estimate, per 100,000 live births)
+Provider: World Bank Group 
+Format: multiple CSV files with meta data and indicators 
+URL:  https://data.worldbank.org/indicator/SH.STA.MMRT 
+
+Description: Google Trends in searches for “Third-wave feminism” and “Dove Campaign for Real Beauty” Provider: Google Trends 
+Format: CSV file of interest over time over the last 5 years and # of searches for each 
+URL:  https://trends.google.com/trends/explore?date=today%205-y&q=%2Fm%2F0380nf,%2Fm%2F06wv6z 
+
