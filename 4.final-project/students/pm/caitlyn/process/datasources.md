@@ -16,7 +16,7 @@ Provider: Genius
 Format: JSON
 URL: https://docs.genius.com/
 
-Description: 
+Description: Pub name, address, lat/lon
 Provider: Kaggle
 Format: CSV
 URL: https://www.kaggle.com/rtatman/every-pub-in-england
