@@ -28,7 +28,9 @@ Where are sexual harassment cases most prevalent in the workplace and has this c
 Data source: https://github.com/BuzzFeedNews/2017-12-eeoc-harassment-charges
 
 6. Healthcare costs in the US and beyond
-How do hospital costs for common surgeries vary across the city/US/world? We don’t have much of an idea why we are paying the amount we pay vs socialist countries which pay more than two times less than the US. Aim to make that digestible. Need to look at avg procedure costs for hospitals around country.
+How do hospital costs for common surgeries vary across the city/US/world? How have pharma medication costs relate to this? We don’t have much of an idea why we are paying the amount we pay vs socialist countries which pay more than two times less than the US. Aim to make that digestible. Need to look at avg procedure costs for hospitals around country.
+
+Sarah Cliff
 
 Data source: https://healthdata.ny.gov/browse?sortBy=alpha&tags=quality-safety-costs&page=1
 
@@ -49,6 +51,9 @@ Data source: https://opportunityinsights.org/data/
 
 10. The effect of tech: a comprehensive study
 How much good vs bad is tech doing to the world? Look at tech from various standpoints: tech's effect on economy, tech's effect on mental health of users, tech's effect on gentrification.
+
+
+start with one element -->
 
 Data source: tbd
 
