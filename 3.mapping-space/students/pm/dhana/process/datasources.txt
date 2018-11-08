@@ -1,0 +1,111 @@
+10 Ideas for Final Project:
+
+  - What are some observations you find noteworthy?
+  - What insights could this offer?
+  - How is it related to visualization, what can visualization reveal here?
+  - What new ideas came out of the process of sketching and research?
+  - What are the next steps?
+--------------------------------------------------------------------------------
+I have had a longstanding academic, artistic, and personal interest in studying the influence of cultural production practices
+on social norms and changes in cultural attitudes. I may sound a bit naive or romantic, but I really do believe that social and political progress
+has and continues to evolve from the existence and proliferation of music and art subcultures (like the Beats, Hippies => growth of cynicism & calls
+for transparency, etc.), and my interest has grown to look more deeply at the Internet's influence on speeding up this process.
+
+I've always wanted to map out all of the activity happening in the queer nightlife & music scenes I've been a part of for so long because hybridity in people,
+cultures, languages, religions, music, and art began to congeal under a single aesthetic, and sociologically I think it's worth a deeper look.  The majority of my pitches
+below are music related, and a couple are related to online culture and transgender community building. A few others are related to subjects related to Urban Studies.
+
+There is a dataset that does look at the changes in cultural attitudes over time on the "Our World In Data" website, so this would be an interesting thing to bring into any project I end up working on.
+
+https://ourworldindata.org/
+
+10 IDEAS
+
+1. Visualize Influence
+   Ghe20G0th1k's influence on politics/intersectional identity in nightlife & club culture between 2009-present.
+      Early press: https://www.highsnobiety.com/2017/05/01/ghe20g0th1k-nyc/
+      Simultaneous influences around the country:
+          NYC - Ghe20G0th1k, Vogue Knights
+          LA - Wildness, Mustache Mondays
+          Boston - NU LIFE, Pico Picante
+          SF - Swagger Like Us
+          Chicago - A/S/L
+          Philly - PreColombian
+
+
+2. Visualize Influence
+   Queer intersectional identity in nightlife and club culture between 1977-present // might be too big for now
+   Sources: https://www.residentadvisor.net/features/1927 "An Alternate History of Sexuality in Club Culture"
+            https://www.residentadvisor.net/features/2642 "America's Gay Techno Underground"
+            https://www.youtube.com/watch?v=EqR7F5yCDfw "How Punk Shaped Electronic Dance Music"
+
+            Disco/House
+            Acid/Techno
+            RiotGrrl/Electroclash
+            Ghe20G0th1k
+
+3. Visualize Influence
+   Online community building in the growth of transgender visibility and increase legal protections
+
+
+
+4. Soundwaves:
+   Nerves
+      Source idea: self recorded medical exam
+      A few years ago, I had a doctor's appointment where I had to undergo a nerve test. Basically the doctor attached a
+      bunch of electrodes to my arms and legs to make sure my nerves were firing properly. To do this he had to send mild currents
+      of electricity through my body, and the electrodes were attached to a machine which would emit a noise when I moved my arms and legs.
+      I could literally hear my nerves firing, so for my second test I got permission to record it. I've always wanted to visualize it somehow.
+5. Soundwaves:
+   Current Club Sounds
+      Source Idea: https://www.thefader.com/2015/07/09/system-focus-cybernetic-club-music
+                   http://rougesfoam.blogspot.com/2011/01/artl-night-slugs.html
+
+      ** What does today's sound look like and how is it distinct in form from previous generations of club tracks?
+
+
+7. Soundwaves: (This might be better suited for a thesis project)
+      Regional genres
+      Club:
+      Philly, Jersey, Baltimore
+
+      Detroit:
+      House, Techno, Ghettotech
+
+      Chicago:
+      House, Juke, Footwork
+
+      Hip Hop:
+        East Coast - jazz
+        West Coast - funk
+        Dirty South - Screw Music, Trap (HAM: Houston, Atlanta, Memphis),
+        Midwest  - Juke, Footwork, (Cleveland, St. Louis, Chicago)
+
+      The Caribbean
+      Reggae vs. Dancehall vs. Grime
+
+      Sud:
+        Mexico City - 3Ball (Tribal), NAAFI  https://www.complex.com/music/2014/11/lao-interview
+        Brazil - Baile Funk
+
+8. MTA slowness: Review data from the past 5 years to rate growth of slowness in commute & lost productivity.
+      Is it gentrification leading to population overgrowth clogging up the lines?
+      Is it MTA infrastructure & funding?
+
+9. Synesthesia: explore identity stress, resilience and synesthetic experiences.
+   Hallucinations are Everywhere:
+   https://www.theatlantic.com/health/archive/2018/10/hallucinations-hearing-voices-reality-debate/571819/
+
+   My meandering thoughts on the proposal:
+      - Root word for synesthesia “Joined perception” or “Perceive together”
+      - Seeing shapes or colors when you hear certain types of music.
+      - What do you see or hear when you feel hallow or empty?
+      - Is synesthesia race? Or is race synesthesia?
+      - Some synesthetes explain that their condition is experienced from the inside and some experience it as
+        a hallucinatory experience, but it is not a hallucination because it is not imagined and can be reliably replicated over time.
+
+10. Synesthesia/Wave Forms/Nerves combo?
+    Planned obsolescence of humans
+      Utility/expendability
+      Absence/lack/potentiality
+      AI, Machine Learning, Bots, Education needs shifting
