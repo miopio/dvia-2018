@@ -7,27 +7,78 @@
 #   Format: multiple CSV files with different time/magnitude windows
 #   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
 
-Description:
-Provider:
-Format:
-URL:
 
-Description:
-Provider:
-Format:
-URL:
+Description: A diversity of data on government, the economy, politics and other areas of interest to Pro Publica researchers
+Provider: Pro Publica
+Format: CSV, SQL and other file formats
+URL: https://www.propublica.org/datastore/
 
-Description:
-Provider:
-Format:
-URL:
+Description: Crime statistics from the nation's leading law enforcement agency
+Provider: Federal Bureau of Investigation 
+Format: Excel 
+URL: https://www.fbi.gov/services/cjis/ucr
 
-Description:
-Provider:
-Format:
-URL:
+Description: Data on education, science, demography and other topics
+Provider: UNESCO
+Format: Excel, CSV and other formats 
+URL: http://data.uis.unesco.org/
 
-Description:
-Provider:
-Format:
-URL:
+Description:Economic and other social data from the private, non-profit, non-partisan organization
+Provider: National Bureau of Economic Research
+Format: CSV and other formats
+URL: https://conference.nber.org/
+
+Description: Research data on public policy from the military to health issues.
+Provider: RAND Corporation
+Format: CSV
+URL: https://www.rand.org/
+
+Description: Data on politics, media, society, global attitudes and trends etc.
+Provider: Pew Research Center 
+Format: SPSS .sav files and other formats
+URL: http://www.pewresearch.org/download-datasets/
+
+Description: Measuring America's people, places, and economy
+Provider: United States Census Bureau 
+Format: XLS, CSV
+URL: https://www.census.gov/
+
+Description: A project of the East-West Center exploring US-Asia relations
+Provider:Asia Matters for America
+Format: Text, possibly data formats 
+URL: https://asiamattersforamerica.org/
+
+Description: A wealth of data on population, the economy, health and many other indicators
+Provider: United Nations
+Format: CSV 
+URL: http://data.un.org/Default.aspx
+
+Description: Japanese government statistics on population, the economy and mor
+Provider: Government of Japan
+Format: CSV, Excel
+URL: https://www.e-stat.go.jp/en
+
+Description: Data on arrivals, destinations and shopping by tourists visiting Japan
+Provider: Japan National Tourism Organization(JNTO)
+Format: CSV, PDF etc.
+URL: https://statistics.jnto.go.jp/
+
+Description: Tracking artists and concerts in the live music industry
+Provider: Songkick 
+Format: API 
+URL: https://www.songkick.com/developer
+
+Description: Data catalog with vast amount of US government data
+Provider: U.S. General Services Administration 
+Format: CSV, JSON, XML etc.
+URL: https://catalog.data.gov/dataset
+
+Description: Various data gathered by New York city agencies
+Provider: New York City 
+Format: API, XML
+URL: https://opendata.cityofnewyork.us/
+
+Description: Online publication on topics from population to war & peace produced by the Oxford Martin Programme on Global Development at the University of Oxford, made available as a public good. 
+Provider: Various 
+Format: CSV< Excel, SQL etc.
+URL: https://ourworldindata.org

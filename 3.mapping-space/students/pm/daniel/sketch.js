@@ -5,9 +5,15 @@ var depths;
 // an array for lat & long
 var latitudes, longitudes;
 
-// minimum and maximum values for magnitude and depth
+// an array for Japanese intensity
+var intensity;
+
+// minimum and maximum values for magnitude, depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
+
+// minimum and maximum values for Japanese intensity
+var intensityMin, intensityMax;
 
 // the dots we'll be adding to the map
 var circles = [];
@@ -15,12 +21,16 @@ var circles = [];
 // table as the data set
 var table;
 
+//JapanTable as the data set 
+var japanTable;
+
 // my leaflet.js map
 var mymap;
 
 function preload() {
-    // load the CSV data into our `table` variable and clip out the header row
-    table = loadTable("data/all_month.csv", "csv", "header");
+    // load the CSV data into our `table` and `japanTable` variable and clip out the header row
+    table = loadTable("data/all_week.csv", "csv", "header");
+    japanTable = loadTable("data/japan_major_quakes.csv", "csv", "header");
 }
 
 function setup() {
@@ -37,6 +47,7 @@ function setup() {
     text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
     text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
     text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+
 }
 
 function setupMap(){
@@ -49,15 +60,16 @@ function setupMap(){
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    mymap = L.map('quake-map').setView([38.00, 139.50], 5);
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
+    L.tileLayer('https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey={apikey}', {
+    attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    apikey: '84f79b907f8c451d880219e3f07bbd73',
+    maxZoom: 22,
         id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
+        accessToken: 'pk.eyJ1IjoiZGFuZ3J1bmViYXVtIiwiYSI6ImNqbzM3dGh3bDB1ZXgzdnBoNjl3MDM4ZnQifQ.qT8VydwK8OtqWCYUUcaSIQ'
     }).addTo(mymap);
 
     // call our function (defined below) that populates the maps with markers based on the table contents
@@ -65,8 +77,7 @@ function setupMap(){
 }
 
 function drawDataPoints(){
-    strokeWeight(5);
-    stroke(255,0,0);
+
 
     // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
@@ -90,7 +101,9 @@ function drawDataPoints(){
             color: 'red',      // the dot stroke color
             fillColor: '#f03', // the dot fill color
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
+            radius: magnitudes[i] * 20000
+
+
         });
 
         // place it on the map
@@ -130,3 +143,51 @@ function getColumnMax(columnName){
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
 }
+function drawDataPoints(){
+
+
+    //get the two arrays of interest from japanTable: magnitude and intensity
+    magnitude = japanTable.getColumn("Magnitude");
+    intensity = japanTable.getColumn("Intensity");
+    latitudes = japanTable.getColumn("Latitude");
+    longitudes = japanTable.getColumn("Longitude");
+
+    // get minimum and maximum values for both
+    magnitudeMin = 0.0;
+    magnitudeMax = getColumnMax("Magnitude");
+    console.log('magnitude range:', [magnitudeMin, magnitudeMax])
+
+    intensityMin = 0.0;
+    intensityMax = getColumnMax("Intensity");
+    console.log('intensity range:', [intensityMin, intensityMax])
+
+    // cycle through the parallel arrays and add a dot for each event
+    for(var i=0; i<magnitude.length; i++){
+        // create a new dot
+        var circle = L.circle([latitudes[i], longitudes[i]], {
+            color: 'T',      // the dot stroke color
+            fillColor: '#FFA500', // the dot fill color
+            fillOpacity: 0.40,  // use some transparency so we can see overlaps
+            radius: magnitude[i] * 10000
+        });
+
+var popup1 = L.popup()
+    .setLatLng([34.7409, 139.3856])
+    .setContent("Great Kanto Earthquake, 1923. Magnitude 8.3. Intensity 6. 142,000 deaths.")
+    .openOn(mymap);
+
+/*var popup2 = L.popup()
+    .setLatLng([35.6242, 135.0610])
+    .setContent("Kita Tango earthquake, 1923. Magnitude 7.3. Intensity 6. 3,200 deaths.")
+    .openOn(mymap);
+
+        // place it on the map
+        circle.addTo(mymap);
+
+        // save a reference to the circle for later
+        circles.push(circle)
+    }
+}
+
+
+
