@@ -20,6 +20,9 @@ var mymap;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
+    table = loadTable("data/all_hour.csv", "csv", "header");
+    table = loadTable("data/all_day.csv", "csv", "header");
+    table = loadTable("data/all_week.csv", "csv", "header");
     table = loadTable("data/all_month.csv", "csv", "header");
 }
 

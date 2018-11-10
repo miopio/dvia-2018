@@ -1,19 +1,86 @@
-1.
+1.Visualizing <a City’s?> Homelessness crisis: Homelessness: The Great Moral Nightmare of Late Stage Capitalism- 
+  #heavy
 
-2.
+* Noteworthy Observations: City List: NYC, San Fransisco, Seattle, Vancouver (interesting how those cities seem to be in the headlines for this problem and how the problem connects to them being the epicenter of capitalistic speculation)
+* Insights this offers: I either want to focus on understanding the social sentiment around this issue through visualization or to illustrate the cost of homelessness to society and
+* What can visualization reveal: Areas most affected, The cost of homelessness to society vs the cost of solving the problem, the impetus for the problem
+* New Ideas: It is more costly to society to have growing homelessness than it is to make a material investment in ending homelessness and making society more accessible and participatory for everyone, regardless of their vulnerability
+* What are the next steps? Collect data, draw sketches, map data.
 
-3.
 
-4.
+2. Coming Soon to your Neighborhood: Gentrification!
+A present Atlas of where Gentrification is happening and a predictive atlas of where it will go next based on current economic and social indicators:
+#thoughtful
 
-5.
+* Noteworthy Observations: 
+* Insights this offers:
+* What can visualization reveal: 
+* New Ideas: 
+* What are the next steps? Do more readhing/ research, Collect data, draw sketches, map data.
 
-6.
+3. The Evolution of SLanguage: How AAVE permeated everyday American language
+Articles:- 
 
-7.
+Memes, internet lingo, and the influence of hip-hop have all had an indelible impact on American (and global) patterns of vocabulary, idiomatic expression and more generally, self expression. What role has AAVE played in all of this and why?
+#silly
 
-8.
+* Noteworthy Observations: 
+* Insights this offers:
+* What can visualization reveal: 
+* New Ideas: 
+* What are the next steps? Do more readhing/ research, Collect data, draw sketches, map data.
 
-9.
+4. Do my Podcasts pass the Bechdel Test? (Do I need a new BT spec for my podcasts?)
+The Problem: A lot of my podcasts give a significant airtime to female voices, but how often are they talking to each other, and how often is it about men?
+#silly
 
-10.
+* Noteworthy Observations: 
+* Insights this offers:
+* What can visualization reveal: 
+* New Ideas: 
+* What are the next steps? Do more readhing/ research, Collect data, draw sketches, map data.
+
+5. How Many wikipedia pages mention <famous data viz figure>
+* Noteworthy Observations: 
+* Insights this offers:
+* What can visualization reveal: 
+* New Ideas: 
+* What are the next steps? Do more readhing/ research, Collect data, draw sketches, map data.
+
+6. All Watched over by the Machines with Loving Grace: Visualizing the effect of Automation on different job markets
+- what are the incentives driving automation?
+- are the arguments for efficiency sound?
+- what arguments about costs and consequences are being ignored?
+- what does the outlook look like right now?
+- can any (g00d) predictions be made?
+#thoughtful? #heavy?
+
+* Noteworthy Observations: 
+* Insights this offers:
+* What can visualization reveal: 
+* New Ideas: 
+* What are the next steps? Do more readhing/ research, Collect data, draw sketches, map data.
+
+
+7. Social Media, Antisocial Behaviour: An Analysis of tweets using cluser analysis
+Noteworthy Observations: 
+#heavy #unite_them_all
+
+* Insights this offers:
+* What can visualization reveal: 
+* New Ideas: 
+* What are the next steps? Do more readhing/ research, Collect data, draw sketches, map data.
+
+8. It Does Get Better: Charting out a global history of Progress nd Human development (a la Hans Rosling)
+#light
+
+Noteworthy Observations: 
+* Insights this offers:
+* What can visualization reveal: 
+* New Ideas: 
+* What are the next steps? Do more readhing/ research, Collect data, draw sketches, map data.
+
+9. Something, Something, AfroFuturism, Something: exploring Black Hope and Optimism through the niche world of futuristic art and literature
+https://howwegettonext.com/exploring-the-future-without-cyberpunks-neon-and-noir-8e23562819e3
+
+10. Charting the last 50 years of American electoral Politics; Insights from electoral data.
