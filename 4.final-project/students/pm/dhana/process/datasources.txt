@@ -5,6 +5,8 @@
   - How is it related to visualization, what can visualization reveal here?
   - What new ideas came out of the process of sketching and research?
   - What are the next steps?
+
+  What am I trying to measure? What is the problem domain? 
 --------------------------------------------------------------------------------
 I have had a longstanding academic, artistic, and personal interest in studying the influence of cultural production practices
 on social norms and changes in cultural attitudes. I may sound a bit naive or romantic, but I really do believe that social and political progress
@@ -48,7 +50,6 @@ https://ourworldindata.org/
    Online community building in the growth of transgender visibility and increase legal protections
 
 
-
 4. Soundwaves:
    Nerves
       Source idea: self recorded medical exam
@@ -56,6 +57,7 @@ https://ourworldindata.org/
       bunch of electrodes to my arms and legs to make sure my nerves were firing properly. To do this he had to send mild currents
       of electricity through my body, and the electrodes were attached to a machine which would emit a noise when I moved my arms and legs.
       I could literally hear my nerves firing, so for my second test I got permission to record it. I've always wanted to visualize it somehow.
+
 5. Soundwaves:
    Current Club Sounds
       Source Idea: https://www.thefader.com/2015/07/09/system-focus-cybernetic-club-music
@@ -64,7 +66,7 @@ https://ourworldindata.org/
       ** What does today's sound look like and how is it distinct in form from previous generations of club tracks?
 
 
-7. Soundwaves: (This might be better suited for a thesis project)
+7. Soundwaves: (This might be better suited for a thesis project) Spotify API, loudness wars, spectrograms (old recordings vs remasters)
       Regional genres
       Club:
       Philly, Jersey, Baltimore
@@ -108,6 +110,4 @@ https://ourworldindata.org/
     Planned obsolescence of humans
       Utility/expendability
       Absence/lack/potentiality
-      AI, Machine Learning, Bots, Education needs shifting
-
-
+      AI, Machine Learning, Bots, Education needs shifting, automation
