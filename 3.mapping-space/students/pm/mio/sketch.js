@@ -21,6 +21,8 @@ var mymap;
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("data/all_month.csv", "csv", "header");
+    //boundaries = loadJSON("data/PB2002_boundaries.json");
+    plates = loadJSON("data/PB2002_plates.json");
 }
 
 function setup() {
@@ -28,7 +30,7 @@ function setup() {
     setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(800, 600);
+    createCanvas(1280, 700);
     background(222);
 
     fill(0)
@@ -49,24 +51,83 @@ function setupMap(){
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    mymap = L.map('quake-map').setView([37.7749, -122.4194], 4);
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
+   
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
     }).addTo(mymap);
 
+    /*function getColor(p){
+        return p = 'NA' ? '#800026':
+               p = 'SA' ? '#FD8D3C':
+                          '#FFEDA0';
+    }; */
+
+
+function mystyle(feature) {
+    return {
+        //fillColor: getColor(feature.properties.Code),
+        fillColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6),
+        weight: 0.5,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+}
+
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+}
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+
+var geojson;
+    //L.geoJson(boundaries).addTo(mymap);
+    geojson = L.geoJson(plates, {style: mystyle}).addTo(mymap);
+
+    //drawPolygons();
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
 }
 
+
 function drawDataPoints(){
     strokeWeight(5);
     stroke(255,0,0);
+
 
     // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
@@ -87,10 +148,11 @@ function drawDataPoints(){
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
+            color: 'yellow',
+            weight: 0.5,      // the dot stroke color
+            fillColor: 'yellow', // the dot fill color
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
+            radius: magnitudes[i] * 10000
         });
 
         // place it on the map
@@ -134,7 +196,7 @@ function getColumnMax(columnName){
 
 
 
-
+/*
 //GRAPH SKETCH
 
 // position for the plot
@@ -151,7 +213,7 @@ var depths;
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
 
-var magnitudeInterval = 1.0;
+//var magnitudeInterval = 1.0;
 var depthInterval = 50.0;
 
 // table as the data set
@@ -293,3 +355,4 @@ function getColumnMax(columnName){
   // after going through all rows, return the max value
   return m;
 }
+*/
