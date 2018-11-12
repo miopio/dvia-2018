@@ -54,6 +54,33 @@ function setup() {
     text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
     text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
     text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+
+    times = graphtable.getColumn('time');
+    depths = graphtable.getColumn('depth');
+    magnitudes = graphtable.getColumn('magnitude');
+    magnitudes = magnitudes^10;
+
+    var trace1 = {
+      x: times,
+      y: depths,
+      mode: 'markers',
+      marker: {
+        size: magnitudes
+      }
+    };
+
+    var data = [trace1];
+
+    var layout = {
+      title: 'Depth and magnitude of most significant earthquakes this month',
+      showlegend: false,
+      height: 400,
+      width: 1000
+    };
+
+    Plotly.newPlot('quake-graph', data, layout);
+
+
 }
 
 function setupMap(){
@@ -191,6 +218,28 @@ function setupMap(){
 
     legend.addTo(mymap);
 
+  var legend2 = L.control({ position: "bottomleft" });
+
+      legend2.onAdd = function (map) {
+  
+      var div = L.DomUtil.create('div', 'info legend'),
+      grades = [0, 70, 300, 700],
+      labels = [];
+
+      div.innerHTML+='Depth<br><hr>'
+  
+      // loop through our density intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < grades.length; i++) {
+          div.innerHTML +=
+              '<k style="background:' + getRadius(grades[i] + 1) + '">&nbsp&nbsp&nbsp&nbsp</i> ' +
+              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+  }
+  
+  return div;
+  };
+
+  legend2.addTo(mymap);
+
     //drawPolygons();
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
@@ -299,7 +348,39 @@ function getColumnMax(columnName){
     // return _.max(colValues);
 }
 
+/*// an array for the time
+var times;
+// an array for the magnitude
+var magnitudes;
+//an array for the epth
+var depths;
+//an array for graph dataset
+var graphtable;
 
+
+times = graphtable.getColumn('time');
+depths = graphtable.getColumn('depth');
+magnitudes = graphtable.getColumn('magnitude');
+
+var trace1 = {
+  x: times,
+  y: depths,
+  mode: 'markers',
+  marker: {
+    size: magnitudes
+  }
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'Marker Size',
+  showlegend: false,
+  height: 400,
+  width: 1000
+};
+
+Plotly.newPlot('quake-graph', data, layout); */
 
 
 //GRAPH SKETCH
