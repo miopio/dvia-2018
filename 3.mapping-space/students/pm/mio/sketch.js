@@ -72,66 +72,130 @@ function setupMap(){
     // https://leaflet-extras.github.io/leaflet-providers/preview/
    
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+    }).addTo(mymap);
+
+    /*L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
         maxZoom: 19
-    }).addTo(mymap);
+    }).addTo(mymap);*/
 
-
-
-function mystyle(feature) {
-    return {
-        //fillColor: getColor(feature.properties.Code),
-        fillColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6),
-        weight: 0.5,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.1
+    // control that shows state info on hover
+    var info = L.control();
+    info.onAdd = function(mymap) {
+      this._div = L.DomUtil.create("div", "info");
+      this.update();
+      return this._div;
     };
-}
+    info.update = function(props) {
+      this._div.innerHTML =
+        "<h4>Tectonic Plates</h4>" +
+        (props
+          ? "<b>" +
+            props.PlateName
+          : "Hover over a plate");
+    };
+    info.addTo(mymap);
 
-
-
-var geojson;
-
-function highlightFeature(e) {
-    var layer = e.target;
-
-    layer.setStyle({
-        weight: 5,
-        color: '#666',
-        dashArray: '',
-        fillOpacity: 0.7
-    });
-
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
+    function mystyle(feature) {
+        return {
+            //fillColor: getColor(feature.properties.Code),
+            fillColor: '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6),
+            weight: 0.5,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.2
+        };
     }
-}
 
-function resetHighlight(e) {
-    geojson.resetStyle(e.target);
-}
+    function getColor(m) {
+      return m > 7.0 ? '#800026' :
+             m > 6.0  ? '#BD0026' :
+             m > 5.0  ? '#E31A1C' :
+             m > 4.0  ? '#FC4E2A' :
+             m > 3.0  ? '#FD8D3C' :
+             m > 2.0  ? '#FEB24C' :
+             m > 1.0  ? '#FED976' :
+                        '#FFEDA0'; 
+    }
 
-function zoomToFeature(e) {
-    mymap.fitBounds(e.target.getBounds());
-}
+    function getRadius(d) {
+      return d < 70  ? 100000 :
+             d < 300 ? 5000 :
+             d < 700 ? 100:
+                       0;
+    }
 
-function onEachFeature(feature, layer) {
-    layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-    });
-}
-    //L.geoJson(boundaries).addTo(mymap);
+    function highlightFeature(e) {
+        var layer = e.target;
+
+        layer.setStyle({
+            weight: 5,
+            color: '#666',
+            dashArray: '',
+            fillOpacity: 0.7
+        });
+
+        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+            layer.bringToFront();
+        }
+
+        info.update(layer.feature.properties)
+    }
+
+    var geojson;
+
+    function resetHighlight(e) {
+        geojson.resetStyle(e.target);
+        info.update();
+    }
+
+    function zoomToFeature(e) {
+        mymap.fitBounds(e.target.getBounds());
+    }
+
+    function onEachFeature(feature, layer) {
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+        });
+    }
+    
     geojson = L.geoJson(plates, {style: mystyle}, {onEachFeature: onEachFeature}).addTo(mymap);
+
+    var legend = L.control({ position: "bottomright" });
+
+      legend.onAdd = function (map) {
+  
+      var div = L.DomUtil.create('div', 'info legend'),
+      grades = [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      labels = [];
+
+      div.innerHTML+='Magnitude<br><hr>'
+  
+      // loop through our density intervals and generate a label with a colored square for each interval
+      for (var i = 0; i < grades.length; i++) {
+          div.innerHTML +=
+              '<i style="background:' + getColor(grades[i] + 1) + '">&nbsp&nbsp&nbsp&nbsp</i> ' +
+              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+  }
+  
+  return div;
+  };
+
+    legend.addTo(mymap);
 
     //drawPolygons();
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
+
+
 }
 
 
@@ -150,7 +214,7 @@ function getRadius(d) {
   return d < 70  ? 100000 :
          d < 300 ? 5000 :
          d < 700 ? 100:
-                   50;
+                   0;
 }
 
 
@@ -182,7 +246,7 @@ function drawDataPoints(){
             color: 'yellow',
             weight: 0,      // the dot stroke color
             fillColor: getColor(magnitudes[i]), // the dot fill color
-            fillOpacity: 0.3,  // use some transparency so we can see overlaps
+            fillOpacity: 0.5,  // use some transparency so we can see overlaps
             radius: getRadius(depths[i])
             //radius: magnitudes[i] * 10000
         // just the points
@@ -234,25 +298,6 @@ function getColumnMax(columnName){
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
 }
-
-var legend = L.control({position: 'bottomright'}); 
-legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-    }
-
-    return div;
-};
-
-legend.addTo(mymap);
 
 
 
