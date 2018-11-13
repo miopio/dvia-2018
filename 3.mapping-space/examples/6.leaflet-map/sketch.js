@@ -66,7 +66,7 @@ function setupMap(){
 
 function drawDataPoints(){
     strokeWeight(5);
-    stroke(255,0,0);
+    stroke(100,0,0);
 
     // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
@@ -130,3 +130,4 @@ function getColumnMax(columnName){
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
 }
+

@@ -20,24 +20,24 @@ var mymap;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
-    table = loadTable("data/all_month.csv", "csv", "header");
+    table = loadTable("data/significant_month.csv", "csv", "header");
 }
 
-function setup() {
-    // first, call our map initialization function (look in the html's style tag to set its dimensions)
-    setupMap()
-
-    // next, draw our p5 diagram that complements it
-    createCanvas(800, 600);
-    background(222);
-
-    fill(0)
-    noStroke()
-    textSize(16)
-    text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
-    text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
-    text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
-}
+// function setup() {
+//     // first, call our map initialization function (look in the html's style tag to set its dimensions)
+//     setupMap()
+//
+//     // next, draw our p5 diagram that complements it
+//     //createCanvas(800, 600);
+//     background(200);
+//
+//     fill(0)
+//     noStroke()
+//     textSize(16)
+//     text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
+//     text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
+//     text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+// }
 
 function setupMap(){
     /*
@@ -49,19 +49,59 @@ function setupMap(){
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    //mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+      mymap = L.map('quake-map',{
+        worldCopyJump:true,
+        center: [51.505, 0.09],
+        //inertia: true
+      }).setView([0, 0], 1);
 
+      // var southWest = L.latLng(-90, -200),
+      // northEast = L.latLng(90, 190);
+      var southWest = L.latLng(-90, -Infinity),
+      northEast = L.latLng(90, Infinity);
+      var bounds = L.latLngBounds(southWest, northEast);
+    //  var latlng = L.latLng(89.5, 30.5)
+    var latlng = L.latLng(100.5, 200)
+      mymap.wrapLatLng(latlng);
+      mymap.setMaxBounds(bounds);
+//       mymap.on('drag', function() {
+//       //map.panInsideBounds(bounds, { animate: false });
+// });
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
+    // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    //     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    //     maxZoom: 18,
+    //     id: 'mapbox.streets',
+    //     accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
+    //L.noWrap('true')
+    //===============black
+    // L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?access_token={accessToken}', {
+    //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    //   subdomains: 'abcd',
+    //   maxZoom: 19,
+
+     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	   subdomains: 'abcd',
+	   maxZoom: 19,
+      minZoom:1,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA',
+
+      //  noWrap:true
+
+
+
+
+
+
     }).addTo(mymap);
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
+
 }
 
 function drawDataPoints(){
@@ -73,6 +113,7 @@ function drawDataPoints(){
     magnitudes = table.getColumn("mag");
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
+    place = table.getColumn("place")
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -87,19 +128,60 @@ function drawDataPoints(){
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
-            fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
+            color: 'Grey',      // the dot stroke color
+            stroke: false,
+            fillColor: 'black', // the dot fill color
+            fillOpacity: 0.5,  // use some transparency so we can see overlaps
+            radius: magnitudes[i] * 40000,
+            id: i
         });
+
+        //marker.bindPopup("Popup content");
+
+
+        circle.bindPopup(place[i]+"<br> Magnitudes: "+magnitudes[i] +"<br> Depths: " + depths[i]+"id"+i);
+        // circle.number(i);
+        circle.on('mouseover', function (e) {
+            this.openPopup();
+            this.setStyle({
+              fillColor: '#FE01AA',
+            })
+            //magVal=this.getPopup();
+            //magVal=this.getLatLng();
+            //magVal=this.get('id');
+            console.log(magVal);
+
+          });
+
+        circle.on('mouseout', function (e) {
+          //  this.closePopup();
+          this.setStyle({
+            fillColor: 'black',
+          });
+        });
+
+
 
         // place it on the map
         circle.addTo(mymap);
 
         // save a reference to the circle for later
         circles.push(circle)
+
     }
 }
+
+function mouseoverF(){
+  mymap.circles.on('mouseover',function(ev) {
+    ev.target.openPopup();
+  });
+
+
+}
+
+
+
+
 
 function removeAllCircles(){
     // remove each circle from the map and empty our array of references

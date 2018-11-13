@@ -1,19 +1,31 @@
-1.
+visualize movie Data , compare director
+https://data.world/popculture/imdb-5000-movie-dataset
 
-2.
 
-3.
+1.Visualize FBI Hate Crime Statics 
+https://ucr.fbi.gov/hate-crime/2016/topic-pages/incidentsandoffenses
+https://ucr.fbi.gov/hate-crime/2016/tables/table-1
 
-4.
+2. Crime In United States 1998-2017
+https://ucr.fbi.gov/crime-in-the-u.s/2017/crime-in-the-u.s.-2017/tables/table-1
 
-5.
+3. unicef Out of School Rate PrimarySchool
+https://data.unicef.org/topic/education/primary-education/
 
-6.
+4. NYC Hate Crime Statics
+https://www1.nyc.gov/site/nypd/stats/reports-analysis/hate-crimes.page
 
-7.
+5. Subway Fare Evasion Reports
+https://www1.nyc.gov/site/nypd/stats/reports-analysis/subway-fare-evasion.page
 
-8.
+6. Transportation Data Visualization
+https://www.cia.gov/library/publications/the-world-factbook/rankorder/rankorderguide.html
 
-9.
+7. realtime Twitter Trends Visualization
+https://developer.twitter.com/en/docs/trends/trends-for-location/api-reference/get-trends-place
 
-10.
+8. Try Facebook Graph API 
+https://developers.facebook.com/docs/graph-api
+
+9. The road traffic death rate by WHO region and income level
+http://www.who.int/gho/road_safety/en/

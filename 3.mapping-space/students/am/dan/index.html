@@ -11,19 +11,35 @@
     /* default dimensions for the leaflet map */
     #quake-map{
       width: 800px;
-      height: 600px;
+      height: 500px;
+
     }
+
+    .leaflet-popup-tip {
+    background: #e93434;
+    opacity: 0.7;
+    }
+    .leaflet-popup-content-wrapper {
+        background: #e93434;
+         opacity: 0.7;
+        color: #ffffff;
+    }
+
+
   </style>
 </head>
 <body>
   <!-- The container div for our leaflet map -->
-  <div id="quake-map"></div>
+  <div id="quake-map"style ="margin-top: 100px;"></div>
 
   <!-- load our dependencies and sketch file -->
   <script src="lib/leaflet/leaflet.js"></script>
   <script src="lib/p5.min.js"></script>
+  <script type='text/javascript' src="assets/p5.dom.js"></script>
+
   <script src="lib/lodash.min.js"></script>
   <script src="lib/brewer.js"></script>
+<script src="sketchLines.js"></script>
   <script src="sketch.js"></script>
 
   <!-- p5.js will create a canvas element here at runtime -->

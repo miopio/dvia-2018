@@ -8,12 +8,12 @@ function preload() {
 function setup() {
   // Setup the canvas
   createCanvas(3200, 3000);
-  background(0);
+  background(255);
 
   // Setup the typography
   textFont("Arial");
     textSize(16);
-  fill(230);
+  fill(0);
   noStroke();
 
 
@@ -22,6 +22,8 @@ function setup() {
   var startY = 100;
   var rowHeight = 60;
   var colWidth = 40;
+
+  var pal = Brewer.sequential('Reds', Infinity, 0, 100)
 
   // Render the countries on the Y Axis
   textStyle(BOLD);
@@ -51,16 +53,26 @@ function setup() {
       var yAxisPosition = startY + rowHeight * i;
       var value = testCount[i].tests;
 
-     //Set saturation according to value 
+     //Set color according to value 
       if (value > 0) {
-        colorMode(HSB);
-        fill(260, value, 50);
-
+        //colorMode(HSB);
+        // fill(260, value, 50);
+        var c = pal.colorForValue(value)
+        fill(c)
         ellipse(xAxisPosition, yAxisPosition, 20);
       }
     }
   }
   //////////////////////////////Atmospheric
+
+
+  textFont("Arial");
+    textSize(16);
+  fill(0);
+  noStroke();
+
+  var pal = Brewer.sequential('Greens', Infinity, 0, 100)
+   
    var startX = 200;
   var startatmY = 700;
   var rowHeight = 60;
@@ -96,15 +108,23 @@ function setup() {
 
      //Set saturation according to value 
       if (value > 0) {
-        colorMode(HSB);
-        fill(100, value, 50);
-
+        //colorMode(HSB);
+        // fill(260, value, 50);
+        var c = pal.colorForValue(value)
+        fill(c)
         ellipse(xAxisPosition, yAxisPosition, 20);
       }
     }
   }
 
   //////////////////////////////Underground
+
+   textFont("Arial");
+    textSize(16);
+  fill(0);
+  noStroke();
+
+  var pal = Brewer.sequential('Blues', Infinity, 0, 100)
    var startX = 200;
   var startundY = 1300;
   var rowHeight = 60;
@@ -140,9 +160,10 @@ function setup() {
 
      //Set saturation according to value 
       if (value > 0) {
-        colorMode(HSB);
-        fill(0, value, 50);
-
+        //colorMode(HSB);
+        // fill(260, value, 50);
+        var c = pal.colorForValue(value)
+        fill(c)
         ellipse(xAxisPosition, yAxisPosition, 20);
       }
     }

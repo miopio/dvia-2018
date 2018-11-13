@@ -1,19 +1,25 @@
-1.
 
-2.
+1. Where should I be moving for the long-term - Growth in the livability of different countries.  Examination over time, using the UN Human Development Data
 
-3.
+2. Does a bigger stick buy perceived security? Government military spending and happiness.  Does aggression drive perceptions of security
 
-4.
+3. The impact of dominant religions, regions, debt/gdp and gap/capita on sovereign credit ratings.  Moody's and CIA Factbook
 
-5.
+4. The impact of aging populations on GDP growth - a multi-factor scorecard model.  UN and Bloomberg
 
-6.
+5. Voter differentials in house and senate races across the United States
 
-7.
+6. Impact of education levels on the margin in the governorship races.  World Atlas (average education levels in the USA by state).
+   
+7. The impact of country of origin on ICO (blockchain capital raising) success (coindesk)
 
-8.
+8. Lagged effects of president political party on US budget  
 
-9.
+9. Religious beliefs as a driver of senate race outcomes (Pew research centre)
 
-10.
+Presented
+1. Impact of education levels and dominant religion on the margin in the governorship races.  World Atlas (average education levels in the USA by state).
+
+2. Rich enough to be a socialist - investigation of the non-linear relationship between voting preferences and income
+
+3. Songlist streaming of Beastie Boys song list of concerts 

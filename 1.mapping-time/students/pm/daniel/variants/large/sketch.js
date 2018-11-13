@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 function setup() {
   // set the width & height of the sketch
   createCanvas(400, 130)
@@ -27,7 +27,7 @@ function draw() {
   text(now.text.time, 30, 100)
 
 }
-=======
+
 var x;
 var num;
 // did some change
@@ -102,4 +102,4 @@ function draw() {
   }
   rect(x, 600, 2000*now.moon, 60)
 }
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
+

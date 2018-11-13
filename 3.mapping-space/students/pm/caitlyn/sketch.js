@@ -4,10 +4,20 @@ var magnitudes;
 var depths;
 // an array for lat & long
 var latitudes, longitudes;
+var latitudesValues; var longitudesValues;
+// an array for cities lat & long
+var cityLatitudes, cityLongitudes;
+// an array for city names
+var cityNames;
+// an array for city populations
+var cityPopulations;
 
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
+
+var nycPop = 8623000;
+var worldPop = 7530000000;
 
 // the dots we'll be adding to the map
 var circles = [];
@@ -15,12 +25,22 @@ var circles = [];
 // table as the data set
 var table;
 
+// colors
+var lowMagColor = "#D6DBDF"
+var medMagColor = "#85929E"
+var highMagColor = "#E74C3C"
+
+// fonts
+var title = "Merriweather";
+var facts = "Noto Sans";
+
 // my leaflet.js map
 var mymap;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("data/all_month.csv", "csv", "header");
+    popTable = loadTable("data/world-cities.csv", "csv", "header");
 }
 
 function setup() {
@@ -29,14 +49,57 @@ function setup() {
 
     // next, draw our p5 diagram that complements it
     createCanvas(800, 600);
-    background(222);
+    background(0);
 
-    fill(0)
+    fill("white")
     noStroke()
+
+    var populationCount = getPopulationCount()
+    var nycComparison = Math.trunc(populationCount/nycPop)
+    var worldComparison = populationCount/worldPop
+    var worldComparisonPercent = Math.trunc(worldComparison*100)
+
+    textSize(20)
+    textFont(title)
+    text("How many people have possibly been affected by Seismic events this month?",20, 40)
+
     textSize(16)
-    text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
-    text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
-    text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+    textFont(facts)
+
+    text("There have been", 20, 80)
+    fill("#E74C3C")
+    textSize(20)
+    text(`${table.getRowCount()}`, 20, 100)
+    fill("white")
+    textSize(16)
+    text("seismic events so far this month.", 20, 120)
+
+    fill("#E74C3C")
+    textSize(20)
+    text(`${populationCount}`, 20, 160)
+    fill("white")
+    textSize(16)
+    text(" people have been near one of those Seismic events.", 20, 180)
+
+    text("That's", 20, 220)
+    fill("#E74C3C")
+    textSize(20)
+    text(`${nycComparison}`, 20, 240)
+    fill("white")
+    textSize(16)
+    text("times the population of New York City—", 20, 260)
+
+    fill("#E74C3C")
+    textSize(20)
+    text(`—and ${worldComparisonPercent}% of the world population.`, 20, 300)
+
+    fill("#B3B6B7")
+    rect(20, 320, 600,  40)
+    fill("#EAECEE")
+    rect(20, 320,600*worldComparison, 40)
+
+
+
 }
 
 function setupMap(){
@@ -64,14 +127,28 @@ function setupMap(){
 }
 
 function drawDataPoints(){
-    strokeWeight(5);
-    stroke(255,0,0);
+    strokeWeight(0);
+    // stroke(255,0,0);
 
     // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
     magnitudes = table.getColumn("mag");
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
+    latitudesValues = _.map(latitudes, float);
+    longitudesValues = _.map(longitudes, float);
+    // console.log(latitudesValues)
+    // console.log(longitudesValues)
+    
+    // get city arrays
+    cityLatitudes = popTable.getColumn("lat");
+    cityLongitudes = popTable.getColumn("lng");
+    cityLatitudes = _.map(cityLatitudes, float);
+    cityLongitudes = _.map(cityLongitudes, float);
+    // console.log(cityLatitudes)
+    // console.log(cityLongitudes)
+    cityNames = popTable.getColumn("city");
+    cityPopulations = popTable.getColumn("population");
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -82,15 +159,45 @@ function drawDataPoints(){
     depthMax = getColumnMax("depth");
     console.log('depth range:', [depthMin, depthMax])
 
+    // var result = getClosest(cityLatitudes,cityLongitudes,13.9759,44.1709)
+    // console.log(result)
+
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
+
+        var cityIndex = getClosest(cityLatitudes,cityLongitudes,latitudesValues[i],longitudesValues[i])
+        
+        var name = cityNames[cityIndex]
+        var pop = cityPopulations[cityIndex]
+
         // create a new dot
-        var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
-            fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
-        });
+        if (magnitudes[i] <= 3) {
+            var circle = L.circle([latitudes[i], longitudes[i]], {
+                color: '',      // the dot stroke color
+                fillColor: lowMagColor, // the dot fill color
+                fillOpacity: 0.7,  // use some transparency so we can see overlaps
+                radius: 200000
+            });
+            circle.bindTooltip(`closest city: ${name}, population: ${pop}`).openTooltip();
+        }
+        else if (magnitudes[i] > 3 && magnitudes[i] <= 5.5) {
+            var circle = L.circle([latitudes[i], longitudes[i]], {
+                color: '',      // the dot stroke color
+                fillColor: medMagColor, // the dot fill color
+                fillOpacity: 0.7,  // use some transparency so we can see overlaps
+                radius: 200000
+            });
+            circle.bindTooltip(`closest city: ${name}, population: ${pop}`).openTooltip();
+        }
+        else {
+            var circle = L.circle([latitudes[i], longitudes[i]], {
+                color: '',      // the dot stroke color
+                fillColor: highMagColor, // the dot fill color
+                fillOpacity: 0.7,  // use some transparency so we can see overlaps
+                radius: 200000
+            });
+            circle.bindTooltip(`closest city: ${name}, population: ${pop}`).openTooltip();
+        }  
 
         // place it on the map
         circle.addTo(mymap);
@@ -129,3 +236,66 @@ function getColumnMax(columnName){
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
 }
+
+function getClosest(arrLat,arrLon,lat,lon){
+    var closestIndex = 0;
+    var mindif = 99999;
+
+    // console.log(arrLatValues)
+    // console.log(arrLonValues)
+
+    for(var i=0; i<arrLat.length; i++){
+        var dif = distance(lat, lon, arrLat[i], arrLon[i]);
+        if (dif < mindif) {
+            closestIndex = i;
+            mindif = dif;
+        }
+    }
+
+    return closestIndex
+}
+
+function distance(lat1, lon1, lat2, lon2) {
+    var R = 6371; // km
+    var x = (lon2 - lon1) * Math.cos((lat1 + lat2) / 2);
+    var y = (lat2 - lat1);
+    var d = Math.sqrt(x * x + y * y) * R;
+    return d;
+  }
+
+function getPopulationCount() {
+    latitudes = table.getColumn("latitude");
+    longitudes = table.getColumn("longitude");
+    latitudesValues = _.map(latitudes, float);
+    longitudesValues = _.map(longitudes, float);
+    // console.log(latitudesValues)
+    // console.log(longitudesValues)
+    
+    // get city arrays
+    cityLatitudes = popTable.getColumn("lat");
+    cityLongitudes = popTable.getColumn("lng");
+    cityLatitudes = _.map(cityLatitudes, float);
+    cityLongitudes = _.map(cityLongitudes, float);
+    // console.log(cityLatitudes)
+    // console.log(cityLongitudes)
+    cityNames = popTable.getColumn("city");
+    cityPopulations = popTable.getColumn("population");
+
+    var populationCount = 0;
+
+    for(var i=0; i<latitudes.length; i++){
+
+        var cityIndex = getClosest(cityLatitudes,cityLongitudes,latitudesValues[i],longitudesValues[i])
+        
+        var pop = cityPopulations[cityIndex]
+
+        // console.log(parseInt(pop))
+        populationCount = populationCount + parseInt(pop)
+    }
+
+    return populationCount
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
