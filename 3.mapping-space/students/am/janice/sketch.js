@@ -1,4 +1,5 @@
-// an array for the magnitude
+
+ // an array for the magnitude
 var magnitudes;
 // an array for depth
 var depths;
@@ -49,17 +50,32 @@ function setupMap(){
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+
+    
+
+    mymap = L.map('quake-map').setView([38, -120], 5);
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
+    
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
-    }).addTo(mymap);
+        id: 'mapbox.satellite',
+        accessToken: 'pk.eyJ1IjoianlhbWFuYWthIiwiYSI6ImNqbmkzM20yZzAzd2UzeW13NWM1aHhybDAifQ.Agi0MfMITfvKbjR09GGOeA'
 
+    }).addTo(mymap);
+    /*
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{username}/{id}/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
+       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        //maxZoom: 18,
+        username: 'jyamanaka',
+        id: 'mapbox://styles/jyamanaka/cjo4izoq55ona2so7nqi1em70',
+        accessToken: 'pk.eyJ1IjoianlhbWFuYWthIiwiYSI6ImNqbmkzM20yZzAzd2UzeW13NWM1aHhybDAifQ.Agi0MfMITfvKbjR09GGOeA'
+
+    }).addTo(mymap);
+*/
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
 }
@@ -87,10 +103,10 @@ function drawDataPoints(){
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
+            color: 'turqoise',      // the dot stroke color
             fillColor: '#f03', // the dot fill color
-            fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
+            fillOpacity: 0.5,  // use some transparency so we can see overlaps
+            radius: magnitudes[i] * 5000
         });
 
         // place it on the map
