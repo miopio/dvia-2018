@@ -6,7 +6,7 @@ body {
 
 /* default dimensions for the leaflet map */
 #quake-map {
-  width: 100%;
+  width: 76%;
   height: 100%;
   /* opacity: 0.5; */
 }
@@ -19,7 +19,7 @@ canvas {
   top: 0;
   right: 0;
   z-index: 999;
-  filter: drop-shadow(0px 8px 16px #333);
+  filter: drop-shadow(0px 8px 12px #333);
 }
 
 .avg {

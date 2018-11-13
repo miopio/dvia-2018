@@ -25,14 +25,15 @@ function preload() {
   // table = loadTable("data/all_month.csv", "csv", "header");
   table = loadTable("data/significant_month.csv", "csv", "header");
 }
-
+var button, input;
 function setup() {
   // first, call our map initialization function (look in the html's style tag to set its dimensions)
   setupMap();
 
+  const width = window.innerWidth * 0.25;
+  const height = window.innerHeight;
   // next, draw our p5 diagram that complements it
-
-  canvas = createCanvas(320, 115);
+  canvas = createCanvas(width, height);
   canvas.parent("canvas-holder");
   background("#3d3d3d");
 
@@ -40,9 +41,13 @@ function setup() {
   noStroke();
   textSize(16);
   textFont("monospace");
-  text(`Plotting ${table.getRowCount()} seismic events`, 20, 40);
-  text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60);
-  text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80);
+  text(`Plotting ${table.getRowCount()} seismic events`, width * 0.1, 40);
+  text(`Largest Magnitude: ${getColumnMax("mag")}`, width * 0.1, 60);
+  text(`Greatest Depth: ${getColumnMax("depth")}`, width * 0.1, 80);
+
+  button = createButton("submit");
+  button.position(input.x + input.width, 65);
+  button.mousePressed(greet);
 }
 
 function setupMap() {
