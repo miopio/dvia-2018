@@ -33,16 +33,10 @@ function setup() {
 }
 
 function setupMap() {
-  /*
-    LEAFLET CODE
-
-    In this case "L" is leaflet. So whenever you want to interact with the leaflet library
-    you have to refer to L first.
-    so for example L.map('mapid') or L.circle([lat, long])
-    */
-
-  // create your own map
-  mymap = L.map("quake-map").setView([51.505, -0.09], 3);
+  // create map
+  mymap = L.map("quake-map")
+    .setView([20, 0.0], 2)
+    .setMaxBounds([[-140, -240], [140, 240]]);
 
   // load a set of map tiles – choose from the different providers demoed here:
   // https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -51,8 +45,9 @@ function setupMap() {
     {
       // attribution:
       //   'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      minZoom: 2,
-      maxZoom: 10,
+      minZoom: 1,
+      // maxZoom: 10,
+      noWrap: true,
       opacity: 0.9,
       id: "mapbox.streets",
       ext: "png",
@@ -151,7 +146,7 @@ function drawDataPoints() {
     });
     // place it on the map and make clickable
     circleEvent.addTo(mymap);
-    circleEvent.on("click", onCircleClick);
+    // circleEvent.on("click", onCircleClick);
     // save a reference to the circle for later
     circles.push(circleEvent);
 
@@ -167,7 +162,7 @@ function drawDataPoints() {
     );
     // place it on the map and make clickable
     circleMagErr.addTo(mymap);
-    circleMagErr.on("click", onCircleClick);
+    // circleMagErr.on("click", onCircleClick);
 
     // create a new dot for depthError
     var circleDepthErr = L.circle(
@@ -260,15 +255,15 @@ function drawDataPoints() {
       weight: 1
     }).addTo(mymap);
     // zoom the map to the polyline
-    mymap.fitBounds(polyline.getBounds());
+    // mymap.fitBounds(polyline.getBounds());
 
     // trigger click events for polys
-    polygonDepth.on("click", onPolyClick);
-    polygonHorL.on("click", onPolyClick);
-    polygonHorR.on("click", onPolyClick);
-    polygonMag.on("click", onPolyClick);
-    polygonMagAvg.on("click", onPolyClick);
-    polygonDepthAvg.on("click", onPolyClick);
+    // polygonDepth.on("click", onPolyClick);
+    // polygonHorL.on("click", onPolyClick);
+    // polygonHorR.on("click", onPolyClick);
+    // polygonMag.on("click", onPolyClick);
+    // polygonMagAvg.on("click", onPolyClick);
+    // polygonDepthAvg.on("click", onPolyClick);
 
     // add summary text to panel
     document.getElementById(
@@ -346,7 +341,8 @@ function resetCount() {
 
   count = 0;
   counter.innerHTML = `[ – / ${magnitudes.length}]`;
-  mymap.flyTo([0, 0], 2);
+  // mymap.flyTo([0, 0], 2);
+  mymap.flyTo([20, 0.0], 2);
 }
 
 // not used...should call if making dynamic and updating on new data pull
