@@ -16,10 +16,10 @@
 8. Lagged effects of president political party on US budget  
 
 9. Religious beliefs as a driver of senate race outcomes (Pew research centre)
-
+ 
 Presented
-1. Impact of education levels and dominant religion on the margin in the governorship races.  World Atlas (average education levels in the USA by state).
+1. Impact of education levels on the margin in the governorship races.  World Atlas (average education levels in the USA by state).
 
-2. Rich enough to be a socialist - investigation of the non-linear relationship between voting preferences and income
+2. Rich enough to be a socialist - investigation of the non-linear relationship between voting preferences and household income
 
-3. Songlist streaming of Beastie Boys song list of concerts 
+3. Songlist streaming chart of Beastie Boys song list of concerts - listening habits, Spotify api, vs. paying, LPs, CDs, MP3 and streaming. Popularity of different mechanisms 
