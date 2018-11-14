@@ -1,32 +1,46 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="lib/leaflet/leaflet.css" /> <!-- default styles -->
-  <style>
-    html, body {
-      padding: 0;
-      margin: 0;
-    }
+<meta charset='utf-8' />
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+<style>
+body { height:100%; margin:0; padding:0; background:#ff3633;}
+body { display:flex; justify-content:center; align-items:center;}
+#map { position:absolute; top:0; bottom:0; width:100%;  }
+</style>
 
-    /* default dimensions for the leaflet map */
-    #quake-map{
-      width: 800px;
-      height: 600px;
-    }
-  </style>
+<script src="lib/lodash.min.js"></script>
+<script src="lib/brewer.js"></script>
+<script src="lib/p5.min.js"></script>
+<script src="lib/p5.dom.min.js"></script>
+
 </head>
 <body>
-  <!-- The container div for our leaflet map -->
-  <div id="quake-map"></div>
+<script language="javascript" type="text/javascript" src="sketch.js"></script>
+</style>
+<div id='map'></div>
+<pre id='info'></pre>
 
-  <!-- load our dependencies and sketch file -->
-  <script src="lib/leaflet/leaflet.js"></script>
-  <script src="lib/p5.min.js"></script>
-  <script src="lib/lodash.min.js"></script>
-  <script src="lib/brewer.js"></script>
-  <script src="sketch.js"></script>
-  <script src="js/three.min.js"></script>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYnNha2JhciIsImEiOiJjam14em1hNmQweHZlM3FwbHVtbmQ5eXdoIn0.XgXo8yf68EhBjNTZ6nXhpg';
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/bsakbar/cjodetu0w0b062rqg0npmu6rb',
+center: [-132.653,48.592],
+zoom: 3.2,
+// bearing: 50,
+// pitch: 80,
+noWrap: true,
+interactive: false
+});
 
-  <!-- p5.js will create a canvas element here at runtime -->
+
+
+</script>
+
+
+
 </body>
 </html>

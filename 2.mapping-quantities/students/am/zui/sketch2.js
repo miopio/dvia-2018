@@ -1,4 +1,5 @@
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
+const mbxStyles = require('@mapbox/mapbox-sdk/services/styles');
+const stylesService = mbxStyles({ accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA' });
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA';
 var map = new mapboxgl.Map({
