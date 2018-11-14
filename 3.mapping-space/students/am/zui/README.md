@@ -12,3 +12,8 @@ Sketch 3: monthly data in blue and significant data as red heat map overlay. At 
 **Notes**  
 * Check the scale on wikipedia
 * Use qualitative colors to indicate the effect of the magnitude instead of the numeric value
+
+## Final
+* Checkbox to check if to show data from the current month
+* Slider to show the data from a specific day in the current month period
+* Bottom overlay of scatter plot of magnitude-depth of the current week's data 
