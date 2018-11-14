@@ -1,31 +1,24 @@
-<html>
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="lib/leaflet/leaflet.css" /> <!-- default styles -->
-  <style>
-    html, body {
-      padding: 0;
-      margin: 0;
-    }
-
-    /* default dimensions for the leaflet map */
-    #quake-map{
-      width: 800px;
-      height: 600px;
-    }
-  </style>
-</head>
-<body>
-  <!-- The container div for our leaflet map -->
-  <div id="quake-map"></div>
-
-  <!-- load our dependencies and sketch file -->
-  <script src="lib/leaflet/leaflet.js"></script>
-  <script src="lib/p5.min.js"></script>
-  <script src="lib/lodash.min.js"></script>
-  <script src="lib/brewer.js"></script>
-  <script src="sketch.js"></script>
-
-  <!-- p5.js will create a canvas element here at runtime -->
-</body>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+           integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+           crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+           integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+           crossorigin=""></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+        <script src="sketch.js"></script>
+        <style>
+            body { margin: 0; }
+            #quake-map { width: 50%; height: 100vh; position: absolute; left: 0; }
+            canvas { display: block; position: absolute; right: 0; }
+        </style>
+    </head>
+    <body>
+		<div id="quake-map"></div>
+    </body>
 </html>
