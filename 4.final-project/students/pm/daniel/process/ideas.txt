@@ -1,19 +1,48 @@
-1.
+10 IDEAS
 
-2.
+Environment
 
-3.
+1. A new report by the World Wildlife Fund shows a catastrophic decline in worldwide animal populations. This digital visualization will explore the state of top predator animals, leading indicators of biodiversity and ecosystem health, across the US using USGS data. 
 
-4.
+2. Recent decades have seen rising global temperatures caused by expanding fossil fuel consumption, but the growth of renewable energy promises a future with less greenhouse gas-induced warming. With data sets from NASA and Our World in Data, this digital visualization will explore the relationship between fossil fuels and renewables against a backdrop of climate change represented by indicators such as global mean temperature and declining polar ice.
 
-5.
+3. Great white sharks and harbor seals have rebounded dramatically in Massachusetts, with the potential to reshape the tourism industry on the Cape and Islands.  Using USGS data, this digital visualization will attempt to map shark and seal populations, contextualizing the figures with data showing tourism spending relative to the overall economy.
 
-6.
+Asia/Japan
 
-7.
+4. Against a backdrop of rising trade conflict, this digital visualization will examine Asian economies’ little-understood contributions to US local economies. Utilizing Asia Matters for America data, retinal variables will express which is the top Asian economic contributor to each state’s economy and the size of economic contribution.  
 
-8.
+5. Japan’s population loss and gain by prefecture vs US population loss and gain by state over the past decade. Using Japanese and US census data, the aim is to highlight relative population trends with an assumption that both advanced economies will show rural drain and urban gain, but aging, immigration-averse Japan will show overall loss and the US overall gain.
 
-9.
+6. Japan’s tourism boom. Utilizing Japan National Tourism Organization data, this digital visualization will examine overall arrival levels by country and spend, with an aim to highlight the explosive rise in Chinese tourism. This will be contextualized with recent survey data by Japanese nonprofit Genron NPO on mutual perceptions between Japan and China. 
 
-10.
+Society/Culture
+
+7. Reported hate crimes are up in recent years. Employing the most recent 2016 FBI data, this digital geographic heat map will explore hate crimes by correlating number of hate crimes vs bias motivation and state population. Types of hate crime will appear in popup pie charts for each state, or alternately a cartogram will be used. 
+
+
+8. Employing a recent social psychology study of LGBTQ populations by Rutgers University professor Corina Letetiu, this digital visualization will explore the relationship between respondents’ reported ‘self worth’ and HIV risk.
+
+9. Education vs income/affordable housing NYC. Using NYC.gov data household income and school performance data, this digital visualization will examine the relationship of neighborhood wealth to access to quality education. 
+
+10. A day in the musical life of NYC. Using the Songkick API, this map will digitally visualize music-related events geographically across the city, with retinal values applied to event genre (pop, jazz, classical, musical etc.) and venue/audience size. Interactivity, such as popups featuring event info could potentially enrich the user experience.
+
+
+
+Data sources
+* https://www.fbi.gov/services/cjis/ucr/data-documentation
+* http://data.uis.unesco.org/
+* https://www.brookings.edu/
+* https://conference.nber.org/
+* https://www.rand.org/
+* http://www.pewresearch.org/
+* https://www.census.gov/
+* https://asiamattersforamerica.org/
+* http://data.un.org/Default.aspx
+* https://www.e-stat.go.jp/en
+* https://statistics.jnto.go.jp/
+* https://www.songkick.com/developer/
+* https://catalog.data.gov/dataset
+* https://opendata.cityofnewyork.us/
+* https://ourworldindata.org
+* http://www.genron-npo.net/en/

@@ -31,3 +31,51 @@ Description:
 Provider:
 Format:
 URL:
+
+
+
+. Visualizing <a City’s?> Homelessness crisis: Homelessness: The Great Moral Nightmare of Late Stage Capitalism- 
+	City List: NYC, San Fransisco, Seattle, Vancouver (interesting how those cities seem to be in the headlines for this problem and how the problem connects to them being the epicenter of capitalistic speculation)
+
+Articles:
+http://thedataface.com/2018/01/public-health/american-homelessness
+
+Data:
+https://www.hudexchange.info/resource/5639/2017-ahar-part-1-pit-estimates-of-homelessness-in-the-us/
+https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_16_1YR_B02001&prodType=table
+https://www.zillow.com/research/data/
+https://catalog.data.gov/dataset?tags=homeless
+https://ourworldindata.org/homelessness
+#heavy
+
+2. Coming Soon to your Neighborhood: Gentrification!
+A present Atlas of where Gentrification is happening and a predictive atlas of where it will go next based on current economic and social indicators:
+
+http://www.governing.com/gov-data/new-york-gentrification-maps-demographic-data.html
+#thoughtful
+
+3. The Evolution of SLanguage: How AAVE permeated everyday American language
+Articles:- 
+
+Articles:
+https://pudding.cool/2017/02/new-slang/
+https://pudding.cool/2017/02/vocabulary/
+#silly
+
+4. Do my Podcasts pass the Bechdel Test? (Do I need a new BT spec for my podcasts?)
+The Problem: A lot of my podcasts give a significant airtime to female voices, but how often are they talking to each other, and how often is it about men?
+
+Articles:
+https://pudding.cool/2017/09/this-american-life/
+#thoughtful
+
+5. How Many wikipedia pages mention <famous data viz figure>
+Articles:
+https://pudding.cool/2017/03/miles/
+#light
+
+6. All Watched over by the Machines with Loving Grace: Visualizing the effect of Automation on different job markets
+
+Articles:
+http://www.visualcapitalist.com/visualizing-jobs-lost-automation/
+#1_to_unite_them_all

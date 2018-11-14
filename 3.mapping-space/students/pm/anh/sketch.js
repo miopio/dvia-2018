@@ -28,7 +28,7 @@ function setup() {
     setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(800, 600);
+    createCanvas(1100, 600);
     background(222);
 
     fill(0)
@@ -49,15 +49,14 @@ function setupMap(){
     */
 
     // create your own map. SetView 2 argument: Latitude, longtitude. 3 - zoom level. Look at the API reference.
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    mymap = L.map('quake-map').setView([51.505, -0.09], 1.5);
 
     // load a set of map tiles – choose from the different providers demoed here. There are many kind of maps to choose.
     // https://leaflet-extras.github.io/leaflet-providers/preview/
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
+    var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
     }).addTo(mymap);
 
     // call our function (defined below) that populates the maps with markers based on the table contents
@@ -88,8 +87,8 @@ function drawDataPoints(){
     for(var i=0; i<depths.length; i++){
         // create a new dot. See reference for more properties
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
+            color: 'green',      // the dot stroke color
+            fillColor: 'green', // the dot fill color
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
             radius: magnitudes[i] * 40000
         });

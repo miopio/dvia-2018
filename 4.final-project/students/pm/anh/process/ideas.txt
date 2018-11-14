@@ -1,16 +1,23 @@
-1.
+1. Number of people study design fields and number of design jobs available (+salary) in the US
 
-2.
+To see if design demand > supply
 
-3.
 
-4.
+2. Juvenile Crimes
+https://www.ojjdp.gov/ojstatbb/crime/JAR.asp
+Number of juvenile crimes and number of kids play violent video games
 
-5.
+3.Data from Facebook
+Graph API https://developers.facebook.com/docs/graph-api/overview/#versions
 
-6.
+4. % Female working in Tech through out years vs % female leaders in Tech
 
-7.
+5. Age of getting married in and divorce rate in Asia.
+
+6. Economy/General Indicators of Vietnam (maybe GDP vs. Inflation Rate)
+https://data.worldbank.org/country/vietnam?view=chart
+
+7. AI history - conditions - logic gate 
 
 8.
 

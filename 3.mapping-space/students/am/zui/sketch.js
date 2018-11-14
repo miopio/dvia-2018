@@ -7,6 +7,24 @@ var latitudes, longitudes;
 // an array for time and days
 var times, days;
 
+// for the sigificant data
+var sigmagnitudes;
+// an array for depth
+var sigdepths;
+// an array for lat & long
+var siglatitudes, siglongitudes;
+// an array for time and days
+var sigtimes, sigdays;
+
+// for the sigificant data
+var wkmagnitudes;
+// an array for depth
+var wkdepths;
+// an array for lat & long
+var wklatitudes, wklongitudes;
+// an array for time and days
+var wktimes, wkdays;
+
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
@@ -17,36 +35,47 @@ var circles = [];
 // table as the data set
 var table;
 var sig;
+var week;
 
 // my leaflet.js map
 var mymap;
+var canvas;
+var graphics;
 
-// time slide control
-var sliderControl;
+// day slide control
+var slider;
+var sliderName;
+var checkbox;
+
+
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("data/all_month.csv", "csv", "header");
-<<<<<<< HEAD
-=======
     sig = loadTable("data/significant_month.csv", "csv", "header");
->>>>>>> 27a3a1f2d59702940ca22bec0238f230d7a116b1
+    week = loadTable("data/all_week.csv", "csv", "header");
 }
 
 function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
-    setupMap()
-
+    canvas = createCanvas(windowWidth,200);
+    canvas.parent('diagram-canvas');
+    background(0,80);
     // next, draw our p5 diagram that complements it
-    createCanvas(windowWidth, windowHeight);
-    // background(222);
-    //
-    // fill(0)
-    // noStroke()
-    // textSize(16)
-    // text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
-    // text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
-    // text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+    graphics = createGraphics(windowWidth,200,canvas);
+    graphics.background(0,0);
+
+    setupMap();
+
+    sliderName = createElement('h1','whole month   |   selet day');
+    sliderName.position(windowWidth-355,0);
+    slider = createSlider(1,31,day(),1);
+    slider.style('color','#999');
+    slider.position(windowWidth-200,10);
+    slider.changed(filterDataPoints);
+    checkbox = createCheckbox();
+    checkbox.position(windowWidth-380,10);
+    checkbox.changed(drawDataPoints);
 }
 
 function setupMap(){
@@ -70,46 +99,86 @@ function setupMap(){
         accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
     }).addTo(mymap);
 
-
-
-    // call our function (defined below) that populates the maps with markers based on the table contents
-    drawDataPoints();
-}
-
-function drawDataPoints(){
-    strokeWeight(0.1);
-    // stroke(255,0,0);
-
-
-    // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
     magnitudes = table.getColumn("mag");
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
     times = table.getColumn("time");
+    days = times.map(i => parseInt(i.slice(8, 10)));
 
-    days = times.map(i => i.substr(0,9));
+    sigdepths = sig.getColumn("depth");
+    sigmagnitudes = sig.getColumn("mag");
+    siglatitudes = sig.getColumn("latitude");
+    siglongitudes = sig.getColumn("longitude");
+    sigtimes = sig.getColumn("time");
+    sigdays = sigtimes.map(i => parseInt(i.slice(8, 10)));
+
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
-    magnitudeMax = getColumnMax("mag");
+    magnitudeMax = getColumnMax("mag",table);
     // console.log('magnitude range:', [magnitudeMin, magnitudeMax])
 
     depthMin = 0.0;
-    depthMax = getColumnMax("depth");
-    // console.log('depth range:', [depthMin, depthMax])
+    depthMax = getColumnMax("depth",table);
 
 
+    // call our function (defined below) that populates the maps with markers based on the table contents
+    drawDataPoints();
+
+
+}
+
+function draw(){
+  // for(var i=0; i<depths.length; i++){
+  //   fill('#FAFAFA');
+  //   graphics.ellipse(100+depths[i],1500-magnitudes[i],5,5);
+  // }
+  // graphics.stroke('#FAFAFA');
+  // graphics.text('yes',windowWidth/2,100);
+  // console.log('yes');
+  wkdepths = week.getColumn("depth");
+  wkmagnitudes = week.getColumn("mag");
+  var maxdep = getColumnMax("depths",week);
+  var maxmag = getColumnMax("magnitudes",week);
+
+  fill('#DDD23B');
+  noStroke();
+  for(var i=0; i<wkdepths.length; i++){
+    ellipse(200+magnitudes[i]*200,50+depths[i]*5,2,2);
+  }
+  stroke('#DDD23B');
+  strokeWeight(0.7);
+  textAlign(RIGHT);
+  textSize(10);
+  text("depth",50,180);
+  text("magnitude",windowWidth-40,30);
+
+  textSize(14);
+  text("0.0",200,45);
+  textSize(20);
+  text('this week',150,20);
+  strokeWeight(1.5);
+  line(155,25,60,25);
+  // unit legend
+  strokeWeight(1.2);
+  line(windowWidth-90,27.5,windowWidth-290,27.5); // magnitude
+  line(57,180-1,57,180-5-1); // depth
+}
+
+function drawDataPoints(){
+
+    removeAllCircles();
+    strokeWeight(0.1);
 
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
-        // create a new dot
-        var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: '#3388ff',      // the dot stroke color
-            opacity: depths[i]/100,  // use some transparency so we can see overlaps
-            radius: magnitudes[i]*4000,
-            day: days[i]
-        });
+
+          var circle = L.circle([latitudes[i],longitudes[i]], {
+              color: '#3388ff',      // the dot stroke color
+              opacity: magnitudes[i]/100,  // use some transparency so we can see overlaps
+              radius: 5
+          });
 
         // place it on the map
         circle.addTo(mymap);
@@ -118,9 +187,60 @@ function drawDataPoints(){
         circles.push(circle)
     }
 
-    sliderControl = L.control.sliderControl({position: "topright", layer: mymap, follow: 3});
-    mymap.addControl(sliderControl);
-    sliderControl.startSlider();
+    for(var i=0; i<sigdepths.length; i++){
+        // create a new dot
+        var circle = L.circle([siglatitudes[i],siglongitudes[i]], {
+            color: '#8b0000',      // the dot stroke color
+            opacity: sigmagnitudes[i]/100,  // use some transparency so we can see overlaps
+            radius: 5
+            // day: days[i]
+        });
+
+        // place it on the map
+        circle.addTo(mymap);
+
+        // save a reference to the circle for later
+        circles.push(circle)
+    }
+}
+
+function filterDataPoints(){
+    removeAllCircles();
+
+    strokeWeight(0.1);
+
+    // cycle through the parallel arrays and add a dot for each event
+    for(var i=0; i<depths.length; i++){
+        if (days[i]==slider.value()){
+          var circle = L.circle([latitudes[i],longitudes[i]], {
+              color: '#3388ff',      // the dot stroke color
+              opacity: magnitudes[i]/100,  // use some transparency so we can see overlaps
+              radius: 5
+              // day: days[i]
+          });
+          console.log(days[i]);
+          // place it on the map
+          circle.addTo(mymap);
+          // save a reference to the circle for later
+          circles.push(circle);
+        };
+
+    }
+
+    for(var i=0; i<sigdepths.length; i++){
+        if (sigdays[i]==slider.value()){
+          var circle = L.circle([siglatitudes[i],siglongitudes[i]], {
+              color: '#8b0000',      // the dot stroke color
+              opacity: sigmagnitudes[i]/getColumnMax('magnitudes',sig),  // use some transparency so we can see overlaps
+              radius: 5
+          });
+          // place it on the map
+          circle.addTo(mymap);
+          // save a reference to the circle for later
+          circles.push(circle)
+        };
+
+    }
 }
 
 function removeAllCircles(){
@@ -132,9 +252,9 @@ function removeAllCircles(){
 }
 
 // get the maximum value within a column
-function getColumnMax(columnName){
+function getColumnMax(columnName,tb){
     // get the array of strings in the specified column
-    var colStrings = table.getColumn(columnName);
+    var colStrings = tb.getColumn(columnName);
 
     // convert to a list of numbers by running each element through the `float` function
     var colValues = _.map(colStrings, float);
