@@ -55,17 +55,19 @@ function setup() {
     text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
     text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
 
-    times = graphtable.getColumn('time');
-    depths = graphtable.getColumn('depth');
-    magnitudes = graphtable.getColumn('magnitude');
-    magnitudes = magnitudes^10;
+    graphtimes = graphtable.getColumn('time');
+    graphdepth = graphtable.getColumn('depth');
+    graphdepth = graphdepth.map(x => x * -1);
+    graphmagnitude = graphtable.getColumn('magnitude');
+    graphmagnitude = graphmagnitude^20;
 
     var trace1 = {
-      x: times,
-      y: depths,
+      x: graphtimes,
+      y: graphdepth,
       mode: 'markers',
       marker: {
-        size: magnitudes
+        color: 'rgba(156, 165, 196, 0.5)',
+        size: graphmagnitude
       }
     };
 
@@ -75,12 +77,19 @@ function setup() {
       title: 'Depth and magnitude of most significant earthquakes this month',
       showlegend: false,
       height: 400,
-      width: 1000
-    };
+      width: 1280,
+      font: {
+        family: 'Lato',
+        size: 12,
+        color: 'rgb(169,169,169)'
+      },
+      plot_bgcolor: 'rgba(0,0,0,0.1)',
+      margin: {
+        pad: 10
+      },
+        };
 
     Plotly.newPlot('quake-graph', data, layout);
-
-
 }
 
 function setupMap(){
@@ -93,7 +102,7 @@ function setupMap(){
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([37.7749, -122.4194], 4);
+    mymap = L.map('quake-map').setView([37.7749, -122.4194], 3);
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -140,7 +149,7 @@ function setupMap(){
         };
     }
 
-    function getColor(m) {
+    /*function getColor(m) {
       return m > 7.0 ? '#800026' :
              m > 6.0  ? '#BD0026' :
              m > 5.0  ? '#E31A1C' :
@@ -152,11 +161,12 @@ function setupMap(){
     }
 
     function getRadius(d) {
-      return d < 70  ? 100000 :
-             d < 300 ? 5000 :
-             d < 700 ? 100:
-                       0;
-    }
+      return d > 700 ? 500:
+             d > 300 ? 5000:
+             d > 70  ? 50000:
+             d > 0   ? 100000:
+                       100;
+    }*/
 
     function highlightFeature(e) {
         var layer = e.target;
@@ -172,10 +182,11 @@ function setupMap(){
             layer.bringToFront();
         }
 
-        info.update(layer.feature.properties)
+        info.update(layer.feature.properties);
+        console.log('full of');
     }
 
-    var geojson;
+    //var geojson = plates;
 
     function resetHighlight(e) {
         geojson.resetStyle(e.target);
@@ -192,10 +203,13 @@ function setupMap(){
             mouseout: resetHighlight,
             click: zoomToFeature
         });
+        console.log('shit');
     }
     
+    console.log('why');
     geojson = L.geoJson(plates, {style: mystyle}, {onEachFeature: onEachFeature}).addTo(mymap);
 
+    console.log('mio');
     var legend = L.control({ position: "bottomright" });
 
       legend.onAdd = function (map) {
@@ -218,7 +232,7 @@ function setupMap(){
 
     legend.addTo(mymap);
 
-  var legend2 = L.control({ position: "bottomleft" });
+      var legend2 = L.control({ position: "bottomleft" });
 
       legend2.onAdd = function (map) {
   
@@ -231,7 +245,10 @@ function setupMap(){
       // loop through our density intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {
           div.innerHTML +=
-              '<k style="background:' + getRadius(grades[i] + 1) + '">&nbsp&nbsp&nbsp&nbsp</i> ' +
+              //'<k style="background:' + getRadius(grades[i] + 1) + '">&nbsp&nbsp&nbsp&nbsp</i> ' +
+              //grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+
+              '<k style="width:' + getRadius(grades[i] + 1) + 'px;height:' + getRadius(grades[i] + 1) + 'px;' + '">&nbsp&nbsp&nbsp&nbsp</i> ' +
               grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
   }
   
@@ -260,10 +277,11 @@ function getColor(m) {
 }
 
 function getRadius(d) {
-  return d < 70  ? 100000 :
-         d < 300 ? 5000 :
-         d < 700 ? 100:
-                   0;
+  return d > 700 ? '500':
+         d > 300 ? '5000':
+         d > 70  ? '50000':
+         d > 0   ? '100000':
+                   '100';
 }
 
 
@@ -296,8 +314,9 @@ function drawDataPoints(){
             weight: 0,      // the dot stroke color
             fillColor: getColor(magnitudes[i]), // the dot fill color
             fillOpacity: 0.5,  // use some transparency so we can see overlaps
+            //radius: getRadius(depths[i])
+            //radius: 50000
             radius: getRadius(depths[i])
-            //radius: magnitudes[i] * 10000
         // just the points
         });
 
@@ -312,6 +331,7 @@ function drawDataPoints(){
         // place it on the map
         circle.addTo(mymap);
         points.addTo(mymap);
+        circle.bindPopup("magnitude: " +  magnitudes[i] + "; " + "depth: " + depths[i] + "km");
 
         // save a reference to the circle for later
         circles.push(circle)
@@ -347,199 +367,4 @@ function getColumnMax(columnName){
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
 }
-
-/*// an array for the time
-var times;
-// an array for the magnitude
-var magnitudes;
-//an array for the epth
-var depths;
-//an array for graph dataset
-var graphtable;
-
-
-times = graphtable.getColumn('time');
-depths = graphtable.getColumn('depth');
-magnitudes = graphtable.getColumn('magnitude');
-
-var trace1 = {
-  x: times,
-  y: depths,
-  mode: 'markers',
-  marker: {
-    size: magnitudes
-  }
-};
-
-var data = [trace1];
-
-var layout = {
-  title: 'Marker Size',
-  showlegend: false,
-  height: 400,
-  width: 1000
-};
-
-Plotly.newPlot('quake-graph', data, layout); */
-
-
-//GRAPH SKETCH
-
-/*
-// position for the plot
-var plotX1, plotY1; // top left corner
-var plotX2, plotY2; // bottom right corner
-
-// minimum and maximum values for data and time
-var magnitudeMin, magnitudeMax;
-var timeMin, timeMax;
-
-// table as the data set
-var table;
-
-// an array for the time
-var times;
-// an array for the magnitude
-var magnitudes;
-
-//How much is one day in milliseconds?
-// we will need this for calculations later
-// 1000 milliseconds * 60 seconds * 60 minutes * 24 hours
-var tsDay = 1000 * 60 * 60 * 24;
-
-var magnitudeInterval = 1.0;
-
-function preload() {
-  //my table is comma separated value "csv"
-  //and has a header specifying the columns labels
-  table = loadTable("data/significant_month.csv", "csv", "header");
-}
-
-function setup() {
- 
-  // define top left and bottom right corner of our plot
-  plotX1 = 110;
-  plotX2 = width - 80;
-  plotY1 = 60;
-  plotY2 = height- 80;
-
-
-  // draw a background rectangle for the plot
-  fill(255);
-  noStroke();
-  rectMode(CORNERS);
-  rect(plotX1, plotY1, plotX2, plotY2);
-
-  // get the two arrays of interest: time and magnitude
-  times = table.getColumn("timestamp");
-  magnitudes = table.getColumn("mag");
-
-  // get minimum and maximum values for both
-  magnitudeMin = 0.0;
-  // rounding up the max value to leave a visual margin at the top
-  magnitudeMax = ceil(getColumnMax("mag")/magnitudeInterval) * magnitudeInterval;
-
-  // the minimum for time should be the first date - one day
-  timeMin = times[0]-tsDay;
-
-  // the maximum for time should be the last date + one day
-  timeMax = float(times[times.length-1]) + tsDay;
-
-  //draw the title for the current plot
-  fill(0);
-  textSize(16);
-  text("Significant Earthquakes - Past 30 days", plotX1, plotY1-16);
-
-  // draw the lables for magnitude on the left
-  drawMagnitudeLabels();
-
-  // draw the lables for date at the bottom
-  drawDateLabels();
-
-  // draw the labels for both axes
-  drawAxisLabels();
-
-  // draw the actual points
-  drawDataPoints();
-}
-
-
-// draw the two data points
-function drawDataPoints(){
-  strokeWeight(5);
-  stroke(255,0,0);
-  // cycle through array
-  for(var i=0; i<times.length; i++){
-    //map the x position to the time
-    var x = map(times[i],timeMin, timeMax, plotX1, plotX2);
-    // map the y position to magnitude
-    var y = map(magnitudes[i],magnitudeMin, magnitudeMax, plotY2, plotY1);
-    point(x,y);
-  }
-}
-
-// draw labels "Magnitude" and "Year" next to each of the axes
-function drawAxisLabels(){
-  fill(0);
-  textSize(13);
-  textAlign(CENTER, CENTER);
-  text("Magnitude", 50, (plotY1+plotY2)/2);
-  textAlign(CENTER);
-  text("Year", (plotX1+plotX2)/2, plotY2+40);
-
-}
-
-// draw labels for magnitude on the left
-function drawMagnitudeLabels(){
-  fill(128);
-  // we increase i by the interval, which are the sections
-  for (var i=0; i<=magnitudeMax; i+=magnitudeInterval){
-    noStroke();
-    textSize(8);
-    textAlign(RIGHT, CENTER);
-    // map y to the plotting surface
-    var y = map(i, magnitudeMin, magnitudeMax, plotY2, plotY1);
-
-    // write value
-    text(floor(i), plotX1-10, y);
-
-    // add visual tick mark
-    stroke(128);
-    strokeWeight(1);
-    line(plotX1-4, y, plotX1-1, y);
-  }
-}
-
-// draw date labels
-// we need to find full days, independent of the actual earthquake events
-function drawDateLabels(){
-    textSize(8);
-    textAlign(CENTER);
-    // what is the first day in our plot?
-    var firstDay = Math.floor(timeMin);
-
-    // how many days are we plotting total?
-    var totalDays = Math.floor((timeMax - timeMin))/1000/60/60/24;
-
-  for(var i=0; i<totalDays; i++){
-    var dayCount = firstDay+(i*tsDay);
-    // find the x position for each day
-    var x = map(dayCount,timeMin, timeMax, plotX1, plotX2);
-
-    // draw a line for each day
-    strokeWeight(1);
-    stroke(240);
-    line(x, plotY1,x,plotY2);
-
-    // write the label in clear text
-    // convert the label into a date object again
-    var d = new Date(firstDay+dayCount);
-
-    // and write it out in clear text
-    var dateNow =  (d.getUTCMonth()+1) + "/" + d.getUTCDate();
-    noStroke();
-    text(dateNow, x,plotY2+15);
-  }
-}
-*/
 
