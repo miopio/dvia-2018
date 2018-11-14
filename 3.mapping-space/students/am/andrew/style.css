@@ -148,6 +148,7 @@ p {
 
 #counter {
   /* opacity: 0.8; */
-  font-size: 80%;
+  font-size: 75%;
   float: right;
+  margin-top: 2px;
 }
