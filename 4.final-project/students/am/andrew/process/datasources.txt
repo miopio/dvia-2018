@@ -29,5 +29,5 @@ URL: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4780097/
 
 Description:
 Provider:
-Format:
-URL:
+Format: Detailed water article
+URL: https://commodity.com/soft-agricultural/water/
