@@ -5,11 +5,11 @@ var depths;
 // an array for lat & long
 var latitudes, longitudes;
 
-var magError, depthError, horizontalError;
+var magError, depthError, horizontalError, place, time;
 
-// minimum and maximum values for magnitude and depth
+// min max and avg values for magnitude and depth
 var magnitudeMin, magnitudeMax;
-var depthMin, depthMax;
+var depthMin, depthMax, avgMag, avgDepth;
 
 // the dots we'll be adding to the map
 var circles = [];
@@ -30,19 +30,6 @@ function preload() {
 function setup() {
   // first, call our map initialization function (look in the html's style tag to set its dimensions)
   setupMap();
-
-  // create canvas
-  canvas = createCanvas(width, height);
-  canvas.parent("canvas-holder");
-  background("#3d3d3d");
-
-  fill("#fff");
-  noStroke();
-  textSize(16);
-  textFont("monospace");
-  text(`Plotting ${table.getRowCount()} seismic events`, width * 0.1, 40);
-  text(`Largest Magnitude: ${getColumnMax("mag")}`, width * 0.1, 60);
-  text(`Greatest Depth: ${getColumnMax("depth")}`, width * 0.1, 80);
 }
 
 function setupMap() {
@@ -60,13 +47,13 @@ function setupMap() {
   // load a set of map tiles – choose from the different providers demoed here:
   // https://leaflet-extras.github.io/leaflet-providers/preview/
   L.tileLayer(
-    "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}{r}.{ext}?access_token={accessToken}",
+    "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.{ext}?access_token={accessToken}",
     {
       // attribution:
       //   'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
       minZoom: 2,
       maxZoom: 10,
-      opacity: 0.2,
+      opacity: 0.9,
       id: "mapbox.streets",
       ext: "png",
       accessToken:
@@ -78,9 +65,12 @@ function setupMap() {
   drawDataPoints();
 }
 
-function drawDataPoints(count) {
-  strokeWeight(5);
-  stroke(255, 0, 0);
+function drawDataPoints() {
+  // global color palette
+  var blue = "#7c92f7";
+  var red = "#F77C7C";
+  var green = "#7CF7E0";
+  var yellow = "#F7CC7C";
 
   // get the two arrays of interest: depth and magnitude
   depths = table.getColumn("depth");
@@ -90,6 +80,8 @@ function drawDataPoints(count) {
   magError = table.getColumn("magError");
   depthError = table.getColumn("depthError");
   horizontalError = table.getColumn("horizontalError");
+  place = table.getColumn("place");
+  time = table.getColumn("time");
 
   // convert to numbers
   for (var x = 0; x < depths.length; x++) {
@@ -114,19 +106,17 @@ function drawDataPoints(count) {
     horizontalError[x] = +horizontalError[x];
   }
 
-  // get avg. values for both
-  var avgMag = magnitudes.reduce((a, b) => a + b, 0) / magnitudes.length;
-  var avgDepth = depths.reduce((a, b) => a + b, 0) / depths.length;
+  // get avg. values for both mag and depth
+  avgMag = magnitudes.reduce((a, b) => a + b, 0) / magnitudes.length;
+  avgDepth = depths.reduce((a, b) => a + b, 0) / depths.length;
 
-  // get minimum and maximum values for both
+  // get minimum and maximum values for mag and depth
   magnitudeMin = 0.0;
   magnitudeMax = getColumnMax("mag");
-  // console.log("magnitude range:", [magnitudeMin, magnitudeMax]);
-
   depthMin = 0.0;
   depthMax = getColumnMax("depth");
-  // console.log("depth range:", [depthMin, depthMax]);
 
+  // setup array of lag long for polylines
   var latlngs = [
     [latitudes[0], longitudes[0]],
     [latitudes[1], longitudes[1]],
@@ -143,14 +133,7 @@ function drawDataPoints(count) {
     [latitudes[12], longitudes[12]]
   ];
 
-  // create a red polygon from an array of LatLng points
-  // var ls = [
-  //   [latitudes[0], longitudes[0]],
-  //   [41, -109.03],
-  //   [41, -102.05],
-  //   [37, -102.04]
-  // ];
-
+  // color palette
   var numberOfShades = 9;
   var palette = Brewer.sequential("Reds", numberOfShades, 0, 13);
 
@@ -160,11 +143,9 @@ function drawDataPoints(count) {
     var color = palette.colorForValue(i);
     // create a new dot
     var circleEvent = L.circle([latitudes[i], longitudes[i]], {
-      color: "#67000d", // the dot stroke color
-      // fillColor: "#f03", // the dot fill color
+      color: red, // the dot stroke color
       fillColor: color,
       fillOpacity: 1, // use some transparency so we can see overlaps
-      // radius: magnitudes[i] * 40000
       // radius: depths[i] * 2000
       radius: 80000
     });
@@ -178,8 +159,8 @@ function drawDataPoints(count) {
     var circleMagErr = L.circle(
       [latitudes[i] + magnitudes[i] * 0.8, longitudes[i]],
       {
-        color: "blue", // the dot stroke color
-        fillColor: "blue",
+        color: blue, // the dot stroke color
+        fillColor: blue,
         fillOpacity: 0.3,
         radius: 300000 * magError[i]
       }
@@ -192,8 +173,8 @@ function drawDataPoints(count) {
     var circleDepthErr = L.circle(
       [latitudes[i] - depths[i] * 0.2, longitudes[i]],
       {
-        color: "green", // the dot stroke color
-        fillColor: "green",
+        color: green, // the dot stroke color
+        fillColor: green,
         fillOpacity: 0.3,
         radius: 20000 * depthError[i]
       }
@@ -237,97 +218,134 @@ function drawDataPoints(count) {
       [latitudes[i], longitudes[i] - horizontalError[i] * adjust]
     ];
 
-    // var pointMag = [
-    //   [latitudes[i] + magnitudes[i] * 0.5, longitudes[i]],
-    //   [latitudes[i], longitudes[i]]
-    // ];
-    // var pointDepth = [
-    //   [latitudes[i], longitudes[i]],
-    //   [latitudes[i] - depths[i] * 0.2, longitudes[i]]
-    // ];
-    var colorRecent = palette.colorForValue(i);
+    // var colorRecent = palette.colorForValue(i);
     var polygonMag = L.polyline(pointMag, {
-      color: "blue",
+      color: blue,
       opacity: 0.8
       // fill: colorRecent,
       // fillOpacity: 0.5
     }).addTo(mymap);
     var polygonMagAvg = L.polyline(pointMagAvg, {
-      color: "blue",
+      color: blue,
       opacity: 0.2,
       className: "avg"
       // fill: colorRecent,
       // fillOpacity: 0.5
     }).addTo(mymap);
     var polygonDepth = L.polyline(pointDepth, {
-      color: "green",
+      color: green,
       opacity: 0.8
       // fill: colorRecent,
       // fillOpacity: 0.5
     }).addTo(mymap);
     var polygonDepthAvg = L.polyline(pointDepthAvg, {
-      color: "green",
+      color: green,
       opacity: 0.2,
       className: "avg"
       // fill: colorRecent,
       // fillOpacity: 0.5
     }).addTo(mymap);
-    var polygonHorL = L.polyline(horizontalLineLeft, { color: "black" }).addTo(
+    var polygonHorL = L.polyline(horizontalLineLeft, { color: yellow }).addTo(
       mymap
     );
-    var polygonHorR = L.polyline(horizontalLineRight, { color: "black" }).addTo(
+    var polygonHorR = L.polyline(horizontalLineRight, { color: yellow }).addTo(
       mymap
     );
 
-    // // trigger click event
+    // connect the events with dotted polyline
+    var polyline = L.polyline(latlngs, {
+      color: "#fff",
+      opacity: 0.04,
+      dashArray: "6",
+      weight: 1
+    }).addTo(mymap);
+    // zoom the map to the polyline
+    mymap.fitBounds(polyline.getBounds());
+
+    // trigger click events for polys
     polygonDepth.on("click", onPolyClick);
     polygonHorL.on("click", onPolyClick);
     polygonHorR.on("click", onPolyClick);
     polygonMag.on("click", onPolyClick);
     polygonMagAvg.on("click", onPolyClick);
     polygonDepthAvg.on("click", onPolyClick);
+
+    // add summary text to panel
+    document.getElementById(
+      "intro-sentence"
+    ).innerHTML = `Over the last month, there have been <span class="events">${
+      magnitudes.length
+    }</span> significant earthquakes with an average magnitude of <span class="mag">${avgMag.toFixed(
+      2
+    )}</span> and an average depth of <span class="depth">${avgDepth.toFixed(
+      2
+    )}</span>.`;
+
+    counter.innerHTML = `[ – / ${magnitudes.length}]`;
   }
 
   // click events
   function onPolyClick() {
-    console.log("clicked!", this);
-    // console.log(this.options.opacity);
     this.options.color = "red"; // updates value but doesnt change map
     mymap.flyTo([this._latlngs[0].lat, this._latlngs[0].lng], 5);
   }
-
   function onCircleClick() {
-    // console.log("clicked!", this);
     mymap.flyTo([this._latlng.lat, this._latlng.lng], 5);
   }
-
-  // function flyer() {
-  //   mymap.flyTo([latitudes[count], longitudes[count]], 5);
-  // }
-
-  // connect the events
-  var polyline = L.polyline(latlngs, {
-    color: "#3d3d3d",
-    opacity: 0.3,
-    dashArray: "6",
-    weight: 2
-  }).addTo(mymap);
-  // zoom the map to the polyline
-  mymap.fitBounds(polyline.getBounds());
 }
 
-// use buttons to move through points
+// set focus area text and handle UI buttons
 var count = 0;
+const empty = document.getElementById("empty");
+const active = document.getElementById("active-quake");
+const counter = document.getElementById("counter");
+
+// use buttons to move through points on press
 function next() {
-  count++;
+  empty.style.display = "none";
+  active.style.display = "block";
   mymap.flyTo([latitudes[count], longitudes[count]], 5);
+  // document.querySelector(".avg").style.opacity = 1;
+  // add summary text to panel
+  active.innerHTML = `This earthquake was spotted <span class="place">${
+    place[count]
+  }</span><br><br>It was recorded with a magnitude of <span class="mag">${
+    magnitudes[count]
+  }</span><span class="magEval">${
+    magnitudes[count] > avgMag ? " ↑" : " ↓"
+  }</span> and a depth of <span class="depth">${
+    depths[count]
+  }</span><span class="depthEval">${
+    depths[count] > avgDepth ? " ↑" : " ↓"
+  }</span>. `;
+  counter.innerHTML = `[${count + 1} / ${magnitudes.length}]`;
+  count++;
 }
 function prev() {
+  empty.style.display = "none";
+  active.style.display = "block";
   count--;
   mymap.flyTo([latitudes[count], longitudes[count]], 5);
+  // add summary text to panel
+  active.innerHTML = `This earthquake was spotted <span class="place">${
+    place[count]
+  }</span><br><br>It was recorded with a magnitude of <span class="mag">${
+    magnitudes[count]
+  }</span><span class="magEval">${
+    magnitudes[count] > avgMag ? " ↑" : " ↓"
+  }</span> and a depth of <span class="depth">${
+    depths[count]
+  }</span><span class="depthEval">${
+    depths[count] > avgDepth ? " ↑" : " ↓"
+  }</span>. `;
+  counter.innerHTML = `[${count + 1} / ${magnitudes.length}]`;
 }
 function resetCount() {
+  active.style.display = "none";
+  document.getElementById("empty").style.display = "block";
+
   count = 0;
+  counter.innerHTML = `[ – / ${magnitudes.length}]`;
   mymap.flyTo([0, 0], 2);
 }
 
