@@ -1,6 +1,3 @@
-// Christian Theodore
-// DVIA: Assignment #3: Mapping Space
-
 var mapimg;
 
 // set the lats and long to 0, ie. the center of the world
@@ -95,6 +92,4 @@ for (var i = 0; i <earthquakes.length; i++) {
  }
 	// Get a data feed of earthquakes from USGS
 }
-
-
 
