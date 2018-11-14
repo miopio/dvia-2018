@@ -19,20 +19,19 @@ var table;
 
 // my leaflet.js map
 var mymap;
+const width = window.innerWidth * 0.25;
+const height = window.innerHeight;
 
 function preload() {
   // load the CSV data into our `table` variable and clip out the header row
   // table = loadTable("data/all_month.csv", "csv", "header");
   table = loadTable("data/significant_month.csv", "csv", "header");
 }
-var button, input;
 function setup() {
   // first, call our map initialization function (look in the html's style tag to set its dimensions)
   setupMap();
 
-  const width = window.innerWidth * 0.25;
-  const height = window.innerHeight;
-  // next, draw our p5 diagram that complements it
+  // create canvas
   canvas = createCanvas(width, height);
   canvas.parent("canvas-holder");
   background("#3d3d3d");
@@ -44,10 +43,6 @@ function setup() {
   text(`Plotting ${table.getRowCount()} seismic events`, width * 0.1, 40);
   text(`Largest Magnitude: ${getColumnMax("mag")}`, width * 0.1, 60);
   text(`Greatest Depth: ${getColumnMax("depth")}`, width * 0.1, 80);
-
-  button = createButton("submit");
-  button.position(input.x + input.width, 65);
-  button.mousePressed(greet);
 }
 
 function setupMap() {
@@ -83,7 +78,7 @@ function setupMap() {
   drawDataPoints();
 }
 
-function drawDataPoints() {
+function drawDataPoints(count) {
   strokeWeight(5);
   stroke(255, 0, 0);
 
@@ -297,16 +292,18 @@ function drawDataPoints() {
   function onPolyClick() {
     console.log("clicked!", this);
     // console.log(this.options.opacity);
-
     this.options.color = "red"; // updates value but doesnt change map
     mymap.flyTo([this._latlngs[0].lat, this._latlngs[0].lng], 5);
   }
 
   function onCircleClick() {
     // console.log("clicked!", this);
-
     mymap.flyTo([this._latlng.lat, this._latlng.lng], 5);
   }
+
+  // function flyer() {
+  //   mymap.flyTo([latitudes[count], longitudes[count]], 5);
+  // }
 
   // connect the events
   var polyline = L.polyline(latlngs, {
@@ -317,6 +314,21 @@ function drawDataPoints() {
   }).addTo(mymap);
   // zoom the map to the polyline
   mymap.fitBounds(polyline.getBounds());
+}
+
+// use buttons to move through points
+var count = 0;
+function next() {
+  count++;
+  mymap.flyTo([latitudes[count], longitudes[count]], 5);
+}
+function prev() {
+  count--;
+  mymap.flyTo([latitudes[count], longitudes[count]], 5);
+}
+function resetCount() {
+  count = 0;
+  mymap.flyTo([0, 0], 2);
 }
 
 // not used...should call if making dynamic and updating on new data pull
