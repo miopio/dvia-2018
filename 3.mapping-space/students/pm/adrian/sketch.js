@@ -24,13 +24,13 @@ function setup() {
     setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(1450, 100);
+    createCanvas(windowWidth, 100);
     background(211);
 
     fill(0)
     noStroke()
     textSize(18)
-    text(`Over the course of the last week, there were ${table.getRowCount()} seismic events.  Of these events, the largest magnitude and depth were ${getColumnMax("mag")} and ${getColumnMax("depth")}, respectively`, 10, 36)
+    text(`Over the course of the last week, there were ${table.getRowCount()} seismic events.  Of these events, the largest magnitude and depth were ${getColumnMax("mag")} and ${getColumnMax("depth")}, respectively`, 10, 24)
 }
 
 function setupMap(){
@@ -59,8 +59,8 @@ function setupMap(){
 }
 
 function drawDataPoints(){
-    strokeWeight(1);
-    stroke(255,0,0);
+    // strokeWeight(1);
+    // stroke(255,0,0);
 
     // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
@@ -81,8 +81,8 @@ function drawDataPoints(){
     for(var i=0; i<magnitudes.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-          color: 'black',      // the dot stroke color
-          fillColor: 'black', // the dot fill color
+          // color: 'blue',      // the dot stroke color
+          fillColor: 'blue', // the dot fill color
           fillOpacity: 0.5,  // use some transparency so we can see overlaps
           radius: magnitudes[i] * 10000
         });
@@ -92,6 +92,8 @@ function drawDataPoints(){
 
         // save a reference to the circle for later
         circles.push(circle)
+
+        circle.bindPopup(`Magnitude = [X] and Depth = [Y]`);
     }
 }
 
