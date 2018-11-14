@@ -53,7 +53,7 @@ Provider: United Nations
 Format: CSV 
 URL: http://data.un.org/Default.aspx
 
-Description: Japanese government statistics on population, the economy and mor
+Description: Japanese government statistics on population, the economy and more
 Provider: Government of Japan
 Format: CSV, Excel
 URL: https://www.e-stat.go.jp/en

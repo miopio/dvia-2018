@@ -6,14 +6,14 @@ var depths;
 var latitudes, longitudes;
 
 // an array for Japanese intensity
-var intensity;
+var deaths;
 
 // minimum and maximum values for magnitude, depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
 
 // minimum and maximum values for Japanese intensity
-var intensityMin, intensityMax;
+var deathMin, deathMax;
 
 // the dots we'll be adding to the map
 var circles = [];
@@ -32,6 +32,9 @@ function preload() {
     table = loadTable("data/all_week.csv", "csv", "header");
     japanTable = loadTable("data/japan_major_quakes.csv", "csv", "header");
 }
+
+console.log(japanTable);
+
 
 function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
@@ -88,20 +91,20 @@ function drawDataPoints(){
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
     magnitudeMax = getColumnMax("mag");
-    console.log('magnitude range:', [magnitudeMin, magnitudeMax])
+    //console.log('magnitude range:', [magnitudeMin, magnitudeMax])
 
     depthMin = 0.0;
     depthMax = getColumnMax("depth");
-    console.log('depth range:', [depthMin, depthMax])
+    //console.log('depth range:', [depthMin, depthMax])
 
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
+            color: 'T',      // the dot stroke color
             fillColor: '#f03', // the dot fill color
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 20000
+            radius: magnitudes[i] * 15000
 
 
         });
@@ -110,17 +113,19 @@ function drawDataPoints(){
         circle.addTo(mymap);
 
         // save a reference to the circle for later
-        circles.push(circle)
+        circles.push(circle);
     }
+
+    panda();
 }
 
-function removeAllCircles(){
-    // remove each circle from the map and empty our array of references
-    circles.forEach(function(circle, i){
-        mymap.removeLayer(circle);
-    })
-    circles = [];
-}
+// function removeAllCircles(){
+//     // remove each circle from the map and empty our array of references
+//     circles.forEach(function(circle, i){
+//         mymap.removeLayer(circle);
+//     })
+//     circles = [];
+// }
 
 // get the maximum value within a column
 function getColumnMax(columnName){
@@ -143,43 +148,78 @@ function getColumnMax(columnName){
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
 }
-function drawDataPoints(){
+function panda(){
 
+    var popupText = [
+"Great Kanto Earthquake, 1923. Magnitude 8.3. Intensity 6. 142,000 deaths.",
+"Kita Tango Earthquake, 1927. Magnitude 7.3. Intensity 6. 3,200 deaths.",
+"Sanriku earthquake, 1933. Magnitude 8.1. Intensity 5. 3,700 deaths.",
+"Tottori Earthquake, 1943. Magnitude 7.2. Intensity 6. 1,100 deaths.",
+"Tonankai Earthquake, 1944. Magnitude 8.1. Intensity 1,200 deaths.",
+"Mikawa Earthquake, 1945. Magnitude 6.8. Intensity 5. 2,300 deaths.",
+"Nankai Earthquake, 1946. Magnitude 8.1. Intensity 6. 1,400 deaths.",
+"Fukui Earthquake, 1948. Magnitude 7.1. Intensity 6. 3,800 deaths.",
+"Great Hanshin Earthquake, 1995. Magnitude 7.3. Intensity 7. 6,400 deaths.",
+"Tohoku Earthquake, 2011. Magnitude 9.0. Intensity 7. 15,900 deaths.",
+
+    ];
 
     //get the two arrays of interest from japanTable: magnitude and intensity
     magnitude = japanTable.getColumn("Magnitude");
-    intensity = japanTable.getColumn("Intensity");
+    console.log(magnitude)
+
+    deaths = japanTable.getColumn("Deaths");
+    let max = 0;
+
+    for (let d=0;d<deaths.length;d++) {
+        
+        let deathCount = deaths[d];
+        // console.log(deathCount,max,deathCount>max)
+        if (deathCount > max) {
+            max = deathCount;
+        }
+        console.log(max);
+    }
     latitudes = japanTable.getColumn("Latitude");
     longitudes = japanTable.getColumn("Longitude");
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
     magnitudeMax = getColumnMax("Magnitude");
-    console.log('magnitude range:', [magnitudeMin, magnitudeMax])
+    // console.log('magnitude range:', [magnitudeMin, magnitudeMax]);
 
-    intensityMin = 0.0;
-    intensityMax = getColumnMax("Intensity");
-    console.log('intensity range:', [intensityMin, intensityMax])
+    deathMin = 0;
+    deathMax = getColumnMax("Deaths");
+    console.log('deaths range:', [deathMin, deathMax]);
 
+
+
+    var palette = Brewer.sequential('YlOrBr', 4, 0, deathMax);
+    console.log(palette);
+    //intensity [1] = 3;    
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<magnitude.length; i++){
         // create a new dot
+        var color = palette.colorForValue(deaths[i]);
+        // console.log(deaths[i]);
         var circle = L.circle([latitudes[i], longitudes[i]], {
             color: 'T',      // the dot stroke color
-            fillColor: '#FFA500', // the dot fill color
-            fillOpacity: 0.40,  // use some transparency so we can see overlaps
-            radius: magnitude[i] * 10000
+            fillColor: color, // the dot fill color
+            fillOpacity: 0.50,  // use some transparency so we can see overlaps
+            radius: magnitude[i] * 15000
         });
-
+        
+    
+ //   circle.bindpopup(L.popup().setContent(latitudes[i]+' '+longitudes[i])); 
 var popup1 = L.popup()
-    .setLatLng([34.7409, 139.3856])
-    .setContent("Great Kanto Earthquake, 1923. Magnitude 8.3. Intensity 6. 142,000 deaths.")
+    .setLatLng([35.10, 139.50])
+    .setContent(popupText[i])
     .openOn(mymap);
-
-/*var popup2 = L.popup()
-    .setLatLng([35.6242, 135.0610])
-    .setContent("Kita Tango earthquake, 1923. Magnitude 7.3. Intensity 6. 3,200 deaths.")
-    .openOn(mymap);
+   circle.bindPopup(popup1);
+// var popup2 = L.popup()
+//     .setLatLng([35.59, 134.89])
+//     .setContent("Kita Tango earthquake, 1923. Magnitude 7.3. Intensity 6. 3,200 deaths.")
+//     .openOn(mymap);
 
         // place it on the map
         circle.addTo(mymap);
