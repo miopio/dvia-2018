@@ -116,6 +116,22 @@ function setup() {
 
     var layout = {
       title: 'Depth and magnitude of earthquakes this month',
+        xaxis: {
+          title: 'Time',
+          titlefont: {
+            family: 'Lato',
+            size: 12,
+            color: 'rgb(169,169,169)'
+          }
+        },
+        yaxis: {
+          title: 'Depth (km)',
+          titlefont: {
+            family: 'Lato',
+            size: 12,
+            color: 'rgb(169,169,169)'
+          }
+        },
       showlegend: false,
       height: 400,
       width: 1280,
@@ -197,6 +213,22 @@ function setup() {
 
     var layout = {
       title: 'Depth and magnitude of earthquakes this month in Japan',
+      xaxis: {
+          title: 'Time',
+          titlefont: {
+            family: 'Lato',
+            size: 12,
+            color: 'rgb(169,169,169)'
+          }
+        },
+        yaxis: {
+          title: 'Depth (km)',
+          titlefont: {
+            family: 'Lato',
+            size: 12,
+            color: 'rgb(169,169,169)'
+          }
+        },
       showlegend: false,
       height: 400,
       width: 1280,
