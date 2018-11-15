@@ -1,3 +1,10 @@
+### FINAL PROJECT PROPOSAL IDEAS 11/14
+
+#### Description: The British Royal Family tree, dating back to when England and Scotland became united
+- Provider: Wikipedia
+- Format: Webpage
+- URL: https://en.wikipedia.org/wiki/Family_tree_of_the_British_royal_family 
+
 ### FINAL PROJECT IDEAS 11/6
 
 #### Description: My Spotify account data
