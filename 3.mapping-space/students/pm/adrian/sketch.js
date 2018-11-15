@@ -23,6 +23,15 @@ function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
     setupMap()
 
+    //https://github.com/Leaflet/Leaflet/issues/936
+    // var legend = L.control({position: 'topright'});
+    // legend.onAdd = function (map) {
+    // var div = L.DomUtil.create('div', 'info legend');
+    // div.innerHTML = '< select >< option >1</ option >< option >2</ option >< option >3</ option ></ select >';
+    // return div;
+    // };
+    // legend.addTo(map)
+
     // next, draw our p5 diagram that complements it
     createCanvas(windowWidth, 100);
     background(211);
@@ -67,6 +76,7 @@ function drawDataPoints(){
     magnitudes = table.getColumn("mag");
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
+    locations = table.getColumn("place");
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -87,13 +97,21 @@ function drawDataPoints(){
           radius: magnitudes[i] * 10000
         });
 
+        //Adding the popup with dynamic text
+      	let text  = "Magnitude: " + magnitudes[i] + "<br>";
+      		  text += "Depth: " + depths[i] + "<br>";
+      		  text += "Location: " + locations[i] + "<br>";
+            text += "Latitude: " + latitudes[i] + "<br>";
+            text += "Longitude: " + longitudes[i] + "<br>";
+        circle.bindPopup(text);
+
         // place it on the map
         circle.addTo(mymap);
 
         // save a reference to the circle for later
         circles.push(circle)
 
-        circle.bindPopup(`Magnitude = [X] and Depth = [Y]`);
+
     }
 }
 

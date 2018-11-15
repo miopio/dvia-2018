@@ -13,12 +13,6 @@
     "url": "git+https://github.com/samizdatco/dvia-2018.git"
   },
   "dependencies": {
-    "http-server": "^0.11.1",
-    "npm": "^6.4.1",
-    "@mapbox/mapbox-sdk": "^0.4.1",
-    "deck.gl": "^6.2.3",
-    "mapbox-gl": "^0.51.0-beta.2"
     "http-server": "^0.11.1"
->>>>>>> ca74e83faad5b3633355a524fd347b91e6c04659
   }
 }
