@@ -4,7 +4,10 @@ Description of the contents of this folder and a prose description of your ideas
 the earthquake data geospatially and diagrammatically.
 
 
+In class presentation: https://public.tableau.com/profile/christchild22#!/vizhome/Earthquakes_152/Map?publish=yes
+
 The Initial Idea
+
 I thought it would be interesting to visualize all the earhtquakes which have occured in the recent past. In viewing the data set from USGS,  I was shocked by the sheer frequency of earthquakes. In September 2017 alone, the USGS recorded 8948 earthquakes. (Most of them well below magnitude 3.0 on the Richter Scale.
 
 My process
