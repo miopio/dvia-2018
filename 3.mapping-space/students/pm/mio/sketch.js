@@ -82,9 +82,10 @@ function setup() {
 
 
 
-    var trace3 = {
+    var significant = {
       x: graphtimes,
       y: graphdepth,
+      name: 'significant',
       mode: 'markers',
       marker: {
         color: 'rgba(189, 0, 38, 0.5)',
@@ -92,9 +93,10 @@ function setup() {
       }
     };
 
-    var trace2 = {
+    var abovemag4 = {
       x: graphtimes2,
       y: graphdepth2,
+      name: 'above magnitude 4.5',
       mode: 'markers',
       marker: {
         color: 'rgba(252, 78, 42, 0.5)',
@@ -102,9 +104,10 @@ function setup() {
       }
     };
 
-    var trace1 = {
+    var abovemag2 = {
       x: graphtimes3,
       y: graphdepth3,
+      name: 'above magnitude 2.5',
       mode: 'markers',
       marker: {
         color: 'rgba(254, 178, 76, 0.5)',
@@ -112,7 +115,7 @@ function setup() {
       }
     };
 
-    var data = [trace1, trace2, trace3];
+    var data = [abovemag2, abovemag4, significant];
 
     var layout = {
       title: 'Depth and magnitude of earthquakes this month',
@@ -132,7 +135,7 @@ function setup() {
             color: 'rgb(169,169,169)'
           }
         },
-      showlegend: false,
+      showlegend: true,
       height: 400,
       width: 1280,
       font: {
@@ -179,9 +182,10 @@ function setup() {
 
 
 
-    var trace6 = {
+    var significant = {
       x: graphtimesjapan,
       y: graphdepthjapan,
+      name: 'significant',
       mode: 'markers',
       marker: {
         color: 'rgba(189, 0, 38, 0.5)',
@@ -189,9 +193,10 @@ function setup() {
       }
     };
 
-    var trace5 = {
+    var abovemag4 = {
       x: graphtimesjapan2,
       y: graphdepthjapan2,
+      name: 'above magnitude 4.5',
       mode: 'markers',
       marker: {
         color: 'rgba(252, 78, 42, 0.5)',
@@ -199,9 +204,10 @@ function setup() {
       }
     };
 
-    var trace4 = {
+    var abovemag2 = {
       x: graphtimesjapan3,
       y: graphdepthjapan3,
+      name: 'above magnitude 2.5',
       mode: 'markers',
       marker: {
         color: 'rgba(254, 178, 76, 0.5)',
@@ -209,10 +215,10 @@ function setup() {
       }
     };
 
-    var data = [trace4, trace5, trace6];
+    var data = [abovemag2, abovemag4, significant];
 
     var layout = {
-      title: 'Depth and magnitude of earthquakes this month in Japan',
+      title: 'Depth and magnitude of earthquakes this month around Japan (Amur, Okhotsk, Phillipine Sea Plates)',
       xaxis: {
           title: 'Time',
           titlefont: {
@@ -229,7 +235,7 @@ function setup() {
             color: 'rgb(169,169,169)'
           }
         },
-      showlegend: false,
+      showlegend: true,
       height: 400,
       width: 1280,
       font: {
