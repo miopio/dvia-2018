@@ -91,7 +91,7 @@ function drawDataPoints(){
     for(var i=0; i<magnitudes.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-          // color: 'blue',      // the dot stroke color
+          color: 'T',      // the dot stroke color
           fillColor: 'blue', // the dot fill color
           fillOpacity: 0.5,  // use some transparency so we can see overlaps
           radius: magnitudes[i] * 10000
