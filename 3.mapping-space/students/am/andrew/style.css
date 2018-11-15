@@ -46,11 +46,6 @@ body {
   z-index: 999;
 }
 
-.button-group {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-}
 .legend-holder {
   width: 100%;
   text-align: center;
@@ -105,10 +100,13 @@ span.magEval {
 }
 
 /* buttons */
+.button-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
 button {
-  /* font-size: 15px; */
-  /* font-family: "IBM Plex Mono", monospace; */
   text-transform: uppercase;
   background: transparent;
   border-radius: 2px;
@@ -116,7 +114,12 @@ button {
   transition: all 0.2s;
   color: #fff;
 }
-
+button[disabled],
+button[disabled]:hover {
+  background-color: rgb(165, 165, 165);
+  color: rgba(0, 0, 0, 0.7);
+  cursor: default;
+}
 button:hover {
   background-color: #fff;
   color: var(--panel-background);

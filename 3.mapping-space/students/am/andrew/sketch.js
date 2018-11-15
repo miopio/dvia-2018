@@ -294,13 +294,29 @@ var count = 0;
 const empty = document.getElementById("empty");
 const active = document.getElementById("active-quake");
 const counter = document.getElementById("counter");
+const nextButton = document.getElementById("next");
+const prevButton = document.getElementById("prev");
+const resetButton = document.getElementById("reset");
+
+function buttonStates(count) {
+  if (count == 0) {
+    prevButton.disabled = true;
+    nextButton.disabled = false;
+  } else if (count >= magnitudes.length) {
+    nextButton.disabled = true;
+    prevButton.disabled = false;
+  } else {
+    nextButton.disabled = false;
+    prevButton.disabled = false;
+  }
+}
+buttonStates(count);
 
 // use buttons to move through points on press
 function next() {
   empty.style.display = "none";
   active.style.display = "block";
   mymap.flyTo([latitudes[count], longitudes[count]], 5);
-  // document.querySelector(".avg").style.opacity = 1;
   // add summary text to panel
   active.innerHTML = `This earthquake was spotted <span class="place">${
     place[count]
@@ -315,6 +331,8 @@ function next() {
   }</span>. `;
   counter.innerHTML = `[${count + 1} / ${magnitudes.length}]`;
   count++;
+
+  buttonStates(count);
 }
 function prev() {
   empty.style.display = "none";
@@ -334,6 +352,8 @@ function prev() {
     depths[count] > avgDepth ? " ↑" : " ↓"
   }</span>. `;
   counter.innerHTML = `[${count + 1} / ${magnitudes.length}]`;
+
+  buttonStates(count);
 }
 function resetCount() {
   active.style.display = "none";
@@ -343,6 +363,7 @@ function resetCount() {
   counter.innerHTML = `[ – / ${magnitudes.length}]`;
   // mymap.flyTo([0, 0], 2);
   mymap.flyTo([20, 0.0], 2);
+  buttonStates(count);
 }
 
 // not used...should call if making dynamic and updating on new data pull
