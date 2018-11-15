@@ -38,6 +38,11 @@ function preload() {
     //boundaries = loadJSON("data/PB2002_boundaries.json");
     plates = loadJSON("data/PB2002_plates.json");
     graphtable = loadTable("data/significant_month.csv", "csv", "header");
+    graphtable2 = loadTable("data/4.5_month.csv", "csv", "header")
+    graphtable3 = loadTable("data/2.5_month.csv", "csv", "header");
+    graphtablejapan = loadTable("data/significant_month_japan.csv", "csv", "header");
+    graphtablejapan2 = loadTable("data/4.5_month_japan.csv", "csv", "header");
+    graphtablejapan3 = loadTable("data/2.5_month_japan.csv", "csv", "header");
 }
 
 function setup() {
@@ -45,15 +50,15 @@ function setup() {
     setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(1280, 700);
-    background(222);
+    //createCanvas(1280, 700);
+    //background(222);
 
-    fill(0)
+    /*fill(0)
     noStroke()
     textSize(16)
     text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
     text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
-    text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+    text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)*/
 
     graphtimes = graphtable.getColumn('time');
     graphdepth = graphtable.getColumn('depth');
@@ -61,20 +66,56 @@ function setup() {
     graphmagnitude = graphtable.getColumn('magnitude');
     graphmagnitude = graphmagnitude^20;
 
-    var trace1 = {
+    graphtimes2 = graphtable2.getColumn('time');
+    graphdepth2 = graphtable2.getColumn('depth');
+    graphdepth2 = graphdepth2.map(x => x * -1);
+    graphmagnitude2 = graphtable2.getColumn('magnitude');
+    graphmagnitude2 = graphmagnitude2^20;
+
+    graphtimes3 = graphtable3.getColumn('time');
+    graphdepth3 = graphtable3.getColumn('depth');
+    graphdepth3 = graphdepth3.map(x => x * -1);
+    graphmagnitude3 = graphtable3.getColumn('magnitude');
+    graphmagnitude3 = graphmagnitude3^20;
+
+    graphplace3 = graphtable3.getColumn('place');
+
+
+
+    var trace3 = {
       x: graphtimes,
       y: graphdepth,
       mode: 'markers',
       marker: {
-        color: 'rgba(156, 165, 196, 0.5)',
-        size: graphmagnitude
+        color: 'rgba(189, 0, 38, 0.5)',
+        size: 30
       }
     };
 
-    var data = [trace1];
+    var trace2 = {
+      x: graphtimes2,
+      y: graphdepth2,
+      mode: 'markers',
+      marker: {
+        color: 'rgba(252, 78, 42, 0.5)',
+        size: 10
+      }
+    };
+
+    var trace1 = {
+      x: graphtimes3,
+      y: graphdepth3,
+      mode: 'markers',
+      marker: {
+        color: 'rgba(254, 178, 76, 0.5)',
+        size: 5
+      }
+    };
+
+    var data = [trace1, trace2, trace3];
 
     var layout = {
-      title: 'Depth and magnitude of most significant earthquakes this month',
+      title: 'Depth and magnitude of earthquakes this month',
       showlegend: false,
       height: 400,
       width: 1280,
@@ -83,13 +124,95 @@ function setup() {
         size: 12,
         color: 'rgb(169,169,169)'
       },
-      plot_bgcolor: 'rgba(0,0,0,0.1)',
+      plot_bgcolor: 'rgba(0,0,0, 0.1)',
       margin: {
         pad: 10
       },
         };
 
     Plotly.newPlot('quake-graph', data, layout);
+
+
+
+  /*var japan = []
+  for (var i = 0; i < graphmagnitude3.length; i++) {
+    if (graphplace3[i].includes("japan")){
+
+    }
+  //}*/
+
+    graphtimesjapan = graphtablejapan.getColumn('time');
+    graphdepthjapan = graphtablejapan.getColumn('depth');
+    graphdepthjapan = graphdepthjapan.map(x => x * -1);
+    graphmagnitudejapan = graphtablejapan.getColumn('magnitude');
+    graphmagnitudejapan = graphmagnitudejapan^20;
+
+    graphtimesjapan2 = graphtablejapan2.getColumn('time');
+    graphdepthjapan2 = graphtablejapan2.getColumn('depth');
+    graphdepthjapan2 = graphdepthjapan2.map(x => x * -1);
+    graphmagnitudejapan2 = graphtablejapan2.getColumn('magnitude');
+    graphmagnitudejapan2 = graphmagnitudejapan2^20;
+
+    graphtimesjapan3 = graphtablejapan3.getColumn('time');
+    graphdepthjapan3 = graphtablejapan3.getColumn('depth');
+    graphdepthjapan3 = graphdepthjapan3.map(x => x * -1);
+    graphmagnitudejapan3 = graphtablejapan3.getColumn('magnitude');
+    graphmagnitudejapan3 = graphmagnitudejapan3^20;
+
+    graphplace3 = graphtable3.getColumn('place');
+
+
+
+    var trace6 = {
+      x: graphtimesjapan,
+      y: graphdepthjapan,
+      mode: 'markers',
+      marker: {
+        color: 'rgba(189, 0, 38, 0.5)',
+        size: 30
+      }
+    };
+
+    var trace5 = {
+      x: graphtimesjapan2,
+      y: graphdepthjapan2,
+      mode: 'markers',
+      marker: {
+        color: 'rgba(252, 78, 42, 0.5)',
+        size: 10
+      }
+    };
+
+    var trace4 = {
+      x: graphtimesjapan3,
+      y: graphdepthjapan3,
+      mode: 'markers',
+      marker: {
+        color: 'rgba(254, 178, 76, 0.5)',
+        size: 5
+      }
+    };
+
+    var data = [trace4, trace5, trace6];
+
+    var layout = {
+      title: 'Depth and magnitude of earthquakes this month in Japan',
+      showlegend: false,
+      height: 400,
+      width: 1280,
+      font: {
+        family: 'Lato',
+        size: 12,
+        color: 'rgb(169,169,169)'
+      },
+      plot_bgcolor: 'rgba(0,0,0, 0.1)',
+      margin: {
+        pad: 10
+      },
+        };
+
+    Plotly.newPlot('quake-graph-example', data, layout);
+
 }
 
 function setupMap(){
@@ -102,7 +225,7 @@ function setupMap(){
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([37.7749, -122.4194], 3);
+    mymap = L.map('quake-map').setView([40.7128, -74.0060], 4);
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -168,7 +291,7 @@ function setupMap(){
                        100;
     }*/
 
-    function highlightFeature(e) {
+    /*function highlightFeature(e) {
         var layer = e.target;
 
         layer.setStyle({
@@ -180,11 +303,12 @@ function setupMap(){
 
         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
             layer.bringToFront();
+            console.log('work please');
         }
 
         info.update(layer.feature.properties);
         console.log('full of');
-    }
+    }*/
 
     //var geojson = plates;
 
@@ -232,7 +356,7 @@ function setupMap(){
 
     legend.addTo(mymap);
 
-      var legend2 = L.control({ position: "bottomleft" });
+      /*var legend2 = L.control({ position: "bottomleft" });
 
       legend2.onAdd = function (map) {
   
@@ -255,7 +379,7 @@ function setupMap(){
   return div;
   };
 
-  legend2.addTo(mymap);
+  legend2.addTo(mymap);*/
 
     //drawPolygons();
     // call our function (defined below) that populates the maps with markers based on the table contents
