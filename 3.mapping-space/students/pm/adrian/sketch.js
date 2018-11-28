@@ -23,14 +23,7 @@ function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
     setupMap()
 
-    //https://github.com/Leaflet/Leaflet/issues/936
-    // var legend = L.control({position: 'topright'});
-    // legend.onAdd = function (map) {
-    // var div = L.DomUtil.create('div', 'info legend');
-    // div.innerHTML = '< select >< option >1</ option >< option >2</ option >< option >3</ option ></ select >';
-    // return div;
-    // };
-    // legend.addTo(map)
+
 
     // next, draw our p5 diagram that complements it
     createCanvas(windowWidth, 100);
@@ -53,7 +46,7 @@ function setupMap(){
     // create your own map
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
 
-    // load a set of map tiles – choose from the different providers demoed here:
+    // load a set of smap tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
