@@ -142,6 +142,7 @@ function setupMap(){
     // https://leaflet-extras.github.io/leaflet-providers/preview/
     L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}{r}.{ext}', {
 	subdomains: 'abcd',
+  // noWrap: true,
 	minZoom: 0,
 	maxZoom: 20,
   opacity: 0.4,
@@ -154,8 +155,9 @@ function setupMap(){
 }
 
 function drawDataPoints(){
-    strokeWeight(5);
+    strokeWeight(1);
     stroke(255,0,0);
+    noStroke();
 
     // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
@@ -181,15 +183,17 @@ function drawDataPoints(){
             var circle = L.circle([latitudes[i], longitudes[i]], {
                 color: '#E95A2C',      // the dot stroke color
                 fillColor: '#E95A2C', // the dot fill color
-                fillOpacity: 0.25,  // use some transparency so we can see overlaps
-                radius: magnitudes[i] * 5000
+                fillOpacity: 0.5,  // use some transparency so we can see overlaps
+                stroke: false,
+                radius: magnitudes[i] * 30000
             });
           } else {
             var circle = L.circle([latitudes[i], longitudes[i]], {
                 color: '#1CAFD6',      // the dot stroke color
                 fillColor: '#1CAFD6', // the dot fill color
-                fillOpacity: 0.25,  // use some transparency so we can see overlaps
-                radius: magnitudes[i] * 5000
+                fillOpacity: 0.5,  // use some transparency so we can see overlaps
+                stroke: false,
+                radius: magnitudes[i] * 30000
             });
           }
           if (type[i] != "earthquake") {
