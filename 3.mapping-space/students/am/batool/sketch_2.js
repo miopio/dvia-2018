@@ -62,7 +62,7 @@ function setup(){
     var y = mercY(lat) - cy;
 
       noStroke();
-      fill(182,247,201, 120);
+      fill(182,247,201, 110);
       ellipse(x, y , mag*8,mag*8);
 
       stroke('black');
@@ -99,7 +99,7 @@ function setup(){
   text('/', -windowWidth/3 + 302 , windowHeight/3 +82);
   textSize(30);
   fill('black');
-  text('October', -windowWidth/3 + 329 , windowHeight/3 +70);
+  text('month', -windowWidth/3 + 329 , windowHeight/3 +70);
 
   // print(quake_data);
 
