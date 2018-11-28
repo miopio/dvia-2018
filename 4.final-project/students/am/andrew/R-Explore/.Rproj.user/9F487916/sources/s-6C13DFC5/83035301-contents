@@ -1,0 +1,2 @@
+music <- read.csv("music.csv")
+View(music)
