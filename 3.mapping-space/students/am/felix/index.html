@@ -1,26 +1,100 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="myLib/nouislider.css" />
   <link rel="stylesheet" href="lib/leaflet/leaflet.css" /> <!-- default styles -->
-  <style>
-    html, body {
-      padding: 0;
-      margin: 0;
-    }
-
-    /* default dimensions for the leaflet map */
-    #quake-map{
-      width: 800px;
-      height: 600px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- The container div for our leaflet map -->
-  <div id="quake-map"></div>
+  <div id='control-center'>
+    <div id="introduction">
+      <div id='introduction-headline'>
+        <h1><span class='natural'>Natural</span> and <span class='human-made'> human-made</span> seismic events in the last 30 days</h1>
+      </div>
+      <div class="border" id='introduction-text'>
+        <p>
+          Earthquake magnitude is a measure of the size of an earthquake at its source. It is a logarithmic measure. At the same distance from the earthquake, an increase of magnitude of 1.0 on the scale means an amplitude of the seismic waves approximately 10 times as large.
+        </p>
+        <p>
+          Not every seismic event is of natural origin. This dataset differentiates between <span class='natural'>earthquakes</span> and <span class='human-made'>quarry blasts & explosions</span>. But there is also a third category of <span class='human-induced'>human induced earthquakes</span> caused by human activity that alters the stresses and strains on the Earth’s crust.
+        <p>
+          See an overview over human-made seismic events <a class='human-made' href=''>here</a> and a timeline of significant human induced seismic events <a class='human-induced' href=''>here</a>
+        </p>
+      </div>
+    </div>
+    <div id="map-diagram">
+      <div id='map-container'>
+        <div id="quake-map"></div>
+      </div>
+
+      <div id='diagram-container'>
+        <div id="diagram">
+
+        </div>
+      </div>
+    </div>
+
+    <div id='legends'>
+      <div class="border" id='hover-legend'>
+        <div id="circle-legend">
+
+        </div>
+        <hr />
+        <div id="position-hover">
+          <div class='center' id="place-name">
+            <span class='center'>dist in km SSW of nearest location, Country</span>
+          </div>
+          <div id="place-error">
+
+            <table>
+
+              <tr>
+
+              <td>horizontalError:</td>
+
+              <td class='right'>0.00</td>
+
+              </tr>
+
+              <tr>
+
+              <td>depth:</td>
+
+              <td class='right'>00.00</td>
+
+              </tr>
+
+              <tr>
+
+              <td>depthError:</td>
+
+              <td class='right'>0.00</td>
+
+              </tr>
+
+            </table>
+          </div>
+          <hr />
+          <div id="error-legend">
+
+          </div>
+        </div>
+      </div>
+
+      <div id="diagram-legend">
+        <div id="slider">
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- load our dependencies and sketch file -->
   <script src="lib/leaflet/leaflet.js"></script>
+  <script src="myLib/nouislider.js"></script>
   <script src="lib/p5.min.js"></script>
   <script src="lib/lodash.min.js"></script>
   <script src="lib/brewer.js"></script>

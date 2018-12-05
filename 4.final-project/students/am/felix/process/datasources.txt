@@ -31,3 +31,26 @@ Description: Enron Email Dataset
 Provider: “This dataset was collected and prepared by the CALO Project (A Cognitive Assistant that Learns and Organizes). It contains data from about 150 users, mostly senior management of Enron, organized into folders. The corpus contains a total of about 0.5M messages. This data was originally made public, and posted to the web, by the Federal Energy Regulatory Commission during its investigation. The email dataset was later purchased by Leslie Kaelbling at MIT, and turned out to have a number of integrity problems. A number of folks at SRI, notably Melinda Gervasio, worked hard to correct these problems, and it is thanks to them (not me) that the dataset is available.”
 Format: Torrent, not yet downloaded, I guess txt files in folders
 URL: http://academictorrents.com/details/4697a6e1e7841602651b087d84f904d43590d4ff
+
+# For my ideas:
+# -------------
+Idea 1:
+For idea 1 I would have to make the data set myself, I have about 70 pages of scanned lists, I don’t want to upload all of them, because they are about 200 mb large, but 20180531.jpg is an example image in the asset folder
+
+Idea 2:
+
+Description: Wikipedia lists and sites to collect data from for the punk idea
+Provider: wikipedia
+Format: html, text
+URLs: https://en.wikipedia.org/wiki/Punk_rock#1974%E2%80%931976:_Early_history
+https://en.wikipedia.org/wiki/CBGB
+https://en.wikipedia.org/wiki/Portal:Punk_rock
+https://en.wikipedia.org/wiki/List_of_1970s_punk_rock_musicians
+https://en.wikipedia.org/wiki/Women_in_punk_rock
+
+Idea 3:
+
+Description: Piketty’s raw data behind his research for “Capital in the 21st Century”
+Provider: Thomas Piketty / quandl
+Format: csv, json
+URL: https://www.quandl.com/data/PIKETTY-Thomas-Piketty/documentation/introduction

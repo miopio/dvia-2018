@@ -21,6 +21,7 @@ body {
 #quake-map {
   width: 75%;
   height: 100%;
+  background-color: #272727;
 }
 .leaflet-control-attribution {
   display: none;
@@ -45,11 +46,6 @@ body {
   z-index: 999;
 }
 
-.button-group {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-}
 .legend-holder {
   width: 100%;
   text-align: center;
@@ -62,11 +58,12 @@ body {
 
 .legend-holder img {
   width: 95%;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .content {
-  max-width: 90%;
+  width: 90%;
+  max-width: 460px;
   margin: 0 auto;
   margin-top: 5%;
 }
@@ -103,10 +100,13 @@ span.magEval {
 }
 
 /* buttons */
+.button-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
 button {
-  /* font-size: 15px; */
-  /* font-family: "IBM Plex Mono", monospace; */
   text-transform: uppercase;
   background: transparent;
   border-radius: 2px;
@@ -114,7 +114,12 @@ button {
   transition: all 0.2s;
   color: #fff;
 }
-
+button[disabled],
+button[disabled]:hover {
+  background-color: rgb(165, 165, 165);
+  color: rgba(0, 0, 0, 0.7);
+  cursor: default;
+}
 button:hover {
   background-color: #fff;
   color: var(--panel-background);
@@ -148,6 +153,7 @@ p {
 
 #counter {
   /* opacity: 0.8; */
-  font-size: 80%;
+  font-size: 75%;
   float: right;
+  margin-top: 2px;
 }

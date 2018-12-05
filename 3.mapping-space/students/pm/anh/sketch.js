@@ -9,8 +9,17 @@ var latitudes, longitudes;
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
 
+var magnitudesFiltered;
+// an array for depth
+var depthsFiltered;
+// an array for lat & long
+var latitudesFiltered, longitudesFiltered;
+
+
 // the dots we'll be adding to the map
 var circles = [];
+var checkboxes;
+var filterState = [true, true, true, true, true, true, true];
 
 // table as the data set
 var table;
@@ -37,6 +46,14 @@ function setup() {
     text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
     text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
     text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+    // var button = createButton("click me");
+    // button.position(19,19);
+    document.querySelector("#checkbox-group").addEventListener("click", function() {
+        getFilterState();
+        removeAllCircles();
+        drawDataPoints();
+    })
+    checkboxes = document.querySelectorAll("#checkbox-group input");
 }
 
 function setupMap(){
@@ -73,6 +90,20 @@ function drawDataPoints(){
     magnitudes = table.getColumn("mag");
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
+    // months = table.getColumn("time").map(date => (new Date(date)).getUTCMonth());
+
+    depthsFiltered = depths.filter((depth, index) => {
+        return filterState[Math.floor(magnitudes[index])]; 
+    });
+    magnitudesFiltered = magnitudes.filter((depth, index) => {
+        return filterState[Math.floor(magnitudes[index])]; 
+    });
+    latitudesFiltered = latitudes.filter((depth, index) => {
+        return filterState[Math.floor(magnitudes[index])]; 
+    });
+    longitudesFiltered = longitudes.filter((depth, index) => {
+        return filterState[Math.floor(magnitudes[index])]; 
+    });
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -84,13 +115,13 @@ function drawDataPoints(){
     console.log('depth range:', [depthMin, depthMax])
 
     // cycle through the parallel depth arrays (can use row insted cause they the same length) and add a dot for each event
-    for(var i=0; i<depths.length; i++){
+    for(var i=0; i<depthsFiltered.length; i++){
         // create a new dot. See reference for more properties
-        var circle = L.circle([latitudes[i], longitudes[i]], {
+        var circle = L.circle([latitudesFiltered[i], longitudesFiltered[i]], {
             color: 'green',      // the dot stroke color
             fillColor: 'green', // the dot fill color
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
+            radius: magnitudesFiltered[i] * 40000
         });
 
         // place it on the map. Tell the circle to add itself to the map.
@@ -130,4 +161,15 @@ function getColumnMax(columnName){
 
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
+}
+
+function draw() {
+    //console.log("drawing!");
+}
+
+function getFilterState() {
+    for (var i = 0; i < checkboxes.length; ++i) {
+        filterState[i] = checkboxes[i].checked;
+    }
+    console.log(filterState);
 }

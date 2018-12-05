@@ -71,4 +71,3 @@ Just for reference:
 - Magnitude in qualitative color scheme
 - Animation: shaking
 - Elevation of the map (like a heatmap) is the mapped data
--

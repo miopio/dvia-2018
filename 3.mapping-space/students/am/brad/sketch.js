@@ -20,20 +20,22 @@ var mymap;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
-    table = loadTable("data/all_month.csv", "csv", "header");
+    table = loadTable("data/1.0_day.csv", "csv", "header");
 }
+
 
 function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
     setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(800, 600);
-    background(222);
+    createCanvas(1000, 1000);
+    //background(222);
 
     fill(0)
-    noStroke()
+    noStroke(0)
     textSize(16)
+    text('ARIZONA BAY', 0, 0);
     text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
     text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
     text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
@@ -49,23 +51,27 @@ function setupMap(){
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    mymap = L.map('quake-map').setView([36.778, -119.417], 6);
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
+    L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    // minZoom: 20,
+    // maxZoom: 7,
+    ext: 'png'
     }).addTo(mymap);
+
+
+
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
 }
 
 function drawDataPoints(){
-    strokeWeight(5);
+    strokeWeight(0);
     stroke(255,0,0);
 
     // get the two arrays of interest: depth and magnitude
@@ -87,8 +93,8 @@ function drawDataPoints(){
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
+            color: '0',      // the dot stroke color
+            fillColor: '#f04', // the dot fill color
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
             radius: magnitudes[i] * 40000
         });
@@ -100,6 +106,7 @@ function drawDataPoints(){
         circles.push(circle)
     }
 }
+
 
 function removeAllCircles(){
     // remove each circle from the map and empty our array of references
@@ -129,4 +136,5 @@ function getColumnMax(columnName){
 
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
+
 }

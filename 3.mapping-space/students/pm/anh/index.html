@@ -12,16 +12,54 @@
     #quake-map{
       width: 1100px;
       height: 600px;
+      float: left;
+    }
+    #control-panel {
+      text-align: center;
+    }
+    #checkbox-group {
+      text-align: right;
+      margin-right: 90px;
     }
   </style>
 </head>
 <body>
   <!-- The container div for our leaflet map. Assign #quake-map properties to this div-->
   <div id="quake-map"></div>
+  <div id="control-panel">
+
+    <h3>
+      Magnitude filter
+    </h3>
+    <ul id="checkbox-group">
+      <label for="cb1">0 - 1: </label>
+      <input type="checkbox" checked name="cb1" id="cb1" />
+      </br>
+      <label for="cb2">1.1 - 2: </label>
+      <input type="checkbox" checked name="cb2" id="cb2" />
+      </br>
+      <label for="cb3">2.1 - 3: </label>
+      <input type="checkbox" checked name="cb3" id="cb3" />
+      </br>
+      <label for="cb4">3.1 - 4: </label>
+      <input type="checkbox" checked name="cb4" id="cb4" />
+      </br>
+      <label for="cb5">4.1 - 5: </label>
+      <input type="checkbox" checked name="cb5" id="cb5" />
+      </br>
+      <label for="cb6">5.1 - 6: </label>
+      <input type="checkbox" checked name="cb6" id="cb6" />
+      </br>
+      <label for="cb7">6.1 - 7: </label>
+      <input type="checkbox" checked name="cb7" id="cb7" />
+      </br>
+    </ul>
+  </div>
 
   <!-- load our dependencies and sketch file -->
   <script src="lib/leaflet/leaflet.js"></script>
   <script src="lib/p5.min.js"></script>
+  <script src="lib/p5.dom.min.js"></script>
   <script src="lib/lodash.min.js"></script>
   <script src="lib/brewer.js"></script>
   <script src="sketch.js"></script>

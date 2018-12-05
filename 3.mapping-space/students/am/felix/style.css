@@ -1,0 +1,196 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: #444;
+  font-family: monospace;
+  color: #ddd;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 120%;
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 130%;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.natural {
+  color: rgb(233, 90, 44);
+}
+
+.human-made {
+  color: rgb(28, 175, 214);
+}
+
+.human-induced {
+  color: rgb(214, 151, 28);
+}
+
+#control-center {
+  height: 96vh;
+  display: flex;
+  /* background: red; */
+}
+
+#introduction {
+  margin-top: 25px;
+  /* width: 300px; */
+  flex-basis: 18vw;
+  flex-grow: 1;
+  padding: 25px;
+  /* background: green; */
+}
+
+#introduction-text {
+  min-height: 727px;
+  margin-top: 25px;
+  padding: 25px;
+  border: 1px solid #ddd;
+}
+
+p {
+  margin: 0px;
+}
+
+p+p {
+  margin: 16px 0;
+}
+
+#map-diagram {
+  margin-top: 30px;
+  flex-basis: 64vw;
+  flex-grow: 4;
+  /* background-color: blue; */
+}
+
+#map-container {
+  margin-top: px;
+}
+
+#diagram-container {
+  margin-top: 25px;
+  min-height: 240px;
+  background-color: rgba(41, 41, 41, 1);
+}
+
+#diagram-legend {
+  margin: 25px;
+  padding: 25px;
+  height: 190px;
+  border: 1px solid #ddd;
+}
+
+#slider {
+  height: 240px;
+  margin-top: -25px;
+  margin-left: -25px;
+}
+
+#legends {
+  margin-top: 30px;
+  flex-basis: 18vw;
+  flex-grow: 1;
+  /* background-color: yellow; */
+}
+
+#hover-legend {
+  height: 587px;
+  padding: 25px;
+  margin: 0 25px;
+  border: 1px solid #ddd;
+}
+
+#place-name {
+  padding: 10px;
+  background: #ddd;
+  color: #444;
+}
+
+table, #place-name {
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+}
+
+.center {
+  margin: auto;
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+hr {
+  margin: 25px 0;
+}
+
+#place-error {
+  margin-top: 12px;
+}
+
+
+
+
+
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+/* default dimensions for the leaflet map */
+#quake-map{
+  margin: auto;
+  background-color: #444;
+  flex-basis: 64vw;
+  /* width:900px; */
+  height: 640px;
+}
+
+.leaflet-bar{
+  box-shadow: none;
+}
+.leaflet-control-zoom a{
+  /* box-shadow: 0 1px 5px rgba(0,0,0,0.65); */
+}
+.leaflet-bar a{
+  /* border-radius: 4px; */
+  background-color: #002244;
+  border: 1px solid rgba(0,0,0,.15);
+  color: #FB4F14;
+}
+.leaflet-bar a:last-child{
+  border: 1px solid rgba(0,0,0,.15);
+}
+.leaflet-bar a:hover{
+  background-color: #FB4F14;
+  border: 1px solid rgba(0,0,0,.15);
+  color: #002244;
+}
+.leaflet-control-zoom-in{
+  margin-top: 10px;
+}
+.leaflet-control-zoom-out{
+  margin-top: 15px;
+}
+
+.leaflet-touch .leaflet-bar {
+    border: none;
+    background-clip: padding-box;
+}

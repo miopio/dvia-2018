@@ -1,5 +1,5 @@
 
-1- Blood test results: I've always wanted to visualize the medical test results, I always find it hard to understand what is normal and what's not. Turning the heavy texted document into visualization will help everyone understand their health level. (diagram)
+1- Blood test results: I've always wanted to visualize the medical test results, I always find it hard to understand what is normal and what's not. Turning the heavy texted document into visualization will help everyone understand their health level. (diagram)*
 
 2- Visualize the current temperature around the world. (map)
 
@@ -7,11 +7,15 @@
 
 4- Airplanes routes between the biggest airports around the world (map) 
 
-5- Bike assembly infographic poster (diagram)
+5- Bike assembly infographic poster (diagram) *
+
+6- Mail carrier tracking number, visualize the route, the history * 
+
+7- USA weapons sales.
 
 SA:
 
-1- Hajj pilgrimage in Saudi Arabia: Every year millions of people from all over the world gather in one place for Hajj for few days. (diagram or map)
+1- Hajj pilgrimage in Saudi Arabia: Every year millions of people from all over the world gather in one place for Hajj for few days. (diagram or map) *
 
 2- Number of car accidents every day in Riyadh, Saudi Arabia. (diagram)
 
