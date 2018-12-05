@@ -1,16 +1,16 @@
 // Clock with Hour, Minutes, Seconds and Date
-var x = 300
-var y = 300
+var x = 350;
+var y = 400;
 var minR = 45;
-var maxR = 375;
+var maxR = 500;
 var spacing = 30;
 var dayR = 425;
 var mthR = 495;
 
 
 function setup() {
-  createCanvas(600, 600);
-  background(34);
+  createCanvas(1400, 788);
+  background('#f2f2f2');
   ellipseMode(CENTER);
   angleMode(DEGREES);
   noLoop();
@@ -19,7 +19,6 @@ function setup() {
 }
 
 function resetSketch(){
-  background(35);
   draw()
   setTimeout(resetSketch,1000);
 }
@@ -32,9 +31,6 @@ function draw() {
   var dy = day();
   var mth = month();
 
-  // fill(70);
-  // noStroke();
-  // text(hr + ':' + mn + ':' + sc, 50, 50);
 
   var r = [];
   for (let i =0; i < 12; i++) {
@@ -72,14 +68,14 @@ function draw() {
   for (let i =0; i < 12; i++) {
     if (i < curHour){
       opacity = int(map(curHour-i, 0, 11, 255, 10));
-      stroke(255,255,255, opacity);
+      stroke(10,10,10, opacity);
       ellipse(x, y, r[i], r[i]);
     }
   }
 
   // month
   var curMonth = map(mth,1,12,0,350);
-  noStroke();
+  stroke(10,10,10);
   ellipse(x, y, mthR, mthR);
   fill(80);
   noStroke();
