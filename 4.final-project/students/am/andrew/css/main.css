@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+}
+
+.chart {
+  margin: 0 auto;
+  width: 90%;
+  padding-top: 5%;
+}
+
+#plot-one {
+  fill: lightcyan;
+}
+
+#plot-two {
+  fill: lightgreen;
+}
+
+#plot-three {
+  fill: lightcoral;
+}
+
+#plot-four {
+  fill: lightgray;
+}
+
+#plot-five {
+  fill: lightskyblue;
+}
