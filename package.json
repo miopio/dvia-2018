@@ -13,6 +13,7 @@
     "url": "git+https://github.com/samizdatco/dvia-2018.git"
   },
   "dependencies": {
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.1",
+    "node-craigslist": "^1.2.2"
   }
 }

@@ -15,6 +15,7 @@ var sigdepths;
 var siglatitudes, siglongitudes;
 // an array for time and days
 var sigtimes, sigdays;
+var sighorizontal;
 
 // for the sigificant data
 var wkmagnitudes;
@@ -88,13 +89,20 @@ function setupMap(){
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    mymap = L.map('quake-map',{
+      center: [51.505, -0.09],
+      zoom: 2,
+      minZoom: 2,
+      maxBounds: [[85, -180],[-85.05115, 180]],
+      boxZoom: true
+    });
 
     // load a set of map tiles – choose from the different providers demoed here:
     // https://leaflet-extras.github.io/leaflet-providers/preview/
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
+        // minZoom:1.5,
+        // maxZoom: 18,
         id: 'mapbox.dark',
         accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
     }).addTo(mymap);
@@ -112,7 +120,7 @@ function setupMap(){
     siglongitudes = sig.getColumn("longitude");
     sigtimes = sig.getColumn("time");
     sigdays = sigtimes.map(i => parseInt(i.slice(8, 10)));
-
+    sighorizontal = sig.getColumn("horizontalError");
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -176,7 +184,7 @@ function drawDataPoints(){
 
           var circle = L.circle([latitudes[i],longitudes[i]], {
               color: '#3388ff',      // the dot stroke color
-              opacity: magnitudes[i]/100,  // use some transparency so we can see overlaps
+              opacity: depths[i]/100,  // use some transparency so we can see overlaps
               radius: 5
           });
 
@@ -189,18 +197,25 @@ function drawDataPoints(){
 
     for(var i=0; i<sigdepths.length; i++){
         // create a new dot
-        var circle = L.circle([siglatitudes[i],siglongitudes[i]], {
+        var sigcircle = L.circle([siglatitudes[i],siglongitudes[i]], {
             color: '#8b0000',      // the dot stroke color
-            opacity: sigmagnitudes[i]/100,  // use some transparency so we can see overlaps
+            opacity: sigdepths[i]/getColumnMax("depths",sig),  // use some transparency so we can see overlaps
             radius: 5
             // day: days[i]
         });
+        // console.log(siglatitudes[i]);
 
-        // place it on the map
-        circle.addTo(mymap);
+        // horizontal error
+        var horizontalerr = L.circle([siglatitudes[i],siglongitudes[i]], {
+            color: '#8b0000',      // the dot stroke color
+            opacity: 0.8,  // use some transparency so we can see overlaps
+            radius: (5+sighorizontal[i])*10
+            // day: days[i]
+        });
 
-        // save a reference to the circle for later
-        circles.push(circle)
+        // place circles on the map
+        horizontalerr.addTo(mymap);
+        sigcircle.addTo(mymap);
     }
 }
 
@@ -215,10 +230,10 @@ function filterDataPoints(){
           var circle = L.circle([latitudes[i],longitudes[i]], {
               color: '#3388ff',      // the dot stroke color
               opacity: magnitudes[i]/100,  // use some transparency so we can see overlaps
-              radius: 5
+              radius: 10
               // day: days[i]
           });
-          console.log(days[i]);
+          // console.log(days[i]);
           // place it on the map
           circle.addTo(mymap);
           // save a reference to the circle for later
@@ -229,10 +244,10 @@ function filterDataPoints(){
 
     for(var i=0; i<sigdepths.length; i++){
         if (sigdays[i]==slider.value()){
-          var circle = L.circle([siglatitudes[i],siglongitudes[i]], {
+          var circle = L.circleMarker([siglatitudes[i],siglongitudes[i]], {
               color: '#8b0000',      // the dot stroke color
               opacity: sigmagnitudes[i]/getColumnMax('magnitudes',sig),  // use some transparency so we can see overlaps
-              radius: 5
+              radius: 50
           });
           // place it on the map
           circle.addTo(mymap);
