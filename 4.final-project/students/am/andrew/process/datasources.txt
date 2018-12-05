@@ -27,7 +27,30 @@ Provider: Orthopedic Journal of Sports Medicine
 Format: Report with data
 URL: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4780097/
 
-Description:
+Description: Detailed water article on water investment
 Provider:
-Format:
-URL:
+Format: Detailed article with links to market data
+URL: https://commodity.com/soft-agricultural/water/
+
+Description: Five Plot Point Breakdowns for a lot of movies
+Provider: The Script Lab
+Format: Blog
+URL: https://thescriptlab.com/category/screenplay/five-plot-point-breakdowns/
+
+
+Description: Water productivity, total (constant 2010 US$ GDP per cubic meter of total freshwater withdrawal)
+Provider: The World Bank
+Format: CSV
+URL: https://data.worldbank.org/indicator/ER.GDP.FWTL.M3.KD
+
+
+Description: Food Nutrition Content
+Provider: United States Department of Agriculture's Food Composition Database
+Format: CSV
+URL: https://think.cs.vt.edu/corgis/csv/food/food.html
+
+
+Description: Music Analysis of 1 million most popular songs
+Provider: Million Song Dataset from Echo Nest
+Format: CSV
+https://think.cs.vt.edu/corgis/csv/music/music.html

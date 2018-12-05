@@ -5,6 +5,7 @@ var depths;
 // an array for lat & long
 var latitudes, longitudes;
 
+var earthquakeTime;
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
@@ -18,9 +19,15 @@ var table;
 // my leaflet.js map
 var mymap;
 
+
 function preload() {
+
+  soundFormats('mp3');
+  earthquakeSound = loadSound('assets/equake4.mp3');
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("data/significant_month.csv", "csv", "header");
+    table2 = loadTable("data/all_hour.csv", "csv", "header");
+
 }
 
 // function setup() {
@@ -77,15 +84,18 @@ function setupMap(){
     //     accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
     //L.noWrap('true')
     //===============black
-    // L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?access_token={accessToken}', {
-    //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    //   subdomains: 'abcd',
-    //   maxZoom: 19,
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?access_token={accessToken}', {
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19,
 
-     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-	      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	   subdomains: 'abcd',
-	   maxZoom: 19,
+
+//===========================white
+     // L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	   //    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	   // subdomains: 'abcd',
+	   // maxZoom: 19,
+
       minZoom:1,
       id: 'mapbox.streets',
       accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA',
@@ -109,11 +119,26 @@ function drawDataPoints(){
     stroke(255,0,0);
 
     // get the two arrays of interest: depth and magnitude
-    depths = table.getColumn("depth");
-    magnitudes = table.getColumn("mag");
-    latitudes = table.getColumn("latitude");
-    longitudes = table.getColumn("longitude");
-    place = table.getColumn("place")
+
+
+
+  // depths = table2.getColumn("depth");
+  // magnitudes = table2.getColumn("mag");
+  // latitudes = table2.getColumn("latitude");
+  // longitudes = table2.getColumn("longitude");
+  // place = table2.getColumn("place");
+  // earthquakeTime=table2.getColumn("time");
+
+  //
+  depths = table.getColumn("depth");
+  magnitudes = table.getColumn("mag");
+  latitudes = table.getColumn("latitude");
+  longitudes = table.getColumn("longitude");
+  place = table.getColumn("place");
+  earthquakeTime=table.getColumn("time");
+
+
+
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -130,33 +155,52 @@ function drawDataPoints(){
         var circle = L.circle([latitudes[i], longitudes[i]], {
             color: 'Grey',      // the dot stroke color
             stroke: false,
-            fillColor: 'black', // the dot fill color
+            fillColor: 'pink', // the dot fill color
             fillOpacity: 0.5,  // use some transparency so we can see overlaps
             radius: magnitudes[i] * 40000,
-            id: i
+            data:{id:i}
         });
 
         //marker.bindPopup("Popup content");
 
 
-        circle.bindPopup(place[i]+"<br> Magnitudes: "+magnitudes[i] +"<br> Depths: " + depths[i]+"id"+i);
+        circle.bindPopup(place[i]+"<br> Time: "+earthquakeTime[i]+"<br> Magnitudes: "+magnitudes[i] +"<br> Depths: " + depths[i]);
         // circle.number(i);
-        circle.on('mouseover', function (e) {
+        circle.on('mouseclicked', function (e) {
+            var data = this.options.data
             this.openPopup();
             this.setStyle({
-              fillColor: '#FE01AA',
+              //fillColor: '#FE01AA',
             })
             //magVal=this.getPopup();
             //magVal=this.getLatLng();
             //magVal=this.get('id');
-            console.log(magVal);
-
+          //console.log(data.id);
+            idofEvent= data.id;
           });
+
+          circle.on('mouseover', function (e) {
+              var data = this.options.data
+              //this.openPopup();
+              this.setStyle({
+                fillColor: '#FE01AA',
+              })
+              //magVal=this.getPopup();
+              //magVal=this.getLatLng();
+              //magVal=this.get('id');
+            //console.log(data.id);
+              idofEvent= data.id;
+            });
+
+
+
+
+
 
         circle.on('mouseout', function (e) {
           //  this.closePopup();
           this.setStyle({
-            fillColor: 'black',
+            fillColor: 'pink',
           });
         });
 

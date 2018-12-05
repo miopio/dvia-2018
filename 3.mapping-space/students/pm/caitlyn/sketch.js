@@ -48,7 +48,7 @@ function setup() {
     setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(800, 600);
+    createCanvas(screen.width, 600);
     background(0);
 
     fill("white")
@@ -178,7 +178,7 @@ function drawDataPoints(){
                 fillOpacity: 0.7,  // use some transparency so we can see overlaps
                 radius: 200000
             });
-            circle.bindTooltip(`closest city: ${name}, population: ${pop}`).openTooltip();
+            circle.bindTooltip(`closest city: ${name}, population: ${pop}`,{className: 'tooltip'}).openTooltip();
         }
         else if (magnitudes[i] > 3 && magnitudes[i] <= 5.5) {
             var circle = L.circle([latitudes[i], longitudes[i]], {
@@ -187,7 +187,7 @@ function drawDataPoints(){
                 fillOpacity: 0.7,  // use some transparency so we can see overlaps
                 radius: 200000
             });
-            circle.bindTooltip(`closest city: ${name}, population: ${pop}`).openTooltip();
+            circle.bindTooltip(`closest city: ${name}, population: ${pop}`,{className: 'tooltip'}).openTooltip();
         }
         else {
             var circle = L.circle([latitudes[i], longitudes[i]], {
@@ -196,7 +196,7 @@ function drawDataPoints(){
                 fillOpacity: 0.7,  // use some transparency so we can see overlaps
                 radius: 200000
             });
-            circle.bindTooltip(`closest city: ${name}, population: ${pop}`).openTooltip();
+            circle.bindTooltip(`closest city: ${name}, population: ${pop}`,{className: 'tooltip'}).openTooltip();
         }  
 
         // place it on the map

@@ -5,6 +5,9 @@ var depths;
 // an array for lat & long
 var latitudes, longitudes;
 
+var leftBuffer;
+var rightBuffer;
+
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
@@ -26,18 +29,89 @@ function preload() {
 
 function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
-    setupMap()
+    //setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(800, 600);
-    background(222);
-
+    createCanvas(1200, 1090);
+    background('white');
+    rightBuffer = createGraphics(700, 900);
+    leftBuffer = createGraphics(800,600);
     fill(0)
     noStroke()
-    textSize(16)
-    text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
-    text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
-    text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+    //textSize(16)
+    //text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
+    //text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
+    //text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)
+}
+
+function draw(){
+   drawLeftBuffer();
+   drawRightBuffer();
+   image(leftBuffer, 0, 100);
+   image(rightBuffer, 780, 0);
+}
+
+function drawLeftBuffer() {
+    setupMap();
+    leftBuffer.background('white');
+    leftBuffer.fill(255, 255, 255);
+    leftBuffer.textSize(32);
+    leftBuffer.text("This is the left buffer!", 50, 50);
+}
+
+function drawRightBuffer() {
+    rightBuffer.background('white');
+    rightBuffer.fill(0, 0, 0);
+    rightBuffer.textSize(10);
+    //rightBuffer.text("This is the right buffer!", 50, 50);
+    places = table.getColumn("place");
+    var hash = {};
+    places.forEach(function(item){
+      if (item.lastIndexOf(",") == -1){
+        var key = item.slice(0, item.length).trim();   //physical location
+      } else {
+        var key = String(item.slice(item.lastIndexOf(",") + 1, item.length).trim()) ;   //physical location
+      }
+      if (hash[key]) {
+         hash[key]++;
+      } else {
+         hash[key] = 1;
+      }
+    });
+    console.log(hash);
+    var min = max = 0;
+    for (var k in hash){
+         //console.log( k + " (" + hash[k] + ")");
+         if(hash[k] > max){
+            max = hash[k];
+         }
+    }   
+    console.log("Elements examined " + Object.keys(hash).length);
+    rightBuffer.textSize(20);
+    rightBuffer.text("Place by the earthquake count", 50, 20);
+    //rightBuffer.text("Elements examined " + Object.keys(hash).length, 50, 14 + (i));
+    var numberOfShades = 9;
+    var palette = Brewer.sequential('Reds', numberOfShades, min, max)
+    var x = 70 
+    var y = 50
+    var dim = 10 
+    //var xdim = 50
+    //var ydim = 10
+    for (var j in hash){
+      // draw the box
+      var color = palette.colorForValue(hash[j]);
+      rightBuffer.fill(color);
+      rightBuffer.rect(x, y, 260, dim);
+      if(hash[j] < 70){
+          rightBuffer.fill('black');
+      } else {
+          rightBuffer.fill('white');
+      }
+      rightBuffer.textSize(9);
+      rightBuffer.text(j + " (" + hash[j] + ")", x+dim*.5, y+dim*.8);
+      console.log(j + " (" + hash[j] + ")");
+      y+=dim;
+     }    
 }
 
 function setupMap(){
@@ -100,8 +174,8 @@ function drawDataPoints(){
             fillOpacity: 0.5,  // use some transparency so we can see overlaps
             radius: magnitudes[i] * 40000
         });
-        circle.bindPopup("<b>"+places[i]+"</b><br> latitude: "+latitudes[i] + " longitude: " +longitudes[i]+" ");
-
+        circle.bindPopup("<b>"+places[i]+"</b><br> <b>latitude:</b> "+latitudes[i] + " <b>longitude:</b> " +longitudes[i]+" <br> <b>depth:</b> " + depths[i] + " <b> magnitude: </b> " + magnitudes[i]);
+        //https://api.flickr.com/services/rest/?method=flickr.photos.geo.photosForLocation&api_key=b386b34076768fea100cd9a1ba4ec7b3&lat=30.4634&lon=87.7605&format=rest&auth_token=72157703565874615-e3fcdd07e7a0cce8&api_sig=b4961de1ce023b3101deb65185df0493
         // place it on the map
         circle.addTo(mymap);
 
