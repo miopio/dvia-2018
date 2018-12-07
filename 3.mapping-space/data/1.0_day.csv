@@ -148,3 +148,4 @@ time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,
 2018-10-23T13:43:38.676Z,69.1085,-147.2358,0,1.5,ml,,,,0.91,ak,ak20289545,2018-10-23T13:54:05.091Z,"129km NNW of Arctic Village, Alaska",earthquake,,0.5,,,automatic,ak,ak
 2018-10-23T13:42:43.474Z,51.3847,179.2877,30.7,1.2,ml,,,,0.21,ak,ak20289544,2018-10-23T18:55:53.857Z,"66km SSW of Semisopochnoi Island, Alaska",earthquake,,0.3,,,reviewed,ak,ak
 2018-10-23T13:39:56.108Z,59.9206,-136.7091,0,2.7,ml,,,,1.11,ak,ak20289538,2018-10-23T13:52:24.602Z,"93km NW of Skagway, Alaska",earthquake,,0.3,,,automatic,ak,ak
+2018-10-23T13:39:56.108Z,35.158437,-111.837991,1,1,ml,,,,1.11,ak,ak20289538,2018-10-23T13:52:24.602Z,"93km NW of Skagway, Alaska",earthquake,,0.3,,,automatic,ak,ak

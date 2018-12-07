@@ -1,4 +1,4 @@
-*1. Visualizing the timing of movie plot points to illustrate simplicity of classic hollywood film structure. (i.e., inciting incident page 10, pp1 page 30, pp2, 90, etc.)
+***1. Visualizing the timing of movie plot points to illustrate simplicity of classic hollywood film structure. (i.e., inciting incident page 10, pp1 page 30, pp2, 90, etc.)
 
     - film api for gestures 
 

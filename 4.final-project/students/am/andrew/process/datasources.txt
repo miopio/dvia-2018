@@ -54,3 +54,9 @@ Description: Music Analysis of 1 million most popular songs
 Provider: Million Song Dataset from Echo Nest
 Format: CSV
 https://think.cs.vt.edu/corgis/csv/music/music.html
+
+Description:  Plot, cast, crew, budget, and revenues of about 5000 films
+Provider: TMDB movie database (similar to IMDB set)
+Format: CSV
+url: https://www.kaggle.com/tmdb/tmdb-movie-metadata/home
+
