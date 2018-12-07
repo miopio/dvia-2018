@@ -18,8 +18,9 @@ var latitudesFiltered, longitudesFiltered;
 
 // the dots we'll be adding to the map
 var circles = [];
+//check box
 var checkboxes;
-var filterState = [true, true, true, true, true, true, true];
+var filterState = [true, true, true, true, true, true, true, true];
 
 // table as the data set
 var table;
