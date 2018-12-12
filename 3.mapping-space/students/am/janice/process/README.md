@@ -1,4 +1,4 @@
-## Process
+## Mapping-space (Earthquake occurances in California)
 
 Description of the contents of this folder and a prose description of your ideas for how to represent
 the earthquake data geospatially and diagrammatically.
@@ -18,3 +18,7 @@ The shapes of the Tectonic Plates would slowly move atop a base grayed out map o
 Shapes are different colors and would continually be moving along with the data. 
 
 Sketch 4:  Earthquakes in California County -- Time on right (sketch 1) along with the pinprick circle shows up on the map of California.  A film reel below would show a 'slice of life' of the county and would be highlighted as the clock indicates a tremor/earthquake.  The slice of life would have data about the county.  
+
+FINAL VISUALIZATION(S)
+  Decided to work on the Tectonic Plates idea of Earthquakes solely in California and was able to find data of the techtonic plates in Latitude and Longitude.  Added Magnitudes
+  Added:  Towns that would have data about population size and photo, etc. when panned over the dot, took out the Magnitude graphic, and added that information in the panned over information.
