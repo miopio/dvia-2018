@@ -1,19 +1,39 @@
-1.
+1. 
+Where has art been stolen from the most and what type of art has been most stolen?
+Format: interactive 
 
-2.
+2. 
+Exploring the greats in scientific fields to see how people first reacted to their discoveries and how they are perceived now.
+Format: interactive 
 
-3.
+3. 
+Exploring the major donors of art museums to see where they are receiving most of the art from and where they could improve
+Format: interactive
 
-4.
+4. 
+Looking at ocean pollution and the source of the pollution
+Format: interactive
 
-5.
+5. 
+Mapping sunlight and happiness to see if countries with the most sunlight are the happiest
+Format- static
 
-6.
+6. 
+Tracking loss of coral reefs across oceans to see areas or oceans that need most help
+Format: interactive 
 
-7.
+7. 
+Tracking the emergence of languages around the globe and where they have spread today 
+Format: interactive
 
-8.
+8. 
+What foods are most searched for as recipes in each month of the year
+Format: interactive 
 
-9.
+9. 
+Tracking the many ways actresses and actors have taken to win an oscar 
+Format: interactive 
 
 10.
+Visualizing the sakura blossoms in Japan and predicting when they blossom 
+Format: static 

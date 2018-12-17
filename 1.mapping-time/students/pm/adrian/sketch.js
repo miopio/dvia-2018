@@ -18,7 +18,7 @@ function draw() {
 <<<<<<< HEAD
 =======
     translate (0,0);
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
+// >>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
     fill(255, 255, 255);
     textSize (20);
     text("Exercise #1: Adrian Crockett", 10, 30);
@@ -288,7 +288,7 @@ function draw() {
     if (hh==1+22) {stroke (hhColor); line (x*11,y*2,xMiddle,yMiddle);}
     if (hh==1+23) {stroke (hhColor); line (x*12,y*2,xMiddle,yMiddle);}
 
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
+// >>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
 //MM Lines: Provides the next 5 rows for the minutes, where lines are colored based on the minute
     if (mm==1+0) {stroke (mmColor); line (x,y*3,xMiddle,yMiddle);}
     if (mm==1+1) {stroke (mmColor); line (x*2,y*3,xMiddle,yMiddle);}
@@ -420,7 +420,7 @@ function draw() {
 =======
 //For the ellipse can just use radius instead of w and h
 
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
+// >>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
 //HH Ellipse: Provides the top 2 rows for the hours, where ellipses are colored based on the hour
     if (hh==1+0) {fill (hhColor); ellipse (x,y,w,h);}
     if (hh==1+1) {fill (hhColor); ellipse (x*2,y,w,h);}

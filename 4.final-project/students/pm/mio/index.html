@@ -11,6 +11,12 @@
       margin-left: 80px;
     }
 
+    #lifeladderSorted{
+      width:2600px;
+      height:400px;
+      margin-left: 80px;
+    }
+
     #myDiv1{
       width:2600px;
       height:400px;
@@ -35,6 +41,24 @@
       margin-left: 80px;
     }
 
+    #boxPlot{
+      width: 1280px;
+      height: 600px;
+      margin-left: 200px ;
+    }
+
+    #barPlot{
+      width: 1280px;
+      height: 600px;
+      margin-left: 80px ;
+    }
+
+    #myDiv7{
+      width: 1280px;
+      height: 1280px;
+      margin-left: 80px;
+    }
+
   </style>
   <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
 
@@ -50,10 +74,15 @@
 <body>
 
   <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div id="lifeladderSorted"><!-- Plotly chart will be drawn inside this DIV --></div>
   <div id="myDiv1"><!-- Plotly chart will be drawn inside this DIV --></div>
   <div id="myDiv2"><!-- Plotly chart will be drawn inside this DIV --></div>
   <div id="myDiv3"><!-- Plotly chart will be drawn inside this DIV --></div>
   <div id="myDiv4"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div id="boxPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <button id="randomize" onclick="javascript:zoom()">Zoom!</button>
+  <div id="barPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div id="myDiv7"><!-- Plotly chart will be drawn inside this DIV --></div>
   <!-- p5.js will automatically create a canvas element here when the page loads -->
   <section class="sketch" id="widthRef">
         <div class="sketch-wrapper">

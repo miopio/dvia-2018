@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 function setup() {
   // set the width & height of the sketch
   createCanvas(400, 130)
@@ -27,7 +27,7 @@ function draw() {
   text(now.text.time, 30, 100)
 
 }
-=======
+
 var color = [];
 
 function setup() {
@@ -55,29 +55,29 @@ function draw() {
   var stopAngle = [0, HALF_PI, PI, -HALF_PI][now.season-1];
   // arc(width/2, height/2, width * 0.9, height * 0.9, startAngle, stopAngle);
 
-	  if (now.season == 1) {
+	  if (now.season == 1) {
     strokeWeight(20);
     stroke(color(227,136,136,210)); //pink with opacity at 180 for spring
     noFill();
-  }
-  
-   if (now.season == 2) {
+  }
+  
+   if (now.season == 2) {
   strokeWeight(20);
   stroke(color(76,155,63,210)); //green with opacity at 180 for summer
   noFill();
-  }
-  
-   if (now.season == 3) {
+  }
+  
+   if (now.season == 3) {
   strokeWeight(20);
   stroke(color(255,182,83,210)); //orange with opacity at 180 for autumn
   noFill();
-  }
-  
-   if (now.season == 4) {
+  }
+  
+   if (now.season == 4) {
   strokeWeight(20);
   stroke(color(219,234,240,210)); //white blue with opacity at 180 for winter
   noFill();
-  }
+  }
 
 arc(width/2, height/2, width * 0.9, height * 0.9, startAngle, stopAngle);
 
@@ -123,4 +123,3 @@ arc(width/2, height/2, 80, 80,0,now.progress.year*2*PI);
     }
     pop();
 }
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
