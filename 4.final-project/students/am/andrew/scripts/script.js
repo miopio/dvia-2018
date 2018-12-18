@@ -78,7 +78,7 @@ let svg = data => {
     .append("g")
     .attr("id", "xAxisTitle")
     .append("text")
-    .text("in Movie")
+    .text("in Movie %")
     .attr("x", margin)
     .attr("y", height - 72);
 
@@ -124,7 +124,7 @@ let svg = data => {
         .transition()
         .duration(200)
         .style("left", d3.event.pageX + 20 + "px")
-        .style("top", d3.event.pageY - 40 + "px")
+        .style("top", d3.event.pageY - 60 + "px")
         .style("opacity", 0.95);
     },
     move: function() {
@@ -132,7 +132,7 @@ let svg = data => {
         .transition()
         .duration(30)
         .style("left", d3.event.pageX + 20 + "px")
-        .style("top", d3.event.pageY - 40 + "px")
+        .style("top", d3.event.pageY - 60 + "px")
         .style("opacity", 0.95);
     },
     hide: function() {
@@ -283,7 +283,13 @@ let svg = data => {
       d3.select(this).attr("class", "active line");
       console.log(d3.select(this));
       tooltip.show(
-        `<strong>Plot Point 1: Inciting Incident</strong><br>Often called the point of attack, the inciting incident is the first premonition of impending trouble, dilemma, or circumstance that will create the main tension of the story. It usually falls at the end of the first sequence. But it can sometimes appear in the first few minutes of a film.`
+        `<div class="total"><h5>Plot Point 1: Inciting Incident</h5></div>
+        <div class="total double">Description</div>
+        Often called the point of attack, the inciting incident is the first premonition of impending trouble, dilemma, or circumstance that will create the main tension of the story. It usually falls at the end of the first sequence. But it can sometimes appear in the first few minutes of a film.<br><br>
+        <div class="double total">Moment in Movie</div>
+        Theory: <span class="total">13%</span> || Popular: <span class="total">${numFormatF(
+          mean1
+        )}%</span>`
       );
     });
 
@@ -299,7 +305,14 @@ let svg = data => {
       d3.select(this).attr("class", "active line");
       console.log(d3.select(this));
       tooltip.show(
-        `<strong>Plot Point 2: The Lock In</strong><br>The protagonist is locked into the predicament that is central to the story, which occurs at the end of Act One, This lock in, therefore, propels the protagonist into a new direction in order to accomplish his/her new objective throughout the second act`
+        `<div class="total"><h5>Plot Point 2: The Lock In</h5></div>
+        <div class="total double">Description</div>
+        The protagonist is locked into the predicament that is central to the story, which occurs at the end of Act One, This lock in, therefore, propels the protagonist into a new direction in order to accomplish his/her new objective throughout the second act.<br><br>
+        <div class="double total">Moment in Movie</div>
+        Theory: <span class="total">25%</span> || Popular: <span class="total">${numFormatF(
+          mean2
+        )}%</span>
+        `
       );
     });
 
@@ -315,7 +328,15 @@ let svg = data => {
       d3.select(this).attr("class", "active line");
       console.log(d3.select(this));
       tooltip.show(
-        `<strong>Plot Point 3: First Culmination (midpoint)</strong><br>The first culmination generally occurs around the midpoint of the second act and is a pivotal moment in the story but not as critical as the Lock In or Main Culmination. Consider the first culmination as the second highest or second lowest point in Act Two, the second highest hurdle to be faced.`
+        `
+        <div class="total"><h5>Plot Point 3: First Culmination (midpoint)</h5></div>
+        <div class="total double">Description</div>
+       The first culmination generally occurs around the midpoint of the second act and is a pivotal moment in the story but not as critical as the Lock In or Main Culmination. Consider the first culmination as the second highest or second lowest point in Act Two, the second highest hurdle to be faced.<br><br>
+       <div class="double total">Moment in Movie</div>
+       Theory: <span class="total">50%</span> || Popular: <span class="total">${numFormatF(
+         mean3
+       )}%</span>
+       `
       );
     });
 
@@ -331,7 +352,15 @@ let svg = data => {
       d3.select(this).attr("class", "active line");
       console.log(d3.select(this));
       tooltip.show(
-        `<strong>Plot Point 4: Main Culmination</strong><br>The final culmination occurs at the end of the second act and brings the main tension to a close while simultaneously helping to create a new tension for Act Three.`
+        `
+        <div class="total"><h5>Plot Point 4: Main Culmination</h5></div>
+        <div class="total double">Description</div>
+       The final culmination occurs at the end of the second act and brings the main tension to a close while simultaneously helping to create a new tension for Act Three.<br><br>
+       <div class="double total">Moment in Movie</div>
+       Theory: <span class="total">75%</span> || Popular: <span class="total">${numFormatF(
+         mean4
+       )}%</span>
+       `
       );
     });
 
@@ -347,7 +376,15 @@ let svg = data => {
       d3.select(this).attr("class", "active line");
       console.log(d3.select(this));
       tooltip.show(
-        `<strong>Plot Point 5: Third Act Twist</strong><br>The twist is an unexpected turn of events in the third act. Without a twist, the third act can seem too linear and predictable. It can also be the last test of the hero.`
+        `
+        <div class="total"><h5>Plot Point 5: Third Act Twist</h5></div>
+        <div class="total double">Description</div>        
+        The twist is an unexpected turn of events in the third act. Without a twist, the third act can seem too linear and predictable. It can also be the last test of the hero.<br><br>
+        <div class="double total">Moment in Movie</div>
+        Theory: <span class="total">88%</span> || Popular: <span class="total">${numFormatF(
+          mean5
+        )}%</span>
+        `
       );
     });
 
@@ -553,44 +590,48 @@ let svg = data => {
       <thead>
         <tr>
           <th class="left double" colspan="1">Plot Point</th>
-          <th class="left double" colspan="1">Moment</th>
+          <th class="left double" colspan="1">Moment (${d.runtime} pp)</th>
           <th class="left double" colspan="1">Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="left bottom"><span class="plot-icon" id="plot-one"></span><span id="nowrap">Inciting Incident<span></td>
-          <td class="left bottom">Page ${d.pp1} of ${d.runtime} [${numFormatF(
+          <td class="left bottom">Page ${d.pp1} | <strong>${numFormatF(
       (d.pp1 / d.runtime) * 100
-    )}%]</td>
-          <td class="left bottom">${d.inciting}</td>
+    )}%</strong></td>
+          <td class="left bottom"><div class="plot-desc">${
+            d.inciting
+          }</div></td>
         </tr>
         <tr>
         <td class="left bottom"><span class="plot-icon" id="plot-two"></span><span id="nowrap">Lock In<span></td>
-        <td class="left bottom">Page ${d.pp2} of ${d.runtime} [${numFormatF(
+        <td class="left bottom">Page ${d.pp2} | <strong>${numFormatF(
       (d.pp2 / d.runtime) * 100
-    )}%]</td>
-        <td class="left bottom">${d.lockIn}</td>
+    )}%</strong></td>
+        <td class="left bottom"><div class="plot-desc">${d.lockIn}</div></td>
       </tr>
         <td class="left bottom"><span class="plot-icon" id="plot-three"></span><span id="nowrap">First Culmination<span></td>
-        <td class="left bottom">Page ${d.pp3} of ${d.runtime} [${numFormatF(
+        <td class="left bottom">Page ${d.pp3} | <strong>${numFormatF(
       (d.pp3 / d.runtime) * 100
-    )}%]</td>
-        <td class="left bottom">${d.midpoint}</td>
+    )}%</strong></td>
+        <td class="left bottom"><div class="plot-desc">${d.midpoint}</div></td>
       </tr>
       </tr>
         <td class="left bottom"><span class="plot-icon" id="plot-four"></span><span id="nowrap">Main Culmination<span></td>
-        <td class="left bottom">Page ${d.pp4} of ${d.runtime} [${numFormatF(
+        <td class="left bottom">Page ${d.pp4} | <strong>${numFormatF(
       (d.pp4 / d.runtime) * 100
-    )}%]</td>
-        <td class="left bottom">${d.mainCulmination}</td>
+    )}%</strong></td>
+        <td class="left bottom"><div class="plot-desc">${
+          d.mainCulmination
+        }</div></td>
     </tr>
     </tr>
     <td class="left bottom"><span class="plot-icon" id="plot-five"></span><span id="nowrap">Third Act Twist<span></td>
-    <td class="left bottom">Page ${d.pp5} of ${d.runtime} [${numFormatF(
+    <td class="left bottom">Page ${d.pp5} | <strong>${numFormatF(
       (d.pp5 / d.runtime) * 100
-    )}%]</td>
-    <td class="left bottom">${d.twist}</td>
+    )}%</strong></td>
+    <td class="left bottom"><div class="plot-desc">${d.twist}</div></td>
 </tr>
      </tbody>
     </table>`;
