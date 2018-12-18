@@ -600,34 +600,38 @@ let svg = data => {
           <td class="left bottom">Page ${d.pp1} | <strong>${numFormatF(
       (d.pp1 / d.runtime) * 100
     )}%</strong></td>
-          <td class="left bottom">${d.inciting}</td>
+          <td class="left bottom"><div class="plot-desc">${
+            d.inciting
+          }</div></td>
         </tr>
         <tr>
         <td class="left bottom"><span class="plot-icon" id="plot-two"></span><span id="nowrap">Lock In<span></td>
         <td class="left bottom">Page ${d.pp2} | <strong>${numFormatF(
       (d.pp2 / d.runtime) * 100
     )}%</strong></td>
-        <td class="left bottom">${d.lockIn}</td>
+        <td class="left bottom"><div class="plot-desc">${d.lockIn}</div></td>
       </tr>
         <td class="left bottom"><span class="plot-icon" id="plot-three"></span><span id="nowrap">First Culmination<span></td>
         <td class="left bottom">Page ${d.pp3} | <strong>${numFormatF(
       (d.pp3 / d.runtime) * 100
     )}%</strong></td>
-        <td class="left bottom">${d.midpoint}</td>
+        <td class="left bottom"><div class="plot-desc">${d.midpoint}</div></td>
       </tr>
       </tr>
         <td class="left bottom"><span class="plot-icon" id="plot-four"></span><span id="nowrap">Main Culmination<span></td>
         <td class="left bottom">Page ${d.pp4} | <strong>${numFormatF(
       (d.pp4 / d.runtime) * 100
     )}%</strong></td>
-        <td class="left bottom">${d.mainCulmination}</td>
+        <td class="left bottom"><div class="plot-desc">${
+          d.mainCulmination
+        }</div></td>
     </tr>
     </tr>
     <td class="left bottom"><span class="plot-icon" id="plot-five"></span><span id="nowrap">Third Act Twist<span></td>
     <td class="left bottom">Page ${d.pp5} | <strong>${numFormatF(
       (d.pp5 / d.runtime) * 100
     )}%</strong></td>
-    <td class="left bottom">${d.twist}</td>
+    <td class="left bottom"><div class="plot-desc">${d.twist}</div></td>
 </tr>
      </tbody>
     </table>`;

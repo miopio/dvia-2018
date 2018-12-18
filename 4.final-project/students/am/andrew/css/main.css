@@ -161,7 +161,7 @@ div.tooltip {
 
 .plot-icon {
   width: 50px;
-  padding: 0rem 1rem 8rem 0rem;
+  padding: 0rem 1rem 0.25rem 0rem;
   margin-right: 1rem;
 }
 
@@ -179,6 +179,25 @@ table {
   margin: 1rem 0% 5rem 0%;
   width: 100%;
   max-width: 100%;
+}
+
+.plot-desc {
+  max-width: 100vw;
+}
+td div {
+  width: 45vw;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td {
+  max-width: 100%;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 th {
