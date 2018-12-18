@@ -1,33 +1,30 @@
-#
-# List of URLs pointing to publicly accessible data (including a brief description of the subject matter & data format)
-#
-# For example, the earthquake feeds we've been using could be summarized as:
-#   Description: Realtime feeds of recent earthquake times, locations, and magnitudes
-#   Provider: the US Geological Survey
-#   Format: multiple CSV files with different time/magnitude windows
-#   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
+# Data Sources
 
-Description:
-Provider:
-Format:
-URL:
+1.Pollution 
+Description: Ocean and coasts education resources 
+Provider: National Oceanic and Atmospheric Administration
+Format:CSV
+URL:https://www.noaa.gov/resource-collections/ocean-pollution
 
-Description:
-Provider:
-Format:
-URL:
+2. Coral Reefs
+Description: Raising awareness of threats to coral reefs and providing information and tools to manage coastal habitats more effectively
+Provider: World Resources Insitute- Reefs at Risk
+Format: xslx 
+URL: https://www.wri.org/our-work/project/reefs-risk/interactive-map
 
-Description:
-Provider:
-Format:
-URL:
+3. Art Restitution
+Description: The largest database of lost and stolen art, antiques and collectables. Its range of services includes item registration, search and recovery services to collectors, the art trade, insurers and worldwide law enforcement agencies.
+Provider: The Art Loss Register
+Format: CSV/JSON
+URL: http://www.artloss.com/services/loss-registration
 
-Description:
-Provider:
-Format:
-URL:
+4. MOMA 
+Description: MOMA's artist and artwork data with information of provenance, donors, dimensions, and classification
+Provider: Museum of Modern Art
+Format: CSV/JSON
+URL: https://github.com/MuseumofModernArt/collection/blob/master/Artworks.csv
 
-Description:
-Provider:
-Format:
-URL:
+5. Scientific Discoveries and Reactions
+Description: Aggregated data on scientists in the fields of mathematics, engineering, astrology, biology, physical sciences, and medicine
+Format: XSLX converted to JSON
+URL: https://docs.google.com/spreadsheets/d/1x2queTl7dN7illZgOfvZB6aGe9nPVjo-JlEdUY8CbJU/edit#gid=0
