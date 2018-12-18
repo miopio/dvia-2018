@@ -1,0 +1,109 @@
+/* spot: #d73333 */
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+body, h1, h2, h3, h4, h5, h6, p {
+  font-size: 16px;
+  line-height: 1.50em;
+}
+
+h1, h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+h1 .spot, h2 .spot {
+  font-style: italic;
+}
+
+h3 {
+  color: #d73333;
+  font-weight: bold;
+}
+
+.margins h5 {
+  margin-bottom: 0px;
+  font-size: 13px;
+}
+
+.tag {
+  padding: 5px;
+  border: 1px solid #888;
+  white-space: nowrap;
+  line-height: 30px;
+}
+
+.added {
+  border: 1px dashed #888;
+}
+
+.category {
+  margin-bottom: 10px;
+}
+
+.first-p {
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 1.55em;
+}
+
+.spot, a {
+  color: #d73333;
+}
+
+a:hover {
+  color: #8a1919;
+  text-decoration: none;
+}
+
+.full-spot .spot {
+  color: #000;
+}
+
+.original-title {
+  font-style: italic;
+}
+
+.em {
+  font-weight: bold;
+}
+
+.it {
+  font-style: italic;
+}
+
+.label {
+  font-size: 12px;
+}
+
+#taxes {
+  margin: auto;
+}
+
+.legend {
+  font-size: 12px;
+}
+
+.legend-button {
+  padding: 7px;
+  margin-bottom: 5px;
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #fff;
+  border-radius: 5px;
+}
+
+.legend-button:hover {
+  border: 2px solid #aaa;
+}
+
+.my-quote {
+  border-left: 5px solid #ddd;
+  padding-left: 12px;
+  font-style: italic;
+  color: #777;
+  font-size: 1.2em;
+  line-height: 1.55em;
+}

@@ -1,0 +1,10 @@
+### Do You Feel It?
+
+##### This visualization seeks to explore the impact of abortion barriers on women within the United States and its relationship to race and ethnicity. Women of color are five times as likely to terminate a pregnancy as their white counterparts however, they face a disproportionate number of factors that hinder them from accessing these procedures. This racial and ethnic disparity is further magnified within states with greater anti-abortion laws and decreased access to abortion clinics. 
+
+#### Design Decisions:
+
+###### When creating the visualization, I chose to use a storytelling method that starts off broad and increasingly narrows in scope. I wanted to first show an overview of all of the different states and there regulatory initiatives as well as access to abortion clinics by county. I chose to create a grid with circle, each representing one state, to allow the viewer to compare the various sizes and colors of the circles. The circles are sorted from largest to smallest in  size, which represents the percentage of counties within that state that do not have access to an abortion provider. The color of the circles refers to the number of regulatory initiatives that state implements. By scanning over the various circles, it is evident that the states with the larger size and deeper color are the worst states for women to receive an abortion in. 
+
+###### After showing an overview of all of the states, I chose to look at California as an example of a “good” state and Mississippi as an example of a “bad” state to get an abortion in. I wanted to be able to compare both California and Mississippi but also the difference races/ ethnicities within these two states. I chose to look at three factors that negatively impact a woman in regards to abortion. Each circle represents one unit of those factors, either being a percentage or a rate. I also decided to order the race/ ethnicities from least affected to most affected. I made this decision because I wanted to emphasize the intensity of the barriers women of color face. 
+
