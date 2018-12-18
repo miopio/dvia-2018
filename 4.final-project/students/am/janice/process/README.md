@@ -19,3 +19,11 @@ Also, want to correlate eventful dates (poison gassing their own people, Russian
 
 Last sketch was to work on an Neurath type static graph -- 
 
+There were alot of issues to the final prototype -- how to make a compelling argument and story for the true tragedy of this data.
+
+I added some copy to explain one of the age categories -- Children -- who make up at least a third of the refugees -- and the damage that is being done.
+
+The true tragedy is in the numbers -- and as I tried to make the data shocking -- I eventually had to regroup the isotopes so that the page wouldn't go on horizontally forever -- 
+
+I'd like to keep working on this -- 
+
