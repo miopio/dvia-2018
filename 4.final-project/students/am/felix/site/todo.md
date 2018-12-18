@@ -1,0 +1,6 @@
+- Footer
+- Tags
+- Glossary <br>
+- Better responsiveness <br>
+- Final radial graph
+- Header visualization

@@ -1,0 +1,180 @@
+@media (min-width: 1700px) {
+  .container {
+      max-width: 1650px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+      max-width: 1550px;
+  }
+}
+
+@media (min-width: 1520px) {
+  .container {
+      max-width: 1470px;
+  }
+}
+
+.entry {
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+.column {
+  padding: 20px 20px;
+  flex-basis: 33%;
+  min-width: 220px;
+  /* align-self: flex-end; */
+  /* background-color: #eee; */
+}
+
+.margins {
+  font-size: 13px;
+}
+
+.identifier, .content, .classification {
+  padding-top: 10px;
+}
+
+.identifier {
+  border-top: 2px solid #111;
+}
+
+.content {
+  border-top: 1px solid #fff;
+}
+
+.classification {
+  border-top: 1px dashed #ddd;
+}
+
+.right {
+  /* margin-top: 78px; */
+}
+
+
+.img-cont {
+  padding: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #888;
+  background: #fff;
+}
+
+.img-cont-own {
+  max-width: 540px;
+  margin: auto;
+}
+
+img {
+  width: 100%;
+}
+
+.full-spot {
+  padding: 60px;
+  background: #d73333;
+  color: #fff;
+}
+
+.editorial {
+  margin-bottom: 10px;
+  column-count: 3;
+  column-width: 240px;
+  column-gap: 60px;
+  -moz-column-fill: balance;
+       column-fill: balance;
+  -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+                 break-inside: avoid;
+}
+
+#skyscraper {
+  /* background-color: #eee; */
+}
+
+.example {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  padding: 15px 15px;
+  margin: 0 -15px;
+  /* background-color: #eee; */
+}
+
+.quote {
+  padding: 15px;
+  flex-basis: 25%;
+  flex-grow: 1;
+  background-color: #eee;
+}
+
+.my-approach {
+  /* border-top: 1px dashed #ddd; */
+  margin-top: 15px;
+  padding-top: 15px;
+}
+
+.alternative {
+  border: 1px solid #dadada;
+  margin-top: 15px;
+  padding: 30px 45px;
+  /* background-color: #eee; */
+  flex-basis: 75%;
+  flex-grow: 3;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.conclusion {
+  margin-top: 30px;
+}
+
+.graph {
+  width: 100%;
+  /* background-color: #eee; */
+}
+
+.with-label {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.sky-label {
+  max-width: 80%;
+  margin-left: 10px;
+}
+
+.sky-label p {
+  position: relative;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.35em;
+}
+
+p.top {
+  color: #d73333;
+}
+
+#sources {
+  border-top: 2px solid #111;
+  padding-top: 15px;
+}
+
+.graph-discussion {
+  margin-top: 30px;
+}
+
+.legend {
+  font-size: 11px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.button-group {
+  margin-left: 20px;
+}
