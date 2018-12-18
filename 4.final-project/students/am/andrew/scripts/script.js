@@ -78,7 +78,7 @@ let svg = data => {
     .append("g")
     .attr("id", "xAxisTitle")
     .append("text")
-    .text("in Movie")
+    .text("in Movie %")
     .attr("x", margin)
     .attr("y", height - 72);
 
@@ -283,7 +283,13 @@ let svg = data => {
       d3.select(this).attr("class", "active line");
       console.log(d3.select(this));
       tooltip.show(
-        `<strong>Plot Point 1: Inciting Incident</strong><br>Often called the point of attack, the inciting incident is the first premonition of impending trouble, dilemma, or circumstance that will create the main tension of the story. It usually falls at the end of the first sequence. But it can sometimes appear in the first few minutes of a film.`
+        `<div class="total"><h5>Plot Point 1: Inciting Incident</h5></div>
+        <div class="total double">Description</div>
+        Often called the point of attack, the inciting incident is the first premonition of impending trouble, dilemma, or circumstance that will create the main tension of the story. It usually falls at the end of the first sequence. But it can sometimes appear in the first few minutes of a film.<br><br>
+        <div class="double total">Moment in Movie</div>
+        Theory: <span class="total">12%</span> || Popular: <span class="total">${numFormatF(
+          mean1
+        )}%</span>`
       );
     });
 
@@ -299,7 +305,14 @@ let svg = data => {
       d3.select(this).attr("class", "active line");
       console.log(d3.select(this));
       tooltip.show(
-        `<strong>Plot Point 2: The Lock In</strong><br>The protagonist is locked into the predicament that is central to the story, which occurs at the end of Act One, This lock in, therefore, propels the protagonist into a new direction in order to accomplish his/her new objective throughout the second act`
+        `<div class="total"><h5>Plot Point 2: The Lock In</h5></div>
+        <div class="total double">Description</div>
+        The protagonist is locked into the predicament that is central to the story, which occurs at the end of Act One, This lock in, therefore, propels the protagonist into a new direction in order to accomplish his/her new objective throughout the second act.<br><br>
+        <div class="double total">Moment in Movie</div>
+        Theory: <span class="total">30%</span> || Popular: <span class="total">${numFormatF(
+          mean2
+        )}%</span>
+        `
       );
     });
 

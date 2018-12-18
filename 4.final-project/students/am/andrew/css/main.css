@@ -102,12 +102,12 @@ hr {
 .active rect {
   opacity: 1 !important;
   cursor: pointer;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .inactive rect {
   opacity: 0.1 !important;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 rect {
   rx: 1;
@@ -137,10 +137,10 @@ rect {
 /* tooltip */
 div.tooltip {
   position: absolute;
-  max-width: 320px;
+  max-width: 350px;
   text-align: left;
   display: inline;
-  padding: 8px;
+  padding: 10px;
   font-size: 1.5rem;
   line-height: 1.2;
   background-color: #fff;
@@ -149,6 +149,12 @@ div.tooltip {
   pointer-events: none;
   color: #222;
   filter: drop-shadow(0px 2px 10px #222);
+}
+
+.tooltip h5 {
+  padding: 0;
+  margin-top: 0.2rem;
+  margin-bottom: 1.2rem;
 }
 
 /* table styles */
@@ -208,6 +214,7 @@ th {
 }
 .total {
   font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 caption {
