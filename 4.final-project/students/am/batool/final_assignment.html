@@ -13,9 +13,10 @@
 
 		<style>
 			body {
+				/* background: '#f2f2f2'; */
 				font-family: 'Open Sans', sans-serif;
-				font-size: 11px;
-				font-weight: 300;
+				font-size: 10px;
+				font-weight: 600;
 				fill: #242424;
 				text-align: center;
 				text-shadow: none;
@@ -30,6 +31,7 @@
 			.tooltip {
 				fill: #333333;
 			}
+
 		</style>
 
 	</head>
@@ -40,19 +42,19 @@
 		<script src="final_assignment.js"></script>
 		<script>
 
+
       /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
 
-			//////////////////////////////////////////////////////////////
-			//////////////////////// Set-Up //////////////////////////////
-			//////////////////////////////////////////////////////////////
+
+// Set-Up
 
 			var margin = {top: 200, right: 100, bottom: 100, left: 100},
 				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
 				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
-			//////////////////////////////////////////////////////////////
-			////////////////////////// Data //////////////////////////////
-			//////////////////////////////////////////////////////////////
+
+// Data
+
 
 			var data = [
 					  [
@@ -84,9 +86,9 @@
 						{axis:"Potassium",value:0.30}
 					  ]
 					];
-			//////////////////////////////////////////////////////////////
-			//////////////////// Draw the Chart //////////////////////////
-			//////////////////////////////////////////////////////////////
+
+// Draw the Chart
+
 
 			var color = d3.scale.ordinal()
 				.range(["#ff8b00","#29abe2","#ff00ff"]);

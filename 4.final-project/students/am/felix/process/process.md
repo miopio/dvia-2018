@@ -46,3 +46,8 @@ Currently I’m most interested in approach 1 and I can think of two sub sets of
 
 # Approach 3
 ![](assets/inequality-drafts6.png)
+
+
+Feedback:
+- 3 Examples on the design part
+- 6 content driven examples

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    <style>
+        body { background: linear-gradient(45deg, #7b3a85, #3023ae); min-height: 100vh; overflow-x: auto; text-align: center; font-family: sans-serif; }
+        header h1 { width: 25%; margin: 20px auto; font-size: 24px; color: navy; background-color: white; padding: 10px 20px; transform: skew(-15deg); border-left: 30px double #3023ae; border-right: 30px double #3023ae; }
+        header select { margin: 5px; padding: 5px; }
+
+        output article:nth-child(odd) { background-color: rgba(255, 255, 255, 0.05); margin: 0; }
+        output section { display: inline-block; vertical-align: top; color: white; margin: 15px 0; }
+        output section:first-child { width: 200px; }
+        output section:last-child { width: 200px; }
+
+        output h1 { background-color: white; color: navy; padding: 5px 10px; transform: skew(-15deg); margin: 2px 0 5px 0; }
+        output h2 { font-size: 14px; text-align: left; margin: 0; }
+        output h3 { font-size: 12px; line-height: 16px; text-align: left; }
+        output h4 { font-size: 10px; text-align: left; margin: 0; }
+        output h5 { font-size: 12px; display: inline-block; vertical-align: top; width: 75px; padding: 10px; background-color: rgba(255, 255, 255, 0.25); }
+
+        @media screen and (max-width: 1242px){
+            output section { display: block; margin: 15px auto; }
+      	}
+  	</style>
+  	<script>
+/***********************************************/
+
+//settings
+const nameColumnWidth = 150,
+      reactRecColumnWidth = 100,
+      timelineWidth = 800,
+      rowHeight = 160;
+
+//globals
+var peopleJson,
+    ageRangeCanvas, ageRangeCtx,
+    output;
+
+document.addEventListener("DOMContentLoaded", init);
+function init(){
+  	//load JSON
+  	fetch("peoplejson.json").then(data => data.json()).then(data => {
+    	peopleJson = data;
+      	console.log(peopleJson);
+      	//stock nav selects with options
+      	buildUi();
+      	//age range canvas
+      	buildAgeRange();
+      	//show data function that reads nav selects (default "all")
+      	showData();
+    });
+  	//add event listeners for UI
+  	document.querySelectorAll("nav select").forEach(function(select){
+    	select.addEventListener("change", showData);
+    });
+  	//globals
+  	output = document.querySelector("output");
+}
+
+function buildUi(){
+	var fields = new Set(),
+        genders = new Set(),
+        countries = new Set(),
+        reactions = new Set(),
+        recognitions = new Set();
+  	peopleJson.forEach(person => {
+    	if (person.field && person.field !== "na") fields.add(person.field);
+      	if (person.gender && person.gender !== "na") genders.add(person.gender);
+      	if (person.country && person.country !== "na") countries.add(person.country);
+      	if (person.reaction && person.reaction !== "na") reactions.add(person.reaction);
+      	if (person["today - recognition"] && person["today - recognition"] !== "na") recognitions.add(person["today - recognition"]);
+    });
+  	fields.forEach(function(field){
+    	document.getElementById("field").innerHTML += "<option>" + field + "</option>";
+    });
+  	genders.forEach(function(gender){
+    	document.getElementById("gender").innerHTML += "<option>" + gender + "</option>";
+    });
+  	countries.forEach(function(country){
+    	document.getElementById("country").innerHTML += "<option>" + country + "</option>";
+    });
+  	reactions.forEach(function(reaction){
+    	document.getElementById("reaction").innerHTML += "<option>" + reaction[0].toUpperCase() + reaction.slice(1) + "</option>";
+    });
+  	recognitions.forEach(function(recognition){
+    	document.getElementById("recognition").innerHTML += "<option>" + recognition + "</option>";
+    });
+}
+
+function buildAgeRange(){
+	ageRangeCanvas = document.querySelector("main header canvas");
+  	ageRangeCtx = ageRangeCanvas.getContext("2d");
+  	ageRangeCanvas.width = timelineWidth;
+  	ageRangeCanvas.height = rowHeight;
+  	ageRangeCtx.textAlign = "center";
+  	ageRangeCtx.font = "11px sans-serif";
+  	ageRangeCtx.fillStyle = "white";
+  	var increment = timelineWidth/12;
+  	for (let i=0; i<11; i++){
+    	let x = increment/2 + increment * i,
+            y = rowHeight/2;
+      	if (i === 0){
+            ageRangeCtx.fillText("AGE", x, y);
+		}
+      	else {
+        	ageRangeCtx.fillText(i*10, x, y);
+          	if (i < 10){
+              	for (let lineX = x; lineX<x + increment; lineX+=increment/10){
+                	ageRangeCtx.beginPath();
+                  	ageRangeCtx.strokeStyle = "white";
+                    ageRangeCtx.lineWidth = 1;
+                  	ageRangeCtx.moveTo(lineX, y+2);
+                  	ageRangeCtx.lineTo(lineX, y+8);
+                  	ageRangeCtx.stroke();
+                }
+            }
+        }
+    }
+}
+
+function showData(){
+  	//clear output element of previous results
+  	document.querySelector("output").innerHTML = "";
+	//get values of select drop-downs
+  	var fieldFilter = document.querySelector("#field option:checked").textContent,
+        genderFilter = document.querySelector("#gender option:checked").textContent,
+        countryFilter = document.querySelector("#country option:checked").textContent,
+        reactionFilter = document.querySelector("#reaction option:checked").textContent,
+        recognitionFilter = document.querySelector("#recognition option:checked").textContent,
+        filteredData = peopleJson;
+  	if (fieldFilter !== "All Fields") filteredData = filteredData.filter(function(person){
+    	return person.field === fieldFilter;
+    });
+  	if (genderFilter !== "All Genders") filteredData = filteredData.filter(function(person){
+    	return person.gender === genderFilter;
+    });
+  	if (countryFilter !== "All Countries") filteredData = filteredData.filter(function(person){
+    	return person.country === countryFilter;
+    });
+  	if (reactionFilter !== "All Reactions") filteredData = filteredData.filter(function(person){
+    	return person.reaction === reactionFilter.toLowerCase();
+    });
+  	if (recognitionFilter !== "All Recognitions") filteredData = filteredData.filter(function(person){
+    	return person["today - recognition"] === recognitionFilter;
+    });
+  	filteredData.sort((a, b) => a.surname < b.surname ? -1 : 1);
+  	filteredData.forEach(addRow);
+  	filteredData.forEach(buildTimeline);
+}
+
+function addRow(person){
+	var html = "<article>";
+  	html += `
+		<section>
+      		<h2>${person.name}</h2>
+			<h1>${person.surname}</h1>
+			<h4>${person.field} | ${person.gender} | ${person.country}</h4>
+			<h3>${parseChars(person.idea)}</h3>
+      	</section>`;
+  	html += `
+		<section>
+			<canvas></canvas>
+		</section>`;
+  	html += `
+		<section>
+			<h5>${person.reaction[0].toUpperCase() + person.reaction.slice(1)}</h5>
+			<h5>${person["today - recognition"]}</h5>
+		</section>`;
+  	html += "</article>";
+  	output.innerHTML += html;
+}
+
+function buildTimeline(person, index){
+	var canvas = document.querySelector("main article:nth-of-type(" + (++index) + ") canvas"),
+        ctx = canvas.getContext("2d"),
+        width = canvas.width = timelineWidth,
+        height = canvas.height = rowHeight,
+        increment = timelineWidth/12,
+        birthX = increment/2,
+        heresyX = birthX + (person["age at heresy"]/10) * increment,
+        deathX = birthX + (person["age at death"]/10) * increment,
+        vindicationX = person["age at vindication"] > 100 ? width - increment/2 : birthX + (person["age at vindication"]/10) * increment,
+        blackLineStopX = deathX ? Math.min(deathX, vindicationX) : vindicationX,
+        baseY = 25,
+        textY = baseY + 25,
+        reactionText = getLinesOfText(person["reaction - details"], 30),
+        recognitionText = getLinesOfText(person["today - recognition details"], 30);
+  	//black line
+  	ctx.lineWidth = 4;
+  	ctx.strokeStyle = "black";
+  	ctx.beginPath();
+  	ctx.moveTo(heresyX, baseY);
+  	ctx.lineTo(blackLineStopX - 10, baseY);
+  	ctx.stroke();
+  	//white circles
+  	ctx.fillStyle = "white";
+  	ctx.beginPath();
+  	ctx.arc(birthX, baseY, 4, 0, Math.PI*2);
+  	ctx.arc(heresyX, baseY, 12, 0, Math.PI*2);
+    ctx.fill();
+    ctx.beginPath();
+  	ctx.arc(heresyX, textY, 4, 0, Math.PI*2);
+  	ctx.arc(vindicationX, textY, 4, 0, Math.PI*2);
+  	ctx.fill();
+  	//straight white line
+  	ctx.lineWidth = 1;
+  	ctx.strokeStyle = "white";
+  	ctx.beginPath();
+  	ctx.moveTo(birthX, baseY);
+  	ctx.lineTo(heresyX, baseY);
+  	ctx.stroke();
+  	//small white text
+  	ctx.font = "10px sans-serif";
+  	ctx.textAlign = "left";
+  	ctx.fillText("Birth: " + person.born, birthX + 6, baseY - 4);
+  	if (deathX < vindicationX){
+    	if (vindicationX - deathX < 90){
+            //too close together, lift death higher
+          	ctx.fillText("Death: " + person.died, deathX - 4, baseY - 15);
+        }
+      	else {
+        	//far enough apart
+          	ctx.fillText("Death: " + person.died, deathX + 14, baseY - 4);
+        }
+      	if (vindicationX < width - 90){
+        	//left align
+          	ctx.fillText("Vindication: " + person["year of vindication"], vindicationX + 14, baseY - 4);
+        }
+      	else {
+        	//right align
+          	ctx.textAlign = "right";
+          	ctx.fillText("Vindication: " + person["year of vindication"], vindicationX - 14, baseY - 4);
+        }
+    }
+  	else {
+    	if (deathX && deathX - vindicationX < 90){
+        	//to close together, lift vindication higher
+          	ctx.fillText("Vindication: " + person["year of vindication"], vindicationX - 4, baseY - 15);
+        }
+      	else {
+        	//far enough apart
+          	ctx.fillText("Vindication: " + person["year of vindication"], vindicationX + 14, baseY - 4);
+        }
+      	if (deathX){
+        	if (deathX < width - 90){
+            	//left align
+              	ctx.fillText("Death: " + person.died, deathX + 14, baseY - 4);
+            }
+          	else {
+            	//right align
+              	ctx.textAlign = "right";
+              	ctx.fillText("Death: " + person.died, deathX - 14, baseY - 4);
+            }
+        }
+    }
+  	ctx.textAlign = "right";
+  	ctx.fillText("Heresy: " + person["heresy year"], heresyX - 14, baseY - 4);
+  	//large white text
+	ctx.font = "12px sans-serif";
+  	ctx.textBaseline = "hanging";
+  	ctx.textAlign = "right";
+  	let y = textY;
+  	reactionText.forEach(line => {
+    	ctx.fillText(parseChars(line), heresyX - 10, y, increment * 2.5);
+      	y += 15;
+    });
+  	y = textY;
+  	let x = vindicationX - 10;
+  	if (vindicationX < width - increment * 2.5){
+    	x = vindicationX + 10;
+      	ctx.textAlign = "left";
+    }
+  	recognitionText.forEach(line => {
+    	ctx.fillText(parseChars(line), x, y, increment * 2.5);
+      	y += 15;
+    });
+  	//dotted white lines
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+  	if (deathX < vindicationX){
+      	ctx.moveTo(deathX + 10, baseY);
+      	ctx.lineTo(vindicationX, baseY);
+    }
+  	ctx.moveTo(heresyX, baseY);
+  	ctx.lineTo(heresyX, textY);
+  	ctx.moveTo(vindicationX, baseY);
+  	ctx.lineTo(vindicationX, textY);
+  	ctx.stroke();
+  	ctx.setLineDash([]);
+  	//orange circle
+  	ctx.fillStyle = "#F5A623";
+  	ctx.beginPath();
+  	ctx.arc(vindicationX, baseY, 12, 0, Math.PI*2);
+  	ctx.fill();
+  	//orange line???
+  	if (vindicationX < deathX){
+      	ctx.strokeStyle = "#F5A623";
+      	ctx.beginPath();
+        ctx.lineWidth = 4;
+      	ctx.moveTo(vindicationX, baseY);
+      	ctx.lineTo(deathX - 10, baseY);
+      	ctx.stroke();
+    }
+  	//hollow white circle
+  	ctx.strokeStyle = "white";
+  	ctx.beginPath();
+    ctx.lineWidth = 3;
+  	ctx.arc(deathX, baseY, 12, 0, Math.PI*2);
+  	ctx.stroke();
+}
+
+function getLinesOfText(text, numberOfCharactersPerLine){
+	let lines = [];
+  	while (text.length > numberOfCharactersPerLine){
+    	let index = numberOfCharactersPerLine;
+      	while (text[index] !== " ") index--;
+      	lines.push(text.slice(0, index));
+      	text = text.slice(index+1);
+    }
+  	lines.push(text);
+  	return lines;
+}
+
+function parseChars(text){
+	return  text.replace(/%u201C/g, "“")
+      			.replace(/%u201D/g, "”")
+  				.replace(/\u0003/g, "")
+  				.replace(/%u2018/, "‘")
+  				.replace(/%u2019/, "’")
+  				.replace(/%u2013/, "—");
+}
+
+/***********************************************/
+  	</script>
+</head>
+<body>
+  	<header>
+        <h1> Rejection to Celebration </h1>
+        <nav>
+            <select id="field">
+                <option selected>All Fields</option>
+            </select>
+            <select id="gender">
+                <option selected>All Genders</option>
+            </select>
+          	<select id="country">
+                <option selected>All Countries</option>
+            </select>
+            <select id="reaction">
+                <option selected>All Reactions</option>
+            </select>
+            <select id="recognition">
+                <option selected>All Recognitions</option>
+            </select>
+        </nav>
+    </header>
+    <main>
+        <header><canvas></canvas></header>
+        <output></output>
+  	</main>
+</body>
+</html>

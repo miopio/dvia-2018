@@ -1,0 +1,157 @@
+﻿country,region,number cited,life ladder
+Albania,Central and Eastern Europe,2,4.586039543
+Bosnia and Herzegovina,Central and Eastern Europe,0,5.129354
+Bulgaria,Central and Eastern Europe,0,4.933124542
+Croatia,Central and Eastern Europe,2,5.321210384
+Czech Republic,Central and Eastern Europe,1,6.710904598
+Estonia,Central and Eastern Europe,1,5.739221573
+Hungary,Central and Eastern Europe,0,5.619982243
+Kosovo,Central and Eastern Europe,0,5.662148952
+Latvia,Central and Eastern Europe,0,5.933085918
+Lithuania,Central and Eastern Europe,1,5.951889992
+Macedonia,Central and Eastern Europe,0,5.184806347
+Montenegro,Central and Eastern Europe,1,5.347548485
+Poland,Central and Eastern Europe,1,6.123031139
+Romania,Central and Eastern Europe,0,5.945211887
+Serbia,Central and Eastern Europe,2,5.398180485
+Slovakia,Central and Eastern Europe,0,6.173422337
+Slovenia,Central and Eastern Europe,2,5.947597504
+Armenia,Commonwealth of Independent States,0,4.320565224
+Azerbaijan,Commonwealth of Independent States,0,5.200594902
+Belarus,Commonwealth of Independent States,1,5.483326435
+Georgia,Commonwealth of Independent States,2,4.340491295
+Kazakhstan,Commonwealth of Independent States,0,5.790053368
+Kyrgyzstan,Commonwealth of Independent States,0,5.130754471
+Moldova,Commonwealth of Independent States,0,5.639724255
+Russia,Commonwealth of Independent States,2,5.809670925
+Tajikistan,Commonwealth of Independent States,0,5.352529526
+Turkmenistan,Commonwealth of Independent States,0,5.636222363
+Ukraine,Commonwealth of Independent States,0,4.102899075
+Uzbekistan,Commonwealth of Independent States,1,6.096068382
+China,East Asia,4,5.245798111
+Hong Kong S.A.R. of China,East Asia,0,5.430428505
+Japan,East Asia,3,5.915034294
+Mongolia,East Asia,0,5.124616146
+South Korea,East Asia,5,5.874896049
+Taiwan Province of China,East Asia,0,6.440559864
+Argentina,Latin America and Caribbean,6,6.387957573
+Belize,Latin America and Caribbean,1,5.955646515
+Bolivia,Latin America and Caribbean,1,5.751889706
+Brazil,Latin America and Caribbean,1,6.418890476
+Chile,Latin America and Caribbean,3,6.476189137
+Colombia,Latin America and Caribbean,3,6.260081768
+Costa Rica,Latin America and Caribbean,1,7.07165432
+Dominican Republic,Latin America and Caribbean,0,5.301772118
+Ecuador,Latin America and Caribbean,1,5.973180771
+El Salvador,Latin America and Caribbean,0,6.166780949
+Guatemala,Latin America and Caribbean,0,6.381852627
+Haiti,Latin America and Caribbean,0,3.581959724
+Honduras,Latin America and Caribbean,0,5.504045486
+Jamaica,Latin America and Caribbean,0,5.889759064
+Mexico,Latin America and Caribbean,7,6.488210201
+Nicaragua,Latin America and Caribbean,1,6.140966415
+Panama,Latin America and Caribbean,1,6.430038929
+Paraguay,Latin America and Caribbean,0,5.680560112
+Peru,Latin America and Caribbean,2,5.663168907
+Trinidad and Tobago,Latin America and Caribbean,0,6.191859722
+Uruguay,Latin America and Caribbean,0,6.378826141
+Venezuela,Latin America and Caribbean,0,4.80555439
+Algeria,Middle East and North Africa,0,5.29463768
+Bahrain,Middle East and North Africa,0,6.105068684
+Egypt,Middle East and North Africa,2,4.419177055
+Iran,Middle East and North Africa,0,4.706562042
+Iraq,Middle East and North Africa,0,4.455639362
+Israel,Middle East and North Africa,1,7.189998627
+Jordan,Middle East and North Africa,4,5.160702229
+Kuwait,Middle East and North Africa,0,6.083386898
+Lebanon,Middle East and North Africa,0,5.198890209
+Libya,Middle East and North Africa,0,5.56573534
+Morocco,Middle East and North Africa,4,5.253713131
+Palestinian Territories,Middle East and North Africa,0,4.743304253
+Qatar,Middle East and North Africa,0,6.374529362
+Saudi Arabia,Middle East and North Africa,0,6.370938301
+Syria,Middle East and North Africa,0,3.46191287
+Tunisia,Middle East and North Africa,0,4.592365742
+Turkey,Middle East and North Africa,0,5.48250246
+United Arab Emirates,Middle East and North Africa,1,6.774069309
+Yemen,Middle East and North Africa,0,3.354937792
+Australia,North America and ANZ,5,7.272051334
+Canada,North America and ANZ,4,7.328528404
+New Zealand,North America and ANZ,1,7.32376194
+United States,North America and ANZ,32,6.886040211
+Afghanistan,South Asia,0,3.631518841
+Bangladesh,South Asia,1,4.50039053
+Bhutan,South Asia,1,5.082128525
+India,South Asia,2,4.189812183
+Nepal,South Asia,1,4.880447865
+Pakistan,South Asia,0,5.472465515
+Sri Lanka,South Asia,2,4.470594883
+Cambodia,Southeast Asia,2,4.4325881
+Indonesia,Southeast Asia,2,5.092578411
+Laos,Southeast Asia,2,4.623140812
+Malaysia,Southeast Asia,0,6.322121143
+Myanmar,Southeast Asia,0,4.307814121
+Philippines,Southeast Asia,0,5.524094582
+Singapore,Southeast Asia,1,6.34320116
+Thailand,Southeast Asia,1,6.07228756
+Vietnam,Southeast Asia,0,5.103246212
+Angola,Sub-Saharan Africa,0,3.794837952
+Benin,Sub-Saharan Africa,0,4.141364098
+Botswana,Sub-Saharan Africa,0,3.58982873
+Burkina Faso,Sub-Saharan Africa,0,4.42439127
+Burundi,Sub-Saharan Africa,0,2.904535055
+Cameroon,Sub-Saharan Africa,0,4.975327015
+Central African Republic,Sub-Saharan Africa,0,3.082997561
+Chad,Sub-Saharan Africa,0,4.300587177
+Congo (Brazzaville),Sub-Saharan Africa,0,4.558671474
+Congo (Kinshasa),Sub-Saharan Africa,0,4.244946003
+Ethiopia,Sub-Saharan Africa,1,4.350203514
+Gabon,Sub-Saharan Africa,0,4.758346558
+Ghana,Sub-Saharan Africa,0,4.656972885
+Guinea,Sub-Saharan Africa,0,3.964100122
+Ivory Coast,Sub-Saharan Africa,0,4.671208858
+Kenya,Sub-Saharan Africa,0,4.409707069
+Lesotho,Sub-Saharan Africa,0,3.808204889
+Liberia,Sub-Saharan Africa,0,3.495375872
+Madagascar,Sub-Saharan Africa,1,3.773629427
+Malawi,Sub-Saharan Africa,0,3.586762905
+Mali,Sub-Saharan Africa,0,4.447013378
+Mauritania,Sub-Saharan Africa,0,4.355462551
+Mauritius,Sub-Saharan Africa,1,5.891469002
+Mozambique,Sub-Saharan Africa,1,4.41660881
+Namibia,Sub-Saharan Africa,0,4.441306114
+Niger,Sub-Saharan Africa,0,4.165516376
+Nigeria,Sub-Saharan Africa,0,5.155352592
+Rwanda,Sub-Saharan Africa,1,3.408091784
+Senegal,Sub-Saharan Africa,1,4.63109827
+Sierra Leone,Sub-Saharan Africa,0,4.570586205
+Somalia,Sub-Saharan Africa,0,4.981533527
+South Africa,Sub-Saharan Africa,0,4.723993778
+South Sudan,Sub-Saharan Africa,0,3.254162073
+Sudan,Sub-Saharan Africa,0,4.138672829
+Tanzania,Sub-Saharan Africa,1,3.303536177
+Togo,Sub-Saharan Africa,0,3.998500824
+Uganda,Sub-Saharan Africa,0,4.160773754
+Zambia,Sub-Saharan Africa,2,4.377130032
+Zimbabwe,Sub-Saharan Africa,1,3.692285776
+Austria,Western Europe,1,7.139362335
+Belgium,Western Europe,2,6.926885605
+Cyprus,Western Europe,0,5.762533665
+Denmark,Western Europe,2,7.555277824
+Finland,Western Europe,1,7.632102013
+France,Western Europe,3,6.489313602
+Germany,Western Europe,4,6.964747429
+Greece,Western Europe,1,5.357860565
+Iceland,Western Europe,2,7.495225906
+Ireland,Western Europe,3,6.977095127
+Italy,Western Europe,6,6.000355244
+Luxembourg,Western Europe,0,6.909944534
+Malta,Western Europe,2,6.626609325
+Netherlands,Western Europe,0,7.441338539
+North Cyprus,Western Europe,0,5.834826469
+Norway,Western Europe,1,7.593714714
+Portugal,Western Europe,0,5.410372257
+Spain,Western Europe,3,6.309878349
+Sweden,Western Europe,1,7.314524174
+Switzerland,Western Europe,1,7.48731184
+United Kingdom,Western Europe,2,6.814331055

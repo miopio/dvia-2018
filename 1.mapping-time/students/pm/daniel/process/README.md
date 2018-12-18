@@ -19,4 +19,4 @@ Wave Clock Medium
 Returned to the original code to make time units appear to shift vertical position using a combination of if/else and conditional operator statements. Employed an if/else statement to fill the background with white for a.m. and black for p.m.
 
 Wave Clock Large
-Utilized days and weeks progress values in tandem with background RGB color values. Red progresses from 0-100 hourly and blue from 0-255 daily. Green is set to 0. Changed milliseconds to moon value with fill grayscale set to change at midway point in lunar cycle and rectangle width expanding according to lunar cycle.  
+Utilized day and week progress values in tandem with background RGB color values. Red progresses from 0-100 hourly and blue from 0-255 daily. Green is set to 0. Changed milliseconds to moon value with fill grayscale set to change at midway point in lunar cycle and rectangle width expanding according to lunar cycle.  
