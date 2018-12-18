@@ -1,6 +1,6 @@
 
-var polylinesDepth=[];
-var polylinesMag =[];
+var polylinesDepth;
+var polylinesMag;
 
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
@@ -35,13 +35,17 @@ slider.oninput = function() {
       }else{
          var data = loadTable("data/all_month.csv", "csv", "header");
       }
-      return data;
+      table = data;
+      //drawDataPoints();
+      //return data;
+
 }
 
 
 // *********  PRELOAD *************
 function preload() {
-    table = slider.oninput();
+    // table = slider.oninput();
+    slider.oninput();
 }
 
 
@@ -58,7 +62,6 @@ function setup() {
 
     // DRAW ON CANVAS
     drawDataPoints();
-
 }
 
 
@@ -156,6 +159,14 @@ function drawDataPoints(){
         // ON-CLICK EVENT FOR EACH EARTHQUAKE CIRCLE
         circle.addEventListener('click',function(){
 
+          if(polylinesDepth !== undefined) {
+            polylinesDepth.remove();
+            polylinesMag.remove();
+            polyLatLngDepth =[];
+            polyLatLngMag = [];
+          }
+
+
 
           // ****** NOT WORKING : remove existing polylines ************
 
@@ -234,6 +245,8 @@ function drawDataPoints(){
         text('RELATED EVENTS (mag +/- 0.1)',50,245);
 
                  var j = 0;
+
+
 
                  for(i=0;i<this.options.info.table.rows.length;i++){
 

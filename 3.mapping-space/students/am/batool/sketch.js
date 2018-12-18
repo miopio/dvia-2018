@@ -65,10 +65,10 @@ function setup(){
       fill(182,247,201, 120);
       ellipse(x, y , mag*8,mag*8);
 
-      stroke('black');
-      strokeWeight(0.15);
-      noFill(0);
-      ellipse(x,y,depth/1,depth/1);
+      // stroke('black');
+      // strokeWeight(0.15);
+      // noFill(0);
+      // ellipse(x,y,depth/1,depth/1);
 
   }
 

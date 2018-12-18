@@ -1,0 +1,34 @@
+Incident Location,Covered Entity Count
+Desktop Computer,12
+"Desktop Computer, Electronic Medical Record",3
+"Desktop Computer, Electronic Medical Record, Network Server",5
+"Desktop Computer, Electronic Medical Record, Network Server, Other Portable Electronic Device, Paper/Films",1
+"Desktop Computer, Email",4
+"Desktop Computer, Email, Laptop, Network Server, Other Portable Electronic Device, Paper/Films",1
+"Desktop Computer, Email, Network Server",1
+"Desktop Computer, Laptop",2
+"Desktop Computer, Laptop, Network Server",1
+"Desktop Computer, Network Server",8
+"Desktop Computer, Other",1
+"Desktop Computer, Other, Other Portable Electronic Device, Paper/Films",1
+"Desktop Computer, Paper/Films",1
+Electronic Medical Record,19
+"Electronic Medical Record, Email, Laptop",1
+"Electronic Medical Record, Network Server",2
+"Electronic Medical Record, Other",1
+"Electronic Medical Record, Paper/Films",1
+Email,117
+"Email, Laptop",1
+"Email, Laptop, Other Portable Electronic Device",1
+"Email, Other",1
+Laptop,19
+"Laptop, Network Server",1
+"Laptop, Other Portable Electronic Device",1
+"Laptop, Paper/Films",3
+Network Server,92
+"Network Server, Other",2
+Other,25
+Other Portable Electronic Device,18
+"Other, Paper/Films",1
+Paper/Films,66
+Grand Total,413

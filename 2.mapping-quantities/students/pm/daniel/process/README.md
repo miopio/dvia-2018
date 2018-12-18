@@ -20,5 +20,5 @@ Concept 5
 Data on testing is reincorporated below warhead data. Countries' test totals against their own highs and test totals vs the highest annual figure for any country are visualized as raw numbers with color values inputed to the text.
 
 Concept 6
-The four loops are redrawn as rectangle-based heat maps with varying sets of colors. Lines are drawn to indicate decades. Explanatory text and titles are overlayed. 
+The four loops are redrawn as four rectangle-based heat maps with varying sets of colors. Lines are drawn to indicate decades. Explanatory text and titles are overlayed. 
 

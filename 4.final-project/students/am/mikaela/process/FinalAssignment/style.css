@@ -1,0 +1,82 @@
+html, body {
+    margin:0;
+    /*height:100%;*/
+}
+#openingSection {
+    /*margin: 0 auto;*/
+    /*height: 100vh;*/
+    /*background: white;*/
+    /*position: relative;*/
+    /*z-index: 1000;*/
+    /*padding-top:0px;*/
+}
+#titleSVG {
+    /*margin:auto;*/
+}
+#allstates {
+    /*position:relative;*/
+    /*border: 2px solid yellow;*/
+    /*width: 920px;*/
+    /*height:500px;*/
+    /*display: inline-block;*/
+    /*vertical-align: top;*/
+    margin:auto;
+    /*padding-top:200px;*/
+    /*background-color: white; */
+    text-align:center;
+}
+#openingWrapper {
+  background-color: white; /* for visualization purposes 
+  /*text-align: center;*/
+  /*height: 200px*/
+}
+#secondSection {
+    /*margin: 0 auto;*/
+    /*height: 100vh;*/
+    /*position: relative;*/
+    /*z-index: 1000;*/
+    /*padding-top:800px;*/
+    /*background: #f3e0db;*/
+}
+#stateSVG {
+  /*display: inline-block;*/
+  /*z-index: 500;*/
+}
+#state{
+    margin:auto;
+    text-align:center;
+}
+
+
+/*#healthInsurance {*/
+/*    width: 900px;*/
+/*    border: 2px solid red;*/
+/*}*/
+
+/*#healthInsuranceCalifornia {*/
+/*    width: 400px;*/
+/*    height: 400px;*/
+/*    top:100px;*/
+/*    display: inline-block;*/
+/*    border: 2px solid red;*/
+/*}*/
+
+/*#California {*/
+/*    width: 800px;*/
+/*    height: 400px;*/
+/*    left:50%;*/
+/*    display: inline-block;*/
+/*    border: 2px solid orange;*/
+/*    margin: auto;*/
+/*}*/
+/*.blackCali {*/
+/*    border: 2px solid red;*/
+/*    display: inline-block;*/
+/*}*/
+/*.whiteCali {*/
+/*    border: 2px solid blue;*/
+/*    display: inline-block;*/
+/*    top:50px;*/
+/*    bottom: 0px;*/
+/*}*/
+ 
