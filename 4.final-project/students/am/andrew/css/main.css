@@ -178,7 +178,7 @@ table {
   vertical-align: bottom;
   margin: 1rem 0% 5rem 0%;
   width: 100%;
-  max-width: 100%;
+  max-width: 80%;
 }
 
 .plot-desc {
@@ -190,6 +190,7 @@ td div {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  overflow-x: hidden;
 }
 
 td {
