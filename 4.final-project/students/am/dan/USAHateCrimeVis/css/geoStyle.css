@@ -1,0 +1,73 @@
+path{
+
+
+}
+
+
+
+path:hover {
+/* fill-opacity: .7; */
+
+/* fill: orange; */
+
+
+}
+
+
+/* Legend Position Style */
+/* .legend {
+	position:absolute;
+	left:800px;
+	top:350px;
+} */
+#mapOnly {
+  /* display:inline ; */
+  /* padding-left: 30%; */
+  /* margin-right:auto;
+  margin-left:auto; */
+  /* margin: auto; */
+}
+
+div #vizMap {
+  vertical-align: middle;
+  /* display: block; */
+  margin-right:auto;
+  margin-left:auto;
+
+  /* margin:   auto; */
+  width: 940px;
+  height: 600px;
+  align-content:center;
+}
+
+#key {
+  /* float: right; */
+  /* padding-left: 100px; */
+  /* position: relative; */
+  /* margin-right:auto;
+  margin-left:auto; */
+  /* display: inline; */
+}
+
+.axis text {
+  font: 8px sans-serif;
+}
+
+.axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  padding: 5px;
+  font: 12px sans-serif;
+  background: #fff;
+  border: 0px;
+  border-radius: 18px;
+  pointer-events: none;
+}
