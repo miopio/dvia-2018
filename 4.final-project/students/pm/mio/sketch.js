@@ -160,28 +160,28 @@ var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States',
 
 
 var xData = [
-        lifeladder.slice(0 ,16),
-        lifeladder.slice(17, 28),
-        lifeladder.slice(29, 34),
-        lifeladder.slice(35 ,56),
-        lifeladder.slice(57, 75),
-        lifeladder.slice(76, 79),
-        lifeladder.slice(80 ,86),
-        lifeladder.slice(87, 95),
-        lifeladder.slice(96, 134),
+        lifeladder.slice(0 ,17),
+        lifeladder.slice(17, 29),
+        lifeladder.slice(29, 35),
+        lifeladder.slice(35 ,57),
+        lifeladder.slice(57, 76),
+        lifeladder.slice(76, 80),
+        lifeladder.slice(80 ,87),
+        lifeladder.slice(87, 96),
+        lifeladder.slice(96, 135),
         lifeladder.slice(135, 155)
     ];
 
 var countryData = [
-        country.slice(0 ,16),
-        country.slice(17, 28),
-        country.slice(29, 34),
-        country.slice(35 ,56),
-        country.slice(57, 75),
-        country.slice(76, 79),
-        country.slice(80 ,86),
-        country.slice(87, 95),
-        country.slice(96, 134),
+        country.slice(0 ,17),
+        country.slice(17, 29),
+        country.slice(29, 35),
+        country.slice(35 ,57),
+        country.slice(57, 76),
+        country.slice(76, 80),
+        country.slice(80 ,87),
+        country.slice(87, 96),
+        country.slice(96, 135),
         country.slice(135, 155)
 ]
 
@@ -195,7 +195,7 @@ for ( var i = 0; i < yData.length; i ++ ) {
         x: xData[i],
         name: yData[i],
         boxpoints: 'all',
-        hoverinfo: countryData[i],
+        text: countryData[i],
         jitter: 0.5,
         whiskerwidth: 0.2,
         fillcolor: colors[i],
@@ -253,15 +253,15 @@ var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States',
 var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)'];
 
 var xData = [
-        socialsupport.slice(0 ,16),
-        socialsupport.slice(17, 28),
-        socialsupport.slice(29, 34),
-        socialsupport.slice(35 ,56),
-        socialsupport.slice(57, 75),
-        socialsupport.slice(76, 79),
-        socialsupport.slice(80 ,86),
-        socialsupport.slice(87, 95),
-        socialsupport.slice(96, 134),
+        socialsupport.slice(0 ,17),
+        socialsupport.slice(17, 29),
+        socialsupport.slice(29, 35),
+        socialsupport.slice(35 ,57),
+        socialsupport.slice(57, 76),
+        socialsupport.slice(76, 80),
+        socialsupport.slice(80 ,87),
+        socialsupport.slice(87, 96),
+        socialsupport.slice(96, 135),
         socialsupport.slice(135, 155)
     ];
 
@@ -273,6 +273,7 @@ for ( var i = 0; i < yData.length; i ++ ) {
         x: xData[i],
         name: yData[i],
         boxpoints: 'all',
+        text: countryData[i],
         jitter: 0.5,
         whiskerwidth: 0.2,
         fillcolor: colors[i],
@@ -328,15 +329,15 @@ var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States',
 var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)'];
 
 var xData = [
-        generosity.slice(0 ,16),
-        generosity.slice(17, 28),
-        generosity.slice(29, 34),
-        generosity.slice(35 ,56),
-        generosity.slice(57, 75),
-        generosity.slice(76, 79),
-        generosity.slice(80 ,86),
-        generosity.slice(87, 95),
-        generosity.slice(96, 134),
+        generosity.slice(0 ,17),
+        generosity.slice(17, 29),
+        generosity.slice(29, 35),
+        generosity.slice(35 ,57),
+        generosity.slice(57, 76),
+        generosity.slice(76, 80),
+        generosity.slice(80 ,87),
+        generosity.slice(87, 96),
+        generosity.slice(96, 135),
         generosity.slice(135, 155)
     ];
 
@@ -348,6 +349,7 @@ for ( var i = 0; i < yData.length; i ++ ) {
         x: xData[i],
         name: yData[i],
         boxpoints: 'all',
+        text: countryData[i],
         jitter: 0.5,
         whiskerwidth: 0.2,
         fillcolor: colors[i],
@@ -405,15 +407,15 @@ var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,1
 
 
 var xData = [
-        freedom.slice(0 ,16),
-        freedom.slice(17, 28),
-        freedom.slice(29, 34),
-        freedom.slice(35 ,56),
-        freedom.slice(57, 75),
-        freedom.slice(76, 79),
-        freedom.slice(80 ,86),
-        freedom.slice(87, 95),
-        freedom.slice(96, 134),
+        freedom.slice(0 ,17),
+        freedom.slice(17, 29),
+        freedom.slice(29, 35),
+        freedom.slice(35 ,57),
+        freedom.slice(57, 76),
+        freedom.slice(76, 80),
+        freedom.slice(80 ,87),
+        freedom.slice(87, 96),
+        freedom.slice(96, 135),
         freedom.slice(135, 155)
     ];
 
@@ -482,15 +484,15 @@ var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States',
 var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)'];
 
 var xData = [
-        corruption.slice(0 ,16),
-        corruption.slice(17, 28),
-        corruption.slice(29, 34),
-        corruption.slice(35 ,56),
-        corruption.slice(57, 75),
-        corruption.slice(76, 79),
-        corruption.slice(80 ,86),
-        corruption.slice(87, 95),
-        corruption.slice(96, 134),
+        corruption.slice(0 ,17),
+        corruption.slice(17, 29),
+        corruption.slice(29, 35),
+        corruption.slice(35 ,57),
+        corruption.slice(57, 76),
+        corruption.slice(76, 80),
+        corruption.slice(80 ,87),
+        corruption.slice(87, 96),
+        corruption.slice(96, 135),
         corruption.slice(135, 155)
     ];
 
@@ -502,6 +504,7 @@ for ( var i = 0; i < yData.length; i ++ ) {
         x: xData[i],
         name: yData[i],
         boxpoints: 'all',
+        text: countryData[i],
         jitter: 0.5,
         whiskerwidth: 0.2,
         fillcolor: colors[i],
