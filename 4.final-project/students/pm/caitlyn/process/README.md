@@ -11,6 +11,12 @@
 
 4. Initial sketches of chosen ideas in `series_sketches_1.jpg`
 
+5. Data storage is detailed in the data process section below.
+
+6. Illustrator mockup in `dvia_final.ai`
+
+7. HTML version in `dvia_final.html`
+
 #### data process
 
 1. Downloaded the lyrics of each song by the 1975 using the Genius API and Lyricist npm library (in `data.js`).
