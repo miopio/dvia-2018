@@ -29,7 +29,7 @@ https://www.ctbto.org/nuclear-testing/the-effects-of-nuclear-testing/the-united-
 
 The final concept I decided to go with was a combination of concept 1 and concept 2. I decided to incorporate the bubble chart visualizing for each nuclearpower the total number of nuclear tests conducted per year (y axis), the maximum yield of nuclear tests conducted each year (radius of point), over a period of time (x axis). In the background of the chart using different shades of gray, I indicated when wars were fought between/amongst the nuclear powers. In addition to that, I made a timeline of nuclear treaties signed each year that incorporated some or all of the nuclear powers. I categorized the treaties into three categories and assigned a hue of pink to each: treaties that negotiated production limitations, facilitated mutual defense, or put forth a complete ban. Below this treaty timeline, I marked which nuclear power signed and ratified the treaty with rectangles colored with the same categorical colors used in the bubble chart. Gray rectangles indicate countries that did not sign the treaty even if they could have. Half transparent rectangles indicate countries which signed but did not ratify the treaty.
 
-![Final concept](/final_visual.png)
+![Final concept](mio/process/final_visual.png)
 
 ### Critique
 
