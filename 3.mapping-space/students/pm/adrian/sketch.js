@@ -7,7 +7,6 @@ var latitudes, longitudes;
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
-// the dots we'll be adding to the map
 var circles = [];
 // table as the data set
 var table;
@@ -23,16 +22,14 @@ function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
     setupMap()
 
-
-
     // next, draw our p5 diagram that complements it
-    createCanvas(windowWidth, 100);
+    createCanvas(windowWidth, 500);
     background(211);
 
-    fill(0)
+    fill(0, 0, 255)
     noStroke()
-    textSize(18)
-    text(`Over the course of the last week, there were ${table.getRowCount()} seismic events.  Of these events, the largest magnitude and depth were ${getColumnMax("mag")} and ${getColumnMax("depth")}, respectively`, 10, 24)
+    textSize(24)
+    text(`Over the course of the last week, there were ${table.getRowCount()} seismic events.  Of these events, the largest magnitude and depth were ${getColumnMax("mag")} and ${getColumnMax("depth")}, respectively`, 10, 36)
 }
 
 function setupMap(){
@@ -86,7 +83,7 @@ function drawDataPoints(){
         var circle = L.circle([latitudes[i], longitudes[i]], {
           color: 'T',      // the dot stroke color
           fillColor: 'blue', // the dot fill color
-          fillOpacity: 0.5,  // use some transparency so we can see overlaps
+          fillOpacity: 25,  // use some transparency so we can see overlaps
           radius: magnitudes[i] * 10000
         });
 
@@ -103,7 +100,6 @@ function drawDataPoints(){
 
         // save a reference to the circle for later
         circles.push(circle)
-
 
     }
 }
@@ -133,9 +129,9 @@ function getColumnMax(columnName){
         }
     }
     return m;
+}
 
-    // or do it the 'easy way' by using lodash:
-    // return _.max(colValues);
-
-
+function draw() {
+  fill (0, 0, 255);
+  rect(158, 158, 158, 158);
 }
