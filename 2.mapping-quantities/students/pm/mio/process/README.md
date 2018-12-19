@@ -40,6 +40,7 @@ Points from class critique:
 - label more than just 1000 kilotons for bubble legend: do a scale
 - explain gray rectangles (maybe in the blurb)
 
+![Final visual after critique implementation](mio/process/final_visual_v2.png)
 
 
 
