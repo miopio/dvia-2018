@@ -5,6 +5,9 @@ d3.json("https://d3js.org/us-10m.v1.json").then(function(us){
       d3.json('data/CountryNode.json').then(function(piechart){
 
 
+
+
+
 //*********** PIE CHART1 **********************
 
 
@@ -16,37 +19,28 @@ var thickness_chart = 60;
 var duration_chart = 750;
 
 var radius_chart = Math.min(width_chart, height_chart) / 2;
-var color_chart = d3.scaleOrdinal(d3.schemePaired); //YlGnBu
-// var color_chart = d3.schemeBlues(d3.YlGnBu);
+var color_chart = d3.scaleLinear()
+          .domain([50, 0])
+          .range(['#000000', '#99001a']);
+
 
 var svg_chart = d3.select("#container_tree").append('svg').attr('id','svg_chart')
                   .attr('class', 'pie')
                   .attr('width', width_chart)
                   .attr('height', height_chart);
 
-// var svg_chart2 = d3.select("#container_tree").append('svg')
-//                   .attr('class', 'pie')
-//                   .attr('width', width_chart)
-//                   .attr('height', height_chart)
-//                   // .attr('transform', 'translate(' + (width_chart/2)+500 + ',' + (height_chart/2) + ')');;
 
 var g = svg_chart.append('g')
                  .attr('transform', 'translate(' + (width_chart/2)+ ',' + (height_chart/2) + ')');
-
-// var g2 = svg_chart2.append('g')
-//                    .attr('transform', 'translate(' + 300+(width_chart/2)+ ',' + (height_chart/2) + ')');
-//                 // .attr('transform', 'translate(0,0)');
 
 
 var arc = d3.arc()
             .innerRadius(radius_chart - thickness_chart)
             .outerRadius(radius_chart);
 
-var pie = d3.pie().sort(null)
-            .value((d,i) => { return d.total_16; });
-
-// var pie2 = d3.pie().sort(null)
-//             .value((d,i) => { return d.total_17; });
+var pie = d3.pie()
+            .value((d,i) => { return +d.total_16; })
+            .sort(function(a, b) { return b.total_16 - a.total_16; });
 
 
 var path = g.selectAll('path')
@@ -101,60 +95,6 @@ var path = g.selectAll('path')
                 .text('GUN VIOLENCE 2016')
                 .attr('transform','translate(0,60)')
 
-                // g.append("text")
-                //   .attr("class", "name-text")
-                //   .attr('text-anchor', 'middle')
-                //   .attr('dy', '-1.2em');
-
-
-// var path2 = g2.selectAll('path')
-//           .data(pie2(data.results))
-//           .enter()
-//           .append("g")
-//           .on("mouseover", function(d) {
-//
-//               let g = d3.select(this)
-//                 .style("cursor", "pointer")
-//                 .style("fill", "black")
-//                 .append("g")
-//                 .attr("class", "text-group");
-//
-//                 g.append("text")
-//                   .attr("class", "name-text")
-//                   .text(`${d.data.country}`)
-//                   .attr('text-anchor', 'middle')
-//                   .attr('dy', '-1.2em');
-//
-//                 g.append("text")
-//                   .attr("class", "value-text")
-//                   .text(`${d.data.total_17}`)
-//                   .attr('text-anchor', 'middle')
-//                   .attr('dy', '.6em');
-//             })
-//             .on("mouseout", function(d) {
-//                 d3.select(this)
-//                   .style("cursor", "none")
-//                   .style("fill", color_chart(this._current))
-//                   .select(".text-group").remove();
-//                 })
-//             .append('path')
-//             .attr('d', arc)
-//             .attr('fill', (d,i) => color_chart(i))
-//             .style('stroke', 'transparent')
-//             .style('opacity',0.8)
-//             .on("mouseover", function(d) {
-//                 d3.select(this)
-//                   .style("cursor", "pointer")
-//                   .style("fill", "black");
-//             })
-//             .on("mouseout", function(d) {
-//                 d3.select(this)
-//                   .style("cursor", "none")
-//                   .style("fill", color_chart(this._current));
-//             })
-//             .each(function(d, i) { this._current = i; });
-//
-//
 
   //*********** CHART 1 **********************
 
@@ -166,6 +106,7 @@ var path = g.selectAll('path')
 
 
        const svg = d3.select('#container').append('svg').attr('id','svg1');
+
        const chart = svg.append('g').attr('transform', `translate(${margin}, ${margin})`);
 
        const yScale = d3.scaleLinear().range([height, 0]).domain([0, 6000]);
@@ -179,7 +120,7 @@ var path = g.selectAll('path')
       chart.append('g').attr('class', 'grid').call(makeYLines().tickSize(-width, 0, 0).tickFormat(''))
 
       const barGroups = chart.selectAll().data(data.results).enter().append('g')
-      barGroups.append('rect').attr('class', 'bar')
+      barGroups.append('rect').attr('class', 'bar').attr("data-legend",function(d) { return d.country})
            .attr('x', (d) => xScale(d.month)).attr('y', (d) => yScale(d.n_incidents))
            .attr('height', (d) => height - yScale(d.n_incidents)).attr('width', xScale.bandwidth())
            .on('mouseenter', function (actual, i) {
@@ -797,132 +738,6 @@ var path = g.selectAll('path')
 
                 svg3.append('text').attr('class', 'title').attr('x', width / 2 + margin+50).attr('y', 40).attr('text-anchor', 'middle')
                                   .text('Incidents: 2017')
-
-
-
-
-
-// //************** MAP ***************
-//         // var svgMap = d3.select('#mapid').append("svg");
-//
-//         var color = d3.scaleLinear().range([0, 255])
-//                       .domain(con.results.map((d) => d.country));
-//
-//         console.log(color);
-//
-//
-//         var tooltip = d3.select("body").append("div")
-//         .attr("class", "tooltip")
-//         .style("opacity", 0);
-//
-//         var svgMap = d3.select('#mapid').append('svg').attr('width',1000).attr('height',700);
-//         var path = d3.geoPath();
-//
-//
-//             svgMap.append("g")
-//                 .attr("class", "states")
-//                 .selectAll("path")
-//                 .data(topojson.feature(us, us.objects.states).features)
-//                 .enter().append("path")
-//                 .attr("d", path)
-//                 // .attr('fill', (d,i) => { return color(i); })
-//                 .on("mouseover", function(d) {
-//
-//                     tooltip.transition()
-//                     .duration(200)
-//                     .style('fill','skyblue')
-//                     .style("opacity", 0.8);
-//
-//                     tooltip.html(data.results[0].country)
-//                     .style("left", (d3.event.pageX) + "px")
-//                     .style("top", (d3.event.pageY - 28) + "px");
-//                 })
-//                 .on("mouseout", function(d) {
-//                     tooltip.transition()
-//                     .duration(500)
-//                     .style("opacity", 0);
-//                 })
-//                 .on("click", function(d) {
-//                   console.log(d);
-//                 });
-//                 // .attr('mouseenter', (data) =>{
-//                 //   console.log(us.objects.states);
-//                 //   // console.log(data.results[i].state);
-//                 // })
-//
-//             svgMap.append("path")
-//                 .attr("class", "state-borders")
-//                 .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
-
-
-
-
-
-
-    // //************ viz 3 **************
-    //
-    // // var statesNames = states.map(function(d,i) { console.log(d.features[i].properties.name);return d.features[i].properties.name; });
-    // // console.log(statesNames.length);
-    //
-    // var wid = 960,
-    // hei = 700,
-    // barHeight = hei / 2 - 40;
-    //
-    // var formatNumber = d3.format("s");
-    // //
-    // // var color = d3.scale.ordinal().range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-    //
-    //
-    // console.log(states);
-    // // console.log(data.results[0].state);
-    //
-    // var satteNames= [];
-    // var nyCounter=0;
-    //
-    //
-    //
-    // for(i=0;i<states.features.length;i++){
-    //
-    //    console.log(states.features[i].properties.name);
-    //    satteNames.push(states.features[i].properties.name);
-    //
-    // }
-    //
-    // console.log(satteNames);
-    // var numBarsStates = statesNames.length;
-    // // console.log(numBarsStates);
-    //
-    //
-    //   // console.log(data.results[i].state);
-    //
-    //    // var filteredID = states.filter((data) => {
-    //    //                         var ct = states.features[i].properties.name;
-    //    //                         console.log(ct);
-    //    //                         console.log(states);
-    //    //                         return data.results[i].state === ct;
-    //    //                   });
-    // // var nyc = getFrequency('Alabama'); var nj = getFrequency('Alaska'); var nyc = getFrequency('New York');var nj = getFrequency('New Jersey');
-    //
-    // var incidentCount = [];
-    //
-    // for(i=0; i<stateNames.length; i++){
-    //
-    //   incidentCount.push(getFrequency(stateNames[i]));
-    // }
-    //
-    // console.log('incidentCount');  console.log(incidentCount);
-    //
-    //
-    // function getFrequency(stateName){
-    //   var counter = 0;
-    //   for(i=0;i<states.features.length;i++){
-    //
-    //         if(data.results[i].state === stateName)
-    //           counter+=1;
-    //     }
-    //     return counter;
-    //  }
-
 
 
 
