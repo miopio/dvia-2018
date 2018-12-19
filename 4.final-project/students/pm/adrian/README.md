@@ -21,7 +21,7 @@ In the first panel presented below I showed how the temperature evolved over the
 
 The final portion of this panel includes a minimalist histogram on the far right hand side of the panel.  The slight right skew (high) is evident.
 
-![Global Weather Data - Panel 1](images/panel1Weather.png)
+![Global Weather Data - Panel 1](Images/panel1Weather.png)
 
 However, with this said the transparency on the histogram wasn't working the way I anticipated and I ended up creating a new approach discussed below that worked much better.
 
@@ -35,14 +35,14 @@ To overcome this I included three additional heatmaps:
 
 The inclusion of these additional visualizations presented a stronger pattern. As expected the longer the averaging pattern the stronger the story of temperature increase.  A copy of the second panel is detailed below:
 
-![Global Weather Data - Panel 2](images/panel2Weather.png)
+![Global Weather Data - Panel 2](Images/panel2Weather.png)
 
 Overall, I was quite happy with how the heatmap panel came out, and I found presenting a story to the differences between the lines relatively easy (my test of a visualization is to practice presenting it aloud - I find that this highlights a variety of issues in the overarching story, labeling etc)
 
 #### Bringing It Together
 While Panels 1 and 2 were designed independently I wanted to combine them together to minimize the need for multiple axis. After combining the two panels the visualization became:
 
-![Global Weather Data - Combined](images/combinedWeather.png)
+![Global Weather Data - Combined](Images/combinedWeather.png)
 
 The initial combined visualization is concept-1.
 
