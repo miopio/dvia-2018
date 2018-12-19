@@ -55,7 +55,7 @@ Following our conversation in the last session, I was focused on solving three m
 
 A copy of the final visualization is contained below:
 
-![Global Weather Data - Final](images/finalWeather.png)
+![Global Weather Data - Final](Images/finalWeather.png)
 
 The final presentation is concept-2.
 
