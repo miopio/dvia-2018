@@ -2,86 +2,132 @@
 <head>
   <meta charset="UTF-8">
   <style>
-    /* remove default padding and center the sketch on the page */
-    html, body { height:100%; padding:0; margin:0; background:#e0e0d9; }
-    /*body { display:flex; justify-content:center; align-items:center; }*/
-    #myDiv{
-      width:2600px;
-      height:400px;
+    
+    body{
+    background-color: #d33092;
+    background-image: linear-gradient(to bottom right, #d33092 40%, #f26535);
+    background-repeat: no-repeat, no-repeat;
+    background-position: top center, top;
+    background-size: 45%, contain;
+    background-attachment: fixed, fixed;
+    background-size: cover;
+    }
+
+    h1{
+      color: #ffffff;
+      font-family: 'Merriweather', serif;
+      font-size: 40px;
       margin-left: 80px;
     }
+
+    .intro{
+      color: #ffffff;
+      font-family: 'Muli', sans-serif;
+      margin-left: 80px;
+    }
+
+    .sectionHeader{
+      color: #ffffff;
+      font-family: 'Merriweather', serif;
+      margin-left: 80px;
+    }
+
+    p{
+      color: #ffffff;
+      font-family: 'Muli', sans-serif;
+      margin-left: 80px;
+    }
+
+    .yellow{
+      color: #ffff00;
+    }
+
+    .orange{
+      color: #ffa500;
+    }
+
 
     #lifeladderSorted{
-      width:2600px;
-      height:400px;
-      margin-left: 80px;
+      width:100%;
     }
 
-    #myDiv1{
-      width:2600px;
-      height:400px;
-      margin-left: 80px;
-    }
-
-     #myDiv2{
-      width:2600px;
-      height:400px;
-      margin-left: 80px;
-    }
-
-    #myDiv3{
-      width:2600px;
-      height:400px;
-      margin-left: 80px;
-    }
-
-    #myDiv4{
-      width:2600px;
-      height:400px;
-      margin-left: 80px;
+     #tourismSorted{
+      width:100%;
     }
 
     #boxPlot{
-      width: 1280px;
-      height: 600px;
-      margin-left: 200px ;
+      width: 100%;
     }
 
-    #barPlot{
-      width: 1280px;
-      height: 600px;
-      margin-left: 80px ;
+    #boxPlot2{
+      width: 100%
+    }
+
+    #boxPlot3{
+      width:100%;
+    }
+
+    #boxPlot4{
+      width:100%;
+    }
+
+    #boxPlot5{
+      width:100%;
+    }
+
+    #boxPlot6{
+      width:100%;
     }
 
     #myDiv7{
-      width: 1280px;
-      height: 1280px;
-      margin-left: 80px;
+      width: 100%;
+    }
+
+    #myDiv8{
+      width: 100%;
     }
 
   </style>
-  <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Gravitas+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:900|Muli" rel="stylesheet">
 
   <!-- dependencies -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="lib/lodash.min.js"></script>
   <script src="lib/brewer.js"></script>
   <script src="lib/p5.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <!-- your code -->
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
 </head>
 
 <body>
-
-  <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <div id="lifeladderSorted"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <div id="myDiv1"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <div id="myDiv2"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <div id="myDiv3"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <div id="myDiv4"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <h1>Happiness of Countries: Reality & Perceptions</h1>
+  <h3 class = "intro">Every year, the <a href = "http://worldhappiness.report/ed/2018/">World Happiness Report</a> publishes a report that takes a look at overall happiness of citizens living in each country, and factors that contribute to this happiness. It allows us to dessiminate what each country as a whole values, and their views on their own country. Often, perceptions of one's own country is drastically different from that of an outsider's. We compare by looking at inbound tourism data and traveler recommendation lists to see where the descrepencies arise.</h3>
+  <h2 class = "sectionHeader">First Glance</h3>
+  <p>The World Happiness Report uses a metric called the <em>Cantril Life Ladder</em> to measure the value of "happiness" in a country. It is a measurement of the national average response to the question of life evaluations: <b class = "yellow">"Please imagine a ladder, with steps numbered from 0 at the bottom to 10 at the top. The top of the ladder represents the best possible life for you and the bottom of the ladder represents the worst possible life for you. On which step of the ladder would you say you personally feel you stand at this time?”</b></p>
+  <div id="lifeladderSorted"><!--  this DIV --></div>
+  <p>We see that Finland has the highest score out of all the countries that were surveyed at around <b class = "yellow">7.63</b>. This means that the average Finnish citizen subjectively feels that they are having close to the best possible life they can live.</p>
+  <p>Let's now compare that to what the world "thinks". Though there are a number of factors to how one chooses a country of destination to travel to, tourism provides a general measure of "what countries the world wants to go to", in any given year.
+  <div id="tourismSorted"><!--  this DIV --></div>
+  <p>We see that the countries where people like to travel the most are not very correlated to the countries where citizens are the happiest. The countries with the most tourists are highlighted in <b class = "orange">orange</b>, while the countries with the highest scores of happiness are highlighted in <b class = "yellow">yellow</b>.</p>
+  <h2 class = "sectionHeader">Regional Comparisons</h2>
+  <p>How do the levels of happiness vary in different regions of the world? Can they be explained by regional societal values, or current events? The World Happiness Report uses a number of different measures to parse out what could potentially be causing these differences in happiness.</p>
   <div id="boxPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <button id="randomize" onclick="javascript:zoom()">Zoom!</button>
-  <div id="barPlot"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <p>Looking back at the life ladder data but grouped into regions, we see that Western Europe, and North America/Australia/New Zealand have the highest satisfaction with life. At the lower end of the spectrum, we have Sub-Saharan Africa with a median of <b class = "yellow">4.33</b>.</p>
+  <p>Now we will look at a series of qualitative variables that were measured by taking the national average of binary responses (0 or 1) to the following questions: 
+  <p><b class = "yellow">"If you were in trouble, do you have relatives you can count on to help you whenever you need them?" [Social Support]</b>
+  </p>
+  <p><b class= "yellow">"Are you satisfied or dissatisfied with your freedom to choose what you do with your life?" [Freedom to Make Life Choices]</b></p>
+  <p><b class= "yellow">"Have you donated money to a charity in the past month?" [Generosity]</b></p>
+  <p><b class = "yellow">"Is corruption widespread throughout the government, or in business?" [Corruption]</b></p>
+  <div id="boxPlot3"><!-- Plotly chart wille drawn inside this DIV --></div>
+  <div id="boxPlot4"><!-- Plotly chart wille drawn inside this DIV --></div>
+  <div id="boxPlot5"><!-- Plotly chart wille drawn inside this DIV --></div>
+  <div id="boxPlot6"><!-- Plotly chart wille drawn inside this DIV --></div>
+  <h2 class = "sectionHeader">Differences in Perception</h2>
+  <p>If we plot each country's happiness scores against the number of annual incoming tourists, we could potentially visualize discrepencies as a function of the area created by connecting the dots (countries of each region) together.</p>
   <div id="myDiv7"><!-- Plotly chart will be drawn inside this DIV --></div>
   <!-- p5.js will automatically create a canvas element here when the page loads -->
   <section class="sketch" id="widthRef">
