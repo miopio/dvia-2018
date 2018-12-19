@@ -1,0 +1,11 @@
+Lato-Regular
+PTSerif-Bold
+Lato-Italic
+Lato-Bold
+PTSerif-Regular
+
+{"aifont":"Lato-Regular","family":"'Lato',arial,helvetica,sans-serif","weight":"","style":""},
+{"aifont":"PTSerif-Bold","family":"'PT Serif'","weight":"bold","style":""},
+{"aifont":"Lato-Italic","family":"'Lato',arial,helvetica,sans-serif","weight":"","style":"italic"},
+{"aifont":"Lato-Bold","family":"'Lato',arial,helvetica,sans-serif","weight":"bold","style":""},
+{"aifont":"PTSerif-Regular","family":"'PT Serif'","weight":"","style":"normal"},

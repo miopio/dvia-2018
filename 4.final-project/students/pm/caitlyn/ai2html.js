@@ -261,7 +261,12 @@ var fonts = [
   {"aifont":"Stymie-Thin","family":"nyt-stymie,arial,helvetica,sans-serif","weight":"300","style":""},
   {"aifont":"Stymie-UltraLight","family":"nyt-stymie,arial,helvetica,sans-serif","weight":"300","style":""},
   {"aifont":"NYTMagSans-Regular","family":"'nyt-mag-sans',arial,helvetica,sans-serif","weight":"500","style":""},
-  {"aifont":"NYTMagSans-Bold","family":"'nyt-mag-sans',arial,helvetica,sans-serif","weight":"700","style":""}
+  {"aifont":"NYTMagSans-Bold","family":"'nyt-mag-sans',arial,helvetica,sans-serif","weight":"700","style":""},
+  {"aifont":"Lato-Regular","family":"'Lato',arial,helvetica,sans-serif","weight":"","style":""},
+{"aifont":"PTSerif-Bold","family":"'PT Serif'","weight":"bold","style":""},
+{"aifont":"Lato-Italic","family":"'Lato',arial,helvetica,sans-serif","weight":"","style":"italic"},
+{"aifont":"Lato-Bold","family":"'Lato',arial,helvetica,sans-serif","weight":"bold","style":""},
+{"aifont":"PTSerif-Regular","family":"'PT Serif'","weight":"","style":"normal"}
 ];
 
 // CSS text-transform equivalents
