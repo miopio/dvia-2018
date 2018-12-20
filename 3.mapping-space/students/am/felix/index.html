@@ -29,10 +29,10 @@
       </div>
 
       <div id='diagram-container'>
-        <div id="diagram">
-
-        </div>
+        <div id="diagram"></div>
       </div>
+      <div id="diagram-legend-month"></div>
+      <div class='full right legend'>Time</div>
     </div>
 
     <div id='legends'>
@@ -40,10 +40,10 @@
         <div id="circle-legend">
 
         </div>
-        <hr />
+        <!-- <hr /> -->
         <div id="position-hover">
           <div class='center' id="place-name">
-            <span class='center'>dist in km SSW of nearest location, Country</span>
+            <span class='center'>Select an event to see more information here …</span>
           </div>
           <div id="place-error">
 
@@ -51,31 +51,49 @@
 
               <tr>
 
-              <td>horizontalError:</td>
+              <td>date:</td>
 
-              <td class='right'>0.00</td>
-
-              </tr>
-
-              <tr>
-
-              <td>depth:</td>
-
-              <td class='right'>00.00</td>
+              <td class='right' id='time'>–</td>
 
               </tr>
 
               <tr>
 
-              <td>depthError:</td>
+              <td>type:</td>
 
-              <td class='right'>0.00</td>
+              <td class='right' id='type'>–</td>
+
+              </tr>
+
+              <tr>
+
+              <td>horizontal error:</td>
+
+              <td class='right' id='horizontal-error'>–</td>
+
+              </tr>
+
+              <tr>
+
+              <td><datalist class="">
+
+              </datalist>depth:</td>
+
+              <td class='right' id='depth'>–</td>
+
+              </tr>
+
+              <tr>
+
+              <td>depth error:</td>
+
+              <td class='right' id='depth-error'>–</td>
 
               </tr>
 
             </table>
           </div>
-          <hr />
+          <!-- <hr /> -->
           <div id="error-legend">
 
           </div>
@@ -84,8 +102,11 @@
 
       <div id="diagram-legend">
         <div id="slider">
-
         </div>
+        <div id="diagram-legend-magnitude"></div>
+        <span class='legend' id='legend-magnitude'>Magnitude</div>
+
+
       </div>
 
     </div>
@@ -93,9 +114,14 @@
   </div>
 
   <!-- load our dependencies and sketch file -->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
   <script src="lib/leaflet/leaflet.js"></script>
   <script src="myLib/nouislider.js"></script>
   <script src="lib/p5.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="lib/lodash.min.js"></script>
   <script src="lib/brewer.js"></script>
   <script src="sketch.js"></script>

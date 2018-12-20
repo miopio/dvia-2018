@@ -20,7 +20,7 @@ circle {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  overflow-x: auto;
+  /*overflow-x: auto;*/
   white-space: nowrap;
 }
 
@@ -99,4 +99,10 @@ h1 {
 .node--root,
 .node--leaf {
   pointer-events: none;
+}
+
+#explanation {
+  margin-top: 10px;
+  font-size: 13px;
+  max-width: 450px;
 }

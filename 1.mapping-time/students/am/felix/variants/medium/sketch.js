@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function setup() {
   // set the width & height of the sketch
   createCanvas(400, 130)
@@ -27,9 +26,6 @@ function draw() {
   text(now.text.time, 30, 100)
 
 }
-=======
-// https://gist.github.com/etra0/1c214bb4e39a68d05a924e0466454456
-// license: gpl-3.0
 
 const w = 800, h = 600;
 
@@ -114,4 +110,3 @@ function draw() {
 
 
 }
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
