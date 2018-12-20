@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function setup() {
   // set the width & height of the sketch
   createCanvas(400, 130)
@@ -27,7 +26,7 @@ function draw() {
   text(now.text.time, 30, 100)
 
 }
-=======
+
 // Trying to use in the future: https://processing.org/examples/circlecollision.html
 
 // Using coding train tutorials Nature of Code 2.1 – 2.5 https://www.youtube.com/playlist?list=PLRqwX-V7Uu6aFlwukCmDf0-1-uSR7mklK
@@ -263,4 +262,3 @@ function cta(n) {
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022

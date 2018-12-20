@@ -4,7 +4,7 @@ var table;
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("data/happinessData2018_regionSort.csv", "csv", "header");
-    orderedTable = loadTable("data/happinessData2018.csv", "csv", "header");
+    orderedTable = loadTable("data/happinessData2018_descending.csv", "csv", "header");
     travelTable = loadTable("data/travelDestinations_cited.csv", "csv", "header");
 }
 
@@ -29,233 +29,274 @@ function preload() {
     cited = travelTable.getColumn('number cited');
     citedSplice = travelTable.getColumn('number cited');
 
+    tourism = table.getColumn('Tourism 2015');
+    tourismSorted = orderedTable.getColumn('Tourism 2015');
+    tourismSplice = table.getColumn('Tourism 2015');
+
+    color = table.getColumn('Color');
+    colorSorted = orderedTable.getColumn('Color');
+
+    suicide = orderedTable.getColumn('Suicide');
+
     //sort data from table into regions
     ceEurope = countrySplice.splice(0,17);
     ceEurope_lifeladder = lifeladderSplice.splice(0,17);
     ceEurope_cited = citedSplice.splice(0,17);
-    console.log(ceEurope);
+    ceEurope_tourism = tourismSplice.splice(0,17);
+
     
     indyStates = countrySplice.splice(0, 12);
     indyStates_lifeladder = lifeladderSplice.splice(0, 12);
     indyStates_cited = citedSplice.splice(0,12);
-    console.log(indyStates);
+    indyStates_tourism = tourismSplice.splice(0,12);
 
     eastAsia = countrySplice.splice(0, 6);
     eastAsia_lifeladder = lifeladderSplice.splice(0, 6);
     eastAsia_cited = citedSplice.splice(0,6);
-    console.log(eastAsia);
+    eastAsia_tourism = tourismSplice.splice(0,6);
 
     latinCarib = countrySplice.splice(0, 22);
     latinCarib_lifeladder = lifeladderSplice.splice(0, 22);
     latinCarib_cited = citedSplice.splice(0, 22);
-    console.log(latinCarib);
+    latinCarib_tourism = tourismSplice.splice(0,22);
 
     MENA = countrySplice.splice(0,19);
     MENA_lifeladder = lifeladderSplice.splice(0, 19);
     MENA_cited = citedSplice.splice(0, 19);
-    console.log(MENA);
+    MENA_tourism = tourismSplice.splice(0,19);
 
     NANZ = countrySplice.splice(0,4);
     NANZ_lifeladder = lifeladderSplice.splice(0, 4);
     NANZ_cited = citedSplice.splice(0, 4);
-    console.log(NANZ);
+    NANZ_tourism = tourismSplice.splice(0,4);
 
     southAsia = countrySplice.splice(0,7);
     southAsia_lifeladder = lifeladderSplice.splice(0, 7);
     southAsia_cited = citedSplice.splice(0, 7);
-    console.log(southAsia);
+    southAsia_tourism = tourismSplice.splice(0,7);
 
     seAsia = countrySplice.splice(0,9);
     seAsia_lifeladder = lifeladderSplice.splice(0, 9);
     seAsia_cited = citedSplice.splice(0, 9);
-    console.log(seAsia);
+    seAsia_tourism = tourismSplice.splice(0,9);
 
     ssAfrica = countrySplice.splice(0,39);
     ssAfrica_lifeladder = lifeladderSplice.splice(0, 39);
     ssAfrica_cited = citedSplice.splice(0, 39);
-    console.log(ssAfrica);
+    ssAfrica_tourism = tourismSplice.splice(0,39);
 
     wEurope = countrySplice;
     wEurope_lifeladder = lifeladderSplice;
     wEurope_cited = citedSplice;
-    console.log(wEurope);
+    wEurope_tourism = tourismSplice;
 
 
-
- function getColor(m) {
-  return region = 'Central and Eastern Europe' ? '#800026' :
-         region = 'Commonwealth of Independent States'  ? '#BD0026' :
-         region = 'East Asia'  ? '#E31A1C' :
-         region = 'Latin America and Caribbean'  ? '#FC4E2A' :
-         region = 'Middle East and North Africa'  ? '#FD8D3C' :
-         region = 'North America and ANZ'  ? '#FEB24C' :
-         region = 'South Asia'  ? '#FED976' :
-         region = 'Southeast Asia' ? '#6e6e6e' :
-         region = 'Sub-Saharan Africa' ? '#1a1a1a' :
-         region = 'Western Europe' ? '#888888' :
-                    '#FFEDA0'; 
-};
-
-color = [];
-
-for (var i = 0; i < region.length; i++){
-    getColor(region[i])
-    }
-
-console.log('hi')
-
-function chooseColor(){
- for (var i = 0; i < region.length; i++){
-        if (region = 'Central and Eastern Europe'){
-            color = 'orange';
-            console.log('red');
-        }
-        if (region = 'Commonwealth of Independent States'){
-            console.log('orange');
-        }
-        if (region = 'East Asia'){
-            console.log('yellow');
-        }
-        if (region = 'Latin America and Caribbean'){
-            console.log('green');
-        }
-        else {
-            console.log('blue');
-        }
-    };
-};
-
-
-//BAR GRAPH: LIFE LADDER
+//SORTED LIFE LADDER
 
 var layout = {
-  title: 'Life Ladder: Happiness by region',
-  showlegend: true
+  title: 'Happiest Countries in the World',
+  showlegend: false,
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+  xaxis: {
+    color: 'rgb(255,255,255)',
+  },
+  yaxis: {
+    title: 'Life Ladder (1-10)',
+    color: 'rgb(255,255,255',
+    range: [0,10]
+  }
 };
 
 var data = [
   {
-    x: country,
-    y: lifeladder,
-    marker: {
-        color: 'light blue'
-    },
-    type: 'bar'
-  }
-];
-
-Plotly.newPlot('myDiv', data, layout);
-
-var layoutA = {
-  title: 'Life Ladder: Happiness by region',
-  showlegend: true
-};
-
-var dataA = [
-  {
     x: countrySorted,
     y: lifeladderSorted,
     marker: {
-        color: getColor(region)
+        color: colorSorted,
     },
     type: 'bar'
   }
 ];
 
-Plotly.newPlot('lifeladderSorted', dataA, layoutA);
+Plotly.newPlot('lifeladderSorted', data, layout);
 
-//BAR GRAPH: SOCIAL SUPPORT
+//SORTED TOURIST BY LIFE LADDER ORDER
+var layout = {
+  title: 'Inbound Tourism (2015) as a Measurement for Country Desirability',
+  showlegend: false,
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+  xaxis: {
+    color: 'rgb(255,255,255)',
+  },
+  yaxis: {
+    title: 'Inbound Tourism in 2015 (numbers of people)',
+    color: 'rgb(255,255,255'
+  }
+};
 
-var layout1 = {
-      title: 'Social Support',
-      showlegend: true
-    };
-
-
-var data1 = [
+var data = [
   {
-    x: country,
-    y: socialsupport,
+    x: countrySorted,
+    y: tourismSorted,
+    marker: {
+        color: colorSorted,
+    },
     type: 'bar'
   }
 ];
 
-Plotly.newPlot('myDiv1', data1, layout1);
+Plotly.newPlot('tourismSorted', data, layout);
 
-//BAR GRPAH: FREEDOM TO MAKE LIFE CHOICES
+//SORTED TOURIST BY LIFE LADDER ORDER
+var layout = {
+  title: 'Suicide Rates per 100,000 in population',
+  showlegend: false,
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+  xaxis: {
+    color: 'rgb(255,255,255)',
+  },
+  yaxis: {
+    title: 'Suicide Rates (per 100,000 in population)',
+    color: 'rgb(255,255,255'
+  }
+};
 
-var layout2 = {
-      title: 'Freedom to Make Life Choices',
-      showlegend: true
-    };
-
-
-var data2 = [
+var data = [
   {
-    x: country,
-    y: freedom,
+    x: countrySorted,
+    y: suicide,
+    marker: {
+        color: colorSorted,
+    },
     type: 'bar'
   }
 ];
 
-
-Plotly.newPlot('myDiv2', data2, layout2);
-
-//BAR GRAPH: GENEROSITY
-
-var layout3 = {
-      title: 'Generosity',
-      showlegend: true
-    };
-
-var data3 = [
-  {
-    x: country,
-    y: generosity,
-    type: 'bar'
-  }
-];
-
-Plotly.newPlot('myDiv3', data3, layout3);
-
-//BAR GRAPH: PERCEPTIONS OF CORRUPTION
-
-var layout4 = {
-      title: 'Perceptions of Corruption',
-      showlegend: true
-    };
-
-var data4 = [
-  {
-    x: country,
-    y: corruption,
-    type: 'bar'
-  }
-];
+Plotly.newPlot('suicide', data, layout);
 
 
-Plotly.newPlot('myDiv4', data4, layout4);
-
-
-// SET UP BOX PLOT
+// SET UP LIFE LADDER BOX PLOT
 
 var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States', 'East Asia', 'Latin America and Caribbean', 'Middle East and North Africa', 'North America and ANZ', 'South Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'Western Europe'];
 
 
 var xData = [
-        lifeladder.slice(0 ,16),
-        lifeladder.slice(17, 28),
-        lifeladder.slice(29, 34),
-        lifeladder.slice(35 ,56),
-        lifeladder.slice(57, 75),
-        lifeladder.slice(76, 79),
-        lifeladder.slice(80 ,86),
-        lifeladder.slice(87, 95),
-        lifeladder.slice(96, 134),
+        lifeladder.slice(0 ,17),
+        lifeladder.slice(17, 29),
+        lifeladder.slice(29, 35),
+        lifeladder.slice(35 ,57),
+        lifeladder.slice(57, 76),
+        lifeladder.slice(76, 80),
+        lifeladder.slice(80 ,87),
+        lifeladder.slice(87, 96),
+        lifeladder.slice(96, 135),
         lifeladder.slice(135, 155)
     ];
 
-var colors = ['rgba(93, 164, 214, 0.5)', 'rgba(255, 144, 14, 0.5)', 'rgba(44, 160, 101, 0.5)', 'rgba(255, 65, 54, 0.5)', 'rgba(207, 114, 255, 0.5)', 'rgba(127, 96, 0, 0.5)', 'rgba(255, 140, 184, 0.5)', 'rgba(79, 90, 117, 0.5)', 'rgba(222, 223, 0, 0.5)', 'rgba(0, 0, 0, 0.5)'];
+var countryData = [
+        country.slice(0 ,17),
+        country.slice(17, 29),
+        country.slice(29, 35),
+        country.slice(35 ,57),
+        country.slice(57, 76),
+        country.slice(76, 80),
+        country.slice(80 ,87),
+        country.slice(87, 96),
+        country.slice(96, 135),
+        country.slice(135, 155)
+]
+
+
+var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)'];
+var data = [];
+
+for ( var i = 0; i < yData.length; i ++ ) {
+    var result = {
+        type: 'box',
+        x: xData[i],
+        name: yData[i],
+        boxpoints: 'all',
+        text: countryData[i],
+        jitter: 0.5,
+        whiskerwidth: 0.2,
+        fillcolor: colors[i],
+        marker: {
+            size: 3
+        },
+        line: {
+            width: 3,
+            color: 'rgb(255, 255, 255)'
+        }
+    };
+    data.push(result);
+};
+
+layout = {
+    title: 'Happiness by Region',
+    titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+    xaxis: {range: [0, 10],
+        color: "white",
+        tickcolor: "white",
+    zerolinecolor: 'rgb(255,255,255)'},
+    yaxis: {
+        showlegend: true,
+        showgrid: false,
+        zeroline: true,
+        tickmode: "auto",
+        tickcolor: "white",
+        color: "white",
+        gridcolor: 'rgb(255, 255, 255)',
+        gridwidth: 1,
+        zerolinecolor: 'rgb(255, 255, 255)',
+        zerolinewidth: 2,
+        hoverinfo: countryData
+    },
+    margin: {
+        l: 200,
+        r: 30,
+        b: 80,
+        t: 100
+    },
+    paper_bgcolor: 'rgba(255, 255, 255, 0)',
+    plot_bgcolor: 'rgba(255, 255, 255, 0)',
+    showlegend: false
+};
+
+Plotly.newPlot('boxPlot', data, layout);
+
+
+// SOCIAL SUPPORT BOX PLOT
+
+var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States', 'East Asia', 'Latin America and Caribbean', 'Middle East and North Africa', 'North America and ANZ', 'South Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'Western Europe'];
+
+var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)'];
+
+var xData = [
+        socialsupport.slice(0 ,17),
+        socialsupport.slice(17, 29),
+        socialsupport.slice(29, 35),
+        socialsupport.slice(35 ,57),
+        socialsupport.slice(57, 76),
+        socialsupport.slice(76, 80),
+        socialsupport.slice(80 ,87),
+        socialsupport.slice(87, 96),
+        socialsupport.slice(96, 135),
+        socialsupport.slice(135, 155)
+    ];
 
 var data = [];
 
@@ -265,26 +306,37 @@ for ( var i = 0; i < yData.length; i ++ ) {
         x: xData[i],
         name: yData[i],
         boxpoints: 'all',
+        text: countryData[i],
         jitter: 0.5,
         whiskerwidth: 0.2,
-        fillcolor: 'cls',
+        fillcolor: colors[i],
         marker: {
             size: 3
         },
         line: {
-            width: 3
+            width: 3,
+            color: 'white'
         }
     };
     data.push(result);
 };
 
 layout = {
-    title: 'Happiness by Region',
-    xaxis: {range: [0, 10]},
+    title: 'Social Support',
+    titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+    xaxis: {
+        range: [0, 1],
+        tickcolor: "white",
+        color: "white"
+    },
     yaxis: {
-        showgrid: true,
+        showgrid: false,
         zeroline: true,
-        dtick: 5,
+        tickmode: "auto",
+        tickcolor: "white",
+        color: "white",
         gridcolor: 'rgb(255, 255, 255)',
         gridwidth: 1,
         zerolinecolor: 'rgb(255, 255, 255)',
@@ -296,187 +348,384 @@ layout = {
         b: 80,
         t: 100
     },
-    paper_bgcolor: 'rgb(243, 243, 243)',
-    plot_bgcolor: 'rgb(243, 243, 243)',
-    showlegend: true
+    paper_bgcolor: 'rgba(255,255,255,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    showlegend: false
 };
 
-Plotly.newPlot('boxPlot', data, layout);
+Plotly.newPlot('boxPlot3', data, layout);
 
-function zoom() {
-  var min = 0;
-  var max = 10;
-  Plotly.animate('boxPlot', {
-    layout: {
-      xaxis: {range: [min, max]},
-      yaxis: {range: [min, max]}
-    }
-  }, {
-    transition: {
-      duration: 500,
-      easing: 'cubic-in-out'
-    }
-  })
-}
+// GENEROSITY BOX PLOT
 
+var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States', 'East Asia', 'Latin America and Caribbean', 'Middle East and North Africa', 'North America and ANZ', 'South Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'Western Europe'];
 
+var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)'];
 
+var xData = [
+        generosity.slice(0 ,17),
+        generosity.slice(17, 29),
+        generosity.slice(29, 35),
+        generosity.slice(35 ,57),
+        generosity.slice(57, 76),
+        generosity.slice(76, 80),
+        generosity.slice(80 ,87),
+        generosity.slice(87, 96),
+        generosity.slice(96, 135),
+        generosity.slice(135, 155)
+    ];
 
-var layout5 = {
-      title: 'Destinations recommended to travelers 2018-2019 (not normalized)',
-      showlegend: true
+var data = [];
+
+for ( var i = 0; i < yData.length; i ++ ) {
+    var result = {
+        type: 'box',
+        x: xData[i],
+        name: yData[i],
+        boxpoints: 'all',
+        text: countryData[i],
+        jitter: 0.5,
+        whiskerwidth: 0.2,
+        fillcolor: colors[i],
+        marker: {
+            size: 3
+        },
+        line: {
+            width: 3,
+            color: 'white'
+        }
     };
+    data.push(result);
+};
 
-var data5 = [
-  {
-    x: ['Central and Eastern Europe', 'Commonwealth of Independent States', 'East Asia', 'Latin America and Caribbean', 'Middle East and North Africa', 'North America and ANZ', 'South Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'Western Europe'
-],
-    y: [15, 6, 12, 32, 14, 43, 7, 11, 12, 36],
-    type: 'bar'
-  }
-];
+layout = {
+    title: 'Generosity',
+    titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+    xaxis: {
+        range: [0, 1],
+        tickcolor: "white",
+        color: "white"
+    },
+    yaxis: {
+        showgrid: false,
+        zeroline: true,
+        tickmode: "auto",
+        tickcolor: "white",
+        color: "white",
+        gridcolor: 'rgb(255, 255, 255)',
+        gridwidth: 1,
+        zerolinecolor: 'rgb(255, 255, 255)',
+        zerolinewidth: 2
+    },
+    margin: {
+        l: 200,
+        r: 30,
+        b: 80,
+        t: 100
+    },
+    paper_bgcolor: 'rgba(255,255,255,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    showlegend: false
+};
 
-Plotly.newPlot('barPlot', data5, layout5);
+Plotly.newPlot('boxPlot4', data, layout);
 
+//FREEDOM BOX PLOT
+
+
+var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States', 'East Asia', 'Latin America and Caribbean', 'Middle East and North Africa', 'North America and ANZ', 'South Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'Western Europe'];
+
+var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)'];
+
+
+var xData = [
+        freedom.slice(0 ,17),
+        freedom.slice(17, 29),
+        freedom.slice(29, 35),
+        freedom.slice(35 ,57),
+        freedom.slice(57, 76),
+        freedom.slice(76, 80),
+        freedom.slice(80 ,87),
+        freedom.slice(87, 96),
+        freedom.slice(96, 135),
+        freedom.slice(135, 155)
+    ];
+
+var data = [];
+
+for ( var i = 0; i < yData.length; i ++ ) {
+    var result = {
+        type: 'box',
+        x: xData[i],
+        name: yData[i],
+        boxpoints: 'all',
+        text: countryData[i],
+        jitter: 0.5,
+        whiskerwidth: 0.2,
+        fillcolor: colors[i],
+        marker: {
+            size: 3
+        },
+        line: {
+            width: 3,
+            color: 'white'
+        }
+    };
+    data.push(result);
+};
+
+layout = {
+    title: 'Freedom to Make Life Choices',
+    titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+    xaxis: {
+        range: [0, 1],
+        tickcolor: "white",
+        color: "white"
+    },
+    yaxis: {
+        showgrid: false,
+        zeroline: true,
+        tickmode: "auto",
+        tickcolor: "white",
+        color: "white",
+        gridcolor: 'rgb(255, 255, 255)',
+        gridwidth: 1,
+        zerolinecolor: 'rgb(255, 255, 255)',
+        zerolinewidth: 2
+    },
+    margin: {
+        l: 200,
+        r: 30,
+        b: 80,
+        t: 100
+    },
+    paper_bgcolor: 'rgba(255,255,255,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    showlegend: false
+};
+
+Plotly.newPlot('boxPlot5', data, layout);
+
+//CORRUPTION BOX PLOT
+
+
+var yData = ['Central and Eastern Europe', 'Commonwealth of Independent States', 'East Asia', 'Latin America and Caribbean', 'Middle East and North Africa', 'North America and ANZ', 'South Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'Western Europe'];
+
+var colors = ['rgb(225, 225, 0)','rgb(255,165,0)', 'rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)','rgb(225, 225, 0)','rgb(255,165,0)'];
+
+var xData = [
+        corruption.slice(0 ,17),
+        corruption.slice(17, 29),
+        corruption.slice(29, 35),
+        corruption.slice(35 ,57),
+        corruption.slice(57, 76),
+        corruption.slice(76, 80),
+        corruption.slice(80 ,87),
+        corruption.slice(87, 96),
+        corruption.slice(96, 135),
+        corruption.slice(135, 155)
+    ];
+
+var data = [];
+
+for ( var i = 0; i < yData.length; i ++ ) {
+    var result = {
+        type: 'box',
+        x: xData[i],
+        name: yData[i],
+        boxpoints: 'all',
+        text: countryData[i],
+        jitter: 0.5,
+        whiskerwidth: 0.2,
+        fillcolor: colors[i],
+        marker: {
+            size: 3
+        },
+        line: {
+            width: 3,
+            color: 'white'
+        }
+    };
+    data.push(result);
+};
+
+layout = {
+    title: 'Perceived Corruption in Country',
+    titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+    xaxis: {
+        range: [0, 1],
+        tickcolor: "white",
+        color: "white"
+    },
+    yaxis: {
+        showgrid: false,
+        zeroline: true,
+        tickmode: "auto",
+        tickcolor: "white",
+        color: "white",
+        gridcolor: 'rgb(255, 255, 255)',
+        gridwidth: 1,
+        zerolinecolor: 'rgb(255, 255, 255)',
+        zerolinewidth: 2
+    },
+    margin: {
+        l: 200,
+        r: 30,
+        b: 80,
+        t: 100
+    },
+    paper_bgcolor: 'rgba(255,255,255,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    showlegend: false
+};
+
+Plotly.newPlot('boxPlot6', data, layout);
+
+//SCATTER PLOT
 
 var A = {
   x: ceEurope_lifeladder,
-  y: ceEurope_cited,
-  mode: 'markers+text',
+  y: ceEurope_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'ceEurope',
+  name: 'Central and Eastern Europe',
   text: ceEurope,
   textposition: 'top center',
   textfont: {
     family:  'Helvetica'
   },
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var B = {
   x: indyStates_lifeladder,
-  y: indyStates_cited,
-  mode: 'markers+text',
+  y: indyStates_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'indyStates',
+  name: 'Commonwealth of Independent States',
   text: indyStates,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var C = {
   x: eastAsia_lifeladder,
-  y: eastAsia_cited,
-  mode: 'markers+text',
+  y: eastAsia_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'eastAsia',
+  name: 'East Asia',
   text: eastAsia,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var D = {
   x: latinCarib_lifeladder,
-  y: latinCarib_cited,
-  mode: 'markers+text',
+  y: latinCarib_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'latinCarib',
+  name: 'Latin America and Caribbean',
   text: latinCarib,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var E = {
   x: MENA_lifeladder,
-  y: MENA_cited,
-  mode: 'markers+text',
+  y: MENA_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'MENA',
+  name: 'Middle East and North Africa',
   text: MENA,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var F = {
   x: NANZ_lifeladder,
-  y: NANZ_cited,
-  mode: 'markers+text',
+  y: NANZ_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'NANZ',
+  name: 'North America and ANZ',
   text: NANZ,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var G = {
   x: southAsia_lifeladder,
-  y: southAsia_cited,
-  mode: 'markers+text',
+  y: southAsia_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'southAsia',
+  name: 'South Asia',
   text: southAsia,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var H = {
   x: seAsia_lifeladder,
-  y: seAsia_cited,
-  mode: 'markers+text',
+  y: seAsia_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'seAsia',
+  name: 'Southeast Asia',
   text: seAsia,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var I = {
   x: ssAfrica_lifeladder,
-  y: ssAfrica_cited,
-  mode: 'markers+text',
+  y: ssAfrica_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'ssAfrica',
+  name: 'Sub-Saharan Africa',
   text: ssAfrica,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 var J = {
   x: wEurope_lifeladder,
-  y: wEurope_cited,
-  mode: 'markers+text',
+  y: wEurope_tourism,
+  mode: 'markers',
   type: 'scatter',
-  name: 'wEurope',
+  name: 'Western Europe',
   text: wEurope,
   textfont : {
     family:'Helvetica'
   },
   textposition: 'bottom center',
-  marker: { size: 12 }
+  marker: { size: 5 }
 };
 
 
@@ -485,43 +734,37 @@ var data = [A, B, C, D, E, F, G, H, I, J];
 var layout = {
   xaxis: {
     title: "Happiness score (life ladder)",
-    range: [ 0, 10 ]
+    range: [ 0, 10 ],
+    color: 'white',
+    showgrid: false
   },
   yaxis: {
-    title: "Number of times cited in travel recommendations",
-    range: [-1, 10]
+    title: "Number of tourists",
+    color: 'white',
+    showgrid: false
   },
   legend: {
     y: 0.5,
-    yref: 'paper',
+    color: 'rgba(0,0,0,0,)',
     font: {
-      family: 'Arial, sans-serif',
-      size: 20,
-      color: 'grey',
+      family: 'Helvetica, sans-serif',
+      size: 12,
+      color: 'white',
     }
+  
   },
-  title:'Data Labels on the Plot'
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  title:'Desirability of Country: Perception of Citizens vs World',
+  titlefont: {
+    color: "white"
+  }
 };
 
 Plotly.newPlot('myDiv7', data, layout);
 
 }
 
-function zoom() {
-  var min = 0;
-  var max = 10;
-  Plotly.animate('boxPlot', {
-    layout: {
-      xaxis: {range: [min, max]},
-      yaxis: {range: [min, max]}
-    }
-  }, {
-    transition: {
-      duration: 500,
-      easing: 'cubic-in-out'
-    }
-  })
-}
 
 
 

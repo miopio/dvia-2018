@@ -6,9 +6,9 @@ var internalized
 var tests
 // an array for never heard of prep treatment
 var never
-
+// table variable 
 var table
-
+// bucket arrays 
 var counts24 = [0,0,0,0,0,0];
 var counts34 = [0,0,0,0,0,0];
 var counts25 = [0,0,0,0,0,0];
@@ -44,30 +44,9 @@ function setup(){
   text("60", 725, 780)
   text("80", 925, 780)
 
-  // log the whole dataset to the console so we can poke around in it
-  //print(table)
+  // count rows 
 
-  
 
-  //noStroke()
-
-  // var x = 200
-  // var y = 100
-  // var rowHeight = 60
-  // var colWidth = 40
-
-  //for (var c=1; c<table.getColumnCount(); c++){
-   // text(table.columns[c], x-colWidth, y)
-    //y += rowHeight
-  //}
-
-  
-
-  // print numbers for each row
-  // x = 200
-  // y = 100
-  // textStyle(NORMAL)
-  // textAlign(BOLD)
   var rowCount = table.getRowCount();
 
 

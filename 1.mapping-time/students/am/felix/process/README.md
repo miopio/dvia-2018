@@ -1,3 +1,5 @@
+_**Note: I included more detailed documentation in the subfolders for the variants.**_
+
 # My seasonal rhythm
 
 For the “Right twice a day” assignment I wanted to create a clock that relates to my personal perception of time. In the last years I realized that my emotional state is stronger affected by outside factors like the season, the sunlight hours per day and the weather. Hence I decided to create a clock that puts a strong visual emphasis on factors I attribute the strongest effects to my emotional state to. Collateral damage to this emphasis is the easiness to read some of the encoded time measures and it collides with the magnitude of the time measures. A rule of thumb was: The more central a time measure is visualized the more important it is.
@@ -31,11 +33,8 @@ This is an attempt to explain how to read it from outermost to innermost radius:
 <img src="assets/04-illustrator-draft.png" />
 <img src="assets/05-notes.jpg" />
 <img src="assets/06-notes.jpg" />
-<<<<<<< HEAD
-=======
 
 
 ## The variants
 
 Instead of using the concept of this large draft, I wanted to work with two new concepts in the other variants. The medium one uses the spirographs to represent hours, minutes and seconds. The small one is a visualization of Mel Robbins’ five second rule. You can find a detailed documentation in the subfolders for the variants.
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022

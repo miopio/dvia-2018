@@ -1,7 +1,8 @@
-// add esteem field to plot data, pass that field into plotPoint, set ellipse size based on esteem value 
+// set variables 
 var table;
 var yoffset = 150;
 
+// load table 
 function preload() {
   table = loadTable("data/self-esteem.csv", "csv", "header");
 }
@@ -19,15 +20,17 @@ function setup() {
   textStyle(BOLD);
   textAlign(LEFT);
 
+  // draw rotated label 
   translate(100,100);
-rotate(HALF_PI);
+  rotate(HALF_PI);
   text("Population", -250, 150);
   rotate(-HALF_PI);
-  // draw title
-  // text(
-  //   100,
-  //   50
-  // );
+
+  //   translate(50, 510);
+  // rotate(PI/-2);
+  // text("Internalized Homophobia", 0, 0);
+  // rotate(PI / 2);
+  // translate(-50, -510);
 
   // count rows
   var rowCount = table.getRowCount();

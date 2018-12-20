@@ -21,9 +21,9 @@ function draw() {
     // the if/else construct draws the rectangle at different positions based on whether
     // the 'current' rectangle is before or after the clock value for the 24-hour time
     if (i > now.hours){
-      rect(x, 40, 31, 250);
+      rect(x, 40, 31, 300);
     }else{
-      rect(x, 70, 31, 250);
+      rect(x, 70, 31, 300);
     }
     x += 84;
   }

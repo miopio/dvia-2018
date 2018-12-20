@@ -20,3 +20,6 @@ Returned to the original code to make time units appear to shift vertical positi
 
 Wave Clock Large
 Utilized day and week progress values in tandem with background RGB color values. Red progresses from 0-100 hourly and blue from 0-255 daily. Green is set to 0. Changed milliseconds to moon value with fill grayscale set to change at midway point in lunar cycle and rectangle width expanding according to lunar cycle.  
+
+Wave Clock X-Large
+A further iteration in which I experimented with overlapping bars. 

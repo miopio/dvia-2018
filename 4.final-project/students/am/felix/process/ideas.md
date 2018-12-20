@@ -20,14 +20,11 @@
 
 9. The history of inspirational talks for business motivation.
 
-
-
-
 10. The architectural history of church windows and contemporary artworks using church windows as a medium.
 
 
 # First Feedback
 
-1. Compare to UK and USA
+1. Compare UK and USA
 2. Focus on a certain amount of specific authors and articles.
-3. Dive in into the dataset
+3. Dive into the dataset

@@ -49,39 +49,552 @@ function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
     setupMap()
 
-    // next, draw our p5 diagram that complements it
-    //createCanvas(1280, 700);
-    //background(222);
-
-    /*fill(0)
-    noStroke()
-    textSize(16)
-    text(`Plotting ${table.getRowCount()} seismic events`, 20, 40)
-    text(`Largest Magnitude: ${getColumnMax("mag")}`, 20, 60)
-    text(`Greatest Depth: ${getColumnMax("depth")}`, 20, 80)*/
 
     graphtimes = graphtable.getColumn('time');
     graphdepth = graphtable.getColumn('depth');
     graphdepth = graphdepth.map(x => x * -1);
-    graphmagnitude = graphtable.getColumn('magnitude');
+    graphmagnitude = graphtable.getColumn('mag');
     graphmagnitude = graphmagnitude^20;
 
     graphtimes2 = graphtable2.getColumn('time');
     graphdepth2 = graphtable2.getColumn('depth');
     graphdepth2 = graphdepth2.map(x => x * -1);
-    graphmagnitude2 = graphtable2.getColumn('magnitude');
+    graphmagnitude2 = graphtable2.getColumn('mag');
     graphmagnitude2 = graphmagnitude2^20;
 
     graphtimes3 = graphtable3.getColumn('time');
     graphdepth3 = graphtable3.getColumn('depth');
     graphdepth3 = graphdepth3.map(x => x * -1);
-    graphmagnitude3 = graphtable3.getColumn('magnitude');
+    graphmagnitude3 = graphtable3.getColumn('mag');
     graphmagnitude3 = graphmagnitude3^20;
 
-    graphplace3 = graphtable3.getColumn('place');
+
+    //See if I can extract all earthquakes around Alaska
+    place = graphtable3.getColumn('place');
+    test = graphtable3.getColumn('mag');
+
+    alaskadepth = [];
+    alaskamagnitude = [];
+    alaskatime =[];
+
+    for (i = 0; i < place.length; i++){
+      if (place[i].includes("Alaska")){
+        alaskadepth.push(graphdepth3[i]);
+        alaskamagnitude.push(test[i]);
+        alaskatime.push(graphtimes3[i]);
+      }
+    }
+
+    alaska2times = [];
+    alaska4times = [];
+    alaskasigtimes = [];
+
+    alaska2mag = [];
+    alaska4mag = [];
+    alaskasigmag = [];
+
+    alaska2depth = [];
+    alaska4depth = [];
+    alaskasigdepth = [];
 
 
+    for (i = 0; i < alaskadepth.length; i++){
+      if ((alaskamagnitude[i] >= 2.5) && (alaskamagnitude[i] < 4.5)){
+        alaska2times.push(alaskatime[i]);
+        alaska2mag.push(alaskamagnitude[i]);
+        alaska2depth.push(alaskadepth[i]);
+      }
+      else if ((alaskamagnitude[i] >= 4.5) && (alaskamagnitude[i] < 5.1)){
+        alaska4times.push(alaskatime[i]);
+        alaska4mag.push(alaskamagnitude[i]);
+        alaska4depth.push(alaskadepth[i]);
+      }
+      else if (alaskamagnitude[i] >= 5.1){
+        alaskasigtimes.push(alaskatime[i]);
+        alaskasigmag.push(alaskamagnitude[i]);
+        alaskasigdepth.push(alaskadepth[i]);
+      }
+    }
 
+    //Depth graph for earthquakes around alaska
+    var significant = {
+      x: alaskasigtimes,
+      y: alaskasigdepth,
+      name: 'significant',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(189, 0, 38, 0.5)',
+        size: 30
+      }
+    };
+
+    var abovemag4 = {
+      x: alaska4times,
+      y: alaska4depth,
+      name: 'above magnitude 4.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(252, 78, 42, 0.5)',
+        size: 10
+      }
+    };
+
+    var abovemag2 = {
+      x: alaska2times,
+      y: alaska2depth,
+      name: 'above magnitude 2.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(254, 178, 76, 0.5)',
+        size: 5
+      }
+    };
+
+    var data = [abovemag2, abovemag4, significant];
+
+    var layout = {
+      title: 'Alaska (Pacific & North American Plates)',
+        xaxis: {
+          showticklabels: false,
+        },
+        yaxis: {
+          showticklabels: false,
+          range: [-700, 100],
+          color: 'rgb(169,169,169)'
+          },
+      showlegend: false,
+      font: {
+        family: 'Lato',
+        size: 12,
+        color: 'rgb(169,169,169)'
+      },
+      plot_bgcolor: 'rgba(0,0,0, 0.1)',
+      margin: {
+        pad: 10
+      },
+        };
+
+    Plotly.newPlot('quake-graph-alaska', data, layout);
+
+
+    //Extract earthquake info around California
+    calidepth = [];
+    calimagnitude = [];
+    calitime =[];
+
+    for (i = 0; i < place.length; i++){
+      if (place[i].includes("CA")){
+        calidepth.push(graphdepth3[i]);
+        calimagnitude.push(test[i]);
+        calitime.push(graphtimes3[i]);
+      }
+    }
+
+    cali2times = [];
+    cali4times = [];
+    calisigtimes = [];
+
+    cali2mag = [];
+    cali4mag = [];
+    calisigmag = [];
+
+    cali2depth = [];
+    cali4depth = [];
+    calisigdepth = [];
+
+
+    for (i = 0; i < calidepth.length; i++){
+      if ((calimagnitude[i] >= 2.5) && (calimagnitude[i] < 4.5)){
+        cali2times.push(calitime[i]);
+        cali2mag.push(calimagnitude[i]);
+        cali2depth.push(calidepth[i]);
+      }
+      else if ((calimagnitude[i] >= 4.5) && (calimagnitude[i] < 5.1)){
+        cali4times.push(calitime[i]);
+        cali4mag.push(calimagnitude[i]);
+        cali4depth.push(calidepth[i]);
+      }
+      else if (calimagnitude[i] >= 5.1){
+        calisigtimes.push(calitime[i]);
+        calisigmag.push(calimagnitude[i]);
+        calisigdepth.push(calidepth[i]);
+      }
+    }
+
+    //Depth graph for earthquakes around cali
+    var significant = {
+      x: calisigtimes,
+      y: calisigdepth,
+      name: 'significant',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(189, 0, 38, 0.5)',
+        size: 30
+      }
+    };
+
+    var abovemag4 = {
+      x: cali4times,
+      y: cali4depth,
+      name: 'above magnitude 4.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(252, 78, 42, 0.5)',
+        size: 10
+      }
+    };
+
+    var abovemag2 = {
+      x: cali2times,
+      y: cali2depth,
+      name: 'above magnitude 2.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(254, 178, 76, 0.5)',
+        size: 5
+      }
+    };
+
+    var data = [abovemag2, abovemag4, significant];
+
+    var layout = {
+      title: 'California (Pacific & North American Plates)',
+        xaxis: {
+          showticklabels: false
+        },
+        yaxis: {
+          showticklabels: false,
+          range: [-700, 100]
+        },
+      showlegend: false,
+      font: {
+        family: 'Lato',
+        size: 12,
+        color: 'rgb(169,169,169)'
+      },
+      plot_bgcolor: 'rgba(0,0,0, 0.1)',
+      margin: {
+        pad: 10
+      },
+        };
+
+    Plotly.newPlot('quake-graph-cali', data, layout);
+
+    //Extract info for earthquakes around Indonesia
+    inddepth = [];
+    indmagnitude = [];
+    indtime =[];
+
+    for (i = 0; i < place.length; i++){
+      if (place[i].includes("Indonesia")){
+        inddepth.push(graphdepth3[i]);
+        indmagnitude.push(test[i]);
+        indtime.push(graphtimes3[i]);
+      }
+    }
+
+    ind2times = [];
+    ind4times = [];
+    indsigtimes = [];
+
+    ind2mag = [];
+    ind4mag = [];
+    indsigmag = [];
+
+    ind2depth = [];
+    ind4depth = [];
+    indsigdepth = [];
+
+
+    for (i = 0; i < inddepth.length; i++){
+      if ((indmagnitude[i] >= 2.5) && (indmagnitude[i] < 4.5)){
+        ind2times.push(indtime[i]);
+        ind2mag.push(indmagnitude[i]);
+        ind2depth.push(inddepth[i]);
+      }
+      else if ((indmagnitude[i] >= 4.5) && (indmagnitude[i] < 5.1)){
+        ind4times.push(indtime[i]);
+        ind4mag.push(indmagnitude[i]);
+        ind4depth.push(inddepth[i]);
+      }
+      else if (indmagnitude[i] >= 5.1){
+        indsigtimes.push(indtime[i]);
+        indsigmag.push(indmagnitude[i]);
+        indsigdepth.push(inddepth[i]);
+      }
+    }
+
+    //Depth graph for earthquakes around ind
+    var significant = {
+      x: indsigtimes,
+      y: indsigdepth,
+      name: 'significant',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(189, 0, 38, 0.5)',
+        size: 30
+      }
+    };
+
+    var abovemag4 = {
+      x: ind4times,
+      y: ind4depth,
+      name: 'above magnitude 4.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(252, 78, 42, 0.5)',
+        size: 10
+      }
+    };
+
+    var abovemag2 = {
+      x: ind2times,
+      y: ind2depth,
+      name: 'above magnitude 2.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(254, 178, 76, 0.5)',
+        size: 5
+      }
+    };
+
+    var data = [abovemag2, abovemag4, significant];
+
+    var layout = {
+      title: 'Indonesia (Australian & Eurasian Plates)',
+        xaxis: {
+          showticklabels: false
+        },
+        yaxis: {
+          showticklabels: false,
+          range: [-700, 100]
+        },
+      showlegend: false,
+      font: {
+        family: 'Lato',
+        size: 12,
+        color: 'rgb(169,169,169)'
+      },
+      plot_bgcolor: 'rgba(0,0,0, 0.1)',
+      margin: {
+        pad: 10
+      },
+        };
+
+    Plotly.newPlot('quake-graph-indonesia', data, layout);
+
+    //Extract info for earthquakes around Chile
+    chiledepth = [];
+    chilemagnitude = [];
+    chiletime =[];
+
+    place = graphtable3.getColumn('place');
+    test = graphtable3.getColumn('mag');
+
+    for (i = 0; i < place.length; i++){
+      if (place[i].includes("Chile")){
+        chiledepth.push(graphdepth3[i]);
+        chilemagnitude.push(test[i]);
+        chiletime.push(graphtimes3[i]);
+      }
+    }
+
+
+    chile2times = [];
+    chile4times = [];
+    chilesigtimes = [];
+
+    chile2mag = [];
+    chile4mag = [];
+    chilesigmag = [];
+
+    chile2depth = [];
+    chile4depth = [];
+    chilesigdepth = [];
+
+    for (i = 0; i < chiledepth.length; i++){
+      if ((chilemagnitude[i] >= 2.5) && (chilemagnitude[i] < 4.5)){
+        chile2times.push(chiletime[i]);
+        chile2mag.push(chilemagnitude[i]);
+        chile2depth.push(chiledepth[i]);
+      }
+      else if ((chilemagnitude[i] >= 4.5) && (chilemagnitude[i] < 5.1)){
+        chile4times.push(chiletime[i]);
+        chile4mag.push(chilemagnitude[i]);
+        chile4depth.push(chiledepth[i]);
+      }
+      else if (chilemagnitude[i] >= 5.1){
+        chilesigtimes.push(chiletime[i]);
+        chilesigmag.push(chilemagnitude[i]);
+        chilesigdepth.push(chiledepth[i]);
+      }
+    }
+  
+    
+    //Depth graph for earthquakes around chile
+    var significant = {
+      x: chilesigtimes,
+      y: chilesigdepth,
+      name: 'significant',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(189, 0, 38, 0.5)',
+        size: 30
+      }
+    };
+
+    var abovemag4 = {
+      x: chile4times,
+      y: chile4depth,
+      name: 'above magnitude 4.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(252, 78, 42, 0.5)',
+        size: 10
+      }
+    };
+
+    var abovemag2 = {
+      x: chile2times,
+      y: chile2depth,
+      name: 'above magnitude 2.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(254, 178, 76, 0.5)',
+        size: 5
+      }
+    };
+
+    var data = [abovemag2, abovemag4, significant];
+
+    var layout = {
+      title: 'Chile (Nazca & South American Plate)',
+        xaxis:{
+          showticklabels: false
+        },
+        yaxis: {
+          showticklabels: false,
+          range: [-700, 100]
+        },
+      showlegend: false,
+      font: {
+        family: 'Lato',
+        size: 12,
+        color: 'rgb(169,169,169)'
+      },
+      plot_bgcolor: 'rgba(0,0,0, 0.1)',
+      margin: {
+        pad: 10
+      },
+        };
+
+    Plotly.newPlot('quake-graph-chile', data, layout);
+
+        //Extract info for earthquakes around Chile
+    drdepth = [];
+    drmagnitude = [];
+    drtime =[];
+
+    place = graphtable3.getColumn('place');
+    test = graphtable3.getColumn('mag');
+
+    for (i = 0; i < place.length; i++){
+      if (place[i].includes("Dominican Republic")){
+        drdepth.push(graphdepth3[i]);
+        drmagnitude.push(test[i]);
+        drtime.push(graphtimes3[i]);
+      }
+    }
+
+
+    dr2times = [];
+    dr4times = [];
+    drsigtimes = [];
+
+    dr2mag = [];
+    dr4mag = [];
+    drsigmag = [];
+
+    dr2depth = [];
+    dr4depth = [];
+    drsigdepth = [];
+
+    for (i = 0; i < drdepth.length; i++){
+      if ((drmagnitude[i] >= 2.5) && (drmagnitude[i] < 4.5)){
+        dr2times.push(drtime[i]);
+        dr2mag.push(drmagnitude[i]);
+        dr2depth.push(drdepth[i]);
+      }
+      else if ((drmagnitude[i] >= 4.5) && (drmagnitude[i] < 5.1)){
+        dr4times.push(drtime[i]);
+        dr4mag.push(drmagnitude[i]);
+        dr4depth.push(drdepth[i]);
+      }
+      else if (drmagnitude[i] >= 5.1){
+        drsigtimes.push(drtime[i]);
+        drsigmag.push(drmagnitude[i]);
+        drsigdepth.push(drdepth[i]);
+      }
+    }
+  
+    
+    //Depth graph for earthquakes around dr
+    var significant = {
+      x: drsigtimes,
+      y: drsigdepth,
+      name: 'significant',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(189, 0, 38, 0.5)',
+        size: 30
+      }
+    };
+
+    var abovemag4 = {
+      x: dr4times,
+      y: dr4depth,
+      name: 'above magnitude 4.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(252, 78, 42, 0.5)',
+        size: 10
+      }
+    };
+
+    var abovemag2 = {
+      x: dr2times,
+      y: dr2depth,
+      name: 'above magnitude 2.5',
+      mode: 'markers',
+      marker: {
+        color: 'rgba(254, 178, 76, 0.5)',
+        size: 5
+      }
+    };
+
+    var data = [abovemag2, abovemag4, significant];
+
+    var layout = {
+      title: 'Dominican Republic (Caribbean Plate)',
+        xaxis:{
+          showticklabels: false
+        },
+        yaxis: {
+          showticklabels: false,
+          range: [-700, 100]
+        },
+      showlegend: false,
+      font: {
+        family: 'Lato',
+        size: 12,
+        color: 'rgb(169,169,169)'
+      },
+      plot_bgcolor: 'rgba(0,0,0, 0.1)',
+        };
+
+    Plotly.newPlot('quake-graph-dr', data, layout);
+
+    //Depth graph for all earthquakes this month, bottom half of page
     var significant = {
       x: graphtimes,
       y: graphdepth,
@@ -135,53 +648,44 @@ function setup() {
             color: 'rgb(169,169,169)'
           }
         },
-      showlegend: true,
       height: 400,
-      width: 1280,
+      width: 1200,
+      showlegend: true,
+      legend: {"orientation": "h"},
       font: {
         family: 'Lato',
         size: 12,
         color: 'rgb(169,169,169)'
       },
       plot_bgcolor: 'rgba(0,0,0, 0.1)',
-      margin: {
-        pad: 10
-      },
         };
 
     Plotly.newPlot('quake-graph', data, layout);
 
-
-
-  /*var japan = []
-  for (var i = 0; i < graphmagnitude3.length; i++) {
-    if (graphplace3[i].includes("japan")){
-
-    }
-  //}*/
-
+    //Manually got all Japan earthquakes from, put them in CSVs
+    //Get time, depth, and magnitude info from them
     graphtimesjapan = graphtablejapan.getColumn('time');
     graphdepthjapan = graphtablejapan.getColumn('depth');
     graphdepthjapan = graphdepthjapan.map(x => x * -1);
-    graphmagnitudejapan = graphtablejapan.getColumn('magnitude');
+    graphmagnitudejapan = graphtablejapan.getColumn('mag');
     graphmagnitudejapan = graphmagnitudejapan^20;
 
     graphtimesjapan2 = graphtablejapan2.getColumn('time');
     graphdepthjapan2 = graphtablejapan2.getColumn('depth');
     graphdepthjapan2 = graphdepthjapan2.map(x => x * -1);
-    graphmagnitudejapan2 = graphtablejapan2.getColumn('magnitude');
+    graphmagnitudejapan2 = graphtablejapan2.getColumn('mag');
     graphmagnitudejapan2 = graphmagnitudejapan2^20;
 
     graphtimesjapan3 = graphtablejapan3.getColumn('time');
     graphdepthjapan3 = graphtablejapan3.getColumn('depth');
     graphdepthjapan3 = graphdepthjapan3.map(x => x * -1);
-    graphmagnitudejapan3 = graphtablejapan3.getColumn('magnitude');
+    graphmagnitudejapan3 = graphtablejapan3.getColumn('mag');
     graphmagnitudejapan3 = graphmagnitudejapan3^20;
 
     graphplace3 = graphtable3.getColumn('place');
 
 
-
+    //Plot Japan depth graph
     var significant = {
       x: graphtimesjapan,
       y: graphdepthjapan,
@@ -218,26 +722,15 @@ function setup() {
     var data = [abovemag2, abovemag4, significant];
 
     var layout = {
-      title: 'Depth and magnitude of earthquakes this month around Japan (Amur, Okhotsk, Phillipine Sea Plates)',
-      xaxis: {
-          title: 'Time',
-          titlefont: {
-            family: 'Lato',
-            size: 12,
-            color: 'rgb(169,169,169)'
-          }
+      title: 'Japan (Amur, Okhotsk, Phillipine Sea Plates)',
+        xaxis: {
+          showticklabels: false
         },
         yaxis: {
-          title: 'Depth (km)',
-          titlefont: {
-            family: 'Lato',
-            size: 12,
-            color: 'rgb(169,169,169)'
-          }
+          showticklabels: false,
+          range: [-700, 100]
         },
-      showlegend: true,
-      height: 400,
-      width: 1280,
+      showlegend: false,
       font: {
         family: 'Lato',
         size: 12,
@@ -253,6 +746,7 @@ function setup() {
 
 }
 
+//Set up the earthquake map at the top half of page
 function setupMap(){
     /*
     LEAFLET CODE
@@ -274,12 +768,6 @@ function setupMap(){
     subdomains: 'abcd',
     maxZoom: 19
     }).addTo(mymap);
-
-    /*L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-    }).addTo(mymap);*/
 
     // control that shows state info on hover
     var info = L.control();
@@ -310,45 +798,6 @@ function setupMap(){
         };
     }
 
-    /*function getColor(m) {
-      return m > 7.0 ? '#800026' :
-             m > 6.0  ? '#BD0026' :
-             m > 5.0  ? '#E31A1C' :
-             m > 4.0  ? '#FC4E2A' :
-             m > 3.0  ? '#FD8D3C' :
-             m > 2.0  ? '#FEB24C' :
-             m > 1.0  ? '#FED976' :
-                        '#FFEDA0'; 
-    }
-
-    function getRadius(d) {
-      return d > 700 ? 500:
-             d > 300 ? 5000:
-             d > 70  ? 50000:
-             d > 0   ? 100000:
-                       100;
-    }*/
-
-    /*function highlightFeature(e) {
-        var layer = e.target;
-
-        layer.setStyle({
-            weight: 5,
-            color: '#666',
-            dashArray: '',
-            fillOpacity: 0.7
-        });
-
-        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-            layer.bringToFront();
-            console.log('work please');
-        }
-
-        info.update(layer.feature.properties);
-        console.log('full of');
-    }*/
-
-    //var geojson = plates;
 
     function resetHighlight(e) {
         geojson.resetStyle(e.target);

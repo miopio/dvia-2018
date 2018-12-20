@@ -2,6 +2,7 @@ var data;
 
 function preload() {
   data = loadJSON("data/all.json");
+  table = loadTable('data/nuclear_warhead_inventory.csv', 'csv', 'header')
 
 }
 
@@ -63,13 +64,18 @@ function setup() {
       }
     }
   }
-  //////////////////////////////Atmospheric
+  //////////////////////////////All
 
 
   textFont("Arial");
     textSize(16);
   fill(0);
   noStroke();
+
+  textAlign(CENTER);
+  fill(0);
+  text("All Tests", 100, 80);
+
 
   var pal = Brewer.sequential('Greens', Infinity, 0, 100)
    
@@ -117,12 +123,20 @@ function setup() {
     }
   }
 
-  //////////////////////////////Underground
+  //////////////////////////////Atm
 
    textFont("Arial");
     textSize(16);
   fill(0);
   noStroke();
+
+  textAlign(CENTER);
+  fill(0);
+  text("Atmospheric", 100, 670);
+
+  textAlign(CENTER);
+  fill(0);
+  text("Underground", 100, 1250);
 
   var pal = Brewer.sequential('Blues', Infinity, 0, 100)
    var startX = 200;
@@ -168,5 +182,7 @@ function setup() {
       }
     }
   }
+
+  
 
 }
