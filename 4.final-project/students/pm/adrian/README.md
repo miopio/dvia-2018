@@ -60,8 +60,6 @@ A copy of the final visualization is contained below:
 The final presentation is concept-2.
 
 ## Final thoughts
-```
 Overall after overcoming a couple of false starts with data, I am really happy with how the project came out.  While I originally designed the visualization with three major components - two in Panel 1 and then one in Panel 2, I feel like the final design actually created more value - for me the implementation of the DNA charts in each of the decades make that feel much more like a small multiples approach.  
 
 Presenting aloud to the visualization passed a number of tests and I was able to operate on both a zoomed out and zoomed in level which I feel is critical.  I also had two other friends who present a lot of visualizations take it for a test drive and both reported that it was easy to present to.  This is definitely a design template that I will look to leverage professionally in the future.
-```
