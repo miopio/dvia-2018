@@ -36,6 +36,8 @@ function preload() {
     color = table.getColumn('Color');
     colorSorted = orderedTable.getColumn('Color');
 
+    suicide = orderedTable.getColumn('Suicide');
+
     //sort data from table into regions
     ceEurope = countrySplice.splice(0,17);
     ceEurope_lifeladder = lifeladderSplice.splice(0,17);
@@ -124,7 +126,7 @@ Plotly.newPlot('lifeladderSorted', data, layout);
 
 //SORTED TOURIST BY LIFE LADDER ORDER
 var layout = {
-  title: 'Inbound Tourism (2015)',
+  title: 'Inbound Tourism (2015) as a Measurement for Country Desirability',
   showlegend: false,
   paper_bgcolor: 'rgba(0,0,0,0)',
   plot_bgcolor: 'rgba(0,0,0,0)',
@@ -152,6 +154,37 @@ var data = [
 ];
 
 Plotly.newPlot('tourismSorted', data, layout);
+
+//SORTED TOURIST BY LIFE LADDER ORDER
+var layout = {
+  title: 'Suicide Rates per 100,000 in population',
+  showlegend: false,
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  titlefont: {
+    color: 'rgb(255,255,255)'
+  },
+  xaxis: {
+    color: 'rgb(255,255,255)',
+  },
+  yaxis: {
+    title: 'Suicide Rates (per 100,000 in population)',
+    color: 'rgb(255,255,255'
+  }
+};
+
+var data = [
+  {
+    x: countrySorted,
+    y: suicide,
+    marker: {
+        color: colorSorted,
+    },
+    type: 'bar'
+  }
+];
+
+Plotly.newPlot('suicide', data, layout);
 
 
 // SET UP LIFE LADDER BOX PLOT
@@ -238,8 +271,8 @@ layout = {
         b: 80,
         t: 100
     },
-    paper_bgcolor: 'rgba(148,0,211, 0)',
-    plot_bgcolor: 'rgba(148,0,211, 0)',
+    paper_bgcolor: 'rgba(255, 255, 255, 0)',
+    plot_bgcolor: 'rgba(255, 255, 255, 0)',
     showlegend: false
 };
 

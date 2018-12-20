@@ -1,19 +1,20 @@
 ### Initial Ideas
 
+See /process/ideas.text and /process/datasources.txt
+
 ### Three Concepts
 
+See /process/DVIA-2018 Final Project Proposals.pdf
+
 ### Final Concept
-Tackle human connection/empathy/intimacy in an increasingly isolating world, and how can we remedy that both through digital interface and also by harnessing digital interface to increase meaningful direct human interaction?
+I chose to pursue Concept 3 further (Human Connection, Empathy, and Intimacy in the Digital Age). I wanted to tackle the ideas of human connection, empathy, intimacy in an increasingly isolating world, and how we remedy that both through digital interface and also by harnessing digital interface to increase meaningful direct human interaction.
 
-Going to use DBs from the world happiness report, machine learning studies, social tech labs as a concrete source for introductory visualization 
+My initial datasets included the World Happiness Report, which I wanted to use for a general overview of happiness of countries around the world, and what factors influenced this happiness. I extracted variables that they measured that related to human connection ("social support", "generosity", "freedomto make life choices") to break down the influences of happiness. I then intended on using a machine learning dataset called HappyDB, which included 100,000 responses from people who wrote strings on "what made them happy in the last 24 hours/last week", to see the rate at which words relating to humans and connections appeared in this dataset. Finally, I wanted to implement my own survey through both Amazon Mechanical Turks and in my own network to see if there were differences in perceived happiness and values that contribute to happiness between the general population and those with holistic careers, whose job you could say is to "understand humans" and "guide humans to live a better life".
 
-But then have my own questions that I’ll use both Amazon mechanical Turks and also target friend populations for surveys/interviews--thought it would be interesting if people who choose "human connection" as a career/way of life have different responses
-
-And use that to create more of a storytelling visualization, use more human photos and experiences rather than just data-driven dots and numbers
+See /process/wireframes for the general sketch.
 
 ### More Realistic Scope of Final Concept
-
-### Process
+Unfortunately, the above project was impossible to execute under the time constraints, and I had to put aside the bulk of it for this particular project. I was left with only the World Happiness Report, which I had only intended to use as an introduction. 
 
 ### Critique 1
 - Each region is a box plot --> each country is visualzied as a line within box plot
