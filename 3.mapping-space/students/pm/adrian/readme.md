@@ -31,6 +31,4 @@ After combining panels 1 and 2 together, the final visualization came out as sho
 ![Assignment 3 - Combined](images/complete.png)
 
 ## Final thoughts
-```
 When looking at the final output in isolation it is apparent that only a minimal level of the data is displayed at first glance however, because of the interactivity of the map the user is able to drill down into any earthquake of interest and view the details with the popup.  Overall, I feel like this lighter on the data approach brought balance to the rest of my portfolio which is generally on the heavier side of data visualizations.
-```
