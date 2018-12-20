@@ -26,4 +26,4 @@ For early concept and variations, see the [initial proposal](https://github.com/
 
 - I want to build on this to include controls in the UI that allow you to filter the displayed films on the timeline by attributes like genre or rating in order to see how different types of films treat the 5 act structure.
 
-- Also, since the plot point moments come from an educational film blog, I had to copy/paste all of the story data into Excel manually. It would be nice to attempt to collaborate with the owner of the blog, as I'm visualizing his written work, as well as set up an ability (maybe a google doc) so others can help maintain it. The more films the more accurate this is as a tool and a model.
+- Also, since the plot point moments come from an educational film blog, called [The Script Lab](https://thescriptlab.com/), I had to copy/paste all of the story data into Excel manually. It would be nice to attempt to collaborate with the owner of the blog, as I'm visualizing his written work, as well as set up an ability (maybe a google doc) so others can help maintain it. The more films the more accurate this is as a tool and a model.
