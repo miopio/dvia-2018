@@ -23,7 +23,9 @@ Unfortunately, the above project was impossible to execute under the time constr
 
 There were some interesting trends that emerged, such as that Southeast Asian countries had a high score of generosity values.
 
-![Happiness levels of countries]()
+![Happiness levels of countries](https://github.com/samizdatco/dvia-2018/blob/master/4.final-project/students/pm/mio/process/happiness.png)
+
+![Generosity in different regions](https://github.com/samizdatco/dvia-2018/blob/master/4.final-project/students/pm/mio/process/generosity.png)
 
 
 ### Critique 1
@@ -42,20 +44,20 @@ Unsatisfied with working just with the World Happiness Report, I started collect
 - simple scatterplot: plot happiness value with number of times it was mentioned
 - focus on the box plot--> make it something that can go on a wall (dont rely on hovers to tell you all the information)
 
-Instead of using a biased list of recommendations, I looked into using annual inbound tourism data from the UN in order to explore this same measurement. I plotted the tourism data against countries in descending order of happiness. As expected, there was not a correlating trend, though the rates of tourism were generally higher in countries with higher happiness levels.
+Instead of using a biased list of recommendations, I looked into using annual inbound tourism data from the UN in order to explore this same measurement. I plotted the tourism data against countries in descending order of happiness. As expected, there was not a correlating trend, though the rates of tourism were generally higher in countries with higher happiness levels. The yellow bars represent countries with highest levels of happiness in each of the ten regions, and the orange bars represent the ten countries in which tourism is highest.
 
-![Tourism against countries in descending order of happiness]()
+![Tourism against countries in descending order of happiness](https://github.com/samizdatco/dvia-2018/blob/master/4.final-project/students/pm/mio/process/tourism.png)
 
 I also tried plotting a scatter plot using life ladder data vs tourism data. My intention was to connect all of the dots in each region, and look at the surface area the dots produced within the scatter plot. If the area was large, it meant that there was a large discrepency between "happiness of citizens within a country" vs "perceived desirability of a country". Though I started looking at thsi manually in Illustrator, I did not have time to implement this in code.
 
-![Life ladder vs tourism]()
+![Life ladder vs tourism](https://github.com/samizdatco/dvia-2018/blob/master/4.final-project/students/pm/mio/process/lifeladderTourism.png)
 
 ### Critique 3
 - take a look at suicide rates of countries and/or emigration data and/or net immigation
 - order box plots by descending order using one of the variables, then keep order
 
-After the final critique, I went ahead and got a dataset on the suicide rates of each country from WHO and plotted that once again against countries in descending order of happiness. This resulted in an interesting pattern, where suicide rates varied regardless of the happiness of the country, with some high values in some countries.
+After the final critique, I went ahead and got a dataset on the suicide rates of each country from the World Health Organization and plotted that once again against countries in descending order of happiness. This resulted in an interesting pattern, where suicide rates varied regardless of the happiness of the country, with some high values in some countries. I do wish there were less confounding variables that surrounded how to quantify perceived desirability of a country (ie suicide rates might be related to liberal policies in countries that allow for assisted suicide, tourism is probably closely related to a country's climate and proximity to beaches and landmarks), but that requires a dataset that is more controlled and detailed than the general datasets that I used.
 
-![Suicide rates]()
+![Suicide rates](https://github.com/samizdatco/dvia-2018/blob/master/4.final-project/students/pm/mio/process/suicide.png)
 
 Though overall I was disappointed with my inability to execute the project I wanted, and that I couldn't quite figure out a good narrative for the dataset I did work with, it was a good exercise in how to visualize data you don't necessarily know how to parse out. It gave me experience in putting together a visualization using javascript/plotly.js rather than using something static like Illustrator.
