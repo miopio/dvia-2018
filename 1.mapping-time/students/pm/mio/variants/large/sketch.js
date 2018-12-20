@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 function setup() {
   // set the width & height of the sketch
   createCanvas(400, 130)
@@ -26,7 +26,6 @@ function draw() {
   text(now.text.date, 30, 50)
   text(now.text.time, 30, 100)
 
-=======
 var x = 0 // starting x position to draw
 var y = 0  // starting y position to draw
 var barWidth = 5 // width of each bar
@@ -188,5 +187,5 @@ function draw() {
   var monthHeight = now.progress.month * maxHeight
   fill(0.5, now.progress.year, 1)
   rect(boxspacing/2+ boxwidthFSH*4+boxspacing*4, y+3, barWidth, monthHeight)
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
+
 }
