@@ -26,10 +26,3 @@ After receiving feedback, I decided to expand on the first concept by adding sma
 The sacrifice that came with this concept was a sound way to integrate my originally-planned third variable: GDP. I decided to completely change this third variable to better match the story in the visualization. Instead, I integrated which years each country was in war, which is colored by each bar.
 
 I feel this tells a more complete story of nuclear testing's place in history through a timeline-like bar chart.
-
-### To-do
-
-- Scale bottom graphs
-- Add axes and color legend
-- Style
-- Clean up code (variable names)

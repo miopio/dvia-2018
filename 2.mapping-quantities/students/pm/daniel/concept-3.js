@@ -6,7 +6,7 @@ function preload(){
 
 function setup(){
   createCanvas(3200, 700)
-  background(0)   
+  background(0)
 
 var data = totals
 
@@ -23,14 +23,14 @@ var palette = Brewer.sequential('YlOrBr', Infinity, 0, 30)
   var x = 200
   var y = 100
   var rowHeight = 60
-  var colWidth = 40
+  var colWidth = 1
 
   // draw country name labels on the left edge of the table
   textStyle(BOLD)
   textAlign(RIGHT)
   for (var country in data.tests){
     text(country, x-colWidth, y)
-    y += rowHeight  
+    y += rowHeight
  }
 
  // draw each year's totals, one column at a time
@@ -53,11 +53,10 @@ var palette = Brewer.sequential('YlOrBr', Infinity, 0, 30)
       rect(x, y, 40, 40)
       // shift downward before drawing the next country
       y += rowHeight
-  } 
-    
+  }
+
       // shift leftward before drawing the next year
        x += colWidth
     }
 
 }
-

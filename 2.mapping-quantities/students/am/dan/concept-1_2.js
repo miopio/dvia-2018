@@ -84,7 +84,7 @@ fill(30,10,20)
 rect(0, height-295, width, 10);
 pop();
 
-fill(80,80,50);
+fill(30,30,40);
 rect(0, height-185, width, 45);
 fill(255);
 image(img,33,height-70,35,40);

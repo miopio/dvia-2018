@@ -1,0 +1,302 @@
+[
+  {
+    "State": "Alabama",
+    "Abr": "AL",
+    "noClinic": 93,
+    "Limits": 4
+  },
+  {
+    "State": "Alaska",
+    "Abr": "AK",
+    "noClinic": 90,
+    "Limits": 1
+  },
+  {
+    "State": "Arizona",
+    "Abr": "AZ",
+    "noClinic": 80,
+    "Limits": 4
+  },
+  {
+    "State": "Arkansas",
+    "Abr": "AR",
+    "noClinic": 97,
+    "Limits": 3
+  },
+  {
+    "State": "California",
+    "Abr": "CA",
+    "noClinic": 43,
+    "Limits": 0
+  },
+  {
+    "State": "Colorado",
+    "Abr": "CO",
+    "noClinic": 78,
+    "Limits": 1
+  },
+  {
+    "State": "Connecticut",
+    "Abr": "CT",
+    "noClinic": 13,
+    "Limits": 0
+  },
+  {
+    "State": "Delaware",
+    "Abr": "DE",
+    "noClinic": 33,
+    "Limits": 2
+  },
+  {
+    "State": "Florida",
+    "Abr": "FL",
+    "noClinic": 70,
+    "Limits": 2
+  },
+  {
+    "State": "Georgia",
+    "Abr": "GA",
+    "noClinic": 96,
+    "Limits": 3
+  },
+  {
+    "State": "Hawaii",
+    "Abr": "HI",
+    "noClinic": 40,
+    "Limits": 0
+  },
+  {
+    "State": "Idaho",
+    "Abr": "ID",
+    "noClinic": 95,
+    "Limits": 3
+  },
+  {
+    "State": "Illinois",
+    "Abr": "IL",
+    "noClinic": 92,
+    "Limits": 1
+  },
+  {
+    "State": "Indiana",
+    "Abr": "IN",
+    "noClinic": 95,
+    "Limits": 3
+  },
+  {
+    "State": "Iowa",
+    "Abr": "IA",
+    "noClinic": 89,
+    "Limits": 1
+  },
+  {
+    "State": "Kansas",
+    "Abr": "KS",
+    "noClinic": 97,
+    "Limits": 4
+  },
+  {
+    "State": "Kentucky",
+    "Abr": "KY",
+    "noClinic": 98,
+    "Limits": 4
+  },
+  {
+    "State": "Louisiana",
+    "Abr": "LA",
+    "noClinic": 92,
+    "Limits": 4
+  },
+  {
+    "State": "Maine",
+    "Abr": "ME",
+    "noClinic": 81,
+    "Limits": 0
+  },
+  {
+    "State": "Maryland",
+    "Abr": "MD",
+    "noClinic": 67,
+    "Limits": 1
+  },
+  {
+    "State": "Massachusetts",
+    "Abr": "MA",
+    "noClinic": 43,
+    "Limits": 2
+  },
+  {
+    "State": "Michigan",
+    "Abr": "MI",
+    "noClinic": 89,
+    "Limits": 3
+  },
+  {
+    "State": "Minnesota",
+    "Abr": "MN",
+    "noClinic": 95,
+    "Limits": 3
+  },
+  {
+    "State": "Mississippi",
+    "Abr": "MS",
+    "noClinic": 99,
+    "Limits": 4
+  },
+  {
+    "State": "Missouri",
+    "Abr": "MO",
+    "noClinic": 99,
+    "Limits": 3
+  },
+  {
+    "State": "Montana",
+    "Abr": "MT",
+    "noClinic": 93,
+    "Limits": 0
+  },
+  {
+    "State": "Nebraska",
+    "Abr": "NE",
+    "noClinic": 97,
+    "Limits": 3
+  },
+  {
+    "State": "Nevada",
+    "Abr": "NV",
+    "noClinic": 88,
+    "Limits": 0
+  },
+  {
+    "State": "New Hampshire",
+    "Abr": "NH",
+    "noClinic": 60,
+    "Limits": 1
+  },
+  {
+    "State": "New Jersey",
+    "Abr": "NJ",
+    "noClinic": 33,
+    "Limits": 0
+  },
+  {
+    "State": "New Mexico",
+    "Abr": "NM",
+    "noClinic": 91,
+    "Limits": 0
+  },
+  {
+    "State": "New York",
+    "Abr": "NY",
+    "noClinic": 44,
+    "Limits": 0
+  },
+  {
+    "State": "North Carolina",
+    "Abr": "NC",
+    "noClinic": 90,
+    "Limits": 1
+  },
+  {
+    "State": "North Dakota",
+    "Abr": "ND",
+    "noClinic": 98,
+    "Limits": 4
+  },
+  {
+    "State": "Ohio",
+    "Abr": "OH",
+    "noClinic": 93,
+    "Limits": 3
+  },
+  {
+    "State": "Oklahoma",
+    "Abr": "OK",
+    "noClinic": 96,
+    "Limits": 4
+  },
+  {
+    "State": "Oregon",
+    "Abr": "OR",
+    "noClinic": 78,
+    "Limits": 0
+  },
+  {
+    "State": "Pennsylvania",
+    "Abr": "PA",
+    "noClinic": 85,
+    "Limits": 3
+  },
+  {
+    "State": "Rhode Island",
+    "Abr": "RI",
+    "noClinic": 80,
+    "Limits": 2
+  },
+  {
+    "State": "South Carolina",
+    "Abr": "SC",
+    "noClinic": 93,
+    "Limits": 3
+  },
+  {
+    "State": "South Dakota",
+    "Abr": "SD",
+    "noClinic": 98,
+    "Limits": 1
+  },
+  {
+    "State": "Tennessee",
+    "Abr": "TN",
+    "noClinic": 96,
+    "Limits": 1
+  },
+  {
+    "State": "Texas",
+    "Abr": "TX",
+    "noClinic": 96,
+    "Limits": 5
+  },
+  {
+    "State": "Utah",
+    "Abr": "UT",
+    "noClinic": 97,
+    "Limits": 4
+  },
+  {
+    "State": "Vermont",
+    "Abr": "VT",
+    "noClinic": 64,
+    "Limits": 0
+  },
+  {
+    "State": "Virginia",
+    "Abr": "VA",
+    "noClinic": 92,
+    "Limits": 5
+  },
+  {
+    "State": "Washington",
+    "Abr": "WA",
+    "noClinic": 64,
+    "Limits": 0
+  },
+  {
+    "State": "West Virginia",
+    "Abr": "WV",
+    "noClinic": 98,
+    "Limits": 3
+  },
+  {
+    "State": "Wisconsin",
+    "Abr": "WI",
+    "noClinic": 96,
+    "Limits": 4
+  },
+  {
+    "State": "Wyoming",
+    "Abr": "WY",
+    "noClinic": 96,
+    "Limits": 2
+  }
+]

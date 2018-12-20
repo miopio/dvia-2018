@@ -1,0 +1,26 @@
+Education and Employment
+
+Project goal: 
+- Visualize trends in choosing major in postsecondary institution
+- Visualize jobs' market value by major
+
+
+Step 1: Find data
+Data source:
+- (US Bureau of Labour) Median Salary and Number of Jobs
+- (UNESCO) Bachelor Degrees Conferred by Major
+
+
+Step 2: Clean data
+- Since there are a lot years missing in the Education Data set, I chose to use only year 2005 to 2016
+- I only used the majors that I could group into different occupational group that the Employment dataset has. Those groups are:
+	Business
+	Agriculture
+	Legal Studies and Professions
+	Art, Design, Sport and Entertainment
+	Math and Computer Science
+	Education and Library
+	Healthcare and Biology
+
+Step 3: Sketch Data
+Tool used: Google Sheet Chart, Illustrator

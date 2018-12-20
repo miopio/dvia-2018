@@ -7,7 +7,6 @@ var latitudes, longitudes;
 // minimum and maximum values for magnitude and depth
 var magnitudeMin, magnitudeMax;
 var depthMin, depthMax;
-// the dots we'll be adding to the map
 var circles = [];
 // table as the data set
 var table;
@@ -23,22 +22,32 @@ function setup() {
     // first, call our map initialization function (look in the html's style tag to set its dimensions)
     setupMap()
 
-
-
     // next, draw our p5 diagram that complements it
-    createCanvas(windowWidth, 100);
+    createCanvas(windowWidth, 800);
     background(211);
 
-    fill(0)
+    fill(0, 0, 0)
     noStroke()
-    textSize(18)
-    text(`Over the course of the last week, there were ${table.getRowCount()} seismic events.  Of these events, the largest magnitude and depth were ${getColumnMax("mag")} and ${getColumnMax("depth")}, respectively`, 10, 24)
+    textSize(40)
+    text(`Over the course of the last week, there were`, 10, 130)
+    text(`seismic events.  Of these events, the largest magnitude and`, 1080, 130)
+    text(`depth were`, 10, 250)
+    text(`and`, 390, 250)
+    text(`respectively. The current warning level is: `, 840, 250)
+    text(`moderate`, 1710, 250)
+    fill(0, 0, 255)
+    textSize(120); text(`${table.getRowCount()}`, 810, 130)
+    textSize(120); text(`${getColumnMax("mag")}`, 215, 250)
+    textSize(120); text(`${getColumnMax("depth")}`, 475, 250)
+    fill(122, 0, 0)
+    ellipse(1640, 205, 120, 120)
+
+    // ${table.getRowCount()} seismic events.  Of these events, the largest magnitude and depth were ${getColumnMax("mag")} and ${getColumnMax("depth")}, respectively`, 10, 130)
 }
 
 function setupMap(){
     /*
     LEAFLET CODE
-
     In this case "L" is leaflet. So whenever you want to interact with the leaflet library
     you have to refer to L first. so for example L.map('mapid') or L.circle([lat, long])
     */
@@ -86,7 +95,7 @@ function drawDataPoints(){
         var circle = L.circle([latitudes[i], longitudes[i]], {
           color: 'T',      // the dot stroke color
           fillColor: 'blue', // the dot fill color
-          fillOpacity: 0.5,  // use some transparency so we can see overlaps
+          fillOpacity: 25,  // use some transparency so we can see overlaps
           radius: magnitudes[i] * 10000
         });
 
@@ -103,7 +112,6 @@ function drawDataPoints(){
 
         // save a reference to the circle for later
         circles.push(circle)
-
 
     }
 }
@@ -133,9 +141,4 @@ function getColumnMax(columnName){
         }
     }
     return m;
-
-    // or do it the 'easy way' by using lodash:
-    // return _.max(colValues);
-
-
 }

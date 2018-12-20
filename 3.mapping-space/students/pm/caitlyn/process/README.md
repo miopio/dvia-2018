@@ -60,4 +60,7 @@ The granularity will be at a monthly level, and the map style I'm planning to us
 #### Diagram
 The diagram portion of this concept will add time as a third variable to experiment with the connection between magnitude and magnitude error over the course of the month. The visualization will be a timeline on the horizontal axis with magnitude encoded on the vertical access, which peaks that encode the magnitude error of the earthquake recorded at that time. This will either take the form of small bars or a ridge/joy plot.
 
+## Class Feedback
+
+Based on class feedback, if I were to iterate on this, I would work on some of the tooltip styling and also expand my non-map visualization.
 

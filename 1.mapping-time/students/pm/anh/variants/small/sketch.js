@@ -1,5 +1,5 @@
 function setup() {
-<<<<<<< HEAD
+
   // set the width & height of the sketch
   createCanvas(400, 130)
 
@@ -27,10 +27,9 @@ function draw() {
   text(now.text.time, 30, 100)
 
 }
-=======
+
   createCanvas(1400, 700);
   
-}
   
 function draw() {
   background(0);
@@ -87,5 +86,3 @@ function draw() {
  
 }
 
-
->>>>>>> 07e3d27472d8c3adbca08059e02a9e179e3f2022
