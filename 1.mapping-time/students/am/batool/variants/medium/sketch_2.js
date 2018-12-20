@@ -11,7 +11,7 @@ function Branch(begin, end) {
   }
 
   this.show = function() {
-    stroke(255);
+    stroke(10);
     line(this.begin.x, this.begin.y, this.end.x, this.end.y);
   }
 

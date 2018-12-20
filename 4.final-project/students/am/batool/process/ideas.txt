@@ -1,22 +1,20 @@
 
-1- Blood test results: I've always wanted to visualize the medical test results, I always find it hard to understand what is normal and what's not. Turning the heavy texted document into visualization will help everyone understand their health level. (diagram)*
+1- Blood test results. (chart/diagram)
+2- World Weapons Industry. (map or scatter chart)
+3- Hajj pilgrimage. (map)
+4- Visualize the current temperature around the world. (map)
 
-2- Visualize the current temperature around the world. (map)
+5-  extend the earthquake project: add more data and filtering options, show relationship between S and P waves and o–zone layer (map and diagrams)
 
-3-  extend the earthquake project: add more data and filtering options, show relationship between S and P waves and O zone layer
+6- Airplanes routes between the biggest airports around the world (map) 
 
-4- Airplanes routes between the biggest airports around the world (map) 
+7- Bike assembly infographic poster (diagram) 
 
-5- Bike assembly infographic poster (diagram) *
+8- Mail carrier tracking number, visualize the route, the history (map or a timeline)
 
-6- Mail carrier tracking number, visualize the route, the history * 
+9- Number of car accidents every day in Riyadh, Saudi Arabia. (diagram)
 
-7- USA weapons sales.
+10-The new metro system in Riyadh (map)
 
-SA:
 
-1- Hajj pilgrimage in Saudi Arabia: Every year millions of people from all over the world gather in one place for Hajj for few days. (diagram or map) *
-
-2- Number of car accidents every day in Riyadh, Saudi Arabia. (diagram)
-
-3-The new metro system in Riyadh (map)
+More details are in README file. 

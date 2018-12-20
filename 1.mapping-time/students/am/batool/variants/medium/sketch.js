@@ -49,7 +49,7 @@ function oneSecondPassed(branchA) {
 }
 
 function draw() {
-  background(51);
+  background(134,115,255)
   let this_sc = second();
 
   // if (this_mn != mn){
@@ -78,7 +78,7 @@ function draw() {
   }
 
   for (var i = 0; i < leaves.length; i++) {
-    fill(255, 0, 100, 100);
+    fill(255,143,115,100);
     noStroke();
     ellipse(leaves[i].x, leaves[i].y, 8, 8);
     leaves[i].y += random(0, 2);
