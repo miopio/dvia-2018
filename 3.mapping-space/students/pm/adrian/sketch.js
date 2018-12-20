@@ -23,19 +23,31 @@ function setup() {
     setupMap()
 
     // next, draw our p5 diagram that complements it
-    createCanvas(windowWidth, 500);
+    createCanvas(windowWidth, 800);
     background(211);
 
-    fill(0, 0, 255)
+    fill(0, 0, 0)
     noStroke()
-    textSize(24)
-    text(`Over the course of the last week, there were ${table.getRowCount()} seismic events.  Of these events, the largest magnitude and depth were ${getColumnMax("mag")} and ${getColumnMax("depth")}, respectively`, 10, 36)
+    textSize(40)
+    text(`Over the course of the last week, there were`, 10, 130)
+    text(`seismic events.  Of these events, the largest magnitude and`, 1080, 130)
+    text(`depth were`, 10, 250)
+    text(`and`, 390, 250)
+    text(`respectively. The current warning level is: `, 840, 250)
+    text(`moderate`, 1710, 250)
+    fill(0, 0, 255)
+    textSize(120); text(`${table.getRowCount()}`, 810, 130)
+    textSize(120); text(`${getColumnMax("mag")}`, 215, 250)
+    textSize(120); text(`${getColumnMax("depth")}`, 475, 250)
+    fill(122, 0, 0)
+    ellipse(1640, 205, 120, 120)
+
+    // ${table.getRowCount()} seismic events.  Of these events, the largest magnitude and depth were ${getColumnMax("mag")} and ${getColumnMax("depth")}, respectively`, 10, 130)
 }
 
 function setupMap(){
     /*
     LEAFLET CODE
-
     In this case "L" is leaflet. So whenever you want to interact with the leaflet library
     you have to refer to L first. so for example L.map('mapid') or L.circle([lat, long])
     */
@@ -129,9 +141,4 @@ function getColumnMax(columnName){
         }
     }
     return m;
-}
-
-function draw() {
-  fill (0, 0, 255);
-  rect(158, 158, 158, 158);
 }
